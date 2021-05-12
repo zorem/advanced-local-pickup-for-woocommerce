@@ -1,0 +1,1 @@
+# advanced-local-pickup-for-woocommerce
