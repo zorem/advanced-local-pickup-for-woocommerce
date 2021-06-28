@@ -114,10 +114,10 @@ class wclp_pickup_customizer_email {
 	 * code for initialize default value for customizer
 	*/
 	public function wclp_generate_defaults() {
-		$customizer_defaults = array(			
-			'wclp_pickup_email_subject' => __( 'Your {site_title} order is picked up', 'advanced-local-pickup-for-woocommerce' ),
-			'wclp_pickup_email_heading' => __( 'Your Order is picked up', 'woocommerce' ),
-			'wclp_pickup_email_content' => __( "Hi there. we thought you'd like to know that your recent order from {site_title} has been picked up.", 'advanced-local-pickup-for-woocommerce' ),				
+		$customizer_defaults = array(
+			'wclp_pickup_email_subject' => __( 'Your order from {site_title} was picked up', 'advanced-local-pickup-pro' ),
+			'wclp_pickup_email_heading' => __( "You've Got it!", 'woocommerce' ),
+			'wclp_pickup_email_content' => __( "Hi {customer_first_name}. Thank you for picking up your {site_title} order #{order_number}. We hope you enjoyed your shopping experience.", 'advanced-local-pickup-pro' ), 
 			'wclp_enable_pickup_email'  => 'no',
 		);
 
@@ -137,7 +137,7 @@ class wclp_pickup_customizer_email {
 		$wp_customize->add_setting( 'customizer_pickup_order_settings_enabled',
 			array(
 				'default' => $this->defaults['wclp_enable_pickup_email'],
-				'transport' => 'postMessage',
+				'transport' => 'refresh',
 				'type'      => 'option',
 				'sanitize_callback' => ''
 			)
@@ -156,7 +156,7 @@ class wclp_pickup_customizer_email {
 		$wp_customize->add_setting( 'woocommerce_customer_pickup_order_settings[subject]',
 			array(
 				'default' => $this->defaults['wclp_pickup_email_subject'],
-				'transport' => 'postMessage',
+				'transport' => 'refresh',
 				'type'  => 'option',
 				'sanitize_callback' => ''
 			)
@@ -180,7 +180,7 @@ class wclp_pickup_customizer_email {
 		$wp_customize->add_setting( 'woocommerce_customer_pickup_order_settings[heading]',
 			array(
 				'default' => $this->defaults['wclp_pickup_email_heading'],
-				'transport' => 'postMessage',
+				'transport' => 'refresh',
 				'type'  => 'option',
 				'sanitize_callback' => ''
 			)
@@ -319,12 +319,15 @@ class wclp_pickup_customizer_email {
 		$email->find['customer-email']   = '{customer_email}';
 		$email->find['order-date']   = '{order_date}';
 		$email->find['order-number'] = '{order_number}';
+		$email->find['customer-username'] = '{customer_username}';
 		if ( is_object( $order ) ) {
 			$email->replace['customer-first-name'] = $email->object->get_billing_first_name();
 			$email->replace['customer-last-name'] = $email->object->get_billing_last_name();
 			$email->replace['customer-email'] = $email->object->get_billing_email();
 			$email->replace['order-date']   = wc_format_datetime( $email->object->get_date_created() );
 			$email->replace['order-number'] = $email->object->get_order_number();
+			$customer = new WC_Customer( $email->object->get_customer_id() );
+			$email->replace['customer-username'] = $customer->get_username();
 			// Other properties
 			$email->recipient = $email->object->get_billing_email();
 		}

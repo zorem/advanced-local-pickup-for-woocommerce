@@ -37,6 +37,7 @@ if ( ! class_exists( 'WC_Email_Customer_Pickup_Order', false ) ) :
 				'{customer_first_name}'   => '',
 				'{order_date}'   => '',
 				'{order_number}' => '',
+				'{customer_username}' => '',
 			);
 			$this->template_base = WC_LOCAL_PICKUP_TEMPLATE_PATH;
 			// Triggers for this email.		
@@ -64,10 +65,15 @@ if ( ! class_exists( 'WC_Email_Customer_Pickup_Order', false ) ) :
 				$this->placeholders['{customer_first_name}']   = $this->object->get_billing_first_name();
 				$this->placeholders['{order_date}']   = wc_format_datetime( $this->object->get_date_created() );
 				$this->placeholders['{order_number}'] = $this->object->get_order_number();
+				$customer = new WC_Customer( $this->object->get_customer_id() );
+				$this->placeholders['{customer_username}'] = $customer->get_username();
 			}
-
+			
+			$customer = new WC_Customer( $this->object->get_customer_id() );
+			$get_content = str_replace(array('{site_title}', '{customer_email}', '{customer_first_name}', '{customer_last_name}', '{customer_username}', '{order_number}' ), array( get_bloginfo( 'name' ), $order->get_billing_email(), $order->get_billing_first_name(), $order->get_billing_last_name(), $customer->get_username(), $order->get_order_number()), $this->get_content());
+			
 			if ( $this->is_enabled() && $this->get_recipient() ) {
-				$this->send( $this->get_recipient(), $this->get_subject(), $this->get_content(), $this->get_headers(), $this->get_attachments() );
+				$this->send( $this->get_recipient(), $this->get_subject(), $get_content, $this->get_headers(), $this->get_attachments() );
 			}
 
 			$this->restore_locale();
@@ -80,7 +86,7 @@ if ( ! class_exists( 'WC_Email_Customer_Pickup_Order', false ) ) :
 		 * @return string
 		 */
 		public function get_default_subject() {
-			return __( 'Your {site_title} order is now picked up', 'advanced-local-pickup-for-woocommerce' );
+			return __( 'Your order from {site_title} was picked up', 'advanced-local-pickup-for-woocommerce' );
 		}
 
 		/**
@@ -90,7 +96,7 @@ if ( ! class_exists( 'WC_Email_Customer_Pickup_Order', false ) ) :
 		 * @return string
 		 */
 		public function get_default_heading() {
-			return __( 'Your Order is picked up', 'advanced-local-pickup-for-woocommerce' );
+			return __( "You've Got it!", 'advanced-local-pickup-for-woocommerce' );
 		}
 
 		/**
@@ -174,7 +180,7 @@ if ( ! class_exists( 'WC_Email_Customer_Pickup_Order', false ) ) :
 		 * @return string
 		 */
 		public function get_default_additional_content() {
-			return __( "Hi there. we thought you'd like to know that your recent order from {site_title} has been picked up.", 'advanced-local-pickup-for-woocommerce' );
+			return __( "Hi {customer_first_name}. Thank you for picking up your {site_title} order #{order_number}. We hope you enjoyed your shopping experience.", 'advanced-local-pickup-for-woocommerce' );
 		}
 	}
 

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Advanced Local Pickup for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-05 12:01+0000\n"
+"POT-Creation-Date: 2021-06-28 04:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -19,8 +19,8 @@ msgstr ""
 msgid " Get to the Advanced Local Pickup Pro"
 msgstr ""
 
-#: include/views/wclp-edit-location-form.php:278
-#: include/views/wclp-edit-location-form.php:391
+#: include/wc-local-pickup-admin.php:1439
+#: include/views/wclp-edit-location-form.php:397
 #: include/views/wclp_pickup_location_instruction_preview.php:192
 #: templates/emails/pickup-instruction.php:134
 #: templates/myaccount/pickup-instruction.php:134
@@ -28,11 +28,15 @@ msgstr ""
 msgid " To"
 msgstr ""
 
-#: include/views/wclp-edit-location-form.php:298
+#: include/views/wclp-edit-location-form.php:283
+msgid " to"
+msgstr ""
+
+#: include/views/wclp-edit-location-form.php:303
 msgid "12 hour"
 msgstr ""
 
-#: include/views/wclp-edit-location-form.php:297
+#: include/views/wclp-edit-location-form.php:302
 msgid "24 hour"
 msgstr ""
 
@@ -40,43 +44,25 @@ msgstr ""
 msgid "Add Location "
 msgstr ""
 
-#: include/wc-local-pickup-admin.php:122 include/wc-local-pickup-admin.php:135
-#: include/wc-local-pickup-admin.php:136
-msgid "Add-ons"
-msgstr ""
-
-#: include/wc-local-pickup-admin.php:952 include/wc-local-pickup-admin.php:953
-#: include/wc-local-pickup-admin.php:957
+#: include/wc-local-pickup-admin.php:998 include/wc-local-pickup-admin.php:999
+#: include/wc-local-pickup-admin.php:1003
 msgid "Additional content on processing email in case of local pickup orders"
 msgstr ""
 
-#: include/views/wclp-edit-location-form.php:57
+#: include/views/wclp-edit-location-form.php:62
 msgid "Address"
 msgstr ""
 
-#: include/wc-local-pickup-admin.php:118
-msgid "Advanced Local Pickup"
-msgstr ""
-
-#: include/views/wclp-edit-location-form.php:106
+#: include/views/wclp-edit-location-form.php:111
 msgid "An additional, optional address line for your business location."
 msgstr ""
 
-#: include/wc-local-pickup-admin.php:883
-#: include/views/wclp-edit-location-form.php:427
+#: include/wc-local-pickup-admin.php:930
+#: include/views/wclp-edit-location-form.php:433
 msgid "Apply & close"
 msgstr ""
 
-#: include/customizer/wc-pickup-email-customizer.php:205
-#: include/customizer/wc-pickup-email-customizer.php:228
-#: include/customizer/wc-pickup-email-customizer.php:271
-#: include/customizer/wc-ready-pickup-email-customizer.php:211
-#: include/customizer/wc-ready-pickup-email-customizer.php:234
-#: include/customizer/wc-ready-pickup-email-customizer.php:277
-msgid "Available variables:"
-msgstr ""
-
-#: include/customizer/wclp-pickup-instruction-customizer.php:450
+#: include/customizer/wclp-pickup-instruction-customizer.php:460
 msgid "Background color"
 msgstr ""
 
@@ -84,8 +70,8 @@ msgstr ""
 #: include/customizer/wclp-pickup-instruction-customizer.php:277
 #: include/customizer/wclp-pickup-instruction-customizer.php:350
 #: include/customizer/wclp-pickup-instruction-customizer.php:365
-#: include/customizer/wclp-pickup-instruction-customizer.php:512
-#: include/views/wclp-edit-location-form.php:175
+#: include/customizer/wclp-pickup-instruction-customizer.php:532
+#: include/views/wclp-edit-location-form.php:180
 msgid "Business Hours"
 msgstr ""
 
@@ -93,94 +79,60 @@ msgstr ""
 msgid "Business Hours header text"
 msgstr ""
 
-#: include/wc-local-pickup-admin.php:428
+#: include/wc-local-pickup-admin.php:473
 msgid "Change status to Picked up"
 msgstr ""
 
-#: include/wc-local-pickup-admin.php:424
+#: include/wc-local-pickup-admin.php:469
 msgid "Change status to Ready for pickup"
 msgstr ""
 
-#: include/customizer/wclp-pickup-instruction-customizer.php:489
+#: include/customizer/wclp-pickup-instruction-customizer.php:509
 msgid "Content font color"
 msgstr ""
 
-#: include/customizer/wclp-pickup-instruction-customizer.php:467
+#: include/customizer/wclp-pickup-instruction-customizer.php:477
 msgid "Content font size"
 msgstr ""
 
-#: include/customizer/wclp-pickup-instruction-customizer.php:505
+#: include/customizer/wclp-pickup-instruction-customizer.php:525
 msgid "Content line height"
 msgstr ""
 
-#: include/views/wclp_setting_tab.php:51
-msgid "Custom Order Statuses"
+#: include/wc-local-pickup-admin.php:198 include/wc-local-pickup-admin.php:199
+#: include/views/wclp_setting_tab.php:59 include/views/wclp_setting_tab.php:99
+msgid "Customize"
 msgstr ""
 
-#: include/wc-local-pickup-admin.php:937
-msgid "Customer account > order history > order details page"
-msgstr ""
-
-#: include/views/wclp_setting_tab.php:18
-msgid "Customer View"
-msgstr ""
-
-#: include/views/wclp_setting_tab.php:160
-msgid ""
-"Customize the pickup Instructions display on the  order emails and my-"
-"account."
-msgstr ""
-
-#: include/views/wclp_setting_tab.php:163
-msgid "Customizer"
-msgstr ""
-
-#: include/views/wclp_setting_tab.php:89 include/views/wclp_setting_tab.php:130
+#: include/views/wclp_setting_tab.php:53 include/views/wclp_setting_tab.php:93
 msgid "Dark Font"
 msgstr ""
 
-#: include/views/wclp-edit-location-form.php:292
+#: include/views/wclp_setting_tab.php:6
+msgid "Display options"
+msgstr ""
+
+#: include/views/wclp-edit-location-form.php:297
 msgid "Display Time Format"
 msgstr ""
 
-#: include/wc-local-pickup-admin.php:139
-msgid "Documentation"
-msgstr ""
-
-#: include/views/wclp_setting_tab.php:95 include/views/wclp_setting_tab.php:136
-msgid "edit email"
-msgstr ""
-
-#: include/views/wclp-edit-location-form.php:13
+#: include/views/wclp-edit-location-form.php:18
 msgid "Edit Pickup Location"
 msgstr ""
 
-#: include/customizer/wc-pickup-email-customizer.php:249
-#: include/customizer/wc-ready-pickup-email-customizer.php:255
-msgid "Email content"
-msgstr ""
-
-#: include/customizer/wc-pickup-email-customizer.php:161
-msgid "Enable Picked up order status email"
-msgstr ""
-
-#: include/customizer/wc-ready-pickup-email-customizer.php:170
-msgid "Enable Ready for Pickup order status email"
-msgstr ""
-
-#: include/views/wclp-edit-location-form.php:390
+#: include/views/wclp-edit-location-form.php:396
 msgid "From"
 msgstr ""
 
-#: include/views/wclp_setting_tab.php:9
-msgid "General Settings"
+#: include/wc-local-pickup-admin.php:200 include/wc-local-pickup-admin.php:201
+msgid "Go Pro"
 msgstr ""
 
 #: include/customizer/wclp-pickup-instruction-customizer.php:380
 msgid "Headers Background color"
 msgstr ""
 
-#: include/customizer/wclp-pickup-instruction-customizer.php:420
+#: include/customizer/wclp-pickup-instruction-customizer.php:430
 msgid "Headers font color"
 msgstr ""
 
@@ -188,18 +140,17 @@ msgstr ""
 msgid "Headers font size"
 msgstr ""
 
-#: include/customizer/wc-pickup-email-customizer.php:119
-#: include/emails/pickup-order.php:177
-msgid ""
-"Hi there. we thought you'd like to know that your recent order from "
-"{site_title} has been picked up."
-msgstr ""
-
-#: include/customizer/wc-ready-pickup-email-customizer.php:119
-#: include/emails/ready-pickup-order.php:180
+#: include/customizer/wc-ready-pickup-email-customizer.php:120
+#: include/emails/ready-pickup-order.php:186
 msgid ""
 "Hi there. we thought you'd like to know that your recent order from "
 "{site_title} has been ready for pickup."
+msgstr ""
+
+#: include/emails/pickup-order.php:183
+msgid ""
+"Hi {customer_first_name}. Thank you for picking up your {site_title} order "
+"#{order_number}. We hope you enjoyed your shopping experience."
 msgstr ""
 
 #: include/customizer/wclp-pickup-instruction-customizer.php:214
@@ -216,7 +167,7 @@ msgid ""
 "share your review"
 msgstr ""
 
-#: include/views/wclp_setting_tab.php:88 include/views/wclp_setting_tab.php:129
+#: include/views/wclp_setting_tab.php:52 include/views/wclp_setting_tab.php:92
 msgid "Light Font"
 msgstr ""
 
@@ -228,19 +179,27 @@ msgstr ""
 msgid "Local Pickup section heading text"
 msgstr ""
 
-#: include/views/wclp-edit-location-form.php:35
+#: include/views/wclp_setting_tab.php:20
+msgid "Local pickup workflow"
+msgstr ""
+
+#: include/views/wclp-edit-location-form.php:40
 msgid "Location Name"
 msgstr ""
 
-#: include/wc-local-pickup-admin.php:1233
+#: include/wc-local-pickup-admin.php:1251
 msgid "Mark order as picked up"
 msgstr ""
 
-#: include/wc-local-pickup-admin.php:1219
+#: include/wc-local-pickup-admin.php:1237
 msgid "Mark order as ready for pickup"
 msgstr ""
 
-#: include/views/wclp-edit-location-form.php:19
+#: include/wc-local-pickup-admin.php:984
+msgid "My Account (orders history)"
+msgstr ""
+
+#: include/views/wclp-edit-location-form.php:24
 msgid "Name & Special Instructions"
 msgstr ""
 
@@ -248,12 +207,12 @@ msgstr ""
 msgid "Need additional pickup locations?"
 msgstr ""
 
-#: include/wc-local-pickup-admin.php:936
+#: include/wc-local-pickup-admin.php:983
 msgid "Order received page"
 msgstr ""
 
-#: include/wc-local-pickup-admin.php:381 include/wc-local-pickup-admin.php:412
-#: include/views/wclp_setting_tab.php:110
+#: include/wc-local-pickup-admin.php:426 include/wc-local-pickup-admin.php:457
+#: include/views/wclp_setting_tab.php:73
 msgid "Picked up"
 msgstr ""
 
@@ -265,14 +224,6 @@ msgstr ""
 msgid ""
 "Picked up Order emails are sent to customers when their orders are marked "
 "picked up."
-msgstr ""
-
-#: include/customizer/wclp-customizer.php:54
-msgid "Picked up order status email"
-msgstr ""
-
-#: include/customizer/wc-pickup-email-customizer.php:144
-msgid "Picked up status email"
 msgstr ""
 
 #: include/customizer/wclp-pickup-instruction-customizer.php:119
@@ -288,59 +239,42 @@ msgstr ""
 #: include/customizer/wclp-pickup-instruction-customizer.php:130
 #: include/customizer/wclp-pickup-instruction-customizer.php:225
 #: include/customizer/wclp-pickup-instruction-customizer.php:239
-#: include/customizer/wc-ready-pickup-email-customizer.php:124
+#: include/customizer/wc-ready-pickup-email-customizer.php:125
 msgid "Pickup Instruction"
 msgstr ""
 
-#: include/views/wclp_setting_tab.php:150
-msgid "Pickup Instructions Display"
+#: include/wc-local-pickup-admin.php:196 include/wc-local-pickup-admin.php:197
+msgid "Pickup Location"
 msgstr ""
 
-#: include/customizer/wclp-customizer.php:62
-msgid "Pickup Instructions Layout"
-msgstr ""
-
-#: include/wc-local-pickup-admin.php:121 include/wc-local-pickup-admin.php:133
-#: include/wc-local-pickup-admin.php:134
-#: include/views/wclp-edit-location-form.php:13
+#: include/views/wclp-edit-location-form.php:16
 #: include/views/wclp_locations_tab.php:14
 msgid "Pickup Locations"
 msgstr ""
 
-#: woo-advanced-local-pickup.php:79
+#: woo-advanced-local-pickup.php:121
 #, php-format
 msgid ""
 "Please install and activate %sWooCommerce%s for WC local pickup to work!"
 msgstr ""
 
 #: include/customizer/wclp-pickup-instruction-customizer.php:196
-#: include/customizer/wc-pickup-email-customizer.php:184
-#: include/customizer/wc-ready-pickup-email-customizer.php:192
 msgid "Please select a order..."
 msgstr ""
 
-#: include/customizer/wc-pickup-email-customizer.php:305
-#: include/customizer/wc-pickup-email-customizer.php:313
-#: include/customizer/wc-ready-pickup-email-customizer.php:310
-#: include/customizer/wc-ready-pickup-email-customizer.php:318
-msgid "Please select order to preview."
-msgstr ""
-
 #: include/customizer/wclp-pickup-instruction-customizer.php:192
-#: include/customizer/wc-pickup-email-customizer.php:180
-#: include/customizer/wc-ready-pickup-email-customizer.php:188
 msgid "Preview order"
 msgstr ""
 
-#: include/wc-local-pickup-admin.php:935
+#: include/wc-local-pickup-admin.php:982
 msgid "Processing order email"
 msgstr ""
 
-#: include/wc-local-pickup-admin.php:369 include/wc-local-pickup-admin.php:405
+#: include/wc-local-pickup-admin.php:414 include/wc-local-pickup-admin.php:450
 msgid "Ready for Pickup"
 msgstr ""
 
-#: include/views/wclp_setting_tab.php:69
+#: include/views/wclp_setting_tab.php:33
 msgid "Ready for pickup"
 msgstr ""
 
@@ -352,14 +286,9 @@ msgstr ""
 msgid "Ready for Pickup Order emails are sent to customers."
 msgstr ""
 
-#: include/customizer/wclp-customizer.php:46
-#: include/customizer/wc-ready-pickup-email-customizer.php:153
-msgid "Ready for Pickup order status email"
-msgstr ""
-
-#: include/views/wclp-edit-location-form.php:22
-#: include/views/wclp-edit-location-form.php:60
-#: include/views/wclp-edit-location-form.php:178
+#: include/views/wclp-edit-location-form.php:27
+#: include/views/wclp-edit-location-form.php:65
+#: include/views/wclp-edit-location-form.php:183
 msgid "Save & close"
 msgstr ""
 
@@ -367,21 +296,25 @@ msgstr ""
 msgid "Select an order to preview and design the pickup instructions display."
 msgstr ""
 
-#: include/customizer/wclp-customizer.php:241
+#: include/customizer/wclp-customizer.php:235
 #: include/customizer/wclp-pickup-instruction-customizer.php:144
 msgid "Select order to preview"
 msgstr ""
 
-#: include/views/wclp-edit-location-form.php:292
+#: include/views/wclp-edit-location-form.php:297
 msgid ""
 "Select time format which you want to display in business hours for customers."
 msgstr ""
 
-#: include/views/wclp_setting_tab.php:93 include/views/wclp_setting_tab.php:134
+#: include/views/wclp_setting_tab.php:57 include/views/wclp_setting_tab.php:97
 msgid "Send Email"
 msgstr ""
 
-#: include/views/wclp-edit-location-form.php:45
+#: include/views/wclp_setting_tab.php:4
+msgid "Settings"
+msgstr ""
+
+#: include/views/wclp-edit-location-form.php:50
 msgid "Special Instruction"
 msgstr ""
 
@@ -393,7 +326,7 @@ msgstr ""
 msgid "Table Border size"
 msgstr ""
 
-#: include/customizer/wclp-pickup-instruction-customizer.php:435
+#: include/customizer/wclp-pickup-instruction-customizer.php:445
 msgid "TABLE CONTENT"
 msgstr ""
 
@@ -407,71 +340,62 @@ msgid ""
 "conveniently by extending the WooCommerce Local Pickup shipping method."
 msgstr ""
 
-#: include/views/wclp-edit-location-form.php:35
+#: include/views/wclp-edit-location-form.php:40
 msgid "The location name for your business location."
 msgstr ""
 
-#: include/views/wclp-edit-location-form.php:307
+#: include/views/wclp-edit-location-form.php:312
 msgid "the select for working days of your store."
 msgstr ""
 
-#: include/views/wclp-edit-location-form.php:45
+#: include/views/wclp-edit-location-form.php:50
 msgid "The special instruction for your store."
 msgstr ""
 
-#: include/customizer/wc-pickup-email-customizer.php:145
-#: include/customizer/wc-ready-pickup-email-customizer.php:154
-msgid "This section lets you customize the Email Content."
-msgstr ""
-
-#: woo-advanced-local-pickup.php:500
+#: woo-advanced-local-pickup.php:542
 #, php-format
 msgid ""
 "We detected %s orders that use the Picked up order status, You can reassign "
 "these orders to a different status"
 msgstr ""
 
-#: woo-advanced-local-pickup.php:488
+#: woo-advanced-local-pickup.php:530
 #, php-format
 msgid ""
 "We detected %s orders that use the Ready for pickup order status, You can "
 "reassign these orders to a different status"
 msgstr ""
 
-#: include/views/wclp-edit-location-form.php:307
+#: include/views/wclp-edit-location-form.php:312
 msgid "Work Hours"
 msgstr ""
 
-#: include/views/wclp-edit-location-form.php:39
+#: include/views/wclp-edit-location-form.php:44
 msgid "you must add location name and save to proceed"
 msgstr ""
 
-#: include/wc-local-pickup-admin.php:956
+#: include/wc-local-pickup-admin.php:1002
 msgid "You will receive an email when your order is ready for pickup."
+msgstr ""
+
+#: include/emails/pickup-order.php:99
+msgid "You've Got it!"
 msgstr ""
 
 #: include/views/wclp_admin_sidebar.php:4
 msgid "Your Opinion Meters!"
 msgstr ""
 
-#: include/emails/pickup-order.php:93
-msgid "Your Order is picked up"
+#: include/emails/pickup-order.php:89
+msgid "Your order from {site_title} was picked up"
 msgstr ""
 
-#: include/customizer/wc-ready-pickup-email-customizer.php:118
-#: include/emails/ready-pickup-order.php:95
+#: include/customizer/wc-ready-pickup-email-customizer.php:119
+#: include/emails/ready-pickup-order.php:101
 msgid "Your Order is Ready for pickup"
 msgstr ""
 
-#: include/emails/pickup-order.php:83
-msgid "Your {site_title} order is now picked up"
-msgstr ""
-
-#: include/customizer/wc-ready-pickup-email-customizer.php:117
-#: include/emails/ready-pickup-order.php:85
+#: include/customizer/wc-ready-pickup-email-customizer.php:118
+#: include/emails/ready-pickup-order.php:91
 msgid "Your {site_title} order is now Ready for pickup"
-msgstr ""
-
-#: include/customizer/wc-pickup-email-customizer.php:117
-msgid "Your {site_title} order is picked up"
 msgstr ""

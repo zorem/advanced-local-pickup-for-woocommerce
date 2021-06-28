@@ -1,12 +1,12 @@
 <?php
 $pro_plugins = array(
 	0 => array(
-		'title' => 'Tracking Per Item Add-on',
-		'description' => 'The Tracking per item is add-on for the Advanced Shipment Tracking for WooCommerce plugin that lets you attach tracking numbers to line items and to line item quantities.',
-		'url' => 'https://www.zorem.com/products/tracking-per-item-ast-add-on/?utm_source=wp-admin&utm_medium=AST&utm_campaign=add-ons',
+		'title' => 'Advanced Shipment Tracking Pro',
+		'description' => 'Advanced Shipment Tracking comes with powerful features to help you manage & automate the WooCommerce fulfillment workflow.',
+		'url' => 'https://www.zorem.com/product/woocommerce-advanced-shipment-tracking/?utm_source=wp-admin&utm_medium=ast-pro&utm_campaign=add-ons',
 		'image' => 'ast-icon.png',
 		'width' => '140px',
-		'file' => 'ast-tracking-per-order-items/ast-tracking-per-order-items.php'
+		'file' => 'ast-pro/ast-pro.php'
 	),
 	1 => array(
 		'title' => 'SMS for WooCommerce',

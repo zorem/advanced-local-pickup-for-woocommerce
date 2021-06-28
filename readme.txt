@@ -11,36 +11,23 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
-The Advanced Local Pickup (ALP) plugin helps you handle store pickup more conveniently by extending the WooCommerce Local Pickup shipping method and creating a local pickup fulfillment workflow.
+Advanced Local Pickup lets you mark your WooCommerce order status as “Ready for Pickup” and adds the pickup instructions to the email sent to your customers. When your customer comes to pick up the order from your store, you can mark the order status as “Picked up” and optionally send a custom email notification to the customer.
 
-The plugin lets you change your WooCommerce orders status to “Ready for Pickup” and adds the pickup instructions to the email sent to your customers. When your customers come to pick up their order, you can change the order status to “Picked up” and optionally send email notification to the customer letting them know that the order has been picked up.
+Local Pickup is a shipping method for WooCommerce that allows customers to choose to pick up the order from your store. Once a local pickup order is received, WooCommerce uses the same order flow for the local pickup orders and orders with other shipping methods and when you set a local pickup order as Completed, the customer receives the same order confirmation email.
+
+Advanced Local Pickup helps you handle those orders more conveniently by extending the WooCommerce Local Pickup shipping option, it lets you mark these orders as Ready for Pickup and automatically send your customers email notification with pickup instructions. You can also mark orders as Picked up and optionally send your customer a custom email notification.
 
 == Key Features ==
 
-* Custom order status Ready for Pickup - notify your customers by email when their order is ready for pickup
-* Custom Order Status Picked Up
-* Custom Order Status email notifications 
-* Customize the order status emails (subject, heading and content)
-* Pickup Location setup - name, address, work hours and special instructions
-* Customize the pickup display on the order status emails
-* Add pickup instruction to the Processing order email
-* Add pickup instruction to the order received page
+* Ready for Pickup order status emails – notify your customers by email when their order is ready for pickup
+* Picked up order status – optionally send your customers an email after their order was pickup up
+* Set pick up instructions – location name, address, work hours and special instructions
+* Customize the order status emails subject, heading and content
+* Customize the pickup instruction display on the order status emails
+* Add pickup location and details to the Processing order email
+* Add pickup  location and details to the order received page
 
-== PRO Features ==
-
-* Multiple Pickup Locations
-* Limit Pickup Location by products & Categories
-* Pickup Location notifications
-* Pickup Location discounts
-* Split the Work hours
-* Allow Mixed Local Pickup and Shipping orders
-* Pickup Appointments
-* Pickup per item from multiple locations
-* Local Pickup availability message
-* Force Local Pickup
-* Custom email notification templates
-
-[Advanced Local Pickup PRO](https://www.zorem.com/product/advanced-local-pickup-for-woocommerce/)
+You will need WooCommerce 3.0 or newer.
 
 == Translations == 
 
@@ -53,8 +40,8 @@ The Advanced Local Pickup for WooCommerce plugin is localized/ translatable by d
 * Hebrew
 * Italian
 
-== Compatibility ==
-* [SMS for WooCommerce](https://www.zorem.com/product/sms-for-woocommerce/) Compatibility
+== Frequently Asked Questions == 
+
 
 == Installation ==
 
@@ -65,14 +52,18 @@ The Advanced Local Pickup for WooCommerce plugin is localized/ translatable by d
 
 == Changelog ==
 
+= 1.3.0 =
+* Improved - Settings Skin (header/menu) – Update the new general settings design
+* Dev - WC tested upto 5.4.1
+
 = 1.2.9 =
-* Enhancement - compatibility with SMS for WooComemrce
-* Dev - WC tested up to 5.2
+* Enhancement - competibility with SMSWOO
+* Dev - WC tested upto 5.2
 
 = 1.2.8 =
 * Tweak - updated settings design.
-* Dev - WC tested up to 5.1
-* Dev - WordPress tested up to 5.7
+* Dev - WC tested upto 5.1
+* Dev - WordPress tested upto 5.7
 
 = 1.2.7 =
 * Tweak - updated settings design.
@@ -106,8 +97,8 @@ The Advanced Local Pickup for WooCommerce plugin is localized/ translatable by d
 * Fix - issue translate “to” string.
 * Fix - Fix Work Hours issue for 12 Hours format.
 * Fix - Remove default “complete order” action button for pickup order.
-* Dev - WC tested up to 4.8
-* Dev - WordPress tested up to 5.6
+* Dev - WC tested upto 4.8
+* Dev - WordPress tested upto 5.6
 
 = 1.1.9 =
 * Fix - issue of two time display additional pick-up note.

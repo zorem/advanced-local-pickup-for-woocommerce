@@ -177,17 +177,19 @@ $location_box_background_color = $alp->get_option_value_from_array('pickup_instr
 		text-align: inherit;
 	}
 	.wclp_location_box_content{												
-		padding: 10px;		
+		padding: 10px;
 	}
 	.wclp_work_hours_p{
 		margin: 0 !important;
 		line-height: <?php echo $location_box_content_line_height; ?>;
 		color: <?php echo $location_box_font_color; ?>;
+		font-size: <?php echo $location_box_font_size; ?>;
 	}
 	.wclp_pickup_adress_p{
 		margin: 0 !important;
 		line-height: <?php echo $location_box_content_line_height; ?>;
 		color: <?php echo $location_box_font_color; ?>;
+		font-size: <?php echo $location_box_font_size; ?>;
 	}
 	.wclp_mail_address{
 		background: <?php echo $location_box_background_color; ?>; 

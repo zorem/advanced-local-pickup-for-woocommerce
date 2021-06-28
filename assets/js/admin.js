@@ -1,3 +1,29 @@
+/* alp_snackbar jquery */
+(function( $ ){
+	$.fn.alp_snackbar = function(msg) {
+		if ( jQuery('.snackbar-logs').length === 0 ){
+			$("body").append("<section class=snackbar-logs></section>");
+		}
+		var alp_snackbar = $("<article></article>").addClass('snackbar-log snackbar-log-success snackbar-log-show').text( msg );
+		$(".snackbar-logs").append(alp_snackbar);
+		setTimeout(function(){ alp_snackbar.remove(); }, 3000);
+		return this;
+	}; 
+})( jQuery );
+
+/* alp_snackbar_warning jquery */
+(function( $ ){
+	$.fn.alp_snackbar_warning = function(msg) {
+		if ( jQuery('.snackbar-logs').length === 0 ){
+			$("body").append("<section class=snackbar-logs></section>");
+		}
+		var alp_snackbar_warning = $("<article></article>").addClass( 'snackbar-log snackbar-log-error snackbar-log-show' ).html( msg );
+		$(".snackbar-logs").append(alp_snackbar_warning);
+		setTimeout(function(){ alp_snackbar_warning.remove(); }, 3000);
+		return this;
+	}; 
+})( jQuery );
+
 /*header script*/
 jQuery( document ).on( "click", "#activity-panel-tab-help", function() {
 	"use strict";
@@ -35,26 +61,6 @@ jQuery(document).ready(function(){
 			var color = ui.color.toString();			
 			jQuery('.order-status-table .order-label.wc-pickup').css('background',color);
 		}, 
-	});		
-	
-	jQuery('body').click( function(){	
-		if ( jQuery('.ready_pickup_row  button.button.wp-color-result').hasClass( 'wp-picker-open' ) ) { 
-			save_custom_order_status(); 
-		}
-	});
-	
-	jQuery('.ready_pickup_row button.button.wp-color-result').click( function(){	
-		if ( jQuery(this).hasClass( 'wp-picker-open' ) ) {}else{save_custom_order_status();}
-	});
-	
-	jQuery('body').click( function(){	
-		if ( jQuery('.picked_up_row button.button.wp-color-result').hasClass( 'wp-picker-open' ) ) { 
-			save_custom_order_status(); 
-		}
-	});
-	
-	jQuery('.picked_up_row  button.button.wp-color-result').click( function(){	
-		if ( jQuery(this).hasClass( 'wp-picker-open' ) ) {}else{save_custom_order_status();}
 	});
 	
 	if(jQuery('#wclp_store_name').val() === ''){
@@ -99,18 +105,6 @@ jQuery(document).on("click", ".accordion", function(){
 	}
 });
 
-jQuery(document).on("change", "#wclp_pickup_status_label_font_color", function(){
-	var font_color = jQuery(this).val();
-	jQuery('.order-status-table .order-label.wc-pickup').css('color',font_color);
-	save_custom_order_status();
-});
-
-jQuery(document).on("change", "#wclp_ready_pickup_status_label_font_color", function(){
-	var font_color = jQuery(this).val();
-	jQuery('.order-status-table .order-label.wc-ready-pickup').css('color',font_color);
-	save_custom_order_status();
-});
-
 jQuery(document).on("click", "#wclp_status_pickup", function(){
 	if(jQuery(this).prop("checked") == true){
         jQuery(this).closest('tr').removeClass('disable_row');				
@@ -133,9 +127,7 @@ jQuery(document).on("click", "#wclp_setting_tab_form .wclp-save", function(){
 		success: function(response) {
 			if( response.success === "true" ){
 				jQuery("#wclp_setting_tab_form .spinner").removeClass("active");
-				var snackbarContainer = document.querySelector('#wclp-toast-example');
-				var data = {message: 'Your Settings have been successfully saved.'};
-				snackbarContainer.MaterialSnackbar.showSnackbar(data);
+				jQuery(document).alp_snackbar( "Your Settings have been successfully saved." );
 			} else {
 				//show error on front
 			}
@@ -145,14 +137,6 @@ jQuery(document).on("click", "#wclp_setting_tab_form .wclp-save", function(){
 		}
 	});
 	return false;
-});
-
-jQuery(document).on("click", ".send_email_label input[type=checkbox]", function(){	
-	save_custom_order_status();
-});
-
-jQuery(document).on("click", "#wclp_osm_tab_form .order-status-table .order_status_toggle", function(){	
-	save_custom_order_status();
 });
 
 jQuery(document).on("click", "#wclp_status_ready_pickup", function(){
@@ -170,38 +154,6 @@ jQuery(document).on("click", "#wclp_status_picked_up", function(){
 		jQuery(this).closest('tr').addClass('disable_row');
 	}	
 });
-
-function save_custom_order_status(){
-	jQuery("#wclp_osm_tab_form .order-status-table").block({
-		message: null,
-		overlayCSS: {
-			background: "#fff",
-			opacity: .6
-		}	
-    });
-	var form = jQuery('#wclp_osm_tab_form');
-	jQuery.ajax({
-		url: ajaxurl,//csv_workflow_update,		
-		data: form.serialize(),
-		type: 'POST',
-		dataType:"json",	
-		success: function(response) {
-			jQuery("#wclp_osm_tab_form .order-status-table").unblock();		
-			if( response.success === "true" ){
-				jQuery("#wclp_osm_tab_form .spinner").removeClass("active");
-				var snackbarContainer = document.querySelector('#wclp-toast-example');
-				var data = {message: 'Your Settings have been successfully saved.'};
-				snackbarContainer.MaterialSnackbar.showSnackbar(data);
-			} else {
-				//show error on front
-			}
-		},
-		error: function(response) {
-			console.log(response);			
-		}
-	});
-	return false;
-}
 
 /*ajex call for general tab form save*/	
 jQuery(document).on("click", "#wclp_location_tab_form .btn_location_submit", function(){
@@ -279,9 +231,7 @@ jQuery(document).on("click", "#wclp_location_tab_form .btn_location_submit", fun
 				if( response.success === "true" ){
 					jQuery('.alp_error_msg').remove();
 					jQuery("#wclp_location_tab_form .spinner").removeClass("active");
-					var snackbarContainer = document.querySelector('#wclp-toast-example');
-					var data = {message: 'Your Settings have been successfully saved.'};
-					snackbarContainer.MaterialSnackbar.showSnackbar(data);
+					jQuery(document).alp_snackbar( "Your Settings have been successfully saved." );
 					window.history.pushState("object or string", alp_object.admin_url, "admin.php?page=local_pickup&tab=locations&section=edit&id="+response.id);
 					jQuery("#location_id").val(response.id);
 					jQuery(".accordion.heading").removeClass('active');

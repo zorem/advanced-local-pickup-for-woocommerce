@@ -223,7 +223,7 @@ class wclp_pickup_instruction_customizer {
 		$wp_customize->add_setting( 'pickup_instruction_display_settings[location_box_heading]',
 			array(
 				'default' => __( 'Pickup Instruction', 'advanced-local-pickup-for-woocommerce' ),
-				'transport' => 'postMessage',
+				'transport' => 'refresh',
 				'type'  => 'option',
 				'sanitize_callback' => ''
 			)
@@ -398,12 +398,22 @@ class wclp_pickup_instruction_customizer {
 				'label' => __( 'Headers font size', 'advanced-local-pickup-for-woocommerce' ),
 				'description' => '',
 				'section' => 'pickup_instaruction',
-				'type' => 'text',
-				'input_attrs' => array(
-					'class' => '',
-					'style' => 'width:100px',
-					'placeholder' => '14px',
-				),
+				'type' => 'select',
+				'choices' => array(
+					'' => __( 'Select', 'woocommerce' ),
+					'13px'		=> '13 px',
+					'14px'		=> '14 px',
+					'15px'		=> '15 px',
+					'16px'		=> '16 px',
+					'17px'		=> '17 px',
+					'18px'		=> '18 px',
+					'19px'		=> '19 px',
+					'20px'		=> '20 px',
+					'21px'		=> '21 px',
+					'22px'		=> '22 px',
+					'23px'		=> '23 px',
+					'24px'		=> '24 px',
+				)
 			)
 		);
 		
@@ -467,12 +477,22 @@ class wclp_pickup_instruction_customizer {
 				'label' => __( 'Content font size', 'advanced-local-pickup-for-woocommerce' ),
 				'description' => '',
 				'section' => 'pickup_instaruction',
-				'type' => 'text',
-				'input_attrs' => array(
-					'class' => '',
-					'style' => 'width:100px',
-					'placeholder' => '0px',
-				),
+				'type' => 'select',
+				'choices' => array(
+					'' => __( 'Select', 'woocommerce' ),
+					'13px'		=> '13 px',
+					'14px'		=> '14 px',
+					'15px'		=> '15 px',
+					'16px'		=> '16 px',
+					'17px'		=> '17 px',
+					'18px'		=> '18 px',
+					'19px'		=> '19 px',
+					'20px'		=> '20 px',
+					'21px'		=> '21 px',
+					'22px'		=> '22 px',
+					'23px'		=> '23 px',
+					'24px'		=> '24 px',
+				)
 			)
 		);
 		
@@ -617,6 +637,7 @@ class wclp_pickup_instruction_customizer {
 		//$email->find['customer-username']   = '{customer_username}';
 		$email->find['order-date']   = '{order_date}';
 		$email->find['order-number'] = '{order_number}';
+		$email->find['customer-username'] = '{customer_username}';
 		if ( is_object( $order ) ) {
 			$email->replace['customer-first-name'] = $email->object->get_billing_first_name();
 			$email->replace['customer-last-name'] = $email->object->get_billing_last_name();
@@ -624,6 +645,8 @@ class wclp_pickup_instruction_customizer {
 			//$email->replace['customer-username'] = $email->object->get_user();
 			$email->replace['order-date']   = wc_format_datetime( $email->object->get_date_created() );
 			$email->replace['order-number'] = $email->object->get_order_number();
+			$customer = new WC_Customer( $email->object->get_customer_id() );
+			$email->replace['customer-username'] = $customer->get_username();
 			// Other properties
 			$email->recipient = $email->object->get_billing_email();
 		}

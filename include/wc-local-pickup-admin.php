@@ -1,4 +1,4 @@
-<?php
+ <?php
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -49,7 +49,6 @@ class WC_Local_Pickup_admin {
 		
 		//ajax save admin api settings
 		add_action( 'wp_ajax_wclp_setting_form_update', array( $this, 'wclp_setting_form_update_callback') );
-		add_action( 'wp_ajax_wclp_osm_form_update', array( $this, 'wclp_osm_form_update_callback') );			
 		add_action( 'wp_ajax_wclp_location_edit_form_update', array( $this, 'wclp_location_edit_form_update_callback') );
 		
 		// Register new status
@@ -117,8 +116,7 @@ class WC_Local_Pickup_admin {
 		$location_id = get_option('location_defualt', min($data)->id);
 		?>
 		<div class="zorem-layout__header">
-			<h1 class="zorem-layout__header-breadcrumbs">Advanced Local Pickup</h1>
-			
+			<img class="zorem-layout__header-logo" src="<?php echo wc_local_pickup()->plugin_dir_url(__FILE__) . 'assets/images/alp-logo.png';?>">			
 			<div class="woocommerce-layout__activity-panel">
 				<div class="woocommerce-layout__activity-panel-tabs">
 					<button type="button" id="activity-panel-tab-help" class="components-button woocommerce-layout__activity-panel-tab">
@@ -141,7 +139,7 @@ class WC_Local_Pickup_admin {
 									?>
 									<a href="<?php echo esc_url( $support_link ); ?>" class="woocommerce-list__item-inner" target="_blank" >
 										<div class="woocommerce-list__item-before">
-											<span class="dashicons dashicons-media-document"></span>	
+											<img src="<?php echo wc_local_pickup()->plugin_dir_url(__FILE__) . 'assets/images/get-support-icon.svg';?>">	
 										</div>
 										<div class="woocommerce-list__item-text">
 											<span class="woocommerce-list__item-title">
@@ -156,7 +154,7 @@ class WC_Local_Pickup_admin {
 								<li class="woocommerce-list__item has-action">
 									<a href="https://www.zorem.com/docs/advanced-local-pickup-for-woocommerce/?utm_source=wp-admin&utm_medium=CBRDOCU&utm_campaign=add-ons" class="woocommerce-list__item-inner" target="_blank">
 										<div class="woocommerce-list__item-before">
-											<span class="dashicons dashicons-media-document"></span>
+											<img src="<?php echo wc_local_pickup()->plugin_dir_url(__FILE__) . 'assets/images/documentation-icon.svg';?>">
 										</div>
 										<div class="woocommerce-list__item-text">
 											<span class="woocommerce-list__item-title">
@@ -172,7 +170,7 @@ class WC_Local_Pickup_admin {
 									<li class="woocommerce-list__item has-action">
 										<a href="https://www.zorem.com/product/advanced-local-pickup-for-woocommerce/?utm_source=wp-admin&utm_medium=CBR&utm_campaign=add-ons" class="woocommerce-list__item-inner" target="_blank">
 											<div class="woocommerce-list__item-before">
-												<span class="dashicons dashicons-media-document"></span>
+												<img src="<?php echo wc_local_pickup()->plugin_dir_url(__FILE__) . 'assets/images/upgrade.svg';?>">
 											</div>
 											<div class="woocommerce-list__item-text">
 												<span class="woocommerce-list__item-title">
@@ -198,17 +196,13 @@ class WC_Local_Pickup_admin {
 				<input id="tab3" type="radio" name="tabs" class="wclp_tab_input" data-label="<?php _e('Pickup Location', 'advanced-local-pickup-for-woocommerce'); ?>" data-tab="locations" <?php if(isset($_GET['tab']) && $_GET['tab'] == 'locations'){ echo 'checked'; } ?>>
 				<a for="tab3" href="admin.php?page=local_pickup&tab=locations<?php if(!class_exists( 'Advanced_local_pickup_PRO' )) { echo '&section=edit&id='.$location_id;} ?>" class="wclp_tab_label <?php echo ( 'locations' === $tab ) ? 'nav-tab-active' : ''; ?>"><?php _e('Pickup Location', 'advanced-local-pickup-for-woocommerce'); ?></a>
 				<input id="tab5" type="radio" name="tabs" class="wclp_tab_input" data-label="<?php _e('Customize', 'advanced-local-pickup-for-woocommerce'); ?>" data-tab="customize" <?php if(isset($_GET['tab']) && $_GET['tab'] == 'customize'){ echo 'checked'; } ?>>
-				<a for="tab5" href="<?php echo wclp_pickup_customizer_email::get_customizer_url('pickup_instaruction'); ?>" class="wclp_tab_label <?php echo ( 'customize' === $tab ) ? 'nav-tab-active' : ''; ?>"><?php _e('Customize', 'advanced-local-pickup-for-woocommerce'); ?></a>
+				<a for="tab5" href="<?php echo wclp_pickup_instruction_customizer::get_customizer_url('pickup_instaruction'); ?>" class="wclp_tab_label <?php echo ( 'customize' === $tab ) ? 'nav-tab-active' : ''; ?>"><?php _e('Customize', 'advanced-local-pickup-for-woocommerce'); ?></a>
 				<input id="tab4" type="radio" name="tabs" class="wclp_tab_input" data-label="<?php _e('Go Pro', 'advanced-local-pickup-for-woocommerce'); ?>" data-tab="go-pro" <?php if(isset($_GET['tab']) && $_GET['tab'] == 'go-pro'){ echo 'checked'; } ?>>
 				<a for="tab4" href="admin.php?page=local_pickup&tab=go-pro" class="wclp_tab_label <?php echo ( 'go-pro' === $tab ) ? 'nav-tab-active' : ''; ?>"><?php _e('Go Pro', 'advanced-local-pickup-for-woocommerce'); ?></a>
                 <?php require_once( 'views/wclp_setting_tab.php' ); ?>
 				<?php require_once( 'views/wclp_locations_tab.php' ); ?>
 				<?php require_once( 'views/wclp_addon_tab.php' ); ?>
             </div>
-        </div>
-        <div id="wclp-toast-example" aria-live="assertive" aria-atomic="true" aria-relevant="text" class="mdl-snackbar mdl-js-snackbar">
-            <div class="mdl-snackbar__text"></div>
-            <button type="button" class="mdl-snackbar__action"></button>
         </div>
         <?php
 	}
@@ -235,18 +229,6 @@ class WC_Local_Pickup_admin {
 	
 			// local pickup setting html hook
 			do_action('wclp_general_setting_save_hook');
-						
-			echo json_encode( array('success' => 'true') );die();
-	
-		}
-	}
-	
-	/*
-	* settings form save for Setting tab
-	*/
-	function wclp_osm_form_update_callback(){			
-		
-		if ( ! empty( $_POST ) && check_admin_referer( 'wclp_osm_form_action', 'wclp_osm_form_nonce_field' ) ) {
 			
 			update_option( 'wclp_status_ready_pickup', sanitize_text_field( $_POST[ 'wclp_status_ready_pickup' ] ));
 			update_option( 'wclp_ready_pickup_status_label_color', sanitize_text_field( $_POST[ 'wclp_ready_pickup_status_label_color' ] ));
@@ -292,7 +274,7 @@ class WC_Local_Pickup_admin {
 				'recipient' => $wclp_enable_ready_pickup_email['recipient'],
 				'email_type' => $wclp_enable_ready_pickup_email['email_type'],
 			);
-			update_option( 'woocommerce_customer_ready_pickup_order_settings', wc_clean( $opt ) );						
+			update_option( 'woocommerce_customer_ready_pickup_order_settings', wc_clean( $opt ) );
 			echo json_encode( array('success' => 'true') );die();
 	
 		}
@@ -711,9 +693,11 @@ class WC_Local_Pickup_admin {
 		foreach($all_days as $key=>$val){
 			$w_day[$key] = $val;
 		}
-		foreach($store_days as $key => $val) {
-			if($w_day[$key]) {
-				$w_day[$key] = $val;
+		if( !empty($store_days) ) {
+			foreach($store_days as $key => $val) {
+				if($w_day[$key]) {
+					$w_day[$key] = $val;
+				}
 			}
 		}
 				
@@ -1240,36 +1224,8 @@ class WC_Local_Pickup_admin {
 		if( !isset($shipping_method ) ) return $actions;
 		if( isset($shipping_method ) && $shipping_method != 'local_pickup' ) return $actions;
 		
-		?>
-		<style>
-		<?php 
-		$ready_for_pickup = get_option( "wclp_status_ready_pickup", 0);
-		if($ready_for_pickup == true){ ?>
-			.widefat .column-wc_actions a.ready_for_pickup_icon.button::after{
-				content: "";
-				width: 20px;
-				height: 20px;
-				background: url("<?php echo wc_local_pickup()->plugin_dir_url()?>assets/images/rady_for_pickup_icon.png") no-repeat;
-				background-size: contain;			
-				top: 3px;
-				left: 2px;
-			}
-		<?php } ?>
-		<?php 
-		$picked = get_option( "wclp_status_picked_up", 0);
-		if($picked == true){ ?>
-			.widefat .column-wc_actions a.picked_up_icon.button::after{
-				content: "";
-				width: 20px;
-				height: 20px;
-				background: url("<?php echo wc_local_pickup()->plugin_dir_url()?>assets/images/picked_up_icon.png") no-repeat;
-				background-size: contain;			
-				top: 3px;
-				left: 2px;
-			}		
-		<?php } ?>
-		</style>
-		<?php
+		wp_enqueue_style( 'alp-order', wc_local_pickup()->plugin_dir_url(__FILE__) . 'assets/css/order.css', array(), wc_local_pickup()->version );
+		
 		$ready_for_pickup = get_option( "wclp_status_ready_pickup", 0);
 		if($ready_for_pickup == true){
 			if ( $order->has_status( array( 'processing' ) ) ) {
@@ -1480,7 +1436,7 @@ class WC_Local_Pickup_admin {
 					$array_key_first = key($data);
 					end($data);
 					$array_key_last = key($data);
-					$pickup_hour .= __(ucfirst($array_key_first), 'default').' '. __(' To ', 'advanced-local-pickup-for-woocommerce') . __(ucfirst($array_key_last), 'default').' : '. reset($data)['wclp_store_hour'].' - '. reset($data)['wclp_store_hour_end']; 
+					$pickup_hour .= __(ucfirst($array_key_first), 'default').' '. __(' To', 'advanced-local-pickup-for-woocommerce') .' '.__(ucfirst($array_key_last), 'default').' : '. reset($data)['wclp_store_hour'].' - '. reset($data)['wclp_store_hour_end']; 
 						
 				}		
 			
