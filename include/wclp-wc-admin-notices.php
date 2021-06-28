@@ -48,11 +48,11 @@ class WC_ALP_Admin_Notices_Under_WC_Admin {
 			return;
 		}
 		
-		$already_set = get_transient( 'alp_pro_wc_admin' );
+		$already_set = get_transient( 'alp_wc_admin_notice' );
 		
 		if($already_set == 'yes')return;
 		
-		set_transient( 'alp_pro_wc_admin', 'yes' );				
+		set_transient( 'alp_wc_admin_notice', 'yes' );				
 		
 		$note_name = 'alp_pro_notice';
 		$data_store = WC_Data_Store::load( 'admin-note' );		
@@ -62,7 +62,8 @@ class WC_ALP_Admin_Notices_Under_WC_Admin {
 		$activated_time_formatted = date( 'F jS', $activated_time );
 		$note = new Automattic\WooCommerce\Admin\Notes\WC_Admin_Note();
 		$note->set_title( 'Advanced Local Pickup PRO' );
-		$note->set_content( 'We just released a Pro version for Advanced Local Pickup with multiple pickup locations, split work hours, local pickup discounts and more.. Enjoy our early bird discount, use code ALPPRO10 during checkout.' );
+		$note->set_content( 'The Advanced Local Pickup PRO allows you to set up multiple pickup locations, enable pickup appointments and automate your in-store pickup workflows!
+		Use code ALPPRO20 to get 20% off on the Advanced Local Pickup PRO' );
 		$note->set_content_data( (object) array(
 			'getting_started'     => true,
 			'activated'           => $activated_time,
@@ -77,7 +78,7 @@ class WC_ALP_Admin_Notices_Under_WC_Admin {
 		$note->set_image('');
 		// This example has two actions. A note can have 0 or 1 as well.
 		$note->add_action(
-			'settings', 'Go Pro >', 'https://www.zorem.com/product/advanced-local-pickup-for-woocommerce/'
+			'settings', 'Yes, let’s go Pro', 'https://www.zorem.com/product/advanced-local-pickup-for-woocommerce/'
 		);		
 		$note->save();
 	}

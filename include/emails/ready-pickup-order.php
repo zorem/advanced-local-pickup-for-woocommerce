@@ -38,6 +38,7 @@ if ( ! class_exists( 'WC_Email_Customer_Ready_Pickup_Order', false ) ) :
 				'{customer_first_name}'   => '',
 				'{order_date}'   => '',
 				'{order_number}' => '',
+				'{customer_username}' => '',
 			);
 			$this->template_base = WC_LOCAL_PICKUP_TEMPLATE_PATH;
 						
@@ -66,10 +67,15 @@ if ( ! class_exists( 'WC_Email_Customer_Ready_Pickup_Order', false ) ) :
 				$this->placeholders['{customer_first_name}']   = $this->object->get_billing_first_name();
 				$this->placeholders['{order_date}']   = wc_format_datetime( $this->object->get_date_created() );
 				$this->placeholders['{order_number}'] = $this->object->get_order_number();
+				$customer = new WC_Customer( $this->object->get_customer_id() );
+				$this->placeholders['{customer_username}'] = $customer->get_username();
 			}
 			
+			$customer = new WC_Customer( $this->object->get_customer_id() );
+			$get_content = str_replace(array('{site_title}', '{customer_email}', '{customer_first_name}', '{customer_last_name}', '{customer_username}', '{order_number}' ), array( get_bloginfo( 'name' ), $order->get_billing_email(), $order->get_billing_first_name(), $order->get_billing_last_name(), $customer->get_username(), $order->get_order_number()), $this->get_content());
+			
 			if ( $this->is_enabled() && $this->get_recipient() ) {
-				$this->send( $this->get_recipient(), $this->get_subject(), $this->get_content(), $this->get_headers(), $this->get_attachments() );
+				$this->send( $this->get_recipient(), $this->get_subject(), $get_content, $this->get_headers(), $this->get_attachments() );
 			}
 
 			$this->restore_locale();

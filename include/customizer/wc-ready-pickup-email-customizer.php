@@ -167,7 +167,7 @@ class wclp_ready_pickup_customizer_email {
 		$wp_customize->add_setting( 'wclp_order_status_email_type',
 			array(
 				'default' => 'ready_pickup',
-				'transport' => 'postMessage',
+				'transport' => 'refresh',
 				'sanitize_callback' => '',
 				'type' => 'option',
 			)
@@ -192,7 +192,7 @@ class wclp_ready_pickup_customizer_email {
 		$wp_customize->add_setting( 'customizer_ready_pickup_order_settings_enabled',
 			array(
 				'default' => $this->defaults['wclp_enable_ready_pickup_email'],
-				'transport' => 'postMessage',
+				'transport' => 'refresh',
 				'type'      => 'option',
 				'sanitize_callback' => ''
 			)
@@ -211,7 +211,7 @@ class wclp_ready_pickup_customizer_email {
 		$wp_customize->add_setting( 'woocommerce_customer_ready_pickup_order_settings[subject]',
 			array(
 				'default' => $this->defaults['wclp_ready_pickup_email_subject'],
-				'transport' => 'postMessage',
+				'transport' => 'refresh',
 				'type'  => 'option',
 				'sanitize_callback' => ''
 			)
@@ -235,7 +235,7 @@ class wclp_ready_pickup_customizer_email {
 		$wp_customize->add_setting( 'woocommerce_customer_ready_pickup_order_settings[heading]',
 			array(
 				'default' => $this->defaults['wclp_ready_pickup_email_heading'],
-				'transport' => 'postMessage',
+				'transport' => 'refresh',
 				'type'  => 'option',
 				'sanitize_callback' => ''
 			)
@@ -374,12 +374,15 @@ class wclp_ready_pickup_customizer_email {
 		$email->find['customer-email']   = '{customer_email}';
 		$email->find['order-date']   = '{order_date}';
 		$email->find['order-number'] = '{order_number}';
+		$email->find['customer-username'] = '{customer_username}';
 		if ( is_object( $order ) ) {
 			$email->replace['customer-first-name'] = $email->object->get_billing_first_name();
 			$email->replace['customer-last-name'] = $email->object->get_billing_last_name();
 			$email->replace['customer-email'] = $email->object->get_billing_email();
 			$email->replace['order-date']   = wc_format_datetime( $email->object->get_date_created() );
 			$email->replace['order-number'] = $email->object->get_order_number();
+			$customer = new WC_Customer( $email->object->get_customer_id() );
+			$email->replace['customer-username'] = $customer->get_username();
 			// Other properties
 			$email->recipient = $email->object->get_billing_email();
 		}

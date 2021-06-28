@@ -205,7 +205,7 @@ ul#sub-accordion-section-pickup_instaruction li.customize-control h3.control_hea
     border-top: 0;
     padding-top: 0;	
 }
-#customize-control-pickup_instruction_display_settings-location_box_border_size select, #customize-control-pickup_instruction_display_settings-location_box_content_line_height select {
+#customize-control-pickup_instruction_display_settings-location_box_border_size select, #customize-control-pickup_instruction_display_settings-location_box_content_line_height select, #customize-control-pickup_instruction_display_settings-header_font_size select, #customize-control-pickup_instruction_display_settings-location_box_font_size select {
     width: 100px;
 }
 #customize-control-pickup_instruction_display_settings-hide_table_header, #customize-control-pickup_instruction_display_settings-location_box_background_color {
