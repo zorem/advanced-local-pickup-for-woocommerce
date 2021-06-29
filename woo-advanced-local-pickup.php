@@ -5,7 +5,7 @@
 * Description: The Advanced Local Pickup (ALP) helps you handle local pickup orders more conveniently by extending the WooCommerce Local Pickup shipping method.
 * Author: zorem
 * Author URI: https://www.zorem.com/
-* Version: 1.3.0
+* Version: 1.3.1
 * Text Domain: advanced-local-pickup-for-woocommerce
 * Domain Path: /lang/
 * WC requires at least: 4.0
@@ -23,7 +23,7 @@ class Woocommerce_Local_Pickup {
 	 *
 	 * @var string
 	 */
-	public $version = '1.3.0';
+	public $version = '1.3.1';
 	
 	/**
 	 * Constructor
@@ -358,10 +358,10 @@ class Woocommerce_Local_Pickup {
 		</style>	
 		<div class="notice updated notice-success wplp-dismissable-notice">
 			<a href="<?php echo $dismissable_url; ?>" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></a>
-			<h3>Advanced Local Pickup PRO</h3>
-			<p>We just released a <a href="https://www.zorem.com/product/advanced-local-pickup-for-woocommerce/">Pro</a> version for Advanced Local Pickup with multiple pickup locations, split work hours, local pickup discounts and more..</p>
-			<p>Enjoy our early bird discount, use code ALPPRO10 during checkout.</p>
-			<a class="button-primary btn_pro_notice" target="blank" href="https://www.zorem.com/product/advanced-local-pickup-for-woocommerce/">Go Pro ></a>
+			<p>The Advanced Local Pickup PRO allows you to set up multiple pickup locations, enable pickup appointments and automate your in-store pickup workflows!</p>
+			<p>Use code ALPPRO20 to get 20% off on the Advanced Local Pickup PRO</p>
+			<a class="button-primary btn_pro_notice" target="blank" href="https://www.zorem.com/product/advanced-local-pickup-for-woocommerce/">Yes, let’s go Pro</a>
+			<a class="button-primary btn_pro_notice" target="blank" href="<?php echo $dismissable_url; ?>">No, Thanks!</a>
 		</div>
 	<?php 		
 	}	
@@ -411,9 +411,7 @@ class Woocommerce_Local_Pickup {
 		wp_enqueue_script('select2-wclp', plugins_url('assets/js/select2.min.js', __FILE__));
 		
 		wp_enqueue_script( 'alp-admin-js', plugin_dir_url(__FILE__) . 'assets/js/admin.js', array(), $this->version );
-		wp_enqueue_script( 'alp-material-min-js', plugin_dir_url(__FILE__) . 'assets/js/material.min.js', array(), $this->version );
 		wp_enqueue_style( 'alp-admin-css', plugin_dir_url(__FILE__) . 'assets/css/admin.css', array(), $this->version );
-		wp_enqueue_style( 'alp-material-css', plugin_dir_url(__FILE__) . 'assets/css/material.css', array(), $this->version );
 		
 		wp_localize_script( 'alp-admin-js', 'alp_object', 
 		  	array( 
