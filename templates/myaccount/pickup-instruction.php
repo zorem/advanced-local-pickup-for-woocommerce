@@ -1,12 +1,12 @@
 <?php
-if(!empty($w_day)){ 	
+if (!empty($w_day)) { 	
 	$n = 0;
 	$new_array = [];
 	$previousValue = [];
 	
-	foreach($w_day as $day=>$value){				
-		if(isset($value['checked']) && $value['checked'] == 1){																	
-			if($value != $previousValue){
+	foreach ($w_day as $day=>$value) {				
+		if (isset($value['checked']) && 1 == $value['checked']) {																	
+			if ($value != $previousValue) {
 				$n++;
 			}
 			$new_array[$n][$day] = $value;					
@@ -19,129 +19,185 @@ if(!empty($w_day)){
 	}
 }
 	
-$alp = new WC_Local_Pickup_admin;
-$wclp_pickup_instruction_customizer = new wclp_pickup_instruction_customizer();
+$alp = wc_local_pickup()->admin;
+$settings = wc_local_pickup()->customizer->customize_setting_options_func();
 
-$hide_instruction_heading = $alp->get_option_value_from_array('pickup_instruction_display_settings','hide_instruction_heading', '');
 
-$hide_table_header = $alp->get_option_value_from_array('pickup_instruction_display_settings','hide_table_header', '');
+$hide_widget_header = $alp->get_option_value_from_array('pickup_instruction_customize_settings', 'hide_widget_header', $settings['hide_widget_header']['default'] );
 
-$location_box_heading = $alp->get_option_value_from_array('pickup_instruction_display_settings','location_box_heading', $wclp_pickup_instruction_customizer->defaults['location_box_heading']);
+$widget_header_text = $alp->get_option_value_from_array('pickup_instruction_customize_settings', 'widget_header_text', $settings['widget_header_text']['default']);
 
-$header_address_text = $alp->get_option_value_from_array('pickup_instruction_display_settings','header_address_text',$wclp_pickup_instruction_customizer->defaults['header_address_text']);
+$hide_hours_header = $alp->get_option_value_from_array('pickup_instruction_customize_settings', 'hide_hours_header', $settings['hide_hours_header']['default']);
 
-$header_business_text = $alp->get_option_value_from_array('pickup_instruction_display_settings','header_business_text', $wclp_pickup_instruction_customizer->defaults['header_business_text']);
+$border_color = $alp->get_option_value_from_array('pickup_instruction_customize_settings', 'border_color', $settings['border_color']['default']);
 
-$header_background_color = $alp->get_option_value_from_array('pickup_instruction_display_settings','header_background_color', $wclp_pickup_instruction_customizer->defaults['header_background_color']);
+$background_color = $alp->get_option_value_from_array('pickup_instruction_customize_settings', 'background_color', $settings['background_color']['default']);
 
-$header_font_size = $alp->get_option_value_from_array('pickup_instruction_display_settings','header_font_size', $wclp_pickup_instruction_customizer->defaults['header_font_size']);
+$padding = $alp->get_option_value_from_array('pickup_instruction_customize_settings', 'padding', $settings['padding']['default']);
 
-$location_box_font_size = $alp->get_option_value_from_array('pickup_instruction_display_settings','location_box_font_size', $wclp_pickup_instruction_customizer->defaults['location_box_font_size']);
+$hide_addres_header = $alp->get_option_value_from_array('pickup_instruction_customize_settings', 'hide_addres_header', $settings['hide_addres_header']['default']);
 
-$location_box_content_line_height = $alp->get_option_value_from_array('pickup_instruction_display_settings','location_box_content_line_height', $wclp_pickup_instruction_customizer->defaults['location_box_content_line_height']);
+$addres_header_text = $alp->get_option_value_from_array('pickup_instruction_customize_settings', 'addres_header_text', $settings['addres_header_text']['default']);
 
-$location_box_border_size = $alp->get_option_value_from_array('pickup_instruction_display_settings','location_box_border_size',$wclp_pickup_instruction_customizer->defaults['location_box_border_size']);
-
-$location_box_font_color = $alp->get_option_value_from_array('pickup_instruction_display_settings','location_box_font_color', $wclp_pickup_instruction_customizer->defaults['location_box_font_color']);
-
-$header_font_color = $alp->get_option_value_from_array('pickup_instruction_display_settings','header_font_color', $wclp_pickup_instruction_customizer->defaults['header_font_color']);
-
-$location_box_border_color = $alp->get_option_value_from_array('pickup_instruction_display_settings','location_box_border_color',$wclp_pickup_instruction_customizer->defaults['location_box_border_color']);
-
-$location_box_background_color = $alp->get_option_value_from_array('pickup_instruction_display_settings','location_box_background_color',$wclp_pickup_instruction_customizer->defaults['location_box_background_color']);	
+$header_hours_text = $alp->get_option_value_from_array('pickup_instruction_customize_settings', 'header_hours_text', $settings['header_hours_text']['default']);
 ?>
-<?php if($hide_instruction_heading != 'yes') { ?>
-	<h2 class="local_pickup_email_title"><?php echo $location_box_heading; ?></h2>
+<?php if ('1' != $hide_widget_header) { ?>
+	<h2 class="local_pickup_email_title"><?php esc_html_e($widget_header_text, 'advanced-local-pickup-for-woocommerce'); ?></h2>
 <?php } ?>
 <div class="wclp_mail_address">
-	<div class="wclp_location_box <?php if(!empty($new_array)){	echo 'wclp_location_box1'; }?>">
-		<?php if($hide_table_header != 'yes') { ?>
+	<div class="wclp_location_box 
+		<?php 
+		if (!empty($new_array)) { 
+			echo 'wclp_location_box1';
+		} 
+		?>
+		">
+		<?php if ('1' != $hide_addres_header) { ?>
 			<div class="wclp_location_box_heading">
-				<?php _e($header_address_text, 'woocommerce'); ?>
+				<?php esc_html_e($addres_header_text, 'advanced-local-pickup-for-woocommerce'); ?>
 			</div>
 		<?php } ?>
-        <?php if(class_exists('Advanced_local_pickup_PRO')) { ?>
-            	<?php do_action('wclp_location_address_display_html', $location, $store_state, $store_country);?>
-         <?php } else { ?>
-         	 <div class="wclp_location_box_content">
-                <p class="wclp_pickup_adress_p">
-					<?php if(!empty($location->store_name)){ echo $location->store_name;echo ', '; }?>
-				</p>
-                
+		<?php if (class_exists('Advanced_local_pickup_PRO')) { ?>
+				<?php do_action('wclp_location_address_display_html', $location, $store_state, $store_country); ?>
+		<?php } else { ?>
+			<div class="wclp_location_box_content">
 				<p class="wclp_pickup_adress_p">
-					<?php if(!empty($location->store_address)){echo $location->store_address;if(!empty($location->store_address_2)){echo', ';}} 
-						if(!empty($location->store_address_2)){ echo $location->store_address_2; echo ', '; }
+					<?php 
+					if (!empty($location->store_name)) {
+						echo esc_html($location->store_name);
+						echo ', '; 
+					} 
 					?>
 				</p>
-                
 				<p class="wclp_pickup_adress_p">
-					<?php if(!empty($location->store_city)){echo $location->store_city;if($store_state != ''){echo ', ';}}
-						if($store_state != ''){ echo WC()->countries->get_states( $store_country )[$store_state];}if($store_country){echo ', ';}
-						if($store_country){ echo WC()->countries->countries[$store_country];if(!empty($location->store_postcode)){echo ', ';}} 
-						if(!empty($location->store_postcode)){ echo $location->store_postcode;}
+					<?php 
+					if (!empty($location->store_address)) {
+						echo esc_html($location->store_address);
+						if (!empty($location->store_address_2)) {
+							echo ', '; 
+						}
+					} 
+					if (!empty($location->store_address_2)) {
+						echo esc_html($location->store_address_2);
+						echo ', ';
+					}
 					?>
 				</p>
-                
-				<?php if(!empty($location->store_phone)){ ?>
-					<p class="wclp_pickup_adress_p"><?php echo $location->store_phone;?></p>
+				<p class="wclp_pickup_adress_p">
+					<?php
+					if (!empty($location->store_city)) {
+						echo esc_html($location->store_city);
+						if ('' != $store_state) {
+							echo ', ';
+						}
+					}
+					if ('' != $store_state) {
+						echo esc_html(WC()->countries->get_states( $store_country )[$store_state]);
+					} 
+					if ($store_country) {
+						echo ', ';
+					}
+					if ($store_country) {
+						echo esc_html(WC()->countries->countries[$store_country]);
+						if (!empty($location->store_postcode)) {
+							echo ', ';
+						}
+					} 
+					if (!empty($location->store_postcode)) {
+						echo esc_html($location->store_postcode);
+					}
+					?>
+				</p>
+				
+				<?php if (!empty($location->store_phone)) { ?>
+					<p class="wclp_pickup_adress_p"><?php echo esc_html($location->store_phone); ?></p>
 				<?php } ?>
-				<?php if(!empty($location->store_instruction)){ ?>
-					<p class="wclp_pickup_adress_p"><?php echo $location->store_instruction;?></p>
+				<?php if (!empty($location->store_instruction)) { ?>
+					<p class="wclp_pickup_adress_p"><?php echo esc_html($location->store_instruction); ?></p>
 				<?php } ?>
-            </div>
-         <?php }?>
-	</div>				
-<?php if(!empty($w_day)){ 	
-	if(!empty($new_array)){	
-	$resultEmpty = array_filter(array_map('array_filter', $new_array));
-?>	
-	<div class="wclp_location_box <?php if(!empty($new_array)){	echo 'wclp_location_box2'; }?>" <?php if(count($resultEmpty) == 0){	echo 'style="display:none;"'; }?>>
-		<?php if($hide_table_header != 'yes') { ?>
+			</div>
+		<?php } ?>
+	</div>
+<?php 
+if (!empty($w_day)) { 	
+	if (!empty($new_array)) {	
+		$resultEmpty = array_filter(array_map('array_filter', $new_array)); //echo count( $resultEmpty ); 
+		?>	
+	<div class="wclp_location_box 
+		<?php 
+		if (!empty($new_array)) {
+			echo 'wclp_location_box2';
+		} 
+		?>
+		"   
+		<?php
+		if (0 == count($resultEmpty)) {
+			echo 'style="display:none;"';
+		} 
+		?>
+		>
+		<?php if ('1' != $hide_hours_header) { ?>
 			<div class="wclp_location_box_heading">
-				<?php _e($header_business_text, 'advanced-local-pickup-for-woocommerce'); ?>
+				<?php esc_html_e($header_hours_text, 'advanced-local-pickup-for-woocommerce'); ?>
 			</div>
 		<?php } ?>
 		<div class="wclp_location_box_content">
 			<?php
-				foreach($new_array as $key => $data){
-					if(count($data) == 1){							
-						if(isset(reset($data)['wclp_store_hour']) && reset($data)['wclp_store_hour'] != '' && isset(reset($data)['wclp_store_hour_end']) && reset($data)['wclp_store_hour_end'] != ''){
-							reset($data);
-							?>		
-							<p class="wclp_work_hours_p"><?php echo __(ucfirst(key($data)), 'default'); ?><span>: <?php echo reset($data)['wclp_store_hour'].' '; echo ' - '; echo reset($data)['wclp_store_hour_end']; ?><?php do_action('wclp_get_more_work_hours_contents', $data);?></span>	
-							</p>								
-					<?php } } ?>						
-					<?php
-					if(count($data) == 2){
-						if(isset(reset($data)['wclp_store_hour']) && reset($data)['wclp_store_hour'] != '' && isset(reset($data)['wclp_store_hour_end']) && reset($data)['wclp_store_hour_end'] != ''){
+			foreach ($new_array as $key => $data) {
+				if (1 == count($data)) {							
+					if (isset(reset($data)['wclp_store_hour']) && '' != reset($data)['wclp_store_hour'] && isset(reset($data)['wclp_store_hour_end']) && '' != reset($data)['wclp_store_hour_end']) {
+						reset($data);
+						?>		
+						<p class="wclp_work_hours_p">
+							<?php 
+							echo esc_html_e(ucfirst(key($data)), 'advanced-local-pickup-for-woocommerce') . ' <span>: ' . esc_html(reset($data)['wclp_store_hour']) . ' - ' . esc_html(reset($data)['wclp_store_hour_end']);
+							do_action('wclp_get_more_work_hours_contents', $data);
+							echo '</span>';
+							?>
+						</p>								
+				<?php } } ?>						
+				<?php
+				if (2 == count($data)) {
+					if (isset(reset($data)['wclp_store_hour']) && '' != reset($data)['wclp_store_hour'] && isset(reset($data)['wclp_store_hour_end']) && '' != reset($data)['wclp_store_hour_end']) {
 						reset($data);
 						$array_key_first = key($data);
 						end($data);
 						$array_key_last = key($data);
 						?>
-							<p class="wclp_work_hours_p"><?php echo __(ucfirst($array_key_first), 'default'); ?><span> - </span><?php echo __(ucfirst($array_key_last), 'default'); ?><span>: <?php echo reset($data)['wclp_store_hour'].' '; echo ' - '; echo reset($data)['wclp_store_hour_end']; ?><?php do_action('wclp_get_more_work_hours_contents', $data);?></span>		
-							</p>
-					<?php } } ?>									
-					<?php 
-					if(count($data) > 2){ 
-						if(isset(reset($data)['wclp_store_hour']) && reset($data)['wclp_store_hour'] != '' && isset(reset($data)['wclp_store_hour_end']) && reset($data)['wclp_store_hour_end'] != ''){
-						reset($data);
-						$array_key_first = key($data);
-						end($data);
-						$array_key_last = key($data);		
+						<p class="wclp_work_hours_p">
+							<?php 
+							echo esc_html_e(ucfirst($array_key_first), 'advanced-local-pickup-for-woocommerce') . esc_html_e(' - ') . esc_html_e(ucfirst($array_key_last), 'advanced-local-pickup-for-woocommerce') . ' <span>: ' . esc_html(reset($data)['wclp_store_hour']) . ' - ' . esc_html(reset($data)['wclp_store_hour_end']);
+							do_action('wclp_get_more_work_hours_contents', $data);
+							echo '</span>';
+							?>	
+						</p>
+				<?php } } ?>									
+				<?php 
+				if (count($data) > 2) { 
+					if (isset(reset($data)['wclp_store_hour']) && '' != reset($data)['wclp_store_hour'] && isset(reset($data)['wclp_store_hour_end']) && '' != reset($data)['wclp_store_hour_end']) {
+					reset($data);
+					$array_key_first = key($data);
+					end($data);
+					$array_key_last = key($data);		
 						?>
-							<p class="wclp_work_hours_p">
-							<?php echo __(ucfirst($array_key_first), 'default'); ?> <?php echo __(' To', 'advanced-local-pickup-for-woocommerce'); ?> <?php echo __(ucfirst($array_key_last), 'default'); ?><span>: <?php echo reset($data)['wclp_store_hour'].' '; echo ' - '; echo reset($data)['wclp_store_hour_end']; ?><?php do_action('wclp_get_more_work_hours_contents', $data);?></span>	
-							</p>
-							
-					<?php 										
-					} }	
+						<p class="wclp_work_hours_p">
+							<?php 
+							echo esc_html_e(ucfirst($array_key_first), 'advanced-local-pickup-for-woocommerce') . esc_html_e(' To ', 'advanced-local-pickup-for-woocommerce') . esc_html_e(ucfirst($array_key_last), 'advanced-local-pickup-for-woocommerce') . ' <span>: ' . esc_html(reset($data)['wclp_store_hour']) . ' - ' . esc_html(reset($data)['wclp_store_hour_end']); 
+							do_action('wclp_get_more_work_hours_contents', $data);
+							echo '</span>';
+							?>	
+						</p>
+						<?php 										
+					}
+				}	
+			}
+			if (class_exists('Advanced_local_pickup_PRO')) {
+				if (!empty($location->store_holiday_message)) {
+					?>
+					<p class="wclp_pickup_adress_p"><?php echo esc_html($location->store_holiday_message); ?></p>
+					<?php 
 				}
-				if(class_exists('Advanced_local_pickup_PRO')) {
-					if(!empty($location->store_holiday_message)){ ?>
-                    	<p class="wclp_pickup_adress_p"><?php echo $location->store_holiday_message;?></p>
-					<?php };
-				}
+			}
 			?>	
 		</div>		
 	</div>
@@ -159,49 +215,43 @@ $location_box_background_color = $alp->get_option_value_from_array('pickup_instr
 	.wclp_location_box{
 		display: table-cell;
 		width:50%;	
-		border: <?php echo $location_box_border_size; ?> solid <?php echo $location_box_border_color; ?> !important;
+		border: 1px solid <?php echo esc_html($border_color); ?> !important;
 	}
 	.wclp_location_box2{
 		border-left: 0 !important;
 	}
 	.wclp_location_box_heading {
-		border-bottom: <?php echo $location_box_border_size; ?> solid <?php echo $location_box_border_color; ?> !important;
+		border-bottom: 1px solid <?php echo esc_html($border_color); ?> !important;
 		border-top:0 !important;
 		border-left:0 !important;
 		border-right:0 !important;
-		padding: 10px;
-		font-size: <?php echo $header_font_size; ?>;
-		color: <?php echo $header_font_color; ?>;
+		padding: <?php echo esc_html($padding); ?>;
+		font-size: 16px;
+		color: #333;
 		font-weight: bold;
-		background:<?php echo $header_background_color; ?>;
+		background:<?php echo esc_html($background_color); ?>;
 		text-align: inherit;
 	}
 	.wclp_location_box_content{												
-		padding: 10px;		
+		padding: <?php echo esc_html($padding); ?>;		
 	}
 	.wclp_work_hours_p{
 		margin: 0 !important;
-		line-height: <?php echo $location_box_content_line_height; ?>;
-		color: <?php echo $location_box_font_color; ?>;
-		font-size: <?php echo $location_box_font_size; ?>;
 	}
 	.wclp_pickup_adress_p{
 		margin: 0 !important;
-		line-height: <?php echo $location_box_content_line_height; ?>;
-		color: <?php echo $location_box_font_color; ?>;
-		font-size: <?php echo $location_box_font_size; ?>;
 	}
 	.wclp_mail_address{
-		background: <?php echo $location_box_background_color; ?>; 
+		background: <?php echo esc_html($background_color); ?>; 
 	}
 	@media screen and (max-width: 500px) {
 	.wclp_location_box2{
-		border-left: <?php echo $location_box_border_size; ?> solid <?php echo $location_box_border_color; ?> !important;
+		border-left: 1px solid <?php echo esc_html($border_color); ?> !important;
 		border-top: 0 !important;
 	}
 	.wclp_location_box{
 		display: block;
-	    width: 100%;
+		width: 100%;
 	}
-	}	
+	}
 </style>

@@ -4,7 +4,6 @@
  *
  * Class WC_Local_Pickup_admin
  * 
- * @author        WooThemes
  * @version       1.0.0
  */
 
@@ -12,7 +11,7 @@ if ( !defined( 'ABSPATH' ) ) {
 	exit;
 } // Exit if accessed directly
 
-class WC_Local_Pickup_install { 
+class WC_Local_Pickup_Install { 
 
 	/**
 	 * Instance of this class.
@@ -25,11 +24,11 @@ class WC_Local_Pickup_install {
 	* function callback for add not existing key in database.
 	*
 	*/
-	function wclp_update_install_callback() {
+	public function wclp_update_install_callback() {
 		
-		if(version_compare(get_option( 'wclp_local_pickup', '1.0' ),'1.1', '<') ){			
+		if (version_compare(get_option( 'wclp_local_pickup', '1.0' ), '1.1', '<') ) {			
 			$pickup_day_time = get_option('wclp_store_days');
-			if(empty($pickup_day_time)){				
+			if (empty($pickup_day_time)) {				
 				$pickup_day_time_array = array(
 					'monday' => array(
 									'checked' => 1,
@@ -62,7 +61,7 @@ class WC_Local_Pickup_install {
 			update_option( 'wclp_local_pickup', '1.1');	
 		}
 		
-		if(version_compare(get_option( 'wclp_local_pickup', '1.0' ),'1.2', '<') ){		
+		if (version_compare(get_option( 'wclp_local_pickup', '1.0' ), '1.2', '<') ) {		
 			$wclp_show_pickup_instraction = get_option('wclp_show_pickup_instruction');
 			$opt = array(
 				'display_in_processing_email' => get_option('wclp_show_address_email'),
@@ -73,27 +72,27 @@ class WC_Local_Pickup_install {
 			update_option( 'wclp_local_pickup', '1.2');	
 		}
 		
-		if(version_compare(get_option( 'wclp_local_pickup', '1.0' ),'1.3', '<') ){	
+		if (version_compare(get_option( 'wclp_local_pickup', '1.0' ), '1.3', '<') ) {	
 			$pickup_day_time = get_option('wclp_store_days');
-			foreach($pickup_day_time as $day => $time){
-				$pickup_day_time[$day]['wclp_store_hour'] = str_replace("am","",$pickup_day_time[$day]['wclp_store_hour']);
-				$pickup_day_time[$day]['wclp_store_hour'] = str_replace("pm","",$pickup_day_time[$day]['wclp_store_hour']);
-				$pickup_day_time[$day]['wclp_store_hour_end'] = str_replace("am","",$pickup_day_time[$day]['wclp_store_hour_end']);
-				$pickup_day_time[$day]['wclp_store_hour_end'] = str_replace("pm","",$pickup_day_time[$day]['wclp_store_hour_end']);
+			foreach ($pickup_day_time as $day => $time) {
+				$pickup_day_time[$day]['wclp_store_hour'] = str_replace('am', '', $pickup_day_time[$day]['wclp_store_hour']);
+				$pickup_day_time[$day]['wclp_store_hour'] = str_replace('pm', '', $pickup_day_time[$day]['wclp_store_hour']);
+				$pickup_day_time[$day]['wclp_store_hour_end'] = str_replace('am', '', $pickup_day_time[$day]['wclp_store_hour_end']);
+				$pickup_day_time[$day]['wclp_store_hour_end'] = str_replace('pm', '', $pickup_day_time[$day]['wclp_store_hour_end']);
 			}
 			
 			$country_code = get_option( 'wclp_default_country', get_option('woocommerce_default_country') );		
-			$split_country = explode( ":", $country_code );
+			$split_country = explode( ':', $country_code );
 			
-			if(isset($split_country[0])){
+			if (isset($split_country[0])) {
 				$store_country = $split_country[0];	
-			} else{
+			} else {
 				$store_country = '';
 			}
 			
-			if(isset($split_country[1])){
+			if (isset($split_country[1])) {
 				$store_state = $split_country[1];
-			} else{
+			} else {
 				$store_state   = '';
 			}
 			
@@ -103,12 +102,12 @@ class WC_Local_Pickup_install {
 			update_option( 'wclp_local_pickup', '1.3');		
 		}
 		
-		if(version_compare(get_option( 'wclp_local_pickup', '1.0' ),'1.4', '<') ){			
+		if (version_compare(get_option( 'wclp_local_pickup', '1.0' ), '1.4', '<') ) {			
 			update_option( 'wclp_default_time_format', '24');	
 			update_option( 'wclp_local_pickup', '1.4');	
 		}
 		
-		if(version_compare(get_option( 'wclp_local_pickup', '1.0' ),'1.5', '<') ){			
+		if (version_compare(get_option( 'wclp_local_pickup', '1.0' ), '1.5', '<') ) {			
 			$store_name = get_option('wclp_store_name', get_bloginfo( 'name' ));
 			$store_address = get_option( 'wclp_store_address', get_option( 'woocommerce_store_address' ) );
 			$store_address_2 = get_option( 'wclp_store_address_2', get_option( 'woocommerce_store_address_2' ) );
@@ -136,7 +135,7 @@ class WC_Local_Pickup_install {
 			
 			$locations = get_option( 'wclp_pickup_locations' );
 			$pickup_day_time = $locations[1]['store_days'];
-			if(empty($pickup_day_time)){				
+			if (empty($pickup_day_time)) {				
 				$pickup_day_time_array = array(
 					'monday' => array(
 									'checked' => 1,
@@ -164,7 +163,7 @@ class WC_Local_Pickup_install {
 									'wclp_store_hour_end' => '18:00pm',									
 								),				
 				);
-				update_option( $pickup_day_time, (array)$pickup_day_time_array);
+				update_option( $pickup_day_time, (array) $pickup_day_time_array );
 			}
 			update_option( 'wclp_status_ready_pickup', '1');	
 			update_option( 'wclp_status_picked_up', '1');	
@@ -172,13 +171,13 @@ class WC_Local_Pickup_install {
 			update_option('wclp_local_pickup', '1.5');		
 		}
 		
-		if(version_compare(get_option( 'wclp_local_pickup', '1.0' ),'1.6', '<') ){			
+		if (version_compare(get_option( 'wclp_local_pickup', '1.0' ), '1.6', '<') ) {			
 			
 			//database functions
 			global $wpdb;
-			$this->table = $wpdb->prefix."alp_pickup_location";
+			$this->table = $wpdb->prefix . 'alp_pickup_location';
 			
-			if($wpdb->get_var("show tables like '$this->table'") != $this->table) {
+			if ($wpdb->get_var("show tables like '$this->table'") != $this->table) {
 				$create_table_query = "
 					CREATE TABLE IF NOT EXISTS `{$this->table}` (
 						`id` int NOT NULL AUTO_INCREMENT,
@@ -220,11 +219,11 @@ class WC_Local_Pickup_install {
 			update_option('wclp_local_pickup', '1.6');		
 		}
 		
-		if(version_compare(get_option( 'wclp_local_pickup', '1.0' ),'1.7', '<') ){			
+		if (version_compare(get_option( 'wclp_local_pickup', '1.0' ), '1.7', '<') ) {			
 			
 			//database functions
 			global $wpdb;
-			$this->table = $wpdb->prefix."alp_pickup_location";
+			$this->table = $wpdb->prefix . 'alp_pickup_location';
 			
 			$data = array(
 				'store_display_address' => '1',
@@ -235,8 +234,8 @@ class WC_Local_Pickup_install {
 				'store_display_phone' => '1',
 			);
 			$tabledata = $wpdb->get_row( sprintf("SELECT * FROM %s LIMIT 1", $this->table) );
-			foreach( (array)$data as $key1 => $val1  ){
-				if(!isset($tabledata->$key1)) {
+			foreach ( (array) $data as $key1 => $val1  ) {
+				if (!isset($tabledata->$key1)) {
 					$wpdb->query( sprintf( "ALTER TABLE %s ADD $key1 text NOT NULL", $this->table) );
 				}
 			}
@@ -244,15 +243,15 @@ class WC_Local_Pickup_install {
 			update_option('wclp_local_pickup', '1.7');		
 		}
 		
-		if(version_compare(get_option( 'wclp_local_pickup', '1.0' ),'1.8', '<') ){			
+		if (version_compare(get_option( 'wclp_local_pickup', '1.0' ), '1.8', '<') ) {			
 			
 			//database functions
 			global $wpdb;
-			$this->table = $wpdb->prefix."alp_pickup_location";
+			$this->table = $wpdb->prefix . 'alp_pickup_location';
 			
 			$tabledata = $wpdb->get_row( sprintf("SELECT * FROM %s LIMIT 1", $this->table) );
 
-			if(!isset($tabledata->position)) {
+			if (!isset($tabledata->position)) {
 				$wpdb->query( sprintf( "ALTER TABLE %s ADD position int NOT NULL", $this->table) );
 			}
 			
@@ -269,7 +268,7 @@ class WC_Local_Pickup_install {
 	public static function get_instance() {
 
 		if ( null === self::$instance ) {
-			self::$instance = new self;
+			self::$instance = new self();
 		}
 
 		return self::$instance;
