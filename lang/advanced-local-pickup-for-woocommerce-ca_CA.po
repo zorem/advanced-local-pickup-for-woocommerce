@@ -1,63 +1,63 @@
-# Translation of Plugins - Advanced Local Pickup for WooCommerce - Development (trunk) in Italian
+# Translation of Plugins - Advanced Local Pickup for WooCommerce - Development (trunk) in Catalan
 # This file is distributed under the same license as the Plugins - Advanced Local Pickup for WooCommerce - Development (trunk) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2022-01-12 12:36+0000\n"
+"PO-Revision-Date: 2022-01-12 11:51+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Loco https://localise.biz/\n"
-"Language: it_IT\n"
+"Language: ca_CA\n"
 "Project-Id-Version: Plugins - Advanced Local Pickup for WooCommerce - "
 "Development (trunk)\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-24 05:09+0000\n"
-"Last-Translator: Kuldip\n"
-"Language-Team: Italian\n"
-"X-Loco-Version: 2.4.3; wp-5.5.1"
+"Language-Team: Catalan (Canada)"
 
 #: include/views/wclp-edit-location-form.php:399
-#| msgid " to"
 msgid " To"
-msgstr " Per"
+msgstr ""
+"Per a\n"
 
 #: templates/emails/pickup-instruction.php:194
 #: templates/myaccount/pickup-instruction.php:194
 #: templates/emails/plain/pickup-instruction.php:194
 msgid " To "
-msgstr "a"
+msgstr ""
+"Per a\n"
 
 #: include/views/wclp-edit-location-form.php:301
 msgid "12 hour"
-msgstr "12 ore"
+msgstr ""
+"12 hores\n"
 
 #: include/views/wclp-edit-location-form.php:300
 msgid "24 hour"
-msgstr "24 ore"
+msgstr ""
+"24 hores\n"
 
 #: include/wc-local-pickup-admin.php:1093
 #: include/wc-local-pickup-admin.php:1094
 #: include/wc-local-pickup-admin.php:1098
 msgid "Additional content on processing email in case of local pickup orders"
 msgstr ""
-"Contenuti aggiuntivi sull'elaborazione dell'e-mail in caso di ordini di "
-"ritiro locale"
+"Contingut addicional en processar el correu electrònic en cas de comandes de "
+"recollida locals\n"
 
 #: include/views/wclp-edit-location-form.php:48
 msgid "Address"
-msgstr "Indirizzo"
+msgstr "adreça"
 
 #: include/views/wclp-edit-location-form.php:114
 msgid "An additional, optional address line for your business location."
 msgstr ""
-"Una riga di indirizzo aggiuntiva e facoltativa per la sede della tua "
-"attività."
+"Una línia d’adreça opcional addicional per a la ubicació de la vostra "
+"empresa.\n"
 
 #: include/wc-local-pickup-admin.php:1017
 #: include/views/wclp-edit-location-form.php:438
 msgid "Apply & close"
-msgstr "Applica e chiudi"
+msgstr ""
+"Aplica i tanca\n"
 
 #: include/customizer/wc-pickup-email-customizer.php:164
 #: include/customizer/wc-pickup-email-customizer.php:188
@@ -66,11 +66,13 @@ msgstr "Applica e chiudi"
 #: include/customizer/wc-ready-pickup-email-customizer.php:243
 #: include/customizer/wc-ready-pickup-email-customizer.php:288
 msgid "Available variables:"
-msgstr "Variabili disponibili:"
+msgstr ""
+"Variables disponibles:\n"
 
 #: include/customizer/wclp-pickup-instruction-customizer.php:456
 msgid "Background color"
-msgstr "Colore di sfondo"
+msgstr ""
+"Color de fons\n"
 
 #: include/customizer/wclp-pickup-instruction-customizer.php:273
 #: include/customizer/wclp-pickup-instruction-customizer.php:346
@@ -78,360 +80,416 @@ msgstr "Colore di sfondo"
 #: include/customizer/wclp-pickup-instruction-customizer.php:528
 #: include/views/wclp-edit-location-form.php:183
 msgid "Business Hours"
-msgstr "Ore di lavoro"
+msgstr ""
+"Horari laboral\n"
 
 #: include/customizer/wclp-pickup-instruction-customizer.php:354
 msgid "Business Hours header text"
-msgstr "Testo dell'intestazione dell'orario di lavoro"
+msgstr ""
+"Text de capçalera Horari laboral\n"
 
 #: include/wc-local-pickup-admin.php:513
 msgid "Change status to Picked up"
 msgstr ""
-"Cambia lo stato in Ritirato\n"
+"Canvieu l'estat a Recollit\n"
 
 #: include/wc-local-pickup-admin.php:509
 msgid "Change status to Ready for pickup"
 msgstr ""
-"Cambia lo stato in Pronto per il ritiro\n"
+"Canvieu l'estat a A punt per recollir\n"
 
 #: include/customizer/wclp-pickup-instruction-customizer.php:505
 msgid "Content font color"
-msgstr "Colore del carattere del contenuto"
+msgstr ""
+"Color de la font del contingut\n"
 
 #: include/customizer/wclp-pickup-instruction-customizer.php:473
 msgid "Content font size"
-msgstr "Dimensione del carattere del contenuto"
+msgstr ""
+"Mida del tipus de lletra del contingut\n"
 
 #: include/customizer/wclp-pickup-instruction-customizer.php:521
 msgid "Content line height"
-msgstr "Altezza della riga del contenuto"
+msgstr ""
+"Alçada de la línia de contingut\n"
 
 #: include/wc-local-pickup-admin.php:212 include/wc-local-pickup-admin.php:213
 #: include/views/wclp_setting_tab.php:75 include/views/wclp_setting_tab.php:122
-#| msgid "Customizer"
 msgid "Customize"
-msgstr "personalizzare"
+msgstr "Personalitzar"
 
 #: include/views/wclp_setting_tab.php:69 include/views/wclp_setting_tab.php:116
 msgid "Dark Font"
-msgstr "Carattere scuro"
+msgstr ""
+"Tipus de lletra fosc\n"
 
 #: include/views/wclp-edit-location-form.php:295
 msgid "Display Time Format"
-msgstr "Visualizza formato ora"
+msgstr ""
+"Format d’hora de visualització\n"
 
 #: include/customizer/wc-pickup-email-customizer.php:210
 #: include/customizer/wc-ready-pickup-email-customizer.php:265
 msgid "Email content"
-msgstr "Contenuto e-mail"
+msgstr ""
+"Contingut per correu electrònic\n"
 
 #: include/customizer/wclp-customizer.php:54
 msgid "Email Notifications"
-msgstr "notifiche di posta elettronica"
+msgstr ""
+"Notificacions per correu electrònic\n"
 
 #: include/customizer/wc-ready-pickup-email-customizer.php:174
 msgid "Email Type"
-msgstr "Tipo di posta elettronica"
+msgstr ""
+"Tipus de correu electrònic\n"
 
 #: include/customizer/wc-pickup-email-customizer.php:144
 msgid "Enable Picked up order status email"
-msgstr "Abilita l'email di stato dell'ordine ritirato"
+msgstr ""
+"Activa el correu electrònic d'estat de la comanda recollida\n"
 
 #: include/customizer/wc-ready-pickup-email-customizer.php:199
 msgid "Enable Ready for Pickup order status email"
-msgstr "Abilita l'e-mail sullo stato dell'ordine Pronto per il ritiro"
+msgstr ""
+"Activeu el correu electrònic d'estat de la comanda Preparat per a la "
+"recollida\n"
 
 #: include/wc-local-pickup-admin.php:569 include/wc-local-pickup-admin.php:664
 #: include/wc-local-pickup-admin.php:761 include/wc-local-pickup-admin.php:900
 #: include/wc-local-pickup-admin.php:1440
 msgid "Friday"
-msgstr "venerdì"
+msgstr "divendres"
 
 #: include/views/wclp-edit-location-form.php:398
 msgid "From"
-msgstr "A partire dal"
+msgstr ""
+"Des de\n"
 
 #: include/views/wclp_setting_tab.php:4
 msgid "General Settings"
 msgstr ""
-"impostazioni generali\n"
+"Configuració general\n"
 
 #: include/wc-local-pickup-admin.php:214 include/wc-local-pickup-admin.php:215
 msgid "Go Pro"
-msgstr "Vai Pro"
+msgstr ""
+"Go Pro\n"
 
 #: include/customizer/wclp-pickup-instruction-customizer.php:376
 msgid "Headers Background color"
-msgstr "Colore di sfondo delle intestazioni"
+msgstr ""
+"Capçaleres Color de fons\n"
 
 #: include/customizer/wclp-pickup-instruction-customizer.php:426
 msgid "Headers font color"
-msgstr "Colore carattere intestazioni"
+msgstr ""
+"Color de lletra de capçaleres\n"
 
 #: include/customizer/wclp-pickup-instruction-customizer.php:394
 msgid "Headers font size"
-msgstr "Dimensione del carattere delle intestazioni"
+msgstr ""
+"Mida de la lletra de les capçaleres\n"
 
 #: include/customizer/wc-ready-pickup-email-customizer.php:117
 msgid ""
 "Hi there. we thought you'd like to know that your recent order from "
 "{site_title} has been ready for pickup."
 msgstr ""
-"Ciao. abbiamo pensato che ti piacerebbe sapere che il tuo ordine recente da "
-"{site_title} è pronto per il ritiro."
+"Hola. hem pensat que voldríeu saber que la vostra comanda recent de "
+"{site_title} ja estava preparada per recollir-la.\n"
 
 #: include/customizer/wc-pickup-email-customizer.php:117
 msgid ""
 "Hi {customer_first_name}. Thank you for picking up your {site_title} order "
 "#{order_number}. We hope you enjoyed your shopping experience."
 msgstr ""
-"Ciao {customer_first_name}. Grazie per aver ritirato il tuo {site_title} "
-"ordine n. {order_number}. Ci auguriamo che la tua esperienza di acquisto sia "
-"stata di tuo gradimento."
+"Hola, {customer_first_name}. Gràcies per recollir la vostra comanda "
+"{site_title} núm. {Order_number}. Esperem que us hagi agradat la vostra "
+"experiència de compra.\n"
 
 #: include/customizer/wclp-pickup-instruction-customizer.php:210
 msgid "Hide Local Pickup Section Heading"
-msgstr "Nascondi l'intestazione della sezione di ritiro locale"
+msgstr ""
+"Amaga l'encapçalament de la secció de recollida local\n"
 
 #: include/customizer/wclp-pickup-instruction-customizer.php:312
 msgid "Hide Table Headers"
-msgstr "Nascondi le intestazioni della tabella"
+msgstr ""
+"Amaga les capçaleres de la taula\n"
 
 #: include/views/wclp_setting_tab.php:68 include/views/wclp_setting_tab.php:115
 msgid "Light Font"
-msgstr "Carattere chiaro"
+msgstr ""
+"Font de llum\n"
 
 #: include/customizer/wclp-customizer.php:32
 msgid "Local Pickup Order Status Emails"
-msgstr "Email di stato dell'ordine di ritiro locale"
+msgstr ""
+"Correu electrònic d’estat de la comanda de recollida local\n"
 
 #: include/customizer/wclp-pickup-instruction-customizer.php:229
 msgid "Local Pickup section heading text"
-msgstr "Testo dell'intestazione della sezione Ritiro locale"
+msgstr ""
+"Text de capçalera de la secció Local Pickup\n"
 
 #: include/views/wclp-edit-location-form.php:26
 msgid "Location Name"
-msgstr "Nome del luogo"
+msgstr ""
+"Nom de la ubicació\n"
 
 #: include/wc-local-pickup-admin.php:1329
 msgid "Mark order as picked up"
 msgstr ""
-"Contrassegna l'ordine come ritirato\n"
+"Marca la comanda com a recollida\n"
 
 #: include/wc-local-pickup-admin.php:1315
 msgid "Mark order as ready for pickup"
 msgstr ""
-"Contrassegna l'ordine come pronto per il ritiro\n"
+"Marca la comanda com a preparada per recollir-la\n"
 
 #: include/wc-local-pickup-admin.php:565 include/wc-local-pickup-admin.php:660
 #: include/wc-local-pickup-admin.php:757 include/wc-local-pickup-admin.php:896
 #: include/wc-local-pickup-admin.php:1436
 msgid "Monday"
-msgstr "Lunedi"
+msgstr "dilluns"
 
 #: include/wc-local-pickup-admin.php:1079
 msgid "My Account (orders history)"
-msgstr "Il mio account (cronologia ordini)"
+msgstr ""
+"El meu compte (historial de comandes)\n"
 
 #: include/views/wclp-edit-location-form.php:10
 msgid "Name & Special Instructions"
-msgstr "Nome e istruzioni speciali"
+msgstr ""
+"Nom i instruccions especials\n"
 
 #: include/wc-local-pickup-admin.php:1078
 msgid "Order received page"
-msgstr "Pagina ordine ricevuto"
+msgstr ""
+"Pàgina de comanda rebuda\n"
 
 #: include/customizer/wc-ready-pickup-email-customizer.php:183
 msgid "Picked Up"
-msgstr "Raccolto"
+msgstr "Recollit"
 
 #: include/wc-local-pickup-admin.php:466 include/wc-local-pickup-admin.php:497
 #: include/views/wclp_setting_tab.php:96
 msgid "Picked up"
-msgstr "Raccolto"
+msgstr "Recollit"
 
 #: include/wc-local-pickup-admin.php:471
-#, php-format
 msgid "Picked up (%s)"
 msgid_plural "Picked up (%s)"
-msgstr[0] "Ritirato (%s)"
-msgstr[1] "Ritirato (%s)"
+msgstr[0] ""
+"Recollit (% s)\n"
+msgstr[1] ""
+"Recollit (% s)\n"
 
 #: include/customizer/wclp-pickup-instruction-customizer.php:323
 #: include/customizer/wclp-pickup-instruction-customizer.php:338
 msgid "Pickup Address"
-msgstr "Indirizzo di ritiro"
+msgstr ""
+"Adreça de recollida\n"
 
 #: include/customizer/wclp-pickup-instruction-customizer.php:331
 msgid "Pickup address header text"
-msgstr "Testo dell'intestazione dell'indirizzo di ritiro"
+msgstr ""
+"Text de capçalera de l'adreça de recollida\n"
 
 #: include/customizer/wclp-pickup-instruction-customizer.php:221
 #: include/customizer/wclp-pickup-instruction-customizer.php:235
 #: include/customizer/wc-ready-pickup-email-customizer.php:122
 msgid "Pickup Instruction"
-msgstr "Istruzioni per il ritiro"
+msgstr ""
+"Instruccions de recollida\n"
 
 #: include/customizer/wclp-customizer.php:46
 msgid "Pickup Instructions Layout"
-msgstr "Istruzioni per il ritiro Layout"
+msgstr ""
+"Disseny de les instruccions de recollida\n"
 
 #: include/wc-local-pickup-admin.php:210 include/wc-local-pickup-admin.php:211
 msgid "Pickup Location"
-msgstr "Posto di raccolta"
+msgstr ""
+"Ubicació de recollida\n"
 
 #: include/customizer/wclp-pickup-instruction-customizer.php:192
 #: include/customizer/wc-ready-pickup-email-customizer.php:156
 msgid "Please select a order..."
-msgstr "Seleziona un ordine..."
+msgstr ""
+"Seleccioneu una comanda ...\n"
 
 #: include/customizer/wclp-pickup-instruction-customizer.php:188
 #: include/customizer/wc-ready-pickup-email-customizer.php:152
 msgid "Preview order"
-msgstr "Anteprima ordine"
+msgstr ""
+"Previsualitza l’ordre\n"
 
 #: include/wc-local-pickup-admin.php:1077
 msgid "Processing order email"
-msgstr "Elaborazione dell'e-mail dell'ordine"
+msgstr ""
+"S'està processant el correu electrònic de la comanda\n"
 
 #: include/wc-local-pickup-admin.php:454 include/wc-local-pickup-admin.php:490
 #: include/customizer/wc-ready-pickup-email-customizer.php:182
 msgid "Ready for Pickup"
-msgstr "Pronto per il ritiro"
+msgstr ""
+"Llest per a la recollida\n"
 
 #: include/views/wclp_setting_tab.php:49
 msgid "Ready for pickup"
-msgstr "Pronto per essere ritirato"
+msgstr ""
+"Llest per a la recollida\n"
 
 #: include/wc-local-pickup-admin.php:459
-#| msgid "Ready for Pickup"
 msgid "Ready for Pickup (%s)"
 msgid_plural "Ready for Pickup (%s)"
-msgstr[0] "Pronto per il ritiro (%s)"
-msgstr[1] "Pronto per il ritiro (%s)"
+msgstr[0] ""
+"A punt per recollir (% s)\n"
+msgstr[1] ""
+"A punt per recollir (% s)\n"
 
 #: include/wc-local-pickup-admin.php:570 include/wc-local-pickup-admin.php:665
 #: include/wc-local-pickup-admin.php:762 include/wc-local-pickup-admin.php:901
 #: include/wc-local-pickup-admin.php:1441
 msgid "Saturday"
-msgstr "Sabato"
+msgstr "dissabte"
 
 #: include/views/wclp-edit-location-form.php:13
 #: include/views/wclp-edit-location-form.php:51
 #: include/views/wclp-edit-location-form.php:186
 msgid "Save & close"
-msgstr "Salva e chiudi"
+msgstr ""
+"Desa i tanca\n"
 
 #: include/customizer/wclp-pickup-instruction-customizer.php:189
 msgid "Select an order to preview and design the pickup instructions display."
 msgstr ""
-"Seleziona un ordine per visualizzare in anteprima e progettare la "
-"visualizzazione delle istruzioni di ritiro."
+"Seleccioneu una comanda per previsualitzar i dissenyar la pantalla de les "
+"instruccions de recollida.\n"
 
 #: include/customizer/wc-ready-pickup-email-customizer.php:178
 msgid "Select email type"
-msgstr "Seleziona il tipo di email"
+msgstr ""
+"Seleccioneu el tipus de correu electrònic\n"
 
 #: include/views/wclp-edit-location-form.php:295
 msgid ""
 "Select time format which you want to display in business hours for customers."
 msgstr ""
-"Seleziona il formato dell'ora che desideri visualizzare in orario lavorativo "
-"per i clienti."
+"Seleccioneu el format d'hora que vulgueu mostrar als clients en horari "
+"comercial.\n"
 
 #: include/views/wclp_setting_tab.php:73 include/views/wclp_setting_tab.php:120
 msgid "Send Email"
-msgstr "Invia una email"
+msgstr ""
+"Envia un correu electrònic\n"
 
 #: include/views/wclp-edit-location-form.php:36
 msgid "Special Instruction"
-msgstr "Istruzioni speciali"
+msgstr ""
+"Instrucció especial\n"
 
 #: include/wc-local-pickup-admin.php:564 include/wc-local-pickup-admin.php:659
 #: include/wc-local-pickup-admin.php:756 include/wc-local-pickup-admin.php:895
 #: include/wc-local-pickup-admin.php:1435
 msgid "Sunday"
-msgstr "domenica"
+msgstr "diumenge"
 
 #: include/customizer/wclp-pickup-instruction-customizer.php:250
 msgid "Table Border color"
-msgstr "Colore bordo tavolo"
+msgstr ""
+"Color de la vora de la taula\n"
 
 #: include/customizer/wclp-pickup-instruction-customizer.php:266
 msgid "Table Border size"
-msgstr "Dimensione del bordo del tavolo"
+msgstr ""
+"Mida de la vora del quadre\n"
 
 #: include/customizer/wclp-pickup-instruction-customizer.php:441
 msgid "TABLE CONTENT"
-msgstr "CONTENUTO DELLA TABELLA"
+msgstr ""
+"CONTINGUT DE LA TAULA\n"
 
 #: include/customizer/wclp-pickup-instruction-customizer.php:296
 msgid "TABLE HEADERS"
-msgstr "INTESTAZIONI TABELLA"
+msgstr ""
+"CAPÇALES DE TAULA\n"
 
 #. Description of the plugin
 msgid ""
 "The Advanced Local Pickup (ALP) helps you handle local pickup orders more "
 "conveniently by extending the WooCommerce Local Pickup shipping method."
 msgstr ""
-"L'Advanced Local Pickup (ALP) ti aiuta a gestire gli ordini di ritiro locale "
-"in modo più conveniente estendendo il metodo di spedizione WooCommerce Local "
-"Pickup."
+"La recollida local avançada (ALP) us ajuda a gestionar les comandes de "
+"recollida local amb més comoditat ampliant el mètode d’enviament de la "
+"recollida local de WooCommerce.\n"
 
 #: include/views/wclp-edit-location-form.php:26
 msgid "The location name for your business location."
-msgstr "Il nome della sede della tua attività commerciale."
+msgstr ""
+"El nom de la ubicació de la vostra empresa.\n"
 
 #: include/views/wclp-edit-location-form.php:171
 msgid "The phone number for your business information."
-msgstr "Il numero di telefono per le informazioni sulla tua attività."
+msgstr ""
+"El número de telèfon de la informació de la vostra empresa.\n"
 
 #: include/views/wclp-edit-location-form.php:310
 msgid "the select for working days of your store."
-msgstr "la selezione per i giorni lavorativi del tuo negozio."
+msgstr ""
+"la selecció dels dies laborables de la vostra botiga.\n"
 
 #: include/views/wclp-edit-location-form.php:36
 msgid "The special instruction for your store."
-msgstr "L'istruzione speciale per il tuo negozio."
+msgstr ""
+"La instrucció especial per a la vostra botiga.\n"
 
 #: include/wc-local-pickup-admin.php:568 include/wc-local-pickup-admin.php:663
 #: include/wc-local-pickup-admin.php:760 include/wc-local-pickup-admin.php:899
 #: include/wc-local-pickup-admin.php:1439
 msgid "Thursday"
-msgstr "giovedì"
+msgstr "dijous"
 
 #: include/wc-local-pickup-admin.php:566 include/wc-local-pickup-admin.php:661
 #: include/wc-local-pickup-admin.php:758 include/wc-local-pickup-admin.php:897
 #: include/wc-local-pickup-admin.php:1437
 msgid "Tuesday"
-msgstr "Martedì"
+msgstr "dimarts"
 
 #: include/wc-local-pickup-admin.php:567 include/wc-local-pickup-admin.php:662
 #: include/wc-local-pickup-admin.php:759 include/wc-local-pickup-admin.php:898
 #: include/wc-local-pickup-admin.php:1438
 msgid "Wednesday"
-msgstr "mercoledì"
+msgstr "dimecres"
 
 #: include/views/wclp-edit-location-form.php:310
 msgid "Work Hours"
-msgstr "Ore di lavoro"
+msgstr ""
+"Horari laboral\n"
 
 #: include/views/wclp-edit-location-form.php:30
 msgid "you must add location name and save to proceed"
-msgstr "devi aggiungere il nome della posizione e salvare per procedere"
+msgstr ""
+"heu d'afegir el nom de la ubicació i desar per continuar\n"
 
 #: include/wc-local-pickup-admin.php:1097
 msgid "You will receive an email when your order is ready for pickup."
-msgstr "Riceverai un'e-mail quando il tuo ordine sarà pronto per il ritiro."
+msgstr ""
+"Rebràs un correu electrònic quan la comanda estigui a punt per recollir-la.\n"
 
 #: include/customizer/wc-pickup-email-customizer.php:115
 msgid "Your order from {site_title} was picked up"
-msgstr "Il tuo ordine da {site_title} è stato ritirato"
+msgstr ""
+"La vostra comanda de {site_title} es va recollir\n"
 
 #: include/customizer/wc-ready-pickup-email-customizer.php:116
 msgid "Your Order is Ready for pickup"
-msgstr "Il tuo ordine è pronto per il ritiro"
+msgstr ""
+"La vostra comanda està a punt per recollir-la\n"
 
 #: include/customizer/wc-ready-pickup-email-customizer.php:115
 msgid "Your {site_title} order is now Ready for pickup"
-msgstr "Il tuo ordine {site_title} è ora pronto per il ritiro"
+msgstr ""
+"La vostra comanda de {site_title} ja està a punt per recollir-la\n"

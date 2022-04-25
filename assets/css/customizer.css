@@ -588,7 +588,7 @@ input[type="number"]:focus {
 
 .customize-control-color .wp-color-result .wp-color-result-text,
 .customize-control-alpha-color .wp-color-result .wp-color-result-text {
-	line-height: 24px;
+	line-height: 28px;
 	border-left: none;
 }
 
@@ -626,4 +626,11 @@ input[type="number"]:focus {
     text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
     font-size: 120%;
     font-weight: bolder;
+}
+.customize-control-title {
+    display: block !important;
+    margin-bottom: 10px !important;
+}
+button.button.wp-color-result {
+    border-color: #E0E0E0;
 }

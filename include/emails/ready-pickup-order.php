@@ -30,12 +30,13 @@ if ( ! class_exists( 'WC_Email_Customer_Ready_Pickup_Order', false ) ) :
 			
 			$this->id             = 'customer_ready_pickup_order';
 			$this->customer_email = true;
-			$this->title          = __( 'Ready for Pickup order', 'advanced-local-pickup-for-woocommerce' );
-			$this->description    = __( 'Ready for Pickup Order emails are sent to customers.', 'advanced-local-pickup-for-woocommerce' );
+			$this->title          = esc_html( 'Ready for Pickup order', 'advanced-local-pickup-for-woocommerce' );
+			$this->description    = esc_html( 'Ready for Pickup Order emails are sent to customers.', 'advanced-local-pickup-for-woocommerce' );
 			$this->template_html  = 'emails/ready-pickup-order.php';
 			$this->template_plain = 'emails/plain/ready-pickup-order.php';
 			$this->placeholders   = array(
 				'{customer_first_name}'   => '',
+				'{customer_last_name}'   => '',
 				'{order_date}'   => '',
 				'{order_number}' => '',
 				'{customer_username}' => '',
@@ -65,6 +66,7 @@ if ( ! class_exists( 'WC_Email_Customer_Ready_Pickup_Order', false ) ) :
 				$this->object                         = $order;
 				$this->recipient                      = $this->object->get_billing_email();
 				$this->placeholders['{customer_first_name}']   = $this->object->get_billing_first_name();
+				$this->placeholders['{customer_last_name}']   = $this->object->get_billing_last_name();
 				$this->placeholders['{order_date}']   = wc_format_datetime( $this->object->get_date_created() );
 				$this->placeholders['{order_number}'] = $this->object->get_order_number();
 				$customer = new WC_Customer( $this->object->get_customer_id() );
@@ -88,7 +90,7 @@ if ( ! class_exists( 'WC_Email_Customer_Ready_Pickup_Order', false ) ) :
 		 * @return string
 		 */
 		public function get_default_subject() {
-			return __( 'Your {site_title} order is now Ready for pickup', 'advanced-local-pickup-for-woocommerce' );
+			return esc_html( 'Your {site_title} order is now Ready for pickup', 'advanced-local-pickup-for-woocommerce' );
 		}
 
 		/**
@@ -98,7 +100,7 @@ if ( ! class_exists( 'WC_Email_Customer_Ready_Pickup_Order', false ) ) :
 		 * @return string
 		 */
 		public function get_default_heading() {
-			return __( 'Your Order is Ready for pickup', 'advanced-local-pickup-for-woocommerce' );
+			return esc_html( 'Your Order is Ready for pickup', 'advanced-local-pickup-for-woocommerce' );
 		}
 
 		/**
@@ -110,7 +112,7 @@ if ( ! class_exists( 'WC_Email_Customer_Ready_Pickup_Order', false ) ) :
 			$template = $this->get_template( 'template_html' );			
 			$local_file    = $this->get_theme_template_file( $template );
 			
-			if ( file_exists( $local_file ) && is_writable( $local_file )){						
+			if ( file_exists( $local_file ) && is_writable( $local_file )) {						
 				return wc_get_template_html(
 					$this->template_html,
 					array(
@@ -122,7 +124,7 @@ if ( ! class_exists( 'WC_Email_Customer_Ready_Pickup_Order', false ) ) :
 						'email'         => $this,
 					)
 				);
-			} else{	
+			} else {	
 				return wc_get_template_html(
 					'emails/ready-pickup-order.php',
 					array(
@@ -147,7 +149,7 @@ if ( ! class_exists( 'WC_Email_Customer_Ready_Pickup_Order', false ) ) :
 		public function get_content_plain() {
 			$template = $this->get_template( 'template_html' );			
 			$local_file    = $this->get_theme_template_file( $template );
-			if ( file_exists( $local_file ) && is_writable( $local_file )){						
+			if ( file_exists( $local_file ) && is_writable( $local_file )) {						
 				return wc_get_template_html(
 					$this->template_html,
 					array(
@@ -159,7 +161,7 @@ if ( ! class_exists( 'WC_Email_Customer_Ready_Pickup_Order', false ) ) :
 						'email'         => $this,
 					)
 				);
-			} else{	
+			} else {	
 				return wc_get_template_html(
 					'emails/ready-pickup-order.php',
 					array(
@@ -183,7 +185,7 @@ if ( ! class_exists( 'WC_Email_Customer_Ready_Pickup_Order', false ) ) :
 		 * @return string
 		 */
 		public function get_default_additional_content() {
-			return __( "Hi there. we thought you'd like to know that your recent order from {site_title} has been ready for pickup.", 'advanced-local-pickup-for-woocommerce' );
+			return esc_html( "Hi there. we thought you'd like to know that your recent order from {site_title} has been ready for pickup.", 'advanced-local-pickup-for-woocommerce' );
 		}
 	}
 

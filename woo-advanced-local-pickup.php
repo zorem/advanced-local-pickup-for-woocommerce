@@ -5,11 +5,11 @@
 * Description: The Advanced Local Pickup (ALP) helps you handle local pickup orders more conveniently by extending the WooCommerce Local Pickup shipping method.
 * Author: zorem
 * Author URI: https://www.zorem.com/
-* Version: 1.3.1
+* Version: 1.4.0
 * Text Domain: advanced-local-pickup-for-woocommerce
 * Domain Path: /lang/
 * WC requires at least: 4.0
-* WC tested up to: 5.4.1
+* WC tested up to: 6.3
 */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -23,19 +23,18 @@ class Woocommerce_Local_Pickup {
 	 *
 	 * @var string
 	 */
-	public $version = '1.3.1';
+	public $version = '1.4.0';
 	
 	/**
 	 * Constructor
 	 *
-	 * @access public
 	 * @since  1.0.0
 	*/
 	public function __construct() {
 		
 		// Check if Wocoomerce is activated
-		register_activation_hook( __FILE__, array( $this,'on_activation' ) );
-		if( !$this->is_alp_pro_active() ) {
+		register_activation_hook( __FILE__, array( $this, 'on_activation' ) );
+		if ( !$this->is_alp_pro_active() ) {
 			if ( $this->is_wc_active() ) {
 				$this->includes();
 				$this->init();			
@@ -46,18 +45,17 @@ class Woocommerce_Local_Pickup {
 	}
 	
 	/**
-	 * callback on activation and allow to activate if pro deactivated
+	 * Callback on activation and allow to activate if pro deactivated
 	 *
-	 * @access public
 	 * @since  1.0.0
 	*/
-	public function on_activation(){
+	public function on_activation() {
 
 		// Require parent plugin
-		if ( is_plugin_active( 'advanced-local-pickup-pro/advanced-local-pickup-pro.php' ) and current_user_can( 'activate_plugins' ) ) {
+		if ( is_plugin_active( 'advanced-local-pickup-pro/advanced-local-pickup-pro.php' ) && current_user_can( 'activate_plugins' ) ) {
 			
 			//admin notice for not allow activate plugin
-			wp_redirect( admin_url().'plugins.php?alp-not-allow=true' );
+			wp_redirect( admin_url() . 'plugins.php?alp-not-allow=true' );
 			exit;
 		}
 	}
@@ -65,7 +63,6 @@ class Woocommerce_Local_Pickup {
 	/**
 	 * Check if ALP PRO is active
 	 *
-	 * @access private
 	 * @since  1.0.0
 	 * @return bool
 	*/
@@ -87,7 +84,6 @@ class Woocommerce_Local_Pickup {
 	/**
 	 * Check if WooCommerce is active
 	 *
-	 * @access private
 	 * @since  1.0.0
 	 * @return bool
 	*/
@@ -112,13 +108,12 @@ class Woocommerce_Local_Pickup {
 	/**
 	 * Display WC active notice
 	 *
-	 * @access public
 	 * @since  1.0.0
 	*/
 	public function notice_activate_wc() {
 		?>
 		<div class="error">
-			<p><?php printf( __( 'Please install and activate %sWooCommerce%s for WC local pickup to work!', 'advanced-local-pickup-for-woocommerce' ), '<a href="' . admin_url( 'plugin-install.php?tab=search&s=WooCommerce&plugin-search-input=Search+Plugins' ) . '">', '</a>' ); ?></p>
+			<p><?php printf( esc_html( 'Please install and activate %sWooCommerce%s for WC local pickup to work!', 'advanced-local-pickup-for-woocommerce' ), '<a href="' . esc_url(admin_url( 'plugin-install.php?tab=search&s=WooCommerce&plugin-search-input=Search+Plugins' )) . '">', '</a>' ); ?></p>
 		</div>
 		<?php
 	}
@@ -129,18 +124,21 @@ class Woocommerce_Local_Pickup {
 	 * @since 1.0.0
 	 *
 	 */	
-	function includes() {		
+	public function includes() {		
 		require_once $this->get_plugin_path() . '/include/wc-local-pickup-admin.php';
 		$this->admin = WC_Local_Pickup_admin::get_instance();	
 
 		require_once $this->get_plugin_path() . '/include/wc-local-pickup-installation.php';
 		$this->install = WC_Local_Pickup_install::get_instance();	
+		
+		// customizer
+		require_once $this->get_plugin_path() . '/include/customizer/wc-alp-customizer-admin.php';	
+		$this->customizer = WC_ALP_CUSTOMIZER_ADMIN::get_instance();
 	}
 
 	/**
 	 * Initialize plugin
 	 *
-	 * @access private
 	 * @since  1.0.0
 	*/
 	private function init() {
@@ -158,7 +156,7 @@ class Woocommerce_Local_Pickup {
 		add_action('admin_enqueue_scripts', array( $this, 'alp_script_enqueue' ) );
 		
 		//callback for add action link for plugin page	
-		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ),  array( $this , 'my_plugin_action_links' ));
+		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this , 'my_plugin_action_links' ));
 
 		add_action( 'admin_notices', array( $this, 'admin_notice_after_update' ) );		
 		add_action('admin_init', array( $this, 'wplp_plugin_notice_ignore' ) );
@@ -175,14 +173,14 @@ class Woocommerce_Local_Pickup {
 	}
 	
 	/**
-	 * database functions
+	 * Database functions
 	*/
-	function table_create(){
+	public function table_create() {
 		
 		global $wpdb;
-		$this->table = $wpdb->prefix."alp_pickup_location";
+		$this->table = $wpdb->prefix . 'alp_pickup_location';
 		
-		if($wpdb->get_var("show tables like '$this->table'") != $this->table) {
+		if ($wpdb->get_var("show tables like '$this->table'") != $this->table) {
 			$create_table_query = "
 				CREATE TABLE IF NOT EXISTS `{$this->table}` (
 					`id` int NOT NULL AUTO_INCREMENT,
@@ -207,21 +205,16 @@ class Woocommerce_Local_Pickup {
 
 	
 	/*
-	* include file on plugin load
+	* Include file on plugin load
 	*/
 	public function on_plugins_loaded() {		
-		require_once $this->get_plugin_path() . '/include/customizer/wclp-customizer.php';				
-		require_once $this->get_plugin_path() . '/include/customizer/wc-ready-pickup-email-customizer.php';
-		require_once $this->get_plugin_path() . '/include/customizer/wc-pickup-email-customizer.php';
-		require_once $this->get_plugin_path() . '/include/customizer/wclp-pickup-instruction-customizer.php';
-		
 		require_once $this->get_plugin_path() . '/include/wclp-wc-admin-notices.php';	
 	}
 	
 	/*
 	* load text domain
 	*/
-	public function load_textdomain(){
+	public function load_textdomain() {
 		load_plugin_textdomain( 'advanced-local-pickup-for-woocommerce', false, plugin_dir_path( plugin_basename(__FILE__) ) . 'lang/' );
 	}
 	
@@ -240,14 +233,14 @@ class Woocommerce_Local_Pickup {
 		return $this->plugin_path;
 	}
 	
-	public static function get_plugin_domain(){
+	public static function get_plugin_domain() {
 		return __FILE__;
 	}
 	
 	/*
 	* plugin file directory function
 	*/	
-	public function plugin_dir_url(){
+	public function plugin_dir_url() {
 		return plugin_dir_url( __FILE__ );
 	}
 	
@@ -261,14 +254,18 @@ class Woocommerce_Local_Pickup {
 	 * @param  array  $links List of existing plugin action links.
 	 * @return array         List of modified plugin action links.
 	 */
-	function my_plugin_action_links( $links ) {
+	public function my_plugin_action_links( $links ) {
 		$links = array_merge( array(
-			'<a href="' . esc_url( admin_url( '/admin.php?page=local_pickup' ) ) . '">' . __( 'Settings', 'woocommerce' ) . '</a>'
+			'<a href="' . esc_url( admin_url( '/admin.php?page=local_pickup' ) ) . '">' . esc_html( 'Settings', 'woocommerce' ) . '</a>'
+		), array(
+			'<a href="' . esc_url( 'https://www.zorem.com/docs/advanced-local-pickup-for-woocommerce/?utm_source=wp-admin&utm_medium=ALP&utm_campaign=docs' ) . '" target="_blank">' . esc_html( 'Docs', 'woocommerce' ) . '</a>'
+		), array(
+			'<a href="' . esc_url( 'https://wordpress.org/support/plugin/advanced-local-pickup-for-woocommerce/reviews/#new-post' ) . '" target="_blank">' . esc_html( 'Review', 'woocommerce' ) . '</a>'
 		), $links );
 		
-		if(!class_exists('Advanced_local_pickup_PRO')) {
+		if (!class_exists('Advanced_local_pickup_PRO')) {
 			$links = array_merge( $links, array(
-				'<a target="_blank" style="color: #45b450; font-weight: bold;" href="' . esc_url( 'https://www.zorem.com/product/advanced-local-pickup-for-woocommerce/?utm_source=wp-admin&utm_medium=ALPPRO&utm_campaign=add-ons') . '">' . __( 'Go Pro', 'woocommerce' ) . '</a>'
+				'<a target="_blank" style="color: #45b450; font-weight: bold;" href="' . esc_url( 'https://www.zorem.com/product/advanced-local-pickup-pro/?utm_source=wp-admin&utm_medium=ALPPRO&utm_campaign=add-ons') . '">' . __( 'Go Pro', 'woocommerce' ) . '</a>'
 			) );
 		}
 		
@@ -278,18 +275,21 @@ class Woocommerce_Local_Pickup {
 	/*
 	* Display admin notice on plugin install or update
 	*/
-	public function admin_notice_after_update(){ 		
+	public function admin_notice_after_update() { 		
 		
-		if ( get_option('wplp_review_notice_ignore') ) return;
+		if ( get_option('wplp_review_notice_ignore') ) {
+			return;
+		}
 		
 		$dismissable_url = esc_url(  add_query_arg( 'wplp-review-ignore-notice', 'true' ) );
+		
 		?>		
 		<style>		
-		.wp-core-ui .notice.wplp-dismissable-notice{
+		.wp-core-ui .notice.wplp-dismissable-notice {
 			position: relative;
 			padding-right: 38px;
 		}
-		.wp-core-ui .notice.wplp-dismissable-notice a.notice-dismiss{
+		.wp-core-ui .notice.wplp-dismissable-notice a.notice-dismiss {
 			padding: 9px;
 			text-decoration: none;
 		} 
@@ -306,12 +306,12 @@ class Woocommerce_Local_Pickup {
 		}
 		</style>	
 		<div class="notice updated notice-success wplp-dismissable-notice">
-			<a href="<?php echo $dismissable_url; ?>" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></a>
+			<a href="<?php echo esc_url($dismissable_url); ?>" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></a>
 			<p>Hey, I noticed you are using the Advanced Local Pickup Plugin - that’s awesome!</br>Could you please do me a BIG favor and give it a 5-star rating on WordPress to help us spread the word and boost our motivation?</p>
 			<p>Eran Shor</br>Founder of zorem</p>
 			<a class="button-primary btn_review_notice" target="blank" href="https://wordpress.org/support/plugin/advanced-local-pickup-for-woocommerce/reviews/#new-post">Ok, you deserve it</a>
-			<a class="button-primary btn_review_notice" href="<?php echo $dismissable_url; ?>">Nope, maybe later</a>
-			<a class="button-primary btn_review_notice" href="<?php echo $dismissable_url; ?>">I already did</a>
+			<a class="button-primary btn_review_notice" href="<?php echo esc_url($dismissable_url); ?>">Nope, maybe later</a>
+			<a class="button-primary btn_review_notice" href="<?php echo esc_url($dismissable_url); ?>">I already did</a>
 		</div>
 	<?php 		
 	}	
@@ -320,7 +320,7 @@ class Woocommerce_Local_Pickup {
 	/*
 	* Hide admin notice on dismiss of ignore-notice
 	*/
-	public function wplp_plugin_notice_ignore(){
+	public function wplp_plugin_notice_ignore() {
 		if (isset($_GET['wplp-review-ignore-notice'])) {
 			update_option( 'wplp_review_notice_ignore', 'true' );
 		}
@@ -329,18 +329,23 @@ class Woocommerce_Local_Pickup {
 	/*
 	* Display admin notice on plugin install or update
 	*/
-	public function admin_notice_pro_update(){ 		
+	public function admin_notice_pro_update() { 		
+				
+		$date_now = date("Y-m-d"); // this format is string comparable
 		
-		if ( get_option('wplp_pro_notice_ignore') ) return;
+		if ( get_option('wplp_pro_notice_ignore_mar31') || $date_now > '2022-04-31' ) {
+			return;
+		}
 		
 		$dismissable_url = esc_url(  add_query_arg( 'wplp-pro-ignore-notice', 'true' ) );
+		
 		?>		
 		<style>		
-		.wp-core-ui .notice.wplp-dismissable-notice{
+		.wp-core-ui .notice.wplp-dismissable-notice {
 			position: relative;
 			padding-right: 38px;
 		}
-		.wp-core-ui .notice.wplp-dismissable-notice a.notice-dismiss{
+		.wp-core-ui .notice.wplp-dismissable-notice a.notice-dismiss {
 			padding: 9px;
 			text-decoration: none;
 		} 
@@ -357,11 +362,12 @@ class Woocommerce_Local_Pickup {
 		}
 		</style>	
 		<div class="notice updated notice-success wplp-dismissable-notice">
-			<a href="<?php echo $dismissable_url; ?>" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></a>
-			<p>The Advanced Local Pickup PRO allows you to set up multiple pickup locations, enable pickup appointments and automate your in-store pickup workflows!</p>
-			<p>Use code ALPPRO20 to get 20% off on the Advanced Local Pickup PRO</p>
-			<a class="button-primary btn_pro_notice" target="blank" href="https://www.zorem.com/product/advanced-local-pickup-for-woocommerce/">Yes, let’s go Pro</a>
-			<a class="button-primary btn_pro_notice" target="blank" href="<?php echo $dismissable_url; ?>">No, Thanks!</a>
+			<a href="<?php echo esc_url($dismissable_url); ?>" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></a>
+			<h2>Advanced Local Pickup PRO</h2>
+			<p>The Advanced Local Pickup Pro allows you to automate the local pickup workflow, set up multiple pickup locations, pickup appointments, custom emails templates, fulfillment dashboard, and more… </p>
+			<p>Limited time offer - Use code <strong>ALPPRO20</strong> to get 20% off on the Advanced Local Pickup Pro (valid by Mar 31st)</p>  
+			<a class="button-primary btn_pro_notice" target="blank" href="https://www.zorem.com/product/advanced-local-pickup-pro/">Upgrade Now</a>
+			<a class="button-primary btn_pro_notice" href="<?php echo esc_url($dismissable_url); ?>">Dismiss</a>
 		</div>
 	<?php 		
 	}	
@@ -370,9 +376,9 @@ class Woocommerce_Local_Pickup {
 	/*
 	* Hide admin notice on dismiss of ignore-notice
 	*/
-	public function wplp_pro_notice_ignore(){
+	public function wplp_pro_notice_ignore() {
 		if (isset($_GET['wplp-pro-ignore-notice'])) {
-			update_option( 'wplp_pro_notice_ignore', 'true' );
+			update_option( 'wplp_pro_notice_ignore_mar31', 'true' );
 		}
 	}
 	
@@ -383,10 +389,10 @@ class Woocommerce_Local_Pickup {
 		
 		
 		// Add condition for css & js include for admin page  
-		if(!isset($_GET['page'])) {
+		if (!isset($_GET['page'])) {
 				return;
 		}
-		if(  $_GET['page'] != 'local_pickup') {
+		if (  'local_pickup' != $_GET['page'] ) {
 			return;
 		}
 
@@ -414,7 +420,7 @@ class Woocommerce_Local_Pickup {
 		wp_enqueue_style( 'alp-admin-css', plugin_dir_url(__FILE__) . 'assets/css/admin.css', array(), $this->version );
 		
 		wp_localize_script( 'alp-admin-js', 'alp_object', 
-		  	array( 
+			array( 
 				'admin_url' => admin_url(),
 			) 
 		);
@@ -424,30 +430,32 @@ class Woocommerce_Local_Pickup {
 	public function custom_init_emails( $emails ) {
 
 		// Include the email class file if it's not included already
-		if (!defined('WC_LOCAL_PICKUP_TEMPLATE_PATH')) define('WC_LOCAL_PICKUP_TEMPLATE_PATH', wc_local_pickup()->get_plugin_path() . '/templates/');
-		$ready_for_pickup = get_option( "wclp_status_ready_pickup", 0);
-		if($ready_for_pickup == true){
+		if (!defined('WC_LOCAL_PICKUP_TEMPLATE_PATH')) {
+			define('WC_LOCAL_PICKUP_TEMPLATE_PATH', wc_local_pickup()->get_plugin_path() . '/templates/');
+		}
+		$ready_for_pickup = get_option( 'wclp_status_ready_pickup', 0);
+		if (true == $ready_for_pickup) {
 			if ( ! isset( $emails[ 'WC_Email_Customer_Ready_Pickup_Order' ] ) ) {
 				$emails[ 'WC_Email_Customer_Ready_Pickup_Order' ] = include_once( 'include/emails/ready-pickup-order.php' );
 			}
 		}
-		$picked = get_option( "wclp_status_picked_up", 0);
-		if($picked == true){
+		$picked = get_option( 'wclp_status_picked_up', 0);
+		if (true == $picked) {
 			if ( ! isset( $emails[ 'WC_Email_Customer_Pickup_Order' ] ) ) {
 				$emails[ 'WC_Email_Customer_Pickup_Order' ] = include_once( 'include/emails/pickup-order.php' );
 			}
 		}
-	
-	    return $emails;		
+
+		return $emails;		
 	}
 	
 	/**
 	 * Send email when order status change to "pickuped"
 	 *
 	*/
-	public function email_trigger_ready_pickup($order_id, $order = false){
-		$ready_for_pickup = get_option( "wclp_status_ready_pickup", 0);
-		if($ready_for_pickup == true){
+	public function email_trigger_ready_pickup( $order_id, $order = false ) {
+		$ready_for_pickup = get_option( 'wclp_status_ready_pickup', 0);
+		if (true == $ready_for_pickup) {
 			WC()->mailer()->emails['WC_Email_Customer_Ready_Pickup_Order']->trigger( $order_id, $order );
 		}
 	}
@@ -456,9 +464,9 @@ class Woocommerce_Local_Pickup {
 	 * Send email when order status change to "pickuped"
 	 *
 	*/
-	public function email_trigger_pickup($order_id, $order = false){		
-		$picked = get_option( "wclp_status_picked_up", 0);
-		if($picked == true){
+	public function email_trigger_pickup( $order_id, $order = false ) {		
+		$picked = get_option( 'wclp_status_picked_up', 0);
+		if (true == $picked) {
 			WC()->mailer()->emails['WC_Email_Customer_Pickup_Order']->trigger( $order_id, $order );
 		}
 	}
@@ -466,13 +474,15 @@ class Woocommerce_Local_Pickup {
 	/*
 	* Plugin uninstall code 
 	*/	
-	public function uninstall_notice(){
+	public function uninstall_notice() {
 		$screen = get_current_screen();
 		
-		if($screen->parent_file != 'plugins.php') return;
+		if ('plugins.php' != $screen->parent_file) {
+			return;
+		}
 		
 		$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';	
-		wp_enqueue_style( 'alp-admin-js',  plugin_dir_url(__FILE__) . 'assets/css/admin.css', array(), $this->version );
+		wp_enqueue_style( 'alp-admin-js', plugin_dir_url(__FILE__) . 'assets/css/admin.css', array(), $this->version );
 		wp_register_script( 'jquery-blockui', WC()->plugin_url() . '/assets/js/jquery-blockui/jquery.blockUI' . $suffix . '.js', array( 'jquery' ), '2.70', true );
 		wp_enqueue_script( 'jquery-blockui' );
 		
@@ -483,13 +493,14 @@ class Woocommerce_Local_Pickup {
 		unset($order_statuses['wc-ready-pickup']);				
 		unset($order_statuses['wc-pickup']);
 		
-		if($ready_pickup_count > 0 || $pickup_count > 0){ ?>
+		if ($ready_pickup_count > 0 || $pickup_count > 0) { 
+			?>
 			<script>
-				jQuery(document).on("click","[data-slug='advanced-local-pickup-for-woocommerce'] .deactivate a",function(e){			
+				jQuery(document).on("click","[data-slug='advanced-local-pickup-for-woocommerce'] .deactivate a",function(e) {			
 					e.preventDefault();
 					jQuery('.alp_uninstall_popup').show();
 					var theHREF = jQuery(this).attr("href");
-					jQuery(document).on("click",".alp_uninstall_plugin",function(e){
+					jQuery(document).on("click",".alp_uninstall_plugin",function(e) {
 						jQuery("body").block({
 							message: null,
 							overlayCSS: {
@@ -512,59 +523,59 @@ class Woocommerce_Local_Pickup {
 						});				
 					});			
 				});
-				jQuery(document).on("click",".alp_popupclose",function(e){
+				jQuery(document).on("click",".alp_popupclose",function(e) {
 					jQuery('.alp_uninstall_popup').hide();
 				});
-				jQuery(document).on("click",".alp_uninstall_close",function(e){
+				jQuery(document).on("click",".alp_uninstall_close",function(e) {
 					jQuery('.alp_uninstall_popup').hide();
 				});
 			</script>
 			<div id="" class="alp_popupwrapper alp_uninstall_popup" style="display:none;">
 				<div class="alp_popuprow" style="text-align: left;max-width: 380px;">
-					<h3 class="alp_popup_title">Advanced Local Pickup for WooCommerce</h2>
+					<h3 class="alp_popup_title">Advanced Local Pickup for WooCommerce</h3>
 					<form method="post" id="wplp_order_reassign_form">					
-					<?php if( $ready_pickup_count > 0 ){ ?>
+					<?php if ( $ready_pickup_count > 0 ) { ?>
 						
-						<p><?php echo sprintf(__('We detected %s orders that use the Ready for pickup order status, You can reassign these orders to a different status', 'advanced-local-pickup-for-woocommerce'), $ready_pickup_count); ?></p>
+						<p><?php echo sprintf(esc_html('We detected %s orders that use the Ready for pickup order status, You can reassign these orders to a different status', 'advanced-local-pickup-for-woocommerce'), esc_html($ready_pickup_count)); ?></p>
 						
 						<select id="reassign_ready_pickup_order" name="reassign_ready_pickup_order" class="reassign_select">
-							<option value=""><?php _e('Select', 'woocommerce'); ?></option>
-							<?php foreach($order_statuses as $key => $status){ ?>
-								<option value="<?php echo $key; ?>"><?php echo $status; ?></option>
+							<option value=""><?php esc_html_e('Select', 'woocommerce'); ?></option>
+							<?php foreach ($order_statuses as $key => $status) { ?>
+								<option value="<?php echo esc_html($key); ?>"><?php echo esc_html($status); ?></option>
 							<?php } ?>
 						</select>
 					
 					<?php } ?>
-					<?php if( $pickup_count > 0 ){ ?>
+					<?php if ( $pickup_count > 0 ) { ?>
 						
-						<p><?php echo sprintf(__('We detected %s orders that use the Picked up order status, You can reassign these orders to a different status', 'advanced-local-pickup-for-woocommerce'), $pickup_count); ?></p>					
+						<p><?php echo sprintf(esc_html('We detected %s orders that use the Picked up order status, You can reassign these orders to a different status', 'advanced-local-pickup-for-woocommerce'), esc_html($pickup_count)); ?></p>					
 						
 						<select id="reassign_pickedup_order" name="reassign_pickedup_order" class="reassign_select">
-							<option value=""><?php _e('Select', 'woocommerce'); ?></option>
-							<?php foreach($order_statuses as $key => $status){ ?>
-								<option value="<?php echo $key; ?>"><?php echo $status; ?></option>
+							<option value=""><?php esc_html_e('Select', 'woocommerce'); ?></option>
+							<?php foreach ($order_statuses as $key => $status) { ?>
+								<option value="<?php echo esc_html($key); ?>"><?php echo esc_html($status); ?></option>
 							<?php } ?>
 						</select>
 					
 					<?php } ?>				
-					<!--p></p-->
 					<p class="" style="text-align:left;">
 						<input type="hidden" name="action" value="reassign_order_status">
-						<input type="button" value="Uninstall" class="alp_uninstall_plugin button-primary btn_green">
+						<input type="button" value="Deactivate" class="alp_uninstall_plugin button-primary btn_green">
 						<input type="button" value="Close" class="alp_uninstall_close button-primary btn_red">				
 					</p>
 				</form>	
 				</div>
 				<div class="alp_popupclose"></div>
 			</div>		
-		<?php } 
+		<?php 
+		} 
 	}
 	
-	function reassign_order_status(){
-		$reassign_ready_pickup_order = $_POST['reassign_ready_pickup_order'];
-		$reassign_pickedup_order = $_POST['reassign_pickedup_order'];
+	public function reassign_order_status() {
+		$reassign_ready_pickup_order = isset($_POST['reassign_ready_pickup_order']) ? sanitize_text_field($_POST['reassign_ready_pickup_order']) : '';
+		$reassign_pickedup_order = isset($_POST['reassign_pickedup_order']) ? sanitize_text_field($_POST['reassign_pickedup_order']) : '';
 		
-		if($reassign_ready_pickup_order != ''){
+		if ('' != $reassign_ready_pickup_order) {
 			
 			$args = array(
 				'status' => 'ready-pickup',
@@ -573,14 +584,14 @@ class Woocommerce_Local_Pickup {
 			
 			$orders = wc_get_orders( $args );
 			
-			foreach($orders as $order){				
+			foreach ($orders as $order) {				
 				$order_id = $order->get_id();
 				$order = new WC_Order($order_id);
 				$order->update_status($reassign_ready_pickup_order);				
 			}			
 		}
 		
-		if($reassign_pickedup_order != ''){
+		if ('' != $reassign_pickedup_order) {
 			
 			$args = array(
 				'status' => 'pickup',
@@ -589,14 +600,15 @@ class Woocommerce_Local_Pickup {
 			
 			$ps_orders = wc_get_orders( $args );
 			
-			foreach($ps_orders as $order){				
+			foreach ($ps_orders as $order) {				
 				$order_id = $order->get_id();
 				$order = new WC_Order($order_id);
 				$order->update_status($reassign_pickedup_order);				
 			}			
 		}
 		exit;
-		echo 1;die();		
+		echo 1;
+		die();		
 	}
 }
 

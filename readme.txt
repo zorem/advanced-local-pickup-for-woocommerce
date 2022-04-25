@@ -3,7 +3,7 @@ Contributors: zorem
 Donate link: 
 Tags: woocommerce, local pickup, in store pickup, shipping, shipping options
 Requires at least: 5.0
-Tested up to: 5.7
+Tested up to: 5.9
 Requires PHP: 7.0
 Stable tag: 4.0.1
 License: GPLv2 
@@ -51,6 +51,36 @@ The Advanced Local Pickup for WooCommerce plugin is localized/ translatable by d
 
 
 == Changelog ==
+
+= 1.4.0 =
+* Dev - WC tested upto 6.3
+* Enhancement - Setup a new customizer
+
+= 1.3.6 =
+* Dev - Wp tested upto 5.9
+* Enhancement - Added a Docs, Review links on plugins page
+* Fix - Translate for all the strings for all the languages
+* Fix - issue of invalid argument supplied for foreach()
+
+= 1.3.5 =
+* Dev - WC tested upto 5.9
+* Fix - the issue of the translation
+* Fix - the issue of the js admin
+
+= 1.3.4 =
+* Dev - WC tested upto 5.8
+* Fix - the issue of the all weekdays translatable
+
+= 1.3.3 =
+* Dev - WC tested upto 5.6
+* Fix - the issue of the Uncaught ReferenceError: setCountryCookie is not defined
+* Improved - Update Skin colors of the settings design
+
+= 1.3.2 =
+* Dev - WC tested upto 5.5.2
+* Dev - WP tested upto 5.8
+* Fix - Customizer fatal errors.
+* Improved - code review.
 
 = 1.3.1 =
 * Fix - on activation errors.

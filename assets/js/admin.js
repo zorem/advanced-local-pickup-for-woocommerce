@@ -25,19 +25,20 @@
 })( jQuery );
 
 /*header script*/
-jQuery( document ).on( "click", "#activity-panel-tab-help", function() {
-	"use strict";
+jQuery( document ).on( "click", "#activity-panel-tab-help", function(e) {
+	e.preventDefault(); // stops link from making page jump to the top
+	e.stopPropagation(); // when you click the button, it stops the page from seeing it as clicking the body too
 	jQuery(this).addClass( 'is-active' );
 	jQuery( '.woocommerce-layout__activity-panel-wrapper' ).addClass( 'is-open is-switching' );
 });
 
-jQuery(document).click(function(){
-	"use strict";
-	var $trigger = jQuery(".woocommerce-layout__activity-panel");
-    if($trigger !== event.target && !$trigger.has(event.target).length){
-		jQuery('#activity-panel-tab-help').removeClass( 'is-active' );
-		jQuery( '.woocommerce-layout__activity-panel-wrapper' ).removeClass( 'is-open is-switching' );
-    }   
+jQuery( document ).on( "click", ".woocommerce-layout__activity-panel-wrapper", function(e) {	
+	e.stopPropagation(); // when you click the button, it stops the page from seeing it as clicking the body too	
+});
+
+jQuery( document ).on( "click", "body", function() {	
+	jQuery('#activity-panel-tab-help').removeClass( 'is-active' );
+	jQuery( '.woocommerce-layout__activity-panel-wrapper' ).removeClass( 'is-open is-switching' );
 });
 /*header script end*/
 
@@ -62,7 +63,9 @@ jQuery(document).ready(function(){
 			jQuery('.order-status-table .order-label.wc-pickup').css('background',color);
 		}, 
 	});
+
 	
+	//jQuery('#wclp_setting_tab_form .accordion').trigger('click');
 	if(jQuery('#wclp_store_name').val() === ''){
 		jQuery(".address-special").addClass('active');
 		jQuery(".address-special").next('.panel').addClass('active').slideDown("slow");
@@ -76,6 +79,8 @@ jQuery(document).ready(function(){
 
 jQuery(document).on("click", ".accordion", function(){
 	"use strict";
+	
+	
 	var location_name = jQuery('#wclp_store_name').val();
 	if(location_name === ''){
 		jQuery('#wclp_store_name').next(".alp_error_msg").show();
@@ -96,14 +101,40 @@ jQuery(document).on("click", ".accordion", function(){
 			jQuery(".accordion").find('span.dashicons').addClass('dashicons-arrow-right-alt2');
 			jQuery(".accordion").find('label').css('color','');
 			jQuery(this).addClass('active');
-			jQuery(this).next('.panel').addClass('active').slideDown("slow");
 			jQuery(this).css('cursor', 'default');
 			jQuery(this).find('span.wclp-btn').show();
 			jQuery(this).find('span.dashicons').removeClass('dashicons-arrow-right-alt2');
 			jQuery(this).find('label').css('color','#212121');
+			jQuery(this).next('.panel').addClass('active').slideDown( 'slow', function() {
+				var visible = jQuery(this).isInViewport();
+				if ( !visible ) {
+					jQuery('html, body').animate({
+						scrollTop: jQuery(this).prev().offset().top - 35
+					}, 1000);	
+				}			
+			} );
 		}
 	}
 });
+
+(function( $ ){
+	$.fn.isInViewport = function( element ) {
+		var win = $(window);
+		var viewport = {
+			top : win.scrollTop()			
+		};
+		viewport.bottom = viewport.top + win.height();
+		
+		var bounds = this.offset();		
+		bounds.bottom = bounds.top + this.outerHeight();
+
+		if( bounds.top >= 0 && bounds.bottom <= window.innerHeight) {
+			return true;
+		} else {
+			return false;	
+		}		
+	};
+})( jQuery );
 
 jQuery(document).on("click", "#wclp_status_pickup", function(){
 	if(jQuery(this).prop("checked") == true){
@@ -127,9 +158,12 @@ jQuery(document).on("click", "#wclp_setting_tab_form .wclp-save", function(){
 		success: function(response) {
 			if( response.success === "true" ){
 				jQuery("#wclp_setting_tab_form .spinner").removeClass("active");
-				jQuery(document).alp_snackbar( "Your Settings have been successfully saved." );
+				jQuery(document).alp_snackbar( "Settings Successfully Saved." );
 			} else {
-				//show error on front
+				if( response.permission === "false" ){
+					jQuery("#wclp_setting_tab_form .spinner").removeClass("active");
+					jQuery(document).alp_snackbar_warning( "you don't have permission to save settings." );
+				}
 			}
 		},
 		error: function(response) {
@@ -231,7 +265,7 @@ jQuery(document).on("click", "#wclp_location_tab_form .btn_location_submit", fun
 				if( response.success === "true" ){
 					jQuery('.alp_error_msg').remove();
 					jQuery("#wclp_location_tab_form .spinner").removeClass("active");
-					jQuery(document).alp_snackbar( "Your Settings have been successfully saved." );
+					jQuery(document).alp_snackbar( "Settings Successfully Saved." );
 					window.history.pushState("object or string", alp_object.admin_url, "admin.php?page=local_pickup&tab=locations&section=edit&id="+response.id);
 					jQuery("#location_id").val(response.id);
 					jQuery(".accordion.heading").removeClass('active');
@@ -243,7 +277,10 @@ jQuery(document).on("click", "#wclp_location_tab_form .btn_location_submit", fun
 					wclp_update_edit_location_form();
 					//location.reload();
 				} else {
-					//show error on front
+					if( response.permission === "false" ){
+						jQuery("#wclp_location_tab_form .spinner").removeClass("active");
+						jQuery(document).alp_snackbar_warning( "you don't have permission to save settings." );
+					}
 				}
 			},
 			error: function(response) {

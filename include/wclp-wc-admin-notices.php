@@ -15,9 +15,9 @@ class WC_ALP_Admin_Notices_Under_WC_Admin {
 	/**
 	 * Initialize the main plugin function
 	*/
-    public function __construct() {
+	public function __construct() {
 		$this->init();	
-    }
+	}
 	
 	/**
 	 * Get the class instance
@@ -27,7 +27,7 @@ class WC_ALP_Admin_Notices_Under_WC_Admin {
 	public static function get_instance() {
 
 		if ( null === self::$instance ) {
-			self::$instance = new self;
+			self::$instance = new self();
 		}
 
 		return self::$instance;
@@ -36,13 +36,15 @@ class WC_ALP_Admin_Notices_Under_WC_Admin {
 	/*
 	* init from parent mail class
 	*/
-	public function init(){										
-		add_action('init', array( $this, 'admin_notices_for_alp_pro' ) );
+	public function init() {										
+		//add_action('init', array( $this, 'admin_notices_for_alp_pro' ) );
 	}
 
-	public function admin_notices_for_alp_pro(){
+	public function admin_notices_for_alp_pro() {
 
-		if ( class_exists( 'Advanced_local_pickup_PRO' ) )return;
+		if ( class_exists( 'Advanced_local_pickup_PRO' ) ) {
+			return;
+		}
 		
 		if ( ! class_exists( 'Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes' ) ) {
 			return;
@@ -50,7 +52,9 @@ class WC_ALP_Admin_Notices_Under_WC_Admin {
 		
 		$already_set = get_transient( 'alp_wc_admin_notice' );
 		
-		if($already_set == 'yes')return;
+		if ('yes' == $already_set) { 
+			return;
+		}
 		
 		set_transient( 'alp_wc_admin_notice', 'yes' );				
 		
@@ -59,7 +63,7 @@ class WC_ALP_Admin_Notices_Under_WC_Admin {
 		
 		// Otherwise, add the note
 		$activated_time = current_time( 'timestamp', 0 );
-		$activated_time_formatted = date( 'F jS', $activated_time );
+		$activated_time_formatted = gmdate( 'F jS', $activated_time );
 		$note = new Automattic\WooCommerce\Admin\Notes\WC_Admin_Note();
 		$note->set_title( 'Advanced Local Pickup PRO' );
 		$note->set_content( 'The Advanced Local Pickup PRO allows you to set up multiple pickup locations, enable pickup appointments and automate your in-store pickup workflows!
