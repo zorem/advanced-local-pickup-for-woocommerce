@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @hooked WC_Emails::email_header() Output the email header
  */
 do_action( 'woocommerce_email_header', $email_heading, $email ); ?>
-<p class="wclp_additional_content"><?php echo wptexturize( $additional_content ) ; ?></p>
+<p class="wclp_additional_content"><?php echo wp_kses_post( html_entity_decode( $additional_content ) ); ?></p>
 <?php
 /*
  * @hooked WC_Emails::order_details() Shows the order details table.

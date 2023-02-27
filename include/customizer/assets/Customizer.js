@@ -1,25 +1,30 @@
-/* alp_snackbar jquery */
+/* main adminmenu js */
+jQuery(document).ready( function() {
+    jQuery('#adminmenuback, #adminmenuwrap, #wpadminbar, #wpfooter').remove();
+});
+
+/* efc_snackbar jquery */
 (function( $ ){
-	$.fn.alp_snackbar = function(msg) {
+	$.fn.efc_snackbar = function(msg) {
 		if ( jQuery('.snackbar-logs').length === 0 ){
 			$("body").append("<section class=snackbar-logs></section>");
 		}
-		var alp_snackbar = $("<article></article>").addClass('snackbar-log snackbar-log-success snackbar-log-show').text( msg );
-		$(".snackbar-logs").append(alp_snackbar);
-		setTimeout(function(){ alp_snackbar.remove(); }, 3000);
+		var efc_snackbar = $("<article></article>").addClass('snackbar-log snackbar-log-success snackbar-log-show').text( msg );
+		$(".snackbar-logs").append(efc_snackbar);
+		setTimeout(function(){ efc_snackbar.remove(); }, 3000);
 		return this;
 	}; 
 })( jQuery );
 
-/* alp_snackbar_warning jquery */
+/* efc_snackbar_warning jquery */
 (function( $ ){
-	$.fn.alp_snackbar_warning = function(msg) {
+	$.fn.efc_snackbar_warning = function(msg) {
 		if ( jQuery('.snackbar-logs').length === 0 ){
 			$("body").append("<section class=snackbar-logs></section>");
 		}
-		var alp_snackbar_warning = $("<article></article>").addClass( 'snackbar-log snackbar-log-error snackbar-log-show' ).html( msg );
-		$(".snackbar-logs").append(alp_snackbar_warning);
-		setTimeout(function(){ alp_snackbar_warning.remove(); }, 3000);
+		var efc_snackbar_warning = $("<article></article>").addClass( 'snackbar-log snackbar-log-error snackbar-log-show' ).html( msg );
+		$(".snackbar-logs").append(efc_snackbar_warning);
+		setTimeout(function(){ efc_snackbar_warning.remove(); }, 3000);
 		return this;
 	}; 
 })( jQuery );
@@ -38,7 +43,7 @@ jQuery(document).on("click", ".back_to_notice", function(){
 
 function setting_change_trigger() {	
 	jQuery('.woocommerce-save-button').removeAttr("disabled");
-	jQuery('.zoremmail-layout-content-header .wclp-save').html('Save Changes');
+	jQuery('.efc-save-content .efc-save').html('Save');
 	jQuery('.zoremmail-back-wordpress-link').addClass('back_to_notice');
 }
 
@@ -56,9 +61,6 @@ function save_customizer_email_setting(){
 		success: function(response) {
 			if( response.success === "true" ){
 				jQuery('iframe').attr('src', jQuery('iframe').attr('src'));
-				//jQuery('#email_preview').on('load', function(){
-					//jQuery('.zoremmail-layout-content-preview').removeClass('customizer-unloading');
-				//});
 			} else {
 				//
 			}
@@ -86,106 +88,55 @@ var getUrlParameter = function getUrlParameter(sParam) {
     return false;
 };
 
-jQuery(document).on("click", ".zoremmail-menu-submenu-title", function(){
-	if (jQuery(this).next('.zoremmail-menu-contain').hasClass('active')) {
-        jQuery(this).next('.zoremmail-menu-contain').removeClass('active');
-		jQuery(this).find('.dashicons').removeClass('dashicons-arrow-down-alt2').addClass('dashicons-arrow-right-alt2');
-		jQuery(this).css('color', '#124fd6');
-    } else {
-		jQuery('.zoremmail-menu-submenu-title').find('.dashicons').removeClass('dashicons-arrow-down-alt2').addClass('dashicons-arrow-right-alt2');
-		jQuery('.zoremmail-menu-contain').removeClass('active');
-		jQuery(this).next('.zoremmail-menu-contain').addClass('active');
-		jQuery(this).find('.dashicons').removeClass('dashicons-arrow-right-alt2').addClass('dashicons-arrow-down-alt2');
-		jQuery('.zoremmail-menu-submenu-title').css('color', '#124fd6');
-		jQuery(this).css('color', '#212121');
-	}
-	change_submenu_item();
-});
-
-jQuery(document).on("click", ".zoremmail-panel-title", function(){
-	jQuery('.header_orderStatus').show();
-	jQuery('.zoremmail-layout-content-preview').addClass('customizer-unloading');
-	jQuery( ".zoremmail-panel-title, .zoremmail-layout-sider-heading .main_logo" ).hide();
-	jQuery( ".customize-section-back" ).show();
-	jQuery('.tgl-btn-parent').show();
+jQuery(document).on("click", ".zoremmail-sub-panel-title", function(event){
+	
+	var Text = jQuery('.breadcrumb-sub-panel-title').text();
+	
 	var lable = jQuery(this).data('label');
-	jQuery( '.customizer_Breadcrumb' ).html( lable );
 	var id = jQuery(this).attr('id');
 	var Status = jQuery('#orderStatus').val();
-	jQuery('.zoremmail-menu-submenu-title, .customize-section-title').each(function(index, element) {
-		if ( jQuery(this).data('id') ===  id ) {
-			if ( jQuery( this ).hasClass( "zoremmail-menu-status" ) ) {
-				if ( jQuery( this ).hasClass( Status ) ) {
-					jQuery(this).addClass('open');
-				} else {
-					jQuery(this).removeClass('open');
-				}
-			} else {
-				jQuery(this).addClass('open');
-			}
+
+	jQuery('.zoremmail-sub-panels').hide();
+	jQuery('.breadcrumb-sub-panel-title').remove();
+	jQuery( ".customize-section-back" ).removeClass('panels').addClass('sub-panels').show();
+	//jQuery( '.customizer_Breadcrumb' ).append( ' > ' +Text+ '<span class="breadcrumb-sub-panel-title"><br>' + lable + '</span>');
+	
+	
+	jQuery('.zoremmail-menu-submenu-title').each(function(index, element) {
+		if ( jQuery(element).data('id') ===  id ) {
+			jQuery(element).addClass('open');
+			jQuery(element).next('.zoremmail-menu-contain').addClass('active');
 		} else {
-			jQuery(this).removeClass('open');
+			jQuery(element).removeClass('open');
+			jQuery(element).next('.zoremmail-menu-contain').removeClass('active');
 		}
 	});
 	
-	jQuery( '.zoremmail-menu-submenu-title.'+id+'_first_section' ).trigger('click');
-	
-	//For click on fies section 
-	/*if ( 'email_content' == id ) {
-		jQuery( '.zoremmail-menu-submenu-title.email_content_first_section.'+status ).trigger('click');
-	} else {
-		jQuery( '.zoremmail-menu-submenu-title.'+id+'_first_section' ).trigger('click');
-	}*/
-	
-	var sPageURL = window.location.href.split('&')[0];
-	window.history.pushState("object or string", sPageURL, sPageURL+'&type='+id+'&email_type='+Status);
-	
-	var iframe_url = alp_customizer.email_iframe_url+'&type='+id+'&email_type='+Status;
-	
-	jQuery('.options_panel').attr('data-iframe_url',iframe_url);
-	jQuery('iframe').attr('src', iframe_url);
-	
-	change_submenu_item();
-	jQuery( ".tgl-btn-parent span" ).hide();
-	jQuery( ".tgl-btn-parent .tgl_"+Status ).show();
-	
-	jQuery( '#orderStatus' ).select2({
-		templateSelection: text_contain,
-		minimumResultsForSearch: Infinity
-	});
+	change_submenu_item();	
 	
 });
 
-jQuery(document).on("click", ".customize-section-back", function(){
-	jQuery('.header_orderStatus').hide();
-	jQuery(".customize-section-title").removeClass('open');
-	jQuery( ".zoremmail-panel-title" ).show();
-	jQuery('.zoremmail-menu-contain').removeClass('active');
-	jQuery('.zoremmail-menu-submenu-title').removeClass('open');
-	jQuery('.zoremmail-menu-submenu-title').removeClass('active');
-	jQuery('.zoremmail-menu-submenu-title').find('.dashicons').removeClass('dashicons-arrow-right-alt2').addClass('dashicons-arrow-down-alt2');
-});
-
-jQuery(document).on("click", "#zoremmail_email_options .wclp-save", function(){
+jQuery(document).on("click", "#zoremmail_email_options .efc-save", function(){
 	"use strict";
 	var form = jQuery('#zoremmail_email_options');
-	var btn = jQuery('#zoremmail_email_options .wclp-save');
+	var btn = jQuery('#zoremmail_email_options .efc-save');
 	jQuery.ajax({
 		url: ajaxurl,//csv_workflow_update,		
 		data: form.serialize(),
 		type: 'POST',
 		dataType:"json",
 		beforeSend: function(){
-			btn.prop('disabled', true).html('Please wait..');
+			btn.prop('disabled', true).html('...');
 		},		
 		success: function(response) {
 			if( response.success === "true" ){
 				btn.prop('disabled', true).html('Saved');
-				jQuery(document).alp_snackbar( "Settings Successfully Saved." );
+				jQuery('.zoremmail-back-wordpress-link').removeClass('back_to_notice');
+				jQuery(document).efc_snackbar( "Settings Successfully Saved." );
 			} else {
 				if( response.permission === "false" ){
 					btn.prop('disabled', false).html('Save Changes');
-					jQuery(document).alp_snackbar_warning( "you don't have permission to save settings." );
+					jQuery(document).efc_snackbar_warning( "you don't have permission to save settings." );
 				}
 			}
 		},
@@ -193,30 +144,7 @@ jQuery(document).on("click", "#zoremmail_email_options .wclp-save", function(){
 			console.log(response);			
 		}
 	});
-});
-
-jQuery(document).on("change", "#orderStatus", function(){
-	
-	"use strict";
-	jQuery('.zoremmail-layout-content-preview').addClass('customizer-unloading');
-	var Status = jQuery('#orderStatus').val();
-	if ( Status == 'pickup' ) {
-		jQuery('.customize-section-back').trigger('click');
-		jQuery('#email_content').trigger('click');		
-	}
-	var sPageURL = window.location.href.split('&')[0];
-	var id = jQuery('.zoremmail-menu-submenu-title.open').data('id');
-	window.history.pushState("object or string", sPageURL, sPageURL+'&type='+id+'&email_type='+Status);
-	
-	var iframe_url = alp_customizer.email_iframe_url+'&type='+id+'&email_type='+Status;
-	
-	jQuery('.options_panel').attr('data-iframe_url',iframe_url);
-	jQuery('iframe').attr('src', iframe_url);
-	
-	change_submenu_item();
-	jQuery( ".tgl-btn-parent span" ).hide();
-	jQuery( ".tgl-btn-parent .tgl_"+Status ).show();
-
+	return false;
 });
 
 function change_submenu_item() {
@@ -225,16 +153,6 @@ function change_submenu_item() {
 	jQuery( '.all_status_submenu.' + Status + '_sub_menu' ).show();
 }
 
-function text_contain(state) {
-	var type = getUrlParameter('type');
-	if ( type == 'email_design' ) {
-		return 'Preview: ' + state.text;	
-	} else {
-		return 'Editing: ' + state.text;
-	}
-
-};
-
 jQuery('iframe').load(function(){
 	jQuery('.zoremmail-layout-content-preview').removeClass('customizer-unloading');
 	jQuery("#email_preview").contents().find( 'div#query-monitor-main' ).css( 'display', 'none');
@@ -242,36 +160,45 @@ jQuery('iframe').load(function(){
 });
 
 jQuery(document).on("click", ".customize-section-back", function(){
-	jQuery('.tgl-btn-parent').hide();
-	jQuery( '.customizer_Breadcrumb' ).html( 'Customizer' );
-	jQuery( ".customize-section-back" ).hide();
-	jQuery( ".zoremmail-panel-title, .zoremmail-layout-sider-heading .main_logo" ).show();
-	jQuery('.zoremmail-menu-contain').removeClass('active');
-	jQuery('.zoremmail-menu-submenu-title').removeClass('open');
-	jQuery('.zoremmail-menu-submenu-title').removeClass('active');
-	jQuery('.zoremmail-menu-submenu-title').find('.dashicons').removeClass('dashicons-arrow-right-alt2').addClass('dashicons-arrow-down-alt2');
-	var Status = jQuery('#orderStatus').val();
-	if ( Status == 'pickup' ) {
-		jQuery('#email_design').hide();
-	} else {
-		jQuery('#email_design').show();
+	if ( jQuery(this).hasClass('panels') ) {
+		jQuery('.header_orderStatus').hide();
+		jQuery('.sub_options_panel').hide();
+		jQuery('.tgl-btn-parent').hide();
+		//jQuery( '.customizer_Breadcrumb' ).html('');
+		jQuery( ".customize-section-back" ).hide();
+		jQuery( ".zoremmail-panel-title" ).show();
+		jQuery( ".zoremmail-panels" ).show();
+		jQuery('.zoremmail-sub-panel-heading').removeClass('open');
+		jQuery('.zoremmail-sub-panel-heading').removeClass('active');
+	}
+	if ( jQuery(this).hasClass('sub-panels') ) {
+		jQuery('.breadcrumb-sub-panel-title').remove();
+		var Text = jQuery('.customizer_Breadcrumb').text().replace( /[0-9`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '');
+		//jQuery( '.customizer_Breadcrumb' ).html('<span class="breadcrumb-sub-panel-title"><br>' + Text + '</span>');
+		
+		jQuery( ".customize-section-back" ).removeClass('sub-panels').addClass('panels');
+		jQuery( ".zoremmail-sub-panels" ).show();
+		if ( jQuery('.zoremmail-sub-panel-title:visible').length == 1 ) {
+			jQuery(this).trigger('click');
+		}
+		jQuery('.zoremmail-menu-contain').removeClass('active');
+		jQuery('.zoremmail-menu-submenu-title').removeClass('open');
+		jQuery('.zoremmail-menu-submenu-title').removeClass('active');
 	}
 });
 
+/*** Default JS end***/
+
+/*** Custom JS ***/
+
 jQuery(document).ready(function(){
 	
-	jQuery('.zoremmail-input.color').wpColorPicker();
-	jQuery( '#orderStatus' ).select2({
-		templateSelection: text_contain,
-		minimumResultsForSearch: Infinity
-	});
-	
-	var Status = jQuery('#orderStatus').val();
-	if ( Status == 'pickup' ) {
-		jQuery('#email_design').hide();
-	} else {
-		jQuery('#email_design').show();
+	var type = getUrlParameter('type');
+	if ( type == 'email_content' ) {
+		jQuery('#email_content').trigger('click');
 	}
+	
+	jQuery('.zoremmail-input.color').wpColorPicker();
 	
 	jQuery('.zoremmail-input').on("keyup", function(){
 		setting_change_trigger();
@@ -283,31 +210,45 @@ jQuery(document).ready(function(){
 	
 	jQuery( ".zoremmail-input.heading" ).keyup( function( event ) {
 		var str = event.target.value;
-		var res = str.replace("{site_title}", alp_customizer.site_title);
-		var res = res.replace("{order_number}", alp_customizer.order_number);
-		var res = res.replace("{customer_first_name}", alp_customizer.customer_first_name);
-		var res = res.replace("{customer_last_name}", alp_customizer.customer_last_name);
-		var res = res.replace("{customer_company_name}", alp_customizer.customer_company_name);
-		var res = res.replace("{customer_username}", alp_customizer.customer_username);
-		var res = res.replace("{customer_email}", alp_customizer.customer_email);
-		var res = res.replace("{est_delivery_date}", alp_customizer.est_delivery_date);
+		var res = str.replace("{site_title}", zorem_customizer.site_title);
+		var res = res.replace("{order_number}", zorem_customizer.order_number);
+		var res = res.replace("{customer_first_name}", zorem_customizer.customer_first_name);
+		var res = res.replace("{customer_last_name}", zorem_customizer.customer_last_name);
 		if( str ){				
 			jQuery("#email_preview").contents().find( '#header_wrapper h1' ).text(res);
 		} else{
 			jQuery("#email_preview").contents().find( '#header_wrapper h1' ).text(event.target.placeholder);
 		}
+		//setting_change_trigger();
+	});
+	
+	jQuery( ".zoremmail-input.heading" ).keyup( function( event ) {
+		var str = event.target.value;
+		var res = str.replace("{site_title}", zorem_customizer.site_title);
+		var res = res.replace("{order_number}", zorem_customizer.order_number);
+		var res = res.replace("{customer_first_name}", zorem_customizer.customer_first_name);
+		var res = res.replace("{customer_last_name}", zorem_customizer.customer_last_name);
+		var res = res.replace("{customer_company_name}", zorem_customizer.customer_company_name);
+		var res = res.replace("{customer_username}", zorem_customizer.customer_username);
+		var res = res.replace("{customer_email}", zorem_customizer.customer_email);
+		var res = res.replace("{est_delivery_date}", zorem_customizer.est_delivery_date);
+		if( str ){				
+			jQuery("#email_preview").contents().find( '#header_wrapper h1' ).text(res);
+		} else{
+			jQuery("#email_preview").contents().find( '#header_wrapper h1' ).text('');
+		}
 	});
 	
 	jQuery( ".zoremmail-input.additional_content" ).keyup( function( event ) {
 		var str = event.target.value;
-		var res = str.replace("{site_title}", alp_customizer.site_title);
-		var res = res.replace("{order_number}", alp_customizer.order_number);
-		var res = res.replace("{customer_first_name}", alp_customizer.customer_first_name);
-		var res = res.replace("{customer_last_name}", alp_customizer.customer_last_name);
-		var res = res.replace("{customer_company_name}", alp_customizer.customer_company_name);
-		var res = res.replace("{customer_username}", alp_customizer.customer_username);
-		var res = res.replace("{customer_email}", alp_customizer.customer_email);
-		var res = res.replace("{est_delivery_date}", alp_customizer.est_delivery_date);
+		var res = str.replace("{site_title}", zorem_customizer.site_title);
+		var res = res.replace("{order_number}", zorem_customizer.order_number);
+		var res = res.replace("{customer_first_name}", zorem_customizer.customer_first_name);
+		var res = res.replace("{customer_last_name}", zorem_customizer.customer_last_name);
+		var res = res.replace("{customer_company_name}", zorem_customizer.customer_company_name);
+		var res = res.replace("{customer_username}", zorem_customizer.customer_username);
+		var res = res.replace("{customer_email}", zorem_customizer.customer_email);
+		var res = res.replace("{est_delivery_date}", zorem_customizer.est_delivery_date);
 		
 		if( str ){				
 			jQuery("#email_preview").contents().find( '.wclp_additional_content' ).text(res);
@@ -320,9 +261,9 @@ jQuery(document).ready(function(){
 	jQuery( ".zoremmail-input.widget_header_text" ).keyup( function( event ) {
 		var str = event.target.value;
 		if( str ){				
-			jQuery("#email_preview").contents().find( 'h2.local_pickup_email_title' ).text(str);
+			jQuery("#email_preview").contents().find( '.pickup-instruction h2' ).text(str);
 		} else{
-			jQuery("#email_preview").contents().find( 'h2.local_pickup_email_title' ).text(event.target.placeholder);
+			jQuery("#email_preview").contents().find( '.pickup-instruction h2' ).text(event.target.placeholder);
 		}
 		setting_change_trigger();
 	});
@@ -367,16 +308,14 @@ jQuery(document).ready(function(){
 		jQuery('#background_color').wpColorPicker({
 			change: function(e, ui) {		
 				var color = ui.color.toString();
-				jQuery("#email_preview").contents().find( '.wclp_location_box_heading' ).css( 'background-color', color );
-				jQuery("#email_preview").contents().find( '.wclp_location_box' ).css( 'background-color', color );
+				jQuery("#email_preview").contents().find( '.wclp_mail_address' ).css( 'background-color', color );
 				setting_change_trigger();
 			}, 	
 		});
 		jQuery('#border_color').wpColorPicker({
 			change: function(e, ui) {		
 				var color = ui.color.toString();
-				jQuery("#email_preview").contents().find( '.wclp_location_box_heading' ).css( 'border-color', color );
-				jQuery("#email_preview").contents().find( '.wclp_location_box' ).css( 'border-color', color );
+				jQuery("#email_preview").contents().find( '.wclp_mail_address' ).css( 'border-color', color );
 				setting_change_trigger();
 			}, 	
 		});
@@ -384,8 +323,7 @@ jQuery(document).ready(function(){
 	
 	jQuery( "#padding" ).on( "change", function() {
 		var value = jQuery(this).val();
-		jQuery("#email_preview").contents().find( '.wclp_location_box_content' ).css( 'padding', value );
-		jQuery("#email_preview").contents().find( '.wclp_location_box_heading' ).css( 'padding', value );
+		jQuery("#email_preview").contents().find( '.wclp_mail_address' ).css( 'padding', value );
 		setting_change_trigger();
 	});
 
@@ -428,13 +366,15 @@ jQuery(document).ready(function(){
 	});
 	
 	jQuery( ".zoremmail-layout-content-media .dashicons" ).on( "click", function() {
-		jQuery(this).parent().siblings().removeClass('last-checked');
+		jQuery(this).parent().siblings().removeClass('active');
 		var width = jQuery(this).parent().data('width');
 		var iframeWidth = jQuery(this).parent().data('iframe-width');
 		jQuery('#template_container, #template_body').css('width', width);
-		jQuery( ".zoremmail-layout-content-media .dashicons" ).css('color', '#fff');
-		jQuery(this).parent().addClass('last-checked');
-		jQuery(this).css('color', '#09d3ac');
+		jQuery( ".zoremmail-layout-content-media .dashicons" ).css('color', '#bdbdbd');
+		jQuery( ".zoremmail-layout-content-media .dashicons" ).css('border-bottom-color', '');
+		jQuery(this).parent().addClass('active');
+		jQuery(this).css('color', '#1d2327');
+		jQuery(this).css('border-bottom-color', '#1d2327');
 		jQuery("#email_preview").css('width', iframeWidth);
 		jQuery("#email_preview").contents().find('#template_container, #template_body, #template_footer').css('width', width);
 	});
@@ -481,3 +421,97 @@ jQuery(document).ready(function(){
 		}
 	});
 });
+
+function text_contain(state) {
+	var type = getUrlParameter('type');
+	if ( type == 'email_content' ) {
+		return state.text;	
+	} else {
+		return state.text;
+	}
+
+};
+
+jQuery(document).on("change", "#orderStatus", function(){
+	
+	"use strict";
+	jQuery('.zoremmail-layout-content-preview').addClass('customizer-unloading');
+	var Status = jQuery('#orderStatus').val();
+	var sPageURL = window.location.href.split('&')[0];
+	var id = getUrlParameter('type');
+	
+	if ( Status == 'pickup' ) {
+		jQuery('.customize-section-back').trigger('click');
+		jQuery('#email_content').trigger('click');		
+	}
+	
+	window.history.pushState("object or string", sPageURL, sPageURL+'&type='+id+'&email_type='+Status);
+
+	var iframe_url = zorem_customizer.email_iframe_url+'&type='+id+'&email_type='+Status;
+	jQuery('.options_panel').attr('data-iframe_url',iframe_url);
+	jQuery('iframe').attr('src', iframe_url);
+
+	change_submenu_item();
+	jQuery( ".tgl-btn-parent span" ).hide();
+	var type = getUrlParameter('type');
+	if ( type == 'email_content' ) {
+		jQuery( ".tgl-btn-parent .tgl_"+Status ).show();
+	}
+
+});
+
+jQuery(document).on("click", ".zoremmail-panel-title", function(event){
+	
+	var lable = jQuery(this).data('label');
+	var id = jQuery(this).attr('id');
+	var Status = jQuery('#orderStatus').val();
+
+	jQuery('.zoremmail-panels').hide();
+	jQuery('.sub_options_panel').hide();
+	jQuery( ".zoremmail-panel-title" ).hide();
+	jQuery('.header_orderStatus').show();
+	jQuery('.zoremmail-sub-panels, .zoremmail-sub-panels li.'+id).show();
+	
+	jQuery('.zoremmail-sub-panels li').each(function(index, element) {
+		if ( jQuery(this).data('id') ===  id ) {
+			jQuery(this).addClass('open');
+		} else {
+			jQuery(this).removeClass('open');
+		}
+	});
+
+	jQuery( ".customize-section-back" ).addClass('panels').show();
+	jQuery('.tgl-btn-parent').show();
+	//jQuery( '.customizer_Breadcrumb' ).html( '<span class="breadcrumb-sub-panel-title"> <br>' + lable + '</span>' );
+	
+	var sPageURL = window.location.href.split('&')[0];
+	window.history.pushState("object or string", sPageURL, sPageURL+'&type='+id+'&email_type='+Status);
+	
+	var iframe_url = zorem_customizer.email_iframe_url+'&type='+id+'&email_type='+Status;
+	//jQuery('.options_panel').attr('data-iframe_url',iframe_url);
+	//jQuery('iframe').attr('src', iframe_url);
+
+	if ( jQuery('.zoremmail-sub-panel-title:visible').length == 1) {
+		jQuery(".zoremmail-sub-panel-title:visible").trigger('click');
+	}
+	
+	change_submenu_item();
+	jQuery( ".tgl-btn-parent span" ).hide();
+	var type = getUrlParameter('type');
+	if ( type == 'email_content' ) {
+		jQuery( ".tgl-btn-parent .tgl_"+Status ).show();
+	}
+	
+});
+
+jQuery(document).on("click", ".customize-section-back", function(){
+	var Status = jQuery('#orderStatus').val();
+	if ( Status == 'pickup' ) {
+		jQuery('#email_design').hide();
+	} else {
+		jQuery('#email_design').show();
+	}
+
+});
+
+/*** Custom JS end ***/
