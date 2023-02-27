@@ -5,11 +5,11 @@
 * Description: The Advanced Local Pickup (ALP) helps you handle local pickup orders more conveniently by extending the WooCommerce Local Pickup shipping method.
 * Author: zorem
 * Author URI: https://www.zorem.com/
-* Version: 1.4.0
+* Version: 1.5.2
 * Text Domain: advanced-local-pickup-for-woocommerce
 * Domain Path: /lang/
 * WC requires at least: 4.0
-* WC tested up to: 6.3
+* WC tested up to: 7.4
 */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -23,7 +23,7 @@ class Woocommerce_Local_Pickup {
 	 *
 	 * @var string
 	 */
-	public $version = '1.4.0';
+	public $version = '1.5.2';
 	
 	/**
 	 * Constructor
@@ -363,9 +363,9 @@ class Woocommerce_Local_Pickup {
 		</style>	
 		<div class="notice updated notice-success wplp-dismissable-notice">
 			<a href="<?php echo esc_url($dismissable_url); ?>" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></a>
-			<h2>Advanced Local Pickup PRO</h2>
-			<p>The Advanced Local Pickup Pro allows you to automate the local pickup workflow, set up multiple pickup locations, pickup appointments, custom emails templates, fulfillment dashboard, and more… </p>
-			<p>Limited time offer - Use code <strong>ALPPRO20</strong> to get 20% off on the Advanced Local Pickup Pro (valid by Mar 31st)</p>  
+			<h2>Upgrade to Advanced Local Pickup Pro!</h2>
+			<p>Automate your local pickup workflow, set up multiple pickup locations, allow customers to select pickup appointments, custom emails templates, store pickup fulfillment dashboard, and more… </p>
+			<p>Limited time offer - Use code <strong>ALPPRO20</strong> to get 20% off on your first year license.</p>  
 			<a class="button-primary btn_pro_notice" target="blank" href="https://www.zorem.com/product/advanced-local-pickup-pro/">Upgrade Now</a>
 			<a class="button-primary btn_pro_notice" href="<?php echo esc_url($dismissable_url); ?>">Dismiss</a>
 		</div>
@@ -636,3 +636,9 @@ function wc_local_pickup() {
  * Backward compatibility.
 */
 wc_local_pickup();
+
+add_action( 'before_woocommerce_init', function() {
+	if ( class_exists( '\Automattic\WooCommerce\Utilities\FeaturesUtil' ) ) {
+		\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true );
+	}
+} );

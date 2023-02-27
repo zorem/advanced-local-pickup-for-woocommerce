@@ -84,8 +84,7 @@ class WC_ALP_CUSTOMIZER_ADMIN {
 		add_action( 'admin_menu', array( $this, 'register_woocommerce_menu' ), 99 );
 		
 		//save of settings hook
-		add_action( 'wp_ajax_save_email_settings', array( $this, 'customizer_save_email_settings' ) );
-		//add_action( 'wp_ajax_save_header_setting', array( $this, 'customizer_header_section_settings' ) );
+		add_action( 'wp_ajax_alp_save_email_settings', array( $this, 'customizer_save_email_settings' ) );
 		
 		add_action( 'wp_ajax_email_preview', array( $this, 'get_preview_email' ) );
 		
@@ -138,84 +137,49 @@ class WC_ALP_CUSTOMIZER_ADMIN {
 		$email_type = !empty( $_GET['email_type'] ) ? sanitize_text_field($_GET['email_type']) : get_option( 'orderStatus', 'ready_pickup' );
 		
 		$iframe_url = $this->get_email_preview_url( $email_type );
-		$email_types = array(
-			'ready_pickup'		=> esc_html__( 'Ready for Pickup', 'advanced-local-pickup-for-woocommerce' ),
-			'pickup'			=> esc_html__( 'Picked Up', 'advanced-local-pickup-for-woocommerce' ),
-		);
+
 		// When load this page will not show adminbar
 		?>
-		<style type="text/css">
-			#wpcontent, #wpbody-content, .wp-toolbar {margin: 0 !important;padding: 0 !important;}
-			#adminmenuback, #adminmenuwrap, #wpadminbar, #wpfooter, .notice, div.error, div.updated { display: none !important; }
-		</style>
-		<script type="text/javascript" id="zoremmail-onload">
-			jQuery(document).ready( function() {
-				jQuery('#adminmenuback, #adminmenuwrap, #wpadminbar, #wpfooter').remove();
-			});
-		</script>
 		<section class="zoremmail-layout zoremmail-layout-has-sider">
 			<form method="post" id="zoremmail_email_options" class="zoremmail_email_options" style="display: contents;">
 				<section class="zoremmail-layout zoremmail-layout-has-content zoremmail-layout-sider">
-					<div class="zoremmail-layout-slider-header">
-						<div class="zoremmail-layout-sider-heading">
-							<img class="main_logo" src="<?php echo plugin_dir_url(__FILE__) . 'assets/alp-icon.png'; ?>" width="30px" height="30px">
-							<button type="button" class="customize-section-back" tabindex="0">
-								<span class="dashicons dashicons-arrow-left-alt2"></span>
-							</button>
-							<h5 class="sider-heading"><?php esc_html_e( 'Customizing', 'advanced-local-pickup-for-woocommerce' ); ?> > <span class="customizer_Breadcrumb"><?php echo esc_html__( 'Email Settings', 'advanced-local-pickup-for-woocommerce' ); ?></span></h5>
-						</div>
-					</div>
-					<div class="zoremmail-layout-slider-content">
+					<aside class="zoremmail-layout-slider-header">
+						<button type="button" class="wordpress-to-back" tabindex="0">
+							<a class="zoremmail-back-wordpress-link" href="#"><span class="zoremmail-back-wordpress-title dashicons dashicons-no-alt"></span></a>
+						</button>
+						<button type="button" class="wordpress-to-back" tabindex="0">
+							<?php $back_link =  admin_url().'admin.php?page=local_pickup'; ?>
+							<a class="zoremmail-back-wordpress-link" href="<?php echo esc_html( $back_link ); ?>"><span class="zoremmail-back-wordpress-title dashicons dashicons-no-alt"></span></a>
+						</button>
+						<span class="efc-save-content" style="float: right;">
+							<button name="save" class="efc-btn efc-save button-primary woocommerce-save-button" type="submit" value="Save changes" disabled>Saved</button>
+							<?php wp_nonce_field( 'customizer_email_options_actions', 'customizer_email_options_nonce_field' ); ?>
+							<input type="hidden" name="action" value="alp_save_email_settings">
+						</span>
+					</aside>
+					<aside class="zoremmail-layout-slider-content">
 						<div class="zoremmail-layout-sider-container">
 							<?php $this->get_html( $this->customize_setting_options_func() ); ?>
 						</div>
-					</div>
+					</aside>
+					<aside class="zoremmail-layout-content-collapse">
+						<div class="zoremmail-layout-content-media" style="float: right;">
+							<a data-width="600px" data-iframe-width="100%" class="active"><span class="dashicons dashicons-desktop"></span></a>
+							<a data-width="600px" data-iframe-width="610px"><span class="dashicons dashicons-tablet"></span></a>
+							<a data-width="400px" data-iframe-width="410px"><span class="dashicons dashicons-smartphone"></span></a>
+						</div>
+					</aside>
+					<button type="button" class="wordpress-to-back" tabindex="0">
+						<?php $back_link =  admin_url().'admin.php?page=local_pickup'; ?>
+						<a class="zoremmail-back-wordpress-link" href="<?php echo esc_html( $back_link ); ?>"><span class="zoremmail-back-wordpress-title dashicons dashicons-no-alt"></span></a>
+					</button>
 				</section>
 				<section class="zoremmail-layout zoremmail-layout-has-content">
-					<div class="zoremmail-layout-content-header">
-						<div class="header-panel options-content">
-							<span class="header_orderStatus" style="display: none;">
-								<select name="orderStatus" id="orderStatus" class="select" >
-									<?php foreach( $email_types as $key => $status) { ?>
-											<option value="<?php echo esc_html($key); ?>" <?php echo $email_type == $key ? 'selected' : ''; ?>><?php echo esc_html(wc_get_order_status_name($status)); ?></option>
-									<?php } ?>
-								</select>
-							</span>
-							<span class="wclp-save-content" style="float: right;">
-								<span class="tgl-btn-parent" style="display:none;">
-									<?php foreach ( $email_types as $Key => $Value ) { ?>
-										<span class="tgl_<?php esc_attr_e( $Key ); ?>" <?php echo $email_type == $Key ? '' : 'style="display:none;"'; ?>>
-											<?php
-												$email_settings = get_option('woocommerce_customer_'.$Key.'_order_settings', array());
-												$id = $Key.'_enabled'
-											?>
-											<input type="hidden" name="<?php esc_attr_e( $id ); ?>" value="no">
-											<input type="checkbox" id="<?php esc_attr_e( $id ); ?>" name="<?php esc_attr_e( $id ); ?>" class="tgl tgl-flat" <?php echo isset($email_settings['enabled']) && $email_settings['enabled'] == 'yes' ? 'checked' : ''; ?> value="yes">
-											<label class="tgl-btn" for="<?php esc_attr_e( $id ); ?>"></label>
-											<label for="<?php esc_attr_e( $id ); ?>"><?php esc_html_e( 'Enable email', 'trackship-for-woocommerce' ); ?></label>
-										</span>
-									<?php } ?>
-								</span>
-								<button name="save" class="wclp-btn wclp-save button-primary woocommerce-save-button" type="submit" value="Save changes" disabled>Saved</button>
-								<?php wp_nonce_field( 'customizer_email_options_actions', 'customizer_email_options_nonce_field' ); ?>
-								<input type="hidden" name="action" value="save_email_settings">
-								<span class="zoremmail-back-wordpress">
-									<?php $back_link =  admin_url().'admin.php?page=local_pickup'; ?>
-									<a class="zoremmail-back-wordpress-link" href="<?php echo esc_html( $back_link ); ?>"><span class="zoremmail-back-wordpress-title dashicons dashicons-no-alt"></span></span></a>
-								</span>
-							</span>
-						</div>
-					</div>
 					<div class="zoremmail-layout-content-container">
 						<section class="zoremmail-layout-content-preview customize-preview">
 							<div id="overlay"></div>
-							<iframe id="email_preview" src="<?php esc_attr_e($iframe_url);?>" style="width: 100%;height: 100%;display: block;margin: 0 auto;"></iframe>
+							<iframe id="email_preview" src="<?php esc_attr_e($iframe_url); ?>" style="width: 100%;height: 100%;display: block;margin: 0 auto;"></iframe>
 						</section>
-						<aside class="zoremmail-layout-content-media">
-							<a data-width="600px" data-iframe-width="100%"><span class="dashicons dashicons-desktop"></span></a>
-							<a data-width="600px" data-iframe-width="610px"><span class="dashicons dashicons-tablet"></span></a>
-							<a data-width="400px" data-iframe-width="410px"><span class="dashicons dashicons-smartphone"></span></a>
-						</aside>
 					</div>
 				</section>
 			</form>
@@ -244,10 +208,10 @@ class WC_ALP_CUSTOMIZER_ADMIN {
 		wp_enqueue_script( 'select2');
 		
 		// Add tiptip js and css file		
-		wp_enqueue_style( 'wclp-customizer', plugin_dir_url(__FILE__) . 'assets/Customizer.css', array(), wc_local_pickup()->version );
-		wp_enqueue_script( 'wclp-customizer', plugin_dir_url(__FILE__) . 'assets/Customizer.js', array( 'jquery', 'wp-util', 'wp-color-picker','jquery-tiptip' ), wc_local_pickup()->version, true );
+		wp_enqueue_style( 'wclp-customizer', plugin_dir_url(__FILE__) . 'assets/customizer.css', array(), wc_local_pickup()->version );
+		wp_enqueue_script( 'wclp-customizer', plugin_dir_url(__FILE__) . 'assets/customizer.js', array( 'jquery', 'wp-util', 'wp-color-picker','jquery-tiptip' ), wc_local_pickup()->version, true );
 		
-		wp_localize_script('wclp-customizer', 'alp_customizer', array(
+		wp_localize_script('wclp-customizer', 'zorem_customizer', array(
 			'site_title'			=> get_bloginfo( 'name' ),
 			'order_number'			=> 1,
 			'customer_first_name'	=> 'Sherlock',
@@ -374,20 +338,70 @@ class WC_ALP_CUSTOMIZER_ADMIN {
 			'email_content'	=> array(
 				'id'	=> 'email_content',
 				'class' => 'options_panel',
-				'label'	=> esc_html__( 'Email Notifications', 'trackship-for-woocommerce' ),
-				'title'	=> esc_html__( 'Email Content', 'trackship-for-woocommerce' ),
+				'label'	=> esc_html__( 'Email Notifications', 'advanced-local-pickup-pro' ),
+				'title'	=> esc_html__( 'Email Content', 'advanced-local-pickup-pro' ),
 				'type'	=> 'panel',
-				'iframe_url' => $email_iframe_url,
+				'iframe_url' => '',
 				'show'	=> true,
 			),
 			'email_design'	=> array(
 				'id'	=> 'email_design',
 				'class' => 'options_panel',
-				'label' => esc_html__( 'Email Style', 'trackship-for-woocommerce' ),
-				'title'	=> esc_html__( 'Email Design', 'trackship-for-woocommerce' ),
+				'label' => esc_html__( 'Email Style', 'advanced-local-pickup-pro' ),
+				'title'	=> esc_html__( 'Email Design', 'advanced-local-pickup-pro' ),
 				'type'	=> 'panel',
-				'iframe_url' => $email_iframe_url,
+				'iframe_url' => '',
 				'show'	=> true,
+			),
+			
+			//sub-panels
+			'header' => array(
+				'id'     => 'email_content',
+				'title'       => esc_html__( 'Email Content', 'advanced-local-pickup-pro' ),
+				'type'     => 'sub-panel-heading',
+				'parent'	=> 'email_content',
+				'show'     => true,
+				'class' => 'sub_options_panel',
+			),
+			'email_settings' => array(
+				'id'	=> 'email_settings',
+				'title'	=> esc_html__( 'Email Settings', 'trackship-for-woocommerce' ),
+				'type'	=> 'sub-panel',
+				'parent'=> 'email_content',
+				'show'	=> true,
+				'class' => 'sub_options_panel',
+			),
+			'header2' => array(
+				'id'     => 'email_design',
+				'title'       => esc_html__( 'Email Design', 'advanced-local-pickup-pro' ),
+				'type'     => 'sub-panel-heading',
+				'parent'	=> 'email_design',
+				'show'     => true,
+				'class' => 'sub_options_panel',
+			),
+			'widget_style' => array(
+				'id'     => 'widget_style',
+				'title'       => esc_html__( 'Widget Style', 'advanced-local-pickup-pro' ),
+				'type'     => 'sub-panel',
+				'parent'	=> 'email_design',
+				'show'     => true,
+				'class' => 'sub_options_panel',
+			),
+			'widget_header' => array(
+				'id'     => 'widget_header',
+				'title'       => esc_html__( 'Widget Header', 'advanced-local-pickup-pro' ),
+				'type'     => 'sub-panel',
+				'parent'	=> 'email_design',
+				'show'     => true,
+				'class' => 'sub_options_panel',
+			),
+			'pickup_location_info' => array(
+				'id'     => 'pickup_location_info',
+				'title'       => esc_html__( 'Pickup Location info', 'advanced-local-pickup-pro' ),
+				'type'     => 'sub-panel',
+				'parent'	=> 'email_design',
+				'show'     => true,
+				'class' => 'sub_options_panel',
 			),
 			
 			//section
@@ -517,9 +531,18 @@ class WC_ALP_CUSTOMIZER_ADMIN {
 			'class' => 'email_content_first_section ',
 			'title'	=> esc_html__( 'Email Settings', 'trackship-for-woocommerce' ),
 			'type'	=> 'section',
-			'parent'=> 'email_content',
+			'parent'=> 'email_settings',
 			'show'	=> true,
 		);
+
+		$settings[ 'orderStatus' ] = array(
+			'title'    => esc_html__( 'Email type', 'advanced-local-pickup-pro' ),
+			'type'     => 'select',
+			'default'  => !empty($email_type) ? $email_type : 'ready_pickup',
+			'show'     => true,
+			'options'  => $all_statuses,
+		);
+		
 		
 		foreach ( $all_statuses as $key => $value ) {
 						
@@ -528,7 +551,7 @@ class WC_ALP_CUSTOMIZER_ADMIN {
 				'title'    => esc_html__( 'Enable email', 'advanced-local-pickup-for-woocommerce' ),
 				'default'  => !empty($email_settings['enabled']) ? $email_settings['enabled'] : 'yes',
 				'type'     => 'tgl-btn',
-				'show'     => false,
+				'show'     => true,
 				'option_name'=> 'woocommerce_customer_'.$key.'_order_settings',
 				'option_key'=> 'enabled',
 				'option_type'=> 'array',
@@ -602,13 +625,22 @@ class WC_ALP_CUSTOMIZER_ADMIN {
 	public function get_html( $arrays ) {
 		
 		echo '<ul class="zoremmail-panels">';
+		?>
+		<div class="customize-section-title">
+			<h3>
+				<span class="customize-action">
+					<?php esc_html_e( 'Local Pickup', 'advanced-local-pickup-pro' ); ?>
+				</span>
+				<?php esc_html_e( 'Email Customizer', 'advanced-local-pickup-pro' ); ?>
+			</h3>
+		</div>
+		<?php
 		foreach ( (array) $arrays as $id => $array ) {
-			
-			if ( isset($array['show']) && $array['show'] != true ) {
+			if ( isset($array['show']) && true != $array['show'] ) {
 				continue; 
 			}
 
-			if ( isset($array['type']) && $array['type'] == 'panel' ) {
+			if ( isset($array['type']) && 'panel' == $array['type'] ) {
 				?>
 				<li id="<?php isset($array['id']) ? esc_attr_e($array['id']) : ''; ?>" data-label="<?php isset($array['title']) ? esc_html_e($array['title']) : ''; ?>" data-iframe_url="<?php isset($array['iframe_url']) ? esc_attr_e($array['iframe_url']) : ''; ?>" class="zoremmail-panel-title <?php isset($array['class']) ? esc_attr_e($array['class']) : ''; ?>">
 					<span><?php isset($array['title']) ? esc_html_e($array['title']) : ''; ?></span>
@@ -616,36 +648,88 @@ class WC_ALP_CUSTOMIZER_ADMIN {
 				</li>
 				<?php
 			}
+
 		}
 		echo '</ul>';
-
-		echo '<ul class="zoremmail-panels-back" style="margin: 0;">';
+		
+		echo '<ul class="zoremmail-sub-panels" style="display:none;">';
 		foreach ( (array) $arrays as $id => $array ) {
 			
-			if ( isset($array['show']) && $array['show'] != true ) {
+			if ( isset($array['show']) && true != $array['show'] ) {
 				continue; 
 			}
+			
+			if ( isset($array['type']) && 'sub-panel-heading' == $array['type'] ) {
+				?>
+				<li data-id="<?php isset($array['parent']) ? esc_attr_e($array['parent']) : ''; ?>" class="zoremmail-sub-panel-heading <?php isset($array['class']) ? esc_attr_e($array['class']) : ''; ?> <?php isset($array['parent']) ? esc_attr_e($array['parent']) : ''; ?>">
+					<?php /*<button type="button" class="customize-section-back" tabindex="0">
+						<span class="dashicons dashicons-arrow-left-alt2"></span>
+					</button>
+					<span><?php esc_html_e( $array['title'] ); ?></span>*/ ?>
+					<div class="customize-section-title">
+						<button type="button" class="customize-section-back" tabindex="0">
+							<span class="screen-reader-text">Back</span>
+						</button>
+						<h3>
+							<span class="customize-action">
+								<?php esc_html_e( 'You are customizing', 'advanced-local-pickup-pro' ); ?>
+							</span>
+							<?php esc_html_e( $array['title'] ); ?>
+						</h3>
+					</div>
+				</li>
+				<?php
+			}
 
+			if ( isset($array['type']) && 'sub-panel' == $array['type'] ) {
+				?>
+				<li id="<?php isset($array['id']) ? esc_attr_e($array['id']) : ''; ?>"  data-type="<?php isset($array['parent']) ? esc_html_e($array['parent']) : ''; ?>" data-label="<?php isset($array['title']) ? esc_html_e($array['title']) : ''; ?>" class="zoremmail-sub-panel-title <?php isset($array['class']) ? esc_attr_e($array['class']) : ''; ?> <?php isset($array['parent']) ? esc_attr_e($array['parent']) : ''; ?>">
+					<span><?php isset($array['title']) ? esc_html_e($array['title']) : ''; ?></span>
+					<span class="dashicons dashicons-arrow-right-alt2"></span>
+				</li>
+				<?php
+			}
 		}
 		echo '</ul>';
 		foreach ( (array) $arrays as $id => $array ) {
 
-			if ( isset($array['show']) && $array['show'] != true ) {
+			if ( isset($array['show']) && true != $array['show'] ) {
 				continue; 
 			}
 
-			if ( isset($array['type']) && $array['type'] == 'panel' ) {
+			if ( isset($array['type']) && 'panel' == $array['type'] ) {
 				continue; 
 			}
 
-			if ( isset($array['type']) && 'section' == $array['type'] ) {
+			if ( isset($array['type']) && 'sub-panel-heading' == $array['type'] ) {
+				continue; 
+			}
+			
+			if ( isset($array['type']) && 'sub-panel' == $array['type'] ) {
+				continue; 
+			}
+
+			if ( isset($array['type']) && ( 'section' == $array['type'] ) ) {
 				echo $id != 'heading' ? '</div>' : '';
 				?>
-				<div data-id="<?php isset($array['parent']) ? esc_attr_e($array['parent']) : ''; ?>" class="zoremmail-menu-submenu-title <?php isset($array['class']) ? esc_attr_e($array['class']) : ''; ?>">
-					<span><?php esc_html_e( $array['title'] ); ?></span>
-					<span class="dashicons dashicons-arrow-right-alt2"></span>
+				<div data-id="<?php isset($array['id']) ? esc_attr_e($array['id']) : ''; ?>" class="zoremmail-menu-submenu-title <?php isset($array['class']) ? esc_attr_e($array['class']) : ''; ?>">
+					<?php /*<button type="button" class="customize-section-back" tabindex="0">
+						<span class="dashicons dashicons-arrow-left-alt2"></span>
+					</button>
+					<span><?php esc_html_e( $array['title'] ); ?></span>*/ ?>
+					<div class="customize-section-title">
+						<button type="button" class="customize-section-back" tabindex="0">
+							<span class="screen-reader-text">Back</span>
+						</button>
+						<h3>
+							<span class="customize-action">
+								<?php esc_html_e( 'Customizing', 'advanced-local-pickup-pro' ); ?>
+							</span>
+							<?php esc_html_e( $array['title'] ); ?>
+						</h3>
+					</div>
 				</div>
-				<div class="zoremmail-menu-contain">
+				<div class="zoremmail-menu-contain" data-parent="<?php isset($array['parent']) ? esc_attr_e($array['parent']) : ''; ?>">
 				<?php
 			} else {
 				$array_default = isset( $array['default'] ) ? $array['default'] : '';
@@ -653,26 +737,26 @@ class WC_ALP_CUSTOMIZER_ADMIN {
 				<div class="zoremmail-menu zoremmail-menu-inline zoremmail-menu-sub <?php isset($array['class']) ? esc_attr_e($array['class']) : ''; ?>">
 					<div class="zoremmail-menu-item">
 						<div class="<?php esc_attr_e( $id ); ?> <?php esc_attr_e( $array['type'] ); ?>">
-							<?php if ( isset($array['title']) && $array['type'] != 'checkbox' ) { ?>
+							<?php if ( isset($array['title']) && 'checkbox' != $array['type'] ) { ?>
 								<div class="menu-sub-title"><?php esc_html_e( $array['title'] ); ?></div>
 							<?php } ?>
-							<?php if ( isset($array['type']) && $array['type'] == 'text' ) { ?>
+							<?php if ( isset($array['type']) && 'text' == $array['type'] ) { ?>
 								<div class="menu-sub-field">
 									<input type="text" id="<?php esc_attr_e( $id ); ?>" name="<?php esc_attr_e( $id ); ?>" placeholder="<?php isset($array['placeholder']) ? esc_attr_e($array['placeholder']) : ''; ?>" value="<?php echo esc_html( $array_default ); ?>" class="zoremmail-input <?php esc_html_e($array['type']); ?> <?php isset($array['class']) ? esc_attr_e($array['class']) : ''; ?>">
 									<br>
 									<span class="menu-sub-tooltip"><?php isset($array['desc']) ? esc_html_e($array['desc']) : ''; ?></span>
 								</div>
-							<?php } else if ( isset($array['type']) && $array['type'] == 'textarea' ) { ?>
+							<?php } else if ( isset($array['type']) && 'textarea' == $array['type'] ) { ?>
 								<div class="menu-sub-field">
 									<textarea id="<?php esc_attr_e( $id ); ?>" rows="4" name="<?php esc_attr_e( $id ); ?>" placeholder="<?php isset($array['placeholder']) ? esc_attr_e($array['placeholder']) : ''; ?>" class="zoremmail-input <?php esc_html_e($array['type']); ?> <?php isset($array['class']) ? esc_attr_e($array['class']) : ''; ?>"><?php echo esc_html( $array_default ); ?></textarea>
 									<br>
 									<span class="menu-sub-tooltip"><?php isset($array['desc']) ? esc_html_e($array['desc']) : ''; ?></span>
 								</div>
-							<?php } else if ( isset($array['type']) && $array['type'] == 'codeinfo' ) { ?>
+							<?php } else if ( isset($array['type']) && 'codeinfo' == $array['type'] ) { ?>
 								<div class="menu-sub-field">
 									<span class="menu-sub-codeinfo <?php esc_html_e($array['type']); ?>"><?php echo isset($array['default']) ? wp_kses_post($array['default']) : ''; ?></span>
 								</div>
-							<?php } else if ( isset($array['type']) && $array['type'] == 'select' ) { ?>
+							<?php } else if ( isset($array['type']) && 'select' == $array['type'] ) { ?>
 								<div class="menu-sub-field">
 									<select name="<?php esc_attr_e( $id ); ?>" id="<?php esc_attr_e( $id ); ?>" class="zoremmail-input <?php esc_html_e($array['type']); ?> <?php isset($array['class']) ? esc_attr_e($array['class']) : ''; ?>">
 										<?php foreach ( (array) $array['options'] as $key => $val ) { ?>
@@ -682,13 +766,13 @@ class WC_ALP_CUSTOMIZER_ADMIN {
 									<br>
 									<span class="menu-sub-tooltip"><?php isset($array['desc']) ? esc_html_e($array['desc']) : ''; ?></span>
 								</div>
-							<?php } else if ( isset($array['type']) && $array['type'] == 'color' ) { ?>
+							<?php } else if ( isset($array['type']) && 'color' == $array['type'] ) { ?>
 								<div class="menu-sub-field">
 									<input type="text" name="<?php esc_attr_e( $id ); ?>" id="<?php esc_attr_e( $id ); ?>" class="input-text regular-input zoremmail-input <?php esc_html_e($array['type']); ?> <?php isset($array['class']) ? esc_attr_e($array['class']) : ''; ?>" value="<?php echo esc_html( $array_default ); ?>" placeholder="<?php isset($array['placeholder']) ? esc_attr_e($array['placeholder']) : ''; ?>">
 									<br>
 									<span class="menu-sub-tooltip"><?php isset($array['desc']) ? esc_html_e($array['desc']) : ''; ?></span>
 								</div>
-							<?php } else if ( isset($array['type']) && $array['type'] == 'checkbox' ) { ?>
+							<?php } else if ( isset($array['type']) && 'checkbox' == $array['type'] ) { ?>
 								<div class="menu-sub-field">
 									<label class="menu-sub-title">
 										<input type="hidden" name="<?php esc_attr_e( $id ); ?>" value="0"/>
@@ -699,7 +783,7 @@ class WC_ALP_CUSTOMIZER_ADMIN {
 										<?php } ?>
 									</label>
 								</div>
-							<?php } else if ( isset($array['type']) && $array['type'] == 'radio_butoon' ) { ?>
+							<?php } else if ( isset($array['type']) && 'radio_butoon' == $array['type'] ) { ?>
 								<div class="menu-sub-field">
 									<label class="menu-sub-title">
 										<?php foreach ( $array['choices'] as $key => $value ) { ?>
@@ -710,7 +794,7 @@ class WC_ALP_CUSTOMIZER_ADMIN {
 										<?php } ?>
 									</label>
 								</div>
-							<?php } else if ( isset($array['type']) && $array['type'] == 'tgl-btn' ) { ?>
+							<?php } else if ( isset($array['type']) && 'tgl-btn' == $array['type'] ) { ?>
 								<div class="menu-sub-field">
 									<?php //echo $array_default; ?>
 									<label class="menu-sub-title">
@@ -719,10 +803,42 @@ class WC_ALP_CUSTOMIZER_ADMIN {
 											<input type="checkbox" id="<?php esc_attr_e( $id ); ?>" name="<?php esc_attr_e( $id ); ?>" class="tgl tgl-flat" <?php echo $array_default ? 'checked' : ''; ?> value="yes">
 											<label class="tgl-btn" for="<?php esc_attr_e( $id ); ?>"></label>
 										</span>
-										<label for="<?php esc_attr_e( $id ); ?>"><?php esc_html_e( 'Enable email', 'trackship-for-woocommerce' ); ?></label>
+										<label for="<?php esc_attr_e( $id ); ?>"><?php isset($array['label']) ? esc_attr_e($array['label']) : ''; ?></label>
 									</label>
 								</div>
-							<?php } else if ( isset($array['type']) && $array['type'] == 'range' ) { ?>
+							<?php } else if ( isset($array['type']) && 'media' == $array['type'] ) { ?>
+								<div class="menu-sub-field">
+									<fieldset>
+										<div class="media-botton">
+											<input id="asre_upload_image_button" type="button" class="button" value="<?php esc_html_e( 'Select image' , 'default'); ?>" />
+											<input type="hidden" name="<?php echo esc_html($id); ?>" class='<?php echo esc_html($id); ?> textfield-media' placeholder='Upload Image' value='
+											<?php 
+											if (!empty($array_default)) {
+												echo esc_html($array_default);
+											} 
+											?>
+											' id="<?php echo esc_html($id); ?>"/>
+											<input type='hidden' name='asre_image_id' class='asre_image_id' placeholder="Image" value='' id='asre_image_id' style=""/>
+										</div>
+										<?php if ( !empty($array_default) ) { ?>
+											<div class="asre-image-placeholder" style="display:none;">No File Selected</div>
+											<div class="thumbnail asre-thumbnail-image">				
+												<img src="<?php echo esc_url($array_default); ?>" id="asre_thumbnail" draggable="false" alt="">
+												<span id="remove_btn" class="dashicons dashicons-dismiss"></span>
+											</div>
+										<?php } else { ?>
+										<div class="asre-image-placeholder" style="display:block;">No File Selected</div>
+											<div class="thumbnail asre-thumbnail-image" style="display:none;">			
+												<img src="" draggable="false" id="asre_thumbnail" alt=""/>
+												<span id="remove_btn" class="dashicons dashicons-dismiss"></span>
+											</div>
+										<?php } ?>
+									</fieldset>
+									<?php if ( isset($array['tooltip']) ) { ?>
+										<span class="media-desc" style=""><?php echo esc_html($array['tooltip']); ?></span>
+									<?php } ?>
+								</div>
+							<?php } else if ( isset($array['type']) && 'range' == $array['type'] ) { ?>
 								<div class="menu-sub-field">
 									<label class="menu-sub-title">
 										<input type="range" class="zoremmail-range" id="<?php esc_attr_e( $id ); ?>" name="<?php esc_attr_e( $id ); ?>" value="<?php echo esc_html( $array_default ); ?>" min="<?php esc_html_e( $array['min'] ); ?>" max="<?php esc_html_e( $array['max'] ); ?>" oninput="this.nextElementSibling.value = this.value">
@@ -804,7 +920,7 @@ class WC_ALP_CUSTOMIZER_ADMIN {
 
 		if ( is_object( $order ) ) {
 			// Get user ID from order, if guest get current user ID.
-			if ( 0 === ( $user_id = (int) get_post_meta( $order->get_id(), '_customer_user', true ) ) ) {
+			if ( 0 === ( $user_id = (int) $order->get_meta( '_customer_user', true ) ) ) {
 				$user_id = get_current_user_id();
 			}
 		} else {
@@ -880,7 +996,7 @@ class WC_ALP_CUSTOMIZER_ADMIN {
 				 */
 				default:
 					$email->object               = $order;
-					$user_id = get_post_meta( $email->object->get_order_number(), '_customer_user', true );
+					$user_id = $order ? $order->get_meta( '_customer_user', true ) : '';
 					if ( is_object( $order ) ) {
 						$email->find['order-date']   = '{order_date}';
 						$email->find['order-number'] = '{order_number}';

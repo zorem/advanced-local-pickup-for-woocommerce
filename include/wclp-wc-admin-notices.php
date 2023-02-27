@@ -37,7 +37,10 @@ class WC_ALP_Admin_Notices_Under_WC_Admin {
 	* init from parent mail class
 	*/
 	public function init() {										
+		
 		//add_action('init', array( $this, 'admin_notices_for_alp_pro' ) );
+		
+		add_action( 'alp_settings_admin_notice', array( $this, 'alp_settings_admin_notice' ) );
 	}
 
 	public function admin_notices_for_alp_pro() {
@@ -85,6 +88,14 @@ class WC_ALP_Admin_Notices_Under_WC_Admin {
 			'settings', 'Yes, let’s go Pro', 'https://www.zorem.com/product/advanced-local-pickup-for-woocommerce/'
 		);		
 		$note->save();
+	}
+
+	public function alp_settings_admin_notice() {
+		$date_now = gmdate( 'Y-m-d' );
+		if ( $date_now > '2022-06-30' ) {
+			return;
+		}
+		include 'views/admin_message_panel.php';
 	}
 			
 }

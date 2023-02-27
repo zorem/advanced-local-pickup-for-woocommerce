@@ -3,7 +3,7 @@ Contributors: zorem
 Donate link: 
 Tags: woocommerce, local pickup, in store pickup, shipping, shipping options
 Requires at least: 5.0
-Tested up to: 5.9
+Tested up to: 6.0.1
 Requires PHP: 7.0
 Stable tag: 4.0.1
 License: GPLv2 
@@ -11,23 +11,37 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
-Advanced Local Pickup lets you mark your WooCommerce order status as “Ready for Pickup” and adds the pickup instructions to the email sent to your customers. When your customer comes to pick up the order from your store, you can mark the order status as “Picked up” and optionally send a custom email notification to the customer.
+The Advanced Local Pickup plugin helps you handle the in-store pickup more conveniently by extending the WooCommerce Local Pickup shipping method and creating a local pickup fulfillment workflow.
 
-Local Pickup is a shipping method for WooCommerce that allows customers to choose to pick up the order from your store. Once a local pickup order is received, WooCommerce uses the same order flow for the local pickup orders and orders with other shipping methods and when you set a local pickup order as Completed, the customer receives the same order confirmation email.
-
-Advanced Local Pickup helps you handle those orders more conveniently by extending the WooCommerce Local Pickup shipping option, it lets you mark these orders as Ready for Pickup and automatically send your customers email notification with pickup instructions. You can also mark orders as Picked up and optionally send your customer a custom email notification.
+The plugin lets you change your WooCommerce orders status to “Ready for Pickup” and adds the pickup instructions to the email sent to your customers. When your customers come to pick up their order, you can change the order status to “Picked up” and optionally send email notification to the customer letting them know that the order has been picked up.
 
 == Key Features ==
 
-* Ready for Pickup order status emails – notify your customers by email when their order is ready for pickup
-* Picked up order status – optionally send your customers an email after their order was pickup up
-* Set pick up instructions – location name, address, work hours and special instructions
-* Customize the order status emails subject, heading and content
-* Customize the pickup instruction display on the order status emails
-* Add pickup location and details to the Processing order email
-* Add pickup  location and details to the order received page
+* Custom order status Ready for Pickup - notify your customers by email when their order is ready for pickup
+* Custom Order Status Picked Up
+* Custom Order Status email notifications 
+* Customize the order status emails (subject, heading and content)
+* Pickup Location setup - name, address, work hours and special instructions
+* Customize the pickup display on the order status emails
+* Add pickup instruction to the Processing order email
+* Add pickup instruction to the order received page
 
-You will need WooCommerce 3.0 or newer.
+== PRO Features ==
+
+* Multiple Pickup Locations
+* Pickup Appointments
+* Limit Pickup Location by products & Categories
+* Pickup Location notifications
+* Pickup Location discounts
+* Split the Work hours
+* Allow Mixed Local Pickup and Shipping orders
+* Pickup Appointments
+* Pickup per item from multiple locations
+* Local Pickup availability message
+* Force Local Pickup
+* Custom email notification templates
+
+[Get the  Advanced Local Pickup PRO](https://www.zorem.com/product/advanced-local-pickup-for-woocommerce/)
 
 == Translations == 
 
@@ -40,8 +54,13 @@ The Advanced Local Pickup for WooCommerce plugin is localized/ translatable by d
 * Hebrew
 * Italian
 
-== Frequently Asked Questions == 
+== Compatibility ==
 
+Check out [ALP’s list of plugins compatibility](https://docs.zorem.com/docs/advanced-local-pickup-free/compatibility/)
+
+== Documentation ==
+
+You can get more information, detailed tutorials on the [ALP documentation](https://docs.zorem.com/docs/advanced-local-pickup-free/).
 
 == Installation ==
 
@@ -51,6 +70,24 @@ The Advanced Local Pickup for WooCommerce plugin is localized/ translatable by d
 
 
 == Changelog ==
+
+= 1.5.2 =
+* Dev - Tested with WooCommerce 7.4
+
+= 1.5.1 =
+* Fix - Uncaught Error: Call to undefined function wp_kses_post() 
+
+= 1.5 =
+* Dev - Tested with WordPress 6.1
+* Dev - Tested with WooCommerce 7.1
+* Enhancement - Added compatibility of HTML support in email content
+* Enhancement - Added compatibility with High-Performance Order Storage
+* Improved - Special instruction text WPML translation
+
+= 1.4.1 =
+* Dev - Tested with WordPress 6.0.1
+* Dev - Tested with WooCommerce 6.7
+* Enhancement - Improved the customizer design
 
 = 1.4.0 =
 * Dev - WC tested upto 6.3
