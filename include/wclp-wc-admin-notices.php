@@ -36,66 +36,28 @@ class WC_ALP_Admin_Notices_Under_WC_Admin {
 	/*
 	* init from parent mail class
 	*/
-	public function init() {										
-		
-		//add_action('init', array( $this, 'admin_notices_for_alp_pro' ) );
-		
+	public function init() {	
+		add_action( 'admin_init', array( $this, 'admin_notices_for_alp_pro' ) );										
 		add_action( 'alp_settings_admin_notice', array( $this, 'alp_settings_admin_notice' ) );
+		add_action( 'alp_settings_admin_footer', array( $this, 'alp_settings_admin_footer' ) );
 	}
 
 	public function admin_notices_for_alp_pro() {
-
-		if ( class_exists( 'Advanced_local_pickup_PRO' ) ) {
-			return;
+		if ( isset( $_GET['alp-pro-settings-ignore-notice'] ) ) {
+			set_transient( 'alp_settings_admin_notice_ignore', 'yes', 2592000 );
 		}
-		
-		if ( ! class_exists( 'Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes' ) ) {
-			return;
-		}
-		
-		$already_set = get_transient( 'alp_wc_admin_notice' );
-		
-		if ('yes' == $already_set) { 
-			return;
-		}
-		
-		set_transient( 'alp_wc_admin_notice', 'yes' );				
-		
-		$note_name = 'alp_pro_notice';
-		$data_store = WC_Data_Store::load( 'admin-note' );		
-		
-		// Otherwise, add the note
-		$activated_time = current_time( 'timestamp', 0 );
-		$activated_time_formatted = gmdate( 'F jS', $activated_time );
-		$note = new Automattic\WooCommerce\Admin\Notes\WC_Admin_Note();
-		$note->set_title( 'Advanced Local Pickup PRO' );
-		$note->set_content( 'The Advanced Local Pickup PRO allows you to set up multiple pickup locations, enable pickup appointments and automate your in-store pickup workflows!
-		Use code ALPPRO20 to get 20% off on the Advanced Local Pickup PRO' );
-		$note->set_content_data( (object) array(
-			'getting_started'     => true,
-			'activated'           => $activated_time,
-			'activated_formatted' => $activated_time_formatted,
-		) );
-		$note->set_type( 'info' );
-		$note->set_layout('plain');
-		$note->set_image('');
-		$note->set_name( $note_name );
-		$note->set_source( 'Advanced Local Pickup PRO' );
-		$note->set_layout('plain');
-		$note->set_image('');
-		// This example has two actions. A note can have 0 or 1 as well.
-		$note->add_action(
-			'settings', 'Yes, let’s go Pro', 'https://www.zorem.com/product/advanced-local-pickup-for-woocommerce/'
-		);		
-		$note->save();
 	}
 
 	public function alp_settings_admin_notice() {
-		$date_now = gmdate( 'Y-m-d' );
-		if ( $date_now > '2022-06-30' ) {
+		$ignore = get_transient( 'alp_settings_admin_notice_ignore' );
+		if ( 'yes' == $ignore ) {
 			return;
 		}
 		include 'views/admin_message_panel.php';
+	}
+
+	public function alp_settings_admin_footer() {
+		include 'views/admin_footer_panel.php';
 	}
 			
 }

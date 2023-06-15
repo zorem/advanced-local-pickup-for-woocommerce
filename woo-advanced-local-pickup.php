@@ -5,11 +5,11 @@
 * Description: The Advanced Local Pickup (ALP) helps you handle local pickup orders more conveniently by extending the WooCommerce Local Pickup shipping method.
 * Author: zorem
 * Author URI: https://www.zorem.com/
-* Version: 1.5.2
+* Version: 1.5.4
 * Text Domain: advanced-local-pickup-for-woocommerce
 * Domain Path: /lang/
 * WC requires at least: 4.0
-* WC tested up to: 7.4
+* WC tested up to: 7.8.0
 */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -23,7 +23,7 @@ class Woocommerce_Local_Pickup {
 	 *
 	 * @var string
 	 */
-	public $version = '1.5.2';
+	public $version = '1.5.4';
 	
 	/**
 	 * Constructor
@@ -129,11 +129,11 @@ class Woocommerce_Local_Pickup {
 		$this->admin = WC_Local_Pickup_admin::get_instance();	
 
 		require_once $this->get_plugin_path() . '/include/wc-local-pickup-installation.php';
-		$this->install = WC_Local_Pickup_install::get_instance();	
-		
-		// customizer
-		require_once $this->get_plugin_path() . '/include/customizer/wc-alp-customizer-admin.php';	
-		$this->customizer = WC_ALP_CUSTOMIZER_ADMIN::get_instance();
+		$this->install = WC_Local_Pickup_install::get_instance();
+
+		//customizer
+		require_once $this->get_plugin_path() . '/include/customizer/customizer-admin.php';	
+		$this->customizer = WC_Local_Pickup_Customizer::get_instance();
 	}
 
 	/**
@@ -180,7 +180,7 @@ class Woocommerce_Local_Pickup {
 		global $wpdb;
 		$this->table = $wpdb->prefix . 'alp_pickup_location';
 		
-		if ($wpdb->get_var("show tables like '$this->table'") != $this->table) {
+		if ($wpdb->get_var($wpdb->prepare('show tables like %1s', $this->table)) != $this->table) {
 			$create_table_query = "
 				CREATE TABLE IF NOT EXISTS `{$this->table}` (
 					`id` int NOT NULL AUTO_INCREMENT,
@@ -283,7 +283,7 @@ class Woocommerce_Local_Pickup {
 		
 		$dismissable_url = esc_url(  add_query_arg( 'wplp-review-ignore-notice', 'true' ) );
 		
-		?>		
+		?>
 		<style>		
 		.wp-core-ui .notice.wplp-dismissable-notice {
 			position: relative;
@@ -331,7 +331,7 @@ class Woocommerce_Local_Pickup {
 	*/
 	public function admin_notice_pro_update() { 		
 				
-		$date_now = date("Y-m-d"); // this format is string comparable
+		$date_now = gmdate('Y-m-d'); // this format is string comparable
 		
 		if ( get_option('wplp_pro_notice_ignore_mar31') || $date_now > '2022-04-31' ) {
 			return;
@@ -339,7 +339,7 @@ class Woocommerce_Local_Pickup {
 		
 		$dismissable_url = esc_url(  add_query_arg( 'wplp-pro-ignore-notice', 'true' ) );
 		
-		?>		
+		?>
 		<style>		
 		.wp-core-ui .notice.wplp-dismissable-notice {
 			position: relative;
@@ -413,8 +413,8 @@ class Woocommerce_Local_Pickup {
 		wp_enqueue_script( 'jquery-tiptip' );
 		wp_enqueue_script( 'jquery-blockui' );
 		
-		wp_enqueue_style('select2-wclp', plugins_url('assets/css/select2.min.css', __FILE__ ));
-		wp_enqueue_script('select2-wclp', plugins_url('assets/js/select2.min.js', __FILE__));
+		wp_enqueue_style('select2-wclp', plugins_url('assets/css/select2.min.css', __FILE__ ), array(), $this->version);
+		wp_enqueue_script('select2-wclp', plugins_url('assets/js/select2.min.js', __FILE__), array(), $this->version);
 		
 		wp_enqueue_script( 'alp-admin-js', plugin_dir_url(__FILE__) . 'assets/js/admin.js', array(), $this->version );
 		wp_enqueue_style( 'alp-admin-css', plugin_dir_url(__FILE__) . 'assets/css/admin.css', array(), $this->version );
@@ -422,6 +422,7 @@ class Woocommerce_Local_Pickup {
 		wp_localize_script( 'alp-admin-js', 'alp_object', 
 			array( 
 				'admin_url' => admin_url(),
+				'nonce' => wp_create_nonce('alp-ajax-nonce')
 			) 
 		);
 	}
@@ -560,6 +561,7 @@ class Woocommerce_Local_Pickup {
 					<?php } ?>				
 					<p class="" style="text-align:left;">
 						<input type="hidden" name="action" value="reassign_order_status">
+						<input type="hidden" name="nonce" value="<?php echo esc_html(wp_create_nonce('alp-ajax-nonce')); ?>">
 						<input type="button" value="Deactivate" class="alp_uninstall_plugin button-primary btn_green">
 						<input type="button" value="Close" class="alp_uninstall_close button-primary btn_red">				
 					</p>
@@ -572,6 +574,12 @@ class Woocommerce_Local_Pickup {
 	}
 	
 	public function reassign_order_status() {
+
+		$nonce = isset( $_POST['nonce'] ) ? sanitize_text_field($_POST['nonce']) : '';
+		if ( ! wp_verify_nonce( $nonce, 'alp-ajax-nonce' ) ) {
+			die();
+		}
+		
 		$reassign_ready_pickup_order = isset($_POST['reassign_ready_pickup_order']) ? sanitize_text_field($_POST['reassign_ready_pickup_order']) : '';
 		$reassign_pickedup_order = isset($_POST['reassign_pickedup_order']) ? sanitize_text_field($_POST['reassign_pickedup_order']) : '';
 		

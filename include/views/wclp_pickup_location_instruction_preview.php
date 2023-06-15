@@ -188,7 +188,7 @@ $location_box_background_color = $alp->get_option_value_from_array('pickup_instr
 if (!empty($w_day)) { 	
 	if (!empty($new_array)) {	
 		$resultEmpty = array_filter(array_map('array_filter', $new_array)); //echo count( $resultEmpty ); 
-		?>	
+		?>
 	<div class="wclp_location_box 
 		<?php 
 		if (!empty($new_array)) {
@@ -213,7 +213,7 @@ if (!empty($w_day)) {
 				if (1 == count($data)) {							
 					if (isset(reset($data)['wclp_store_hour']) && '' != reset($data)['wclp_store_hour'] && isset(reset($data)['wclp_store_hour_end']) && '' != reset($data)['wclp_store_hour_end']) {
 						reset($data);
-						?>		
+						?>
 						<p class="wclp_work_hours_p">
 							<?php 
 							echo esc_html(ucfirst(key($data)), 'advanced-local-pickup-for-woocommerce') . ' <span>: ' . esc_html(reset($data)['wclp_store_hour']) . ' - ' . esc_html(reset($data)['wclp_store_hour_end']);
@@ -235,7 +235,7 @@ if (!empty($w_day)) {
 							echo esc_html(ucfirst($array_key_first), 'advanced-local-pickup-for-woocommerce') . '<span> - </span>' . esc_html(ucfirst($array_key_last), 'advanced-local-pickup-for-woocommerce') . ' <span>: ' . esc_html(reset($data)['wclp_store_hour']) . ' - ' . esc_html(reset($data)['wclp_store_hour_end']);
 							do_action('wclp_get_more_work_hours_contents', $data);
 							echo '</span>';
-							?>	
+							?>
 						</p>
 				<?php } } ?>									
 				<?php 
@@ -251,7 +251,7 @@ if (!empty($w_day)) {
 							echo esc_html(ucfirst($array_key_first), 'advanced-local-pickup-for-woocommerce') . esc_html(' To ', 'advanced-local-pickup-for-woocommerce') . esc_html(ucfirst($array_key_last), 'advanced-local-pickup-for-woocommerce') . ' <span>: ' . esc_html(reset($data)['wclp_store_hour']) . ' - ' . esc_html(reset($data)['wclp_store_hour_end']); 
 							do_action('wclp_get_more_work_hours_contents', $data);
 							echo '</span>';
-							?>	
+							?>
 						</p>
 						<?php 										
 					}
@@ -264,7 +264,7 @@ if (!empty($w_day)) {
 					<?php 
 				}
 			}
-			?>	
+			?>
 		</div>		
 	</div>
 <?php } } ?>

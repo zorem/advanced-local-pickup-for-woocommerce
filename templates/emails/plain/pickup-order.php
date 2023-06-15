@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 echo '= ' . esc_html( $email_heading ) . " =\n\n";
 
 /* translators: %s: Customer first name */
-echo sprintf( esc_html__( 'Hi %s,', 'wc-bit-payment-gateway' ), esc_html( $order->get_billing_first_name() ) ) . "\n\n";
+echo sprintf( esc_html__( 'Hi %s,', 'advanced-local-pickup-for-woocommerce' ), esc_html( $order->get_billing_first_name() ) ) . "\n\n";
 
 echo "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n";
 

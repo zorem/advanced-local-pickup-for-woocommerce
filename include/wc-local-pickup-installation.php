@@ -21,7 +21,7 @@ class WC_Local_Pickup_Install {
 	private static $instance;
 	
 	/**
-	* function callback for add not existing key in database.
+	* Function callback for add not existing key in database.
 	*
 	*/
 	public function wclp_update_install_callback() {
@@ -177,7 +177,7 @@ class WC_Local_Pickup_Install {
 			global $wpdb;
 			$this->table = $wpdb->prefix . 'alp_pickup_location';
 			
-			if ($wpdb->get_var("show tables like '$this->table'") != $this->table) {
+			if ($wpdb->get_var($wpdb->prepare('show tables like %1s', $this->table)) != $this->table) {
 				$create_table_query = "
 					CREATE TABLE IF NOT EXISTS `{$this->table}` (
 						`id` int NOT NULL AUTO_INCREMENT,
@@ -233,10 +233,11 @@ class WC_Local_Pickup_Install {
 				'store_display_postcode' => '1',
 				'store_display_phone' => '1',
 			);
-			$tabledata = $wpdb->get_row( sprintf("SELECT * FROM %s LIMIT 1", $this->table) );
+
+			$tabledata = $wpdb->get_row( $wpdb->prepare('SELECT * FROM %1s LIMIT 1', $this->table) );
 			foreach ( (array) $data as $key1 => $val1  ) {
 				if (!isset($tabledata->$key1)) {
-					$wpdb->query( sprintf( "ALTER TABLE %s ADD $key1 text NOT NULL", $this->table) );
+					$wpdb->query( $wpdb->prepare( 'ALTER TABLE %1s ADD %2s text NOT NULL', $this->table, $key1) );
 				}
 			}
 			
@@ -249,10 +250,10 @@ class WC_Local_Pickup_Install {
 			global $wpdb;
 			$this->table = $wpdb->prefix . 'alp_pickup_location';
 			
-			$tabledata = $wpdb->get_row( sprintf("SELECT * FROM %s LIMIT 1", $this->table) );
+			$tabledata = $wpdb->get_row( $wpdb->prepare('SELECT * FROM %1s LIMIT 1', $this->table) );
 
 			if (!isset($tabledata->position)) {
-				$wpdb->query( sprintf( "ALTER TABLE %s ADD position int NOT NULL", $this->table) );
+				$wpdb->query( $wpdb->prepare( 'ALTER TABLE %1s ADD position int NOT NULL', $this->table) );
 			}
 			
 			update_option('wclp_local_pickup', '1.8');		

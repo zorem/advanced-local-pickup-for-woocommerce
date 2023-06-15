@@ -1,11 +1,10 @@
 <section id="wclp_content1" class="wclp_tab_section">
 	<div class="wclp_tab_inner_container">
 		<div class="wclp_outer_form_table">
-			<h1 class="tab_main_heading"><?php esc_html_e( 'General Settings', 'advanced-local-pickup-for-woocommerce' ); ?></h1>
 			<form method="post" id="wclp_setting_tab_form" class="wclp_setting_tab_form">
 				<div class="accordion heading">
 					<label>
-						<?php esc_html_e( 'Display options', 'advanced-local-pickup-pro' ); ?>
+						<?php esc_html_e( 'Display options', 'advanced-local-pickup-for-woocommerce' ); ?>
 						<span class="submit wclp-btn">
 							<div class="spinner workflow_spinner" style="float:none"></div>
 							<button name="save" class="wclp-save button-primary woocommerce-save-button" type="submit" value="Save changes"><?php esc_html_e( 'Save changes', 'woocommerce' ); ?></button>
@@ -24,7 +23,7 @@
 				</div>
 				<div class="accordion heading">
 					<label>
-						<?php esc_html_e( 'Local pickup workflow', 'advanced-local-pickup-pro' ); ?>
+						<?php esc_html_e( 'Local pickup workflow', 'advanced-local-pickup-for-woocommerce' ); ?>
 						<span class="submit wclp-btn">
 							<div class="spinner workflow_spinner" style="float:none"></div>
 							<button name="save" class="wclp-save button-primary woocommerce-save-button" type="submit" value="Save changes"><?php esc_html_e( 'Save changes', 'woocommerce' ); ?></button>
@@ -125,6 +124,30 @@
 							</tr>
 						</tbody>
 					</table>
+				</div>
+				
+				<div class="accordion heading premium">
+					<label>
+						<?php esc_html_e( 'Local Pickup Dashboard', 'advanced-local-pickup-for-woocommerce' ); ?>
+						<span class="premium-label"><?php esc_html_e( 'Premium', 'advanced-local-pickup-for-woocommerce' ); ?></span>
+						<span class="dashicons dashicons-arrow-right-alt2"></span>
+					</label>
+				</div>
+
+				<div class="accordion heading premium">
+					<label>
+						<?php esc_html_e( 'Cart & Checkout Options', 'advanced-local-pickup-for-woocommerce' ); ?>
+						<span class="premium-label"><?php esc_html_e( 'Premium', 'advanced-local-pickup-for-woocommerce' ); ?></span>
+						<span class="dashicons dashicons-arrow-right-alt2"></span>
+					</label>
+				</div>
+
+				<div class="accordion heading premium">
+					<label>
+						<?php esc_html_e( 'Products Catalog Options', 'advanced-local-pickup-for-woocommerce' ); ?>
+						<span class="premium-label"><?php esc_html_e( 'Premium', 'advanced-local-pickup-for-woocommerce' ); ?></span>
+						<span class="dashicons dashicons-arrow-right-alt2"></span>
+					</label>
 				</div>
 			</form>
 		</div>

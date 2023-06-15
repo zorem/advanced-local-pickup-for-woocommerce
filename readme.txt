@@ -1,9 +1,9 @@
 ﻿=== Advanced Local Pickup for WooCommerce ===
-Contributors: zorem
+Contributors: zorem,kuldipzorem
 Donate link: 
 Tags: woocommerce, local pickup, in store pickup, shipping, shipping options
 Requires at least: 5.0
-Tested up to: 6.0.1
+Tested up to: 6.2
 Requires PHP: 7.0
 Stable tag: 4.0.1
 License: GPLv2 
@@ -70,6 +70,18 @@ You can get more information, detailed tutorials on the [ALP documentation](http
 
 
 == Changelog ==
+
+= 1.5.4 =
+* Enhancement - Improved the customizer design
+* Fix - Translation string issue
+* Fix - Html not supported in email content in customizer
+* Dev - Tested with Wordpress 6.2
+* Dev - Tested with WooCommerce 7.8.0
+
+= 1.5.3 =
+* Fix – Vulnerable to Cross Site Request Forgery (CSRF)
+* Dev - Tested with Wordpress 6.1
+* Dev - Tested with WooCommerce 7.5.1
 
 = 1.5.2 =
 * Dev - Tested with WooCommerce 7.4
