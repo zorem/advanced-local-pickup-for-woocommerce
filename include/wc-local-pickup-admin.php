@@ -76,9 +76,7 @@ class WC_Local_Pickup_Admin {
 		add_action( 'wp_ajax_wclp_update_work_hours_list', array( $this, 'wclp_update_work_hours_list_fun' ) );
 		add_action( 'wp_ajax_wclp_update_edit_location_form', array( $this, 'wclp_update_edit_location_form_fun') );
 		add_action( 'wp_ajax_wclp_apply_work_hours', array( $this, 'wclp_apply_work_hours_fun' ) );
-		
-		add_action( 'wp_ajax_update_email_preview_order', array( $this, 'update_email_preview_order_fun' ) );
-		
+				
 		add_filter( 'woocommerce_valid_order_statuses_for_order_again', array( $this, 'add_reorder_button_pickup' ), 50, 1 );
 		add_filter( 'admin_body_class', array( $this, 'wp_body_classes' ) );
 		
@@ -119,29 +117,12 @@ class WC_Local_Pickup_Admin {
 		?>
 		<div class="zorem-layout__header">
 			<?php if ( 'edit' !== $section && 'add' !== $section ) { ?>
-				<h1 class="page_heading">
-					<a href="javascript:void(0)"><?php esc_html_e( 'Local Pickup', 'advanced-local-pickup-for-woocommerce' ); ?></a> <span class="dashicons dashicons-arrow-right-alt2"></span> <span class="breadcums_page_heading"><?php $tab == 'go-pro' ? esc_html_e( 'Go Pro', 'advanced-local-pickup-for-woocommerce' ) : esc_html_e( 'Settings', 'advanced-local-pickup-for-woocommerce' ); ?></span>
-				</h1>	
-				<img class="zorem-layout__header-logo" src="<?php echo esc_url(wc_local_pickup()->plugin_dir_url(__FILE__)) . 'assets/images/alp-icon.png'; ?>">
-			<?php } else { ?>
-				<h1 class="tab_section_heading">
-					<a href="<?php echo esc_url(admin_url() . 'admin.php?page=local_pickup'); ?>" class="link decoration"><?php esc_html_e( 'Pickup Locations', 'advanced-local-pickup-for-woocommerce' ); ?></a> > 
-					<?php esc_html_e( 'Edit Pickup Location', 'advanced-local-pickup-for-woocommerce' ); ?>
-				</h1>
-			<?php } ?>
-		</div>
-		<?php do_action( 'alp_settings_admin_notice' ); ?>
-		<div class="woocommerce wclp_admin_layout">
-		<?php 
-		$style = '';
-		if ( 'edit' == $section ) {
-			$style = 'style="display:none;"';
-		} 
-		?>
-		<div class="woocommerce-layout__activity-panel" <?php echo $style; ?>>
+				<img class="zorem-layout__header-logo" src="<?php echo esc_url(wc_local_pickup()->plugin_dir_url(__FILE__)) . 'assets/images/alp-logo.png'; ?>">
+				<div class="woocommerce-layout__activity-panel" <?php echo esc_html($style); ?>>
 				<div class="woocommerce-layout__activity-panel-tabs">
 					<button type="button" id="activity-panel-tab-help" class="components-button woocommerce-layout__activity-panel-tab">
-						<span class="dashicons dashicons-menu-alt"></span> 
+					<span class="dashicons dashicons-editor-help"></span>
+						Help 
 					</button>
 				</div>
 				<div class="woocommerce-layout__activity-panel-wrapper">
@@ -208,6 +189,21 @@ class WC_Local_Pickup_Admin {
 					</div>
 				</div>
 			</div>	
+			<?php } else { ?>
+				<h1 class="tab_section_heading">
+					<a href="<?php echo esc_url(admin_url() . 'admin.php?page=local_pickup'); ?>" class="link decoration"><?php esc_html_e( 'Pickup Locations', 'advanced-local-pickup-for-woocommerce' ); ?></a> > 
+					<?php esc_html_e( 'Edit Pickup Location', 'advanced-local-pickup-for-woocommerce' ); ?>
+				</h1>
+			<?php } ?>
+		</div>
+		<div class="woocommerce wclp_admin_layout">
+			<?php do_action( 'alp_settings_admin_notice' ); ?>
+			<?php 
+			$style = '';
+			if ( 'edit' == $section ) {
+				$style = 'style="display:none;"';
+			} 
+			?>
 			<div class="wclp_admin_content">
 				<?php 
 				$style = '';
@@ -216,17 +212,20 @@ class WC_Local_Pickup_Admin {
 				} 
 				?>
 				<input id="tab1" type="radio" name="tabs" class="wclp_tab_input" data-label="<?php esc_html_e('Settings', 'woocommerce'); ?>" data-tab="settings" checked>
-				<a for="tab1" href="admin.php?page=local_pickup&tab=settings" class="wclp_tab_label first_label <?php echo ( 'settings' === $tab ) ? 'nav-tab-active' : ''; ?>" <?php echo $style; ?>><?php esc_html_e('Settings', 'woocommerce'); ?></a>
+				<a for="tab1" href="admin.php?page=local_pickup&tab=settings" class="wclp_tab_label first_label <?php echo ( 'settings' === $tab ) ? 'nav-tab-active' : ''; ?>" <?php echo esc_html($style); ?>><?php esc_html_e('Settings', 'woocommerce'); ?></a>
 				<input id="tab3" type="radio" name="tabs" class="wclp_tab_input" data-label="<?php esc_html_e('Pickup Location', 'advanced-local-pickup-for-woocommerce'); ?>" data-tab="locations" <?php echo ( 'locations' === $tab ) ? 'checked' : ''; ?>>
-				<a for="tab3" href="admin.php?page=local_pickup&tab=locations<?php echo ( !class_exists( 'Advanced_local_pickup_PRO' ) ) ? '&section=edit&id=' . esc_html($location_id) : ''; ?>" class="wclp_tab_label <?php echo ( 'locations' === $tab ) ? 'nav-tab-active' : ''; ?>" <?php echo $style; ?>><?php esc_html_e('Pickup Location', 'advanced-local-pickup-for-woocommerce'); ?></a>
+				<a for="tab3" href="admin.php?page=local_pickup&tab=locations<?php echo ( !class_exists( 'Advanced_local_pickup_PRO' ) ) ? '&section=edit&id=' . esc_html($location_id) : ''; ?>" class="wclp_tab_label <?php echo ( 'locations' === $tab ) ? 'nav-tab-active' : ''; ?>" <?php echo esc_html($style); ?>><?php esc_html_e('Pickup Location', 'advanced-local-pickup-for-woocommerce'); ?></a>
 				<input id="tab5" type="radio" name="tabs" class="wclp_tab_input" data-label="<?php esc_html_e('Customize', 'advanced-local-pickup-for-woocommerce'); ?>" data-tab="customize" <?php echo ( 'customize' === $tab ) ? 'checked' : ''; ?>>
-				<a for="tab5" href="<?php echo esc_url(admin_url('admin.php?page=alp_customizer&email_type=ready_pickup')); ?>" class="wclp_tab_label <?php echo ( 'customize' === $tab ) ? 'nav-tab-active' : ''; ?>" <?php echo $style; ?>><?php esc_html_e('Customize', 'advanced-local-pickup-for-woocommerce'); ?></a>
-				<input id="tab4" type="radio" name="tabs" class="wclp_tab_input" data-label="<?php esc_html_e('Go Pro', 'advanced-local-pickup-for-woocommerce'); ?>" data-tab="go-pro" <?php echo ( 'go-pro' === $tab ) ? 'checked' : ''; ?>>
-				<a for="tab4" href="admin.php?page=local_pickup&tab=go-pro" class="wclp_tab_label <?php echo ( 'go-pro' === $tab ) ? 'nav-tab-active' : ''; ?>" <?php echo $style; ?>><?php esc_html_e('Go Pro', 'advanced-local-pickup-for-woocommerce'); ?></a>
-				<div class="menu_devider" <?php echo $style; ?>></div>
+				<a for="tab5" href="<?php echo esc_url(admin_url('admin.php?page=alp_customizer&preview=ready_pickup')); ?>" class="wclp_tab_label <?php echo ( 'customize' === $tab ) ? 'nav-tab-active' : ''; ?>" <?php echo esc_html($style); ?>><?php esc_html_e('Customize', 'advanced-local-pickup-for-woocommerce'); ?></a>
+				<?php
+				/* <input id="tab4" type="radio" name="tabs" class="wclp_tab_input" data-label="<?php esc_html_e('Go Pro', 'advanced-local-pickup-for-woocommerce'); ?>" data-tab="go-pro" <?php echo ( 'go-pro' === $tab ) ? 'checked' : ''; ?>>
+				<a for="tab4" href="admin.php?page=local_pickup&tab=go-pro" class="wclp_tab_label <?php echo ( 'go-pro' === $tab ) ? 'nav-tab-active' : ''; ?>" <?php echo esc_html($style); ?>><?php esc_html_e('Go Pro', 'advanced-local-pickup-for-woocommerce'); ?></a> */
+				?>
+				<div class="menu_devider" <?php echo esc_html($style); ?>></div>
 				<?php require_once( 'views/wclp_setting_tab.php' ); ?>
 				<?php require_once( 'views/wclp_locations_tab.php' ); ?>
-				<?php require_once( 'views/wclp_addon_tab.php' ); ?>
+				<?php //require_once( 'views/wclp_addon_tab.php' ); ?>
+				<?php do_action( 'alp_settings_admin_footer' ); ?>
 			</div>
 		</div>
 		<?php
@@ -335,7 +334,7 @@ class WC_Local_Pickup_Admin {
 
 			$wpdb->hide_errors();
 			
-			$results = $wpdb->get_results( "SELECT * FROM {$this->table} ORDER BY position ASC" );//ORDER BY name ASC			
+			$results = $wpdb->get_results( $wpdb->prepare('SELECT * FROM %1s ORDER BY position ASC', $this->table) ); //ORDER BY name ASC			
 						
 			$this->data = $results;
 		}
@@ -406,14 +405,14 @@ class WC_Local_Pickup_Admin {
 			$data = apply_filters('wclp_location_edit_form_save_hook', $data);
 
 			//check column exist
-			$tabledata = $wpdb->get_row( sprintf("SELECT * FROM %s LIMIT 1", $this->table) );
+			$tabledata = $wpdb->get_row( $wpdb->prepare('SELECT * FROM %1s LIMIT 1', $this->table) );
 			//print_r($tabledata );
 			foreach ( (array) $data as $key1 => $val1 ) {
 				if ( 'store_name' == $key1 ) {
 					continue;
 				}
 				if (!isset($tabledata->$key1)) {
-					$wpdb->query( sprintf( "ALTER TABLE %s ADD $key1 text NOT NULL", $this->table) );
+					$wpdb->query( $wpdb->prepare( 'ALTER TABLE %1s ADD %2s text NOT NULL', $this->table, $key1) );
 				}
 			}
 			
@@ -446,7 +445,7 @@ class WC_Local_Pickup_Admin {
 
 		$this->table = $wpdb->prefix . 'alp_pickup_location';
 		
-		$results = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$this->table} WHERE id = %d", $id ) );
+		$results = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM %1s WHERE id = %2s', $this->table, $id ) );
 		
 		$results = $this->get_slaches_data_byid($results);
 		
@@ -484,7 +483,8 @@ class WC_Local_Pickup_Admin {
 				'exclude_from_search'       => false,
 				'show_in_admin_all_list'    => true,
 				'show_in_admin_status_list' => true,
-				'label_count'               => _n_noop( 'Ready for Pickup (%s)', 'Ready for Pickup (%s)', 'advanced-local-pickup-for-woocommerce' )
+				/* translators: %s: search term */
+				'label_count'               => _n_noop( 'Ready for Pickup (%s)', 'Ready for Pickup (%s)' )
 			) );
 		}
 		
@@ -496,7 +496,8 @@ class WC_Local_Pickup_Admin {
 				'exclude_from_search'       => false,
 				'show_in_admin_all_list'    => true,
 				'show_in_admin_status_list' => true,
-				'label_count'               => _n_noop( 'Picked up (%s)', 'Picked up (%s)', 'advanced-local-pickup-for-woocommerce' )
+				/* translators: %s: search term */
+				'label_count'               => _n_noop( 'Picked up (%s)', 'Picked up (%s)' )
 			) );
 		}
 		
@@ -842,7 +843,7 @@ class WC_Local_Pickup_Admin {
 		
 		$settings = $this->wclp_general_setting_fields_func();		
 		$addional_content = get_option('wclp_processing_additional_content', $settings['wclp_processing_additional_content']['default']);
-		echo '<p>' . esc_html(stripslashes($addional_content), 'advanced-local-pickup-for-woocommerce') . '</p>';
+		echo '<p>' . esc_html(wp_kses_post(stripslashes($addional_content)), 'advanced-local-pickup-for-woocommerce') . '</p>';
 	}
 	
 	/**
@@ -871,6 +872,11 @@ class WC_Local_Pickup_Admin {
 	
 	public function wclp_update_state_dropdown_fun() {
 		
+		$nonce = isset( $_POST['nonce'] ) ? sanitize_text_field($_POST['nonce']) : '';
+		if ( ! wp_verify_nonce( $nonce, 'alp-ajax-nonce' ) ) {
+			die();
+		}
+
 		$country = isset($_POST['country']) ? wc_clean($_POST['country']) : '';
 		$countries_obj   = new WC_Countries();
 		$default_county_states = $countries_obj->get_states( $country );
@@ -884,7 +890,7 @@ class WC_Local_Pickup_Admin {
 			<?php 
 			foreach ( (array) $default_county_states as $key => $val ) { 
 				
-				?>																
+				?>
 				<option value="<?php echo esc_html($key); ?>"><?php echo esc_html($val); ?></option>
 				<?php 
 			}
@@ -898,6 +904,11 @@ class WC_Local_Pickup_Admin {
 	
 	public function wclp_update_work_hours_list_fun() {
 		
+		$nonce = isset( $_POST['nonce'] ) ? sanitize_text_field($_POST['nonce']) : '';
+		if ( ! wp_verify_nonce( $nonce, 'alp-ajax-nonce' ) ) {
+			die();
+		}
+
 		$data = $this->get_data();
 		$location_id = isset($_POST['id']) ? sanitize_text_field($_POST['id']) : '';
 		$location = $this->get_data_byid($location_id);
@@ -1017,7 +1028,7 @@ class WC_Local_Pickup_Admin {
 											}
 										}
 										
-										?>			
+										?>
 										<option value="<?php echo esc_html($key2); ?>" <?php echo ( isset($multi_checkbox_data[$key]['wclp_store_hour_end']) && $multi_checkbox_data[$key]['wclp_store_hour_end'] == $key2 ) ? 'selected' : ''; ?>><?php echo esc_html($val2); ?></option>
 									<?php } ?>
 								</select>
@@ -1044,6 +1055,11 @@ class WC_Local_Pickup_Admin {
 	
 	public function wclp_update_edit_location_form_fun() {
 
+		$nonce = isset( $_POST['nonce'] ) ? sanitize_text_field($_POST['nonce']) : '';
+		if ( ! wp_verify_nonce( $nonce, 'alp-ajax-nonce' ) ) {
+			die();
+		}
+
 		$location_id = isset($_POST['id']) ? sanitize_text_field($_POST['id']) : '';
 		$location = $this->get_data_byid($location_id);
 		
@@ -1056,6 +1072,11 @@ class WC_Local_Pickup_Admin {
 	
 	public function wclp_apply_work_hours_fun() {
 		
+		$nonce = isset( $_POST['nonce'] ) ? sanitize_text_field($_POST['nonce']) : '';
+		if ( ! wp_verify_nonce( $nonce, 'alp-ajax-nonce' ) ) {
+			die();
+		}
+
 		global $wpdb;
 		$location_id = isset($_POST['id']) ? sanitize_text_field($_POST['id']) : '';
 		$days = isset($_POST['days']) ? wc_clean($_POST['days']) : '';
@@ -1128,7 +1149,7 @@ class WC_Local_Pickup_Admin {
 		foreach ( (array) $arrays as $id => $array ) {
 			if ($array['show']) {	
 				
-				?> 
+				?>
 				<?php if ('dropdown' == $array['type']) { ?>               	
 					<tr valign="top" class="html2_title_row <?php echo esc_html($array['class']); ?>">
 						<?php if ( !empty($array['title']) && isset($array['title'])) { ?>										
@@ -1152,7 +1173,8 @@ class WC_Local_Pickup_Admin {
 								}
 								?>
 								<fieldset>
-									<select class="select select2" id="<?php echo esc_html($field_id); ?>" name="<?php echo esc_html($id); ?>" <?php echo esc_html($multiple); ?> style="width:150px;"> <?php 
+									<select class="select select2" id="<?php echo esc_html($field_id); ?>" name="<?php echo esc_html($id); ?>" <?php echo esc_html($multiple); ?> style="width:150px;"> 
+									<?php 
 									foreach ( (array) $array['options'] as $key => $val ) { 
 										$selected = '';
 										if ( isset($array['multiple']) ) {
@@ -1176,7 +1198,7 @@ class WC_Local_Pickup_Admin {
 					<?php 
 				}
 				if ( !empty($array['title']) && 'textarea' == $array['type'] ) { 
-					?>	             	
+					?>
 					<tr valign="top" class="html2_title_row <?php echo esc_html($array['class']); ?>">
 						<th><span class="row-label">
 							<label for=""><?php echo esc_html($array['title']); ?><?php echo ( isset($array['title_link']) ) ? esc_html($array['title_link']) : ''; ?>
@@ -1387,7 +1409,7 @@ class WC_Local_Pickup_Admin {
 	public function get_pickup_data( $order_id ) {
 		
 		if (empty($order_id)) {
-			return $location_data = array();
+			return array();
 		}
 		
 		$locations = $this->get_data();
@@ -1413,7 +1435,7 @@ class WC_Local_Pickup_Admin {
 	public function get_store_address_by_id( $location_id ) {
 		
 		if ( empty( $location_id ) ) {
-			return $address = '';
+			return '';
 		}
 		
 		$location = $this->get_data_byid($location_id);
@@ -1439,7 +1461,7 @@ class WC_Local_Pickup_Admin {
 	public function get_store_hours_by_id( $location_id ) {
 		
 		if ( empty( $location_id ) ) {
-			return $pickup_hour = '';
+			return '';
 		}
 		
 		$location = $this->get_data_byid($location_id);
@@ -1543,15 +1565,4 @@ class WC_Local_Pickup_Admin {
 		return $pickup_hour;
 	}
 	
-	/*
-	* update preview order id in customizer
-	*/
-	public function update_email_preview_order_fun() {
-		
-		$wclp_preview_order_id = isset($_POST['wclp_preview_order_id']) ? wc_clean($_POST['wclp_preview_order_id']) : '';
-		set_theme_mod('wclp_pickup_preview_order_id', $wclp_preview_order_id);
-		set_theme_mod('wclp_ready_pickup_preview_order_id', $wclp_preview_order_id);	
-		set_theme_mod('wclp_pickup_instruction_preview_order_id', $wclp_preview_order_id);
-		exit;
-	}
 }

@@ -283,7 +283,7 @@ $location = wc_local_pickup()->admin->get_data_byid($location_id);
 						}	
 					}
 				}
-				?>	
+				?>
 				</span>
 			</div>
 			<div class="panel options business-hours">
@@ -424,7 +424,7 @@ $location = wc_local_pickup()->admin->get_data_byid($location_id);
 																			$val2 = gmdate('g:ia', strtotime($val2));
 																		}
 																	}
-																	?>			
+																	?>
 																<option value="<?php echo esc_html($key2); ?>" <?php echo ( isset( $multi_checkbox_data[$key]['wclp_store_hour_end'] ) && $multi_checkbox_data[$key]['wclp_store_hour_end'] == $key2 ) ? 'selected' : ''; ?> ><?php echo esc_html($val2); ?></option>
 															<?php } ?>
 														</select>
@@ -450,6 +450,62 @@ $location = wc_local_pickup()->admin->get_data_byid($location_id);
 						<?php do_action('wclp_add_business_setting_html_hook', $location); ?>
 					</tbody>
 				</table>
+			</div>
+
+			<div class="accordion heading premium">
+				<label>
+					<?php esc_html_e( 'Pickup Appointments', 'advanced-local-pickup-for-woocommerce' ); ?>
+					<span class="premium-label"><?php esc_html_e( 'Premium', 'advanced-local-pickup-for-woocommerce' ); ?></span>
+					<span class="dashicons dashicons-arrow-right-alt2"></span>
+				</label>
+			</div>
+
+			<div class="accordion heading premium">
+				<label>
+					<?php esc_html_e( 'Products', 'advanced-local-pickup-for-woocommerce' ); ?>
+					<span class="premium-label"><?php esc_html_e( 'Premium', 'advanced-local-pickup-for-woocommerce' ); ?></span>
+					<span class="dashicons dashicons-arrow-right-alt2"></span>
+				</label>
+			</div>
+
+			<div class="accordion heading premium">
+				<label>
+					<?php esc_html_e( 'Shipping Method', 'advanced-local-pickup-for-woocommerce' ); ?>
+					<span class="premium-label"><?php esc_html_e( 'Premium', 'advanced-local-pickup-for-woocommerce' ); ?></span>
+					<span class="dashicons dashicons-arrow-right-alt2"></span>
+				</label>
+			</div>
+
+			<div class="accordion heading premium">
+				<label>
+					<?php esc_html_e( 'Payment Method', 'advanced-local-pickup-for-woocommerce' ); ?>
+					<span class="premium-label"><?php esc_html_e( 'Premium', 'advanced-local-pickup-for-woocommerce' ); ?></span>
+					<span class="dashicons dashicons-arrow-right-alt2"></span>
+				</label>
+			</div>
+
+			<div class="accordion heading premium">
+				<label>
+					<?php esc_html_e( 'Price Adjustments', 'advanced-local-pickup-for-woocommerce' ); ?>
+					<span class="premium-label"><?php esc_html_e( 'Premium', 'advanced-local-pickup-for-woocommerce' ); ?></span>
+					<span class="dashicons dashicons-arrow-right-alt2"></span>
+				</label>
+			</div>
+
+			<div class="accordion heading premium">
+				<label>
+					<?php esc_html_e( 'Notifications', 'advanced-local-pickup-for-woocommerce' ); ?>
+					<span class="premium-label"><?php esc_html_e( 'Premium', 'advanced-local-pickup-for-woocommerce' ); ?></span>
+					<span class="dashicons dashicons-arrow-right-alt2"></span>
+				</label>
+			</div>
+
+			<div class="accordion heading premium">
+				<label>
+					<?php esc_html_e( 'Automations', 'advanced-local-pickup-for-woocommerce' ); ?>
+					<span class="premium-label"><?php esc_html_e( 'Premium', 'advanced-local-pickup-for-woocommerce' ); ?></span>
+					<span class="dashicons dashicons-arrow-right-alt2"></span>
+				</label>
 			</div>
 			<?php do_action('wclp_add_setting_html_hook', $location); ?>
 		</form>

@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 do_action( 'woocommerce_email_header', $email_heading, $email );
 /* translators: %s: Site title */ 
-?><p class="wclp_additional_content"><?php echo wp_kses_post( html_entity_decode( $additional_content ) );  ?></p>
+?><p class="wclp_additional_content"><?php echo wp_kses_post( wpautop(html_entity_decode( $additional_content )) ); ?></p>
 <?php
 /*
  * @hooked WC_Emails::order_details() Shows the order details table.
