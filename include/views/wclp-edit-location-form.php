@@ -371,9 +371,7 @@ $location = wc_local_pickup()->admin->get_data_byid($location_id);
 													}
 													echo esc_html($wclp_store_hour); 
 												}
-												?>
-												- 
-												<?php
+												echo !empty($multi_checkbox_data[$key]['wclp_store_hour']) ? ' - ' : '<span class="dashicons dashicons-plus"></span>';
 												if (isset($multi_checkbox_data[$key]['wclp_store_hour_end'])) { 
 													if ('12' == $wclp_store_time_format) {
 														$last_digit = explode(':', $multi_checkbox_data[$key]['wclp_store_hour_end']);

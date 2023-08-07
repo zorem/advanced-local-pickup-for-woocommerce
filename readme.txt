@@ -3,7 +3,7 @@ Contributors: zorem,kuldipzorem
 Donate link: 
 Tags: woocommerce, local pickup, in store pickup, shipping, shipping options
 Requires at least: 5.0
-Tested up to: 6.2
+Tested up to: 6.3
 Requires PHP: 7.0
 Stable tag: 4.0.1
 License: GPLv2 
@@ -70,6 +70,11 @@ You can get more information, detailed tutorials on the [ALP documentation](http
 
 
 == Changelog ==
+
+= 1.5.5 =
+* Improved - Improve the settings design
+* Dev - Tested with Wordpress 6.3
+* Dev - Tested with WooCommerce 7.9.0
 
 = 1.5.4 =
 * Enhancement - Improved the customizer design

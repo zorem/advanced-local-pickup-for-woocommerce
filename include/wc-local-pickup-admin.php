@@ -198,17 +198,11 @@ class WC_Local_Pickup_Admin {
 		</div>
 		<div class="woocommerce wclp_admin_layout">
 			<?php do_action( 'alp_settings_admin_notice' ); ?>
-			<?php 
-			$style = '';
-			if ( 'edit' == $section ) {
-				$style = 'style="display:none;"';
-			} 
-			?>
 			<div class="wclp_admin_content">
 				<?php 
 				$style = '';
 				if ( 'edit' == $section ) {
-					$style = 'style="display:none;"';
+					$style = 'style=display:none;';
 				} 
 				?>
 				<input id="tab1" type="radio" name="tabs" class="wclp_tab_input" data-label="<?php esc_html_e('Settings', 'woocommerce'); ?>" data-tab="settings" checked>
@@ -217,15 +211,13 @@ class WC_Local_Pickup_Admin {
 				<a for="tab3" href="admin.php?page=local_pickup&tab=locations<?php echo ( !class_exists( 'Advanced_local_pickup_PRO' ) ) ? '&section=edit&id=' . esc_html($location_id) : ''; ?>" class="wclp_tab_label <?php echo ( 'locations' === $tab ) ? 'nav-tab-active' : ''; ?>" <?php echo esc_html($style); ?>><?php esc_html_e('Pickup Location', 'advanced-local-pickup-for-woocommerce'); ?></a>
 				<input id="tab5" type="radio" name="tabs" class="wclp_tab_input" data-label="<?php esc_html_e('Customize', 'advanced-local-pickup-for-woocommerce'); ?>" data-tab="customize" <?php echo ( 'customize' === $tab ) ? 'checked' : ''; ?>>
 				<a for="tab5" href="<?php echo esc_url(admin_url('admin.php?page=alp_customizer&preview=ready_pickup')); ?>" class="wclp_tab_label <?php echo ( 'customize' === $tab ) ? 'nav-tab-active' : ''; ?>" <?php echo esc_html($style); ?>><?php esc_html_e('Customize', 'advanced-local-pickup-for-woocommerce'); ?></a>
-				<?php
-				/* <input id="tab4" type="radio" name="tabs" class="wclp_tab_input" data-label="<?php esc_html_e('Go Pro', 'advanced-local-pickup-for-woocommerce'); ?>" data-tab="go-pro" <?php echo ( 'go-pro' === $tab ) ? 'checked' : ''; ?>>
-				<a for="tab4" href="admin.php?page=local_pickup&tab=go-pro" class="wclp_tab_label <?php echo ( 'go-pro' === $tab ) ? 'nav-tab-active' : ''; ?>" <?php echo esc_html($style); ?>><?php esc_html_e('Go Pro', 'advanced-local-pickup-for-woocommerce'); ?></a> */
-				?>
+				<input id="tab4" type="radio" name="tabs" class="wclp_tab_input" data-label="<?php esc_html_e('Go Pro', 'advanced-local-pickup-for-woocommerce'); ?>" data-tab="go-pro" <?php echo ( 'go-pro' === $tab ) ? 'checked' : ''; ?>>
+				<a for="tab4" href="admin.php?page=local_pickup&tab=go-pro" class="wclp_tab_label <?php echo ( 'go-pro' === $tab ) ? 'nav-tab-active' : ''; ?>" <?php echo esc_html($style); ?>><?php esc_html_e('Go Pro', 'advanced-local-pickup-for-woocommerce'); ?></a>
 				<div class="menu_devider" <?php echo esc_html($style); ?>></div>
 				<?php require_once( 'views/wclp_setting_tab.php' ); ?>
 				<?php require_once( 'views/wclp_locations_tab.php' ); ?>
-				<?php //require_once( 'views/wclp_addon_tab.php' ); ?>
-				<?php do_action( 'alp_settings_admin_footer' ); ?>
+				<?php require_once( 'views/wclp_addon_tab.php' ); ?>
+				<?php 'go-pro' !== $tab ? do_action( 'alp_settings_admin_footer' ) : ''; ?>
 			</div>
 		</div>
 		<?php
