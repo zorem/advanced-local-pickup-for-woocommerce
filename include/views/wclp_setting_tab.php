@@ -7,7 +7,7 @@
 						<?php esc_html_e( 'Display options', 'advanced-local-pickup-for-woocommerce' ); ?>
 						<span class="submit wclp-btn">
 							<div class="spinner workflow_spinner" style="float:none"></div>
-							<button name="save" class="wclp-save button-primary woocommerce-save-button" type="submit" value="Save changes"><?php esc_html_e( 'Save changes', 'woocommerce' ); ?></button>
+							<button name="save" class="wclp-save button-primary woocommerce-save-button" type="submit" value="Save & close"><?php esc_html_e( 'Save & close', 'advanced-local-pickup-for-woocommerce' ); ?></button>
 							<?php wp_nonce_field( 'wclp_setting_form_action', 'wclp_setting_form_nonce_field' ); ?>
 							<input type="hidden" name="action" value="wclp_setting_form_update">
 						</span>
@@ -26,7 +26,7 @@
 						<?php esc_html_e( 'Local pickup workflow', 'advanced-local-pickup-for-woocommerce' ); ?>
 						<span class="submit wclp-btn">
 							<div class="spinner workflow_spinner" style="float:none"></div>
-							<button name="save" class="wclp-save button-primary woocommerce-save-button" type="submit" value="Save changes"><?php esc_html_e( 'Save changes', 'woocommerce' ); ?></button>
+							<button name="save" class="wclp-save button-primary woocommerce-save-button" type="submit" value="Save changes"><?php esc_html_e( 'Save & close', 'advanced-local-pickup-for-woocommerce' ); ?></button>
 							<input type="hidden" name="action" value="wclp_setting_form_update">
 						</span>
 						<span class="dashicons dashicons-arrow-right-alt2"></span>
@@ -43,12 +43,21 @@
 										<label class="tgl-btn" for="wclp_status_ready_pickup"></label>
 									</span>
 								</td>
-								<td class="forminp status-label-column" style="width: 122px;">
+								<td class="forminp status-label-column" style="width: 130px;">
 									<span class="order-label wc-ready-pickup" style="background:<?php echo esc_html(get_option('wclp_ready_pickup_status_label_color', '#8bc34a')); ?>;color:<?php echo esc_html(get_option('wclp_ready_pickup_status_label_font_color', '#fff')); ?>">
 										<?php esc_html_e( 'Ready for pickup', 'advanced-local-pickup-for-woocommerce' ); ?>
 									</span>
+								</td>
+								<td class="forminp">
+									<fieldset>
+										<input class="input-text regular-input " type="text" name="wclp_ready_pickup_status_label_color" id="wclp_ready_pickup_status_label_color" style="" value="<?php echo esc_html(get_option('wclp_ready_pickup_status_label_color', '#8bc34a' )); ?>" placeholder="">
+										<select class="select" id="wclp_ready_pickup_status_label_font_color" name="wclp_ready_pickup_status_label_font_color">	
+											<option value="#fff" <?php echo ( '#fff' == get_option('wclp_ready_pickup_status_label_font_color') ) ? 'selected' : ''; ?>><?php esc_html_e( 'Light Font', 'advanced-local-pickup-for-woocommerce' ); ?></option>
+											<option value="#000" <?php echo ( '#000' == get_option('wclp_ready_pickup_status_label_font_color') ) ? 'selected' : ''; ?>><?php esc_html_e( 'Dark Font', 'advanced-local-pickup-for-woocommerce' ); ?></option>
+										</select>
+									</fieldset>
 								</td>								
-								<td class="forminp">							
+								<td class="forminp" style="text-align: right;">							
 									<?php
 									$wclp_enable_ready_pickup_email = get_option('woocommerce_customer_ready_pickup_order_settings');
 									if (isset($wclp_enable_ready_pickup_email) && !empty($wclp_enable_ready_pickup_email)) {
@@ -62,11 +71,6 @@
 									}
 									?>
 									<fieldset>
-										<input class="input-text regular-input " type="text" name="wclp_ready_pickup_status_label_color" id="wclp_ready_pickup_status_label_color" style="" value="<?php echo esc_html(get_option('wclp_ready_pickup_status_label_color', '#8bc34a' )); ?>" placeholder="">
-										<select class="select" id="wclp_ready_pickup_status_label_font_color" name="wclp_ready_pickup_status_label_font_color">	
-											<option value="#fff" <?php echo ( '#fff' == get_option('wclp_ready_pickup_status_label_font_color') ) ? 'selected' : ''; ?>><?php esc_html_e( 'Light Font', 'advanced-local-pickup-for-woocommerce' ); ?></option>
-											<option value="#000" <?php echo ( '#000' == get_option('wclp_ready_pickup_status_label_font_color') ) ? 'selected' : ''; ?>><?php esc_html_e( 'Dark Font', 'advanced-local-pickup-for-woocommerce' ); ?></option>
-										</select>
 										<label class="send_email_label">
 											<input type="hidden" name="wclp_enable_ready_pickup_email" value="0"/>
 											<input type="checkbox" name="wclp_enable_ready_pickup_email" id="wclp_enable_ready_pickup_email" <?php echo esc_html($ready_pickup_checked); ?> value="1"><?php esc_html_e( 'Send Email', 'advanced-local-pickup-for-woocommerce' ); ?>
@@ -90,12 +94,21 @@
 										<label class="tgl-btn" for="wclp_status_picked_up"></label>
 									</span>
 								</td>
-								<td class="forminp status-label-column" style="width: 122px;">
+								<td class="forminp status-label-column" style="width: 130px;">
 									<span class="order-label wc-pickup" style="background:<?php echo esc_html(get_option('wclp_pickup_status_label_color', '#2196f3')); ?>;color:<?php echo esc_html(get_option('wclp_pickup_status_label_font_color', '#fff')); ?>">
 										<?php esc_html_e( 'Picked up', 'advanced-local-pickup-for-woocommerce' ); ?>
 									</span>
+								</td>
+								<td class="forminp">
+									<fieldset>
+										<input class="input-text regular-input " type="text" name="wclp_pickup_status_label_color" id="wclp_pickup_status_label_color" style="" value="<?php echo esc_html(get_option('wclp_pickup_status_label_color', '#2196f3')); ?>" placeholder="">
+										<select class="select" id="wclp_pickup_status_label_font_color" name="wclp_pickup_status_label_font_color">	
+											<option value="#fff" <?php echo ( '#fff' == get_option('wclp_pickup_status_label_font_color') ) ? 'selected' : ''; ?>><?php esc_html_e( 'Light Font', 'advanced-local-pickup-for-woocommerce' ); ?></option>
+											<option value="#000" <?php echo ( '#000' == get_option('wclp_pickup_status_label_font_color') ) ? 'selected' : ''; ?>><?php esc_html_e( 'Dark Font', 'advanced-local-pickup-for-woocommerce' ); ?></option>
+										</select>
+									</fieldset>
 								</td>								
-								<td class="forminp">							
+								<td class="forminp" style="text-align: right;">							
 									<?php
 									$wclp_enable_pickup_email = get_option('woocommerce_customer_pickup_order_settings');
 									if (isset($wclp_enable_pickup_email) && !empty($wclp_enable_pickup_email)) {
@@ -109,11 +122,6 @@
 									}
 									?>
 									<fieldset>
-										<input class="input-text regular-input " type="text" name="wclp_pickup_status_label_color" id="wclp_pickup_status_label_color" style="" value="<?php echo esc_html(get_option('wclp_pickup_status_label_color', '#2196f3')); ?>" placeholder="">
-										<select class="select" id="wclp_pickup_status_label_font_color" name="wclp_pickup_status_label_font_color">	
-											<option value="#fff" <?php echo ( '#fff' == get_option('wclp_pickup_status_label_font_color') ) ? 'selected' : ''; ?>><?php esc_html_e( 'Light Font', 'advanced-local-pickup-for-woocommerce' ); ?></option>
-											<option value="#000" <?php echo ( '#000' == get_option('wclp_pickup_status_label_font_color') ) ? 'selected' : ''; ?>><?php esc_html_e( 'Dark Font', 'advanced-local-pickup-for-woocommerce' ); ?></option>
-										</select>
 										<label class="send_email_label">
 											<input type="hidden" name="wclp_enable_pickup_email" value="0"/>
 											<input type="checkbox" name="wclp_enable_pickup_email" id="wclp_enable_pickup_email" <?php echo esc_html($pickup_checked); ?> value="1"><?php esc_html_e( 'Send Email', 'advanced-local-pickup-for-woocommerce' ); ?>

@@ -138,6 +138,18 @@ jQuery(document).on("click", ".accordion", function(){
 	};
 })( jQuery );
 
+jQuery(document).on("change", "#wclp_pickup_status_label_font_color", function(){
+	var font_color = jQuery(this).val();
+	jQuery('.order-status-table .order-label.wc-pickup').css('color',font_color);
+	save_custom_order_status();
+});
+
+jQuery(document).on("change", "#wclp_ready_pickup_status_label_font_color", function(){
+	var font_color = jQuery(this).val();
+	jQuery('.order-status-table .order-label.wc-ready-pickup').css('color',font_color);
+	save_custom_order_status();
+});
+
 jQuery(document).on("click", "#wclp_status_pickup", function(){
 	if(jQuery(this).prop("checked") == true){
         jQuery(this).closest('tr').removeClass('disable_row');				

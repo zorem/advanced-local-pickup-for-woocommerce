@@ -57,6 +57,7 @@ $pro_plugins = array(
 				<div class="row">
 					<div class="col alp-features-list wclp-btn">
 						<h1 class="plugin_title"><?php echo wp_kses_post('Advanced Local Pickup PRO'); ?></h1>
+						<a href="https://www.zorem.com/product/advanced-local-pickup-for-woocommerce/?utm_source=wp-admin&utm_medium=ALPPRO&utm_campaign=add-ons" class="install-now button-primary pro-btn" target="blank">Starting From $10.75 / month </a>
 						<ul>
 							<li>Display pickup instructions during checkout</li>
 							<li>Notify Your Customers When Their Order is Available For Pickup</li>
@@ -68,10 +69,9 @@ $pro_plugins = array(
 							<li>Allow local pickup and other shipping methods on the same order</li>
 							<li>Apply a discount or a fee for Local Pickup orders</li>
 						</ul>
-						<a href="https://www.zorem.com/product/advanced-local-pickup-for-woocommerce/?utm_source=wp-admin&utm_medium=ALPPRO&utm_campaign=add-ons" class="install-now button-primary pro-btn" target="blank">Upgrade To PRO ></a>	
 					</div>
 					<div class="col alp-pro-image">
-						<img src="<?php echo esc_url(wc_local_pickup()->plugin_dir_url() . 'assets/images/addon-banner.jpg'); ?>" width="100%">
+						<img src="<?php echo esc_url(wc_local_pickup()->plugin_dir_url() . 'assets/images/addon-banner.jpg'); ?>" width="100%" height="400px">
 					</div>
 				</div>
 			</div>

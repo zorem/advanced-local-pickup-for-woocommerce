@@ -246,17 +246,14 @@
 /*header style end*/
 
 /* admin message panel */
-.admin-message-panel,
-.admin-footer-panel {
-	margin-top: 20px;
-}
 
 .admin-footer-panel {
-	box-shadow: 0 0px 5px 0px #bdbdbd;
-	margin: 20px 0;
-	padding: 20px;
-	background-color: #fff;
-	border-radius: 3px;
+	/*box-shadow: 0 0px 5px 0px #bdbdbd; */
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 3px;
+    border: 1px solid #e0e0e0;
 }
 
 .admin_message_header,
@@ -272,15 +269,15 @@
 	font-size: 22px;
 	font-weight: 600;
 	margin-bottom: 20px;
-	color: #f68520;
+	color: #000;
 	line-height: 28px;
 }
 
 .admin-message-panel .admin-message-row {
 	padding: 20px;
-	background: #fef3e9;
+	background: rgb(246 133 32 / 5%);
 	border-radius: 3px;
-	margin: 0 20px 20px;
+	margin: 20px 20px;
 	position: relative;
 }
 
@@ -296,10 +293,11 @@
 }
 
 .admin-footer-row .column {
-	width: calc(100% / 3);
+	width: calc(100% / 2);
     display: inline-flex;
-    font-size: 14px;
-    margin-bottom: 15px;
+    font-size: 15px;
+    margin-bottom: 0;
+    line-height: 40px;
 }
 
 .admin-footer-row .column::before {
@@ -319,11 +317,11 @@
 	background: #f68520;
 	border-color: #f68520;
 	text-transform: uppercase;
-	font-size: 16px;
+	font-size: 14px;
 	font-weight: 600;
-	min-width: 160px;
-	line-height: 38px;
-	text-align: center;
+	min-width: 140px;
+    line-height: 33px;
+    text-align: center;
 }
 
 .admin-footer-row .button-primary.btn_pro_notice {
@@ -334,11 +332,11 @@
 	color: #f68520;
 	border-color: #f68520;
 	margin: 0 10px;
-	font-size: 16px;
-	font-weight: 600;
-	min-width: 160px;
-	line-height: 38px;
-	text-align: center;
+	font-size: 14px;
+    font-weight: 600;
+    min-width: 140px;
+    line-height: 33px;
+    text-align: center;
 }
 
 .button-primary.btn_pro_notice:hover,
@@ -559,9 +557,8 @@ section.wclp_tab_section {
 }
 
 .wclp_outer_form_table table.form-table.order-status-table tr td:first-child {
-	width: 36px;
-	padding: 8px 0 !important;
-
+	width: 37px;
+    padding: 10px 0 10px !important;
 }
 
 .wclp_tab_section a {
@@ -584,7 +581,7 @@ section.wclp_tab_section {
 }
 
 .wclp_outer_form_table table.form-table.order-status-table tr td {
-	padding: 8px 15px !important;
+	padding: 10px 0 10px 15px !important;
 }
 
 .wclp_outer_form_table table.form-table.order-status-table tr td .send_email_label,
@@ -594,7 +591,7 @@ section.wclp_tab_section {
 }
 
 .wclp_outer_form_table a.settings_edit {
-	border: 1px solid #005b9a;
+	border: 1px solid #e0e0e0;
 	padding: 5px;
 	border-radius: 3px;
 	text-decoration: none;
@@ -834,10 +831,6 @@ section.wclp_tab_section {
 	margin: 0 5px;
 }
 
-.order-status-table td:last-child {
-	width: 80%;
-}
-
 .rtl .order-status-table td:last-child {
 	text-align: left !important;
 }
@@ -856,20 +849,21 @@ section.wclp_tab_section {
 
 .wp-picker-container button {
 	margin: 0 5px !important;
+	border-color: #e0e0e0 !important;
 }
 
 .status-label-column .order-label {
 	display: inline-flex;
-	line-height: 2.2em;
-	color: #777;
-	background: #e5e5e5;
-	border-radius: 4px;
-	border-bottom: 1px solid rgba(0, 0, 0, .05);
-	margin: -.25em 0;
-	cursor: inherit !important;
-	white-space: nowrap;
-	max-width: 100%;
-	padding: 0.1em 1em;
+    line-height: 2.2em;
+    color: #777;
+    background: #e5e5e5;
+    border-radius: 4px;
+    border-bottom: 1px solid rgba(0, 0, 0, .05);
+    margin: -0.25em 0;
+    cursor: inherit !important;
+    white-space: nowrap;
+    max-width: 100%;
+    padding: 0 1em;
 }
 
 .woocommerce.wclp_admin_layout table.form-table .regular-input {
@@ -1035,6 +1029,7 @@ a.menu_aosm_link:focus {
 .wclp_tab_inner_container .woocommerce-help-tip.tipTip:after {
 	top: 0;
 	margin: 0;
+	color: #013047;
 }
 
 .wclp_tab_inner_container .woocommerce-help-tip.tipTip {
@@ -1258,6 +1253,7 @@ a.menu_aosm_link:focus {
 .wclp_tab_inner_container .options .woocommerce-help-tip.tipTip:after {
 	top: 0px;
 	margin: 0 5px;
+	color: #013047;
 }
 
 .rtl .location-setting .panel.business-hours .hours-block .time-format,
@@ -1364,10 +1360,14 @@ p.alp-apply-multiple {
 
 .woocommerce.wclp_admin_layout table.form-table .wclp_pickup_time_fieldset span.hours {
 	padding: 5px;
-	width: 85px;
-	display: inline-table;
-	text-align: center;
-	margin-bottom: 10px;
+    font-size: 14px;
+    display: inline-table;
+    text-align: center;
+    margin-bottom: 10px;
+    color: #2196f3;
+    border: 0;
+    margin: 0;
+    width: 100%;
 }
 
 .wplp_pickup_duration {
@@ -1398,7 +1398,6 @@ p.alp-apply-multiple {
 /*add-ons*/
 .addons_page_dtable .addon_inner_section {
 	border: 1px solid #e0e0e0;
-	margin: 0 0 20px;
 	padding: 30px;
 	background: #fff;
 	border-radius: 3px;
@@ -1414,6 +1413,10 @@ p.alp-apply-multiple {
 	margin: 0;
 	font-weight: 500;
 	margin-bottom: 15px;
+}
+
+.alp-features-list {
+    min-width: 450px;
 }
 
 .alp-features-list ul li {
@@ -1438,8 +1441,16 @@ p.alp-apply-multiple {
 	font-size: 16px;
 	font-weight: bold;
 	height: auto;
-	line-height: 45px;
-	margin-top: 15px;
+	line-height: 42px;
+	margin: 20px 0;
+}
+
+.wclp-btn .button-primary.pro-btn::after {
+    content: "\f345";
+    font-family: 'dashicons';
+    font-size: 20px;
+    vertical-align: middle;
+    font-weight: 100;
 }
 
 .plugins_section.free_plugin_section .plugin_description h3 {
@@ -1481,7 +1492,7 @@ p.alp-apply-multiple {
 	max-width: calc(33.33% - 14px);
 	display: flex;
 	margin-right: 20px;
-	margin-bottom: 20px;
+	margin-top: 20px;
 }
 
 .plugins_section.free_plugin_section .single_plugin:nth-child(3n) {
@@ -1509,7 +1520,7 @@ p.alp-apply-multiple {
 }
 
 .plugins_section.free_plugin_section .wclp-btn .button {
-	line-height: 35px;
+	line-height: 33px;
 }
 
 .plugins_section.free_plugin_section .plugin_description p {
@@ -1517,6 +1528,7 @@ p.alp-apply-multiple {
 	display: -webkit-box;
 	-webkit-line-clamp: 3;
 	-webkit-box-orient: vertical;
+	margin-top: 0;
 }
 
 /*addon-end*/
@@ -1580,8 +1592,8 @@ p.alp-apply-multiple {
 .premium-label {
 	font-size: 14px;
 	font-weight: normal;
-	background: #f68520;
-	color: #fff;
+	background: rgb(246 133 32 / 20%);
+	color: #f68520;
 	padding: 0px 10px;
 	border-radius: 10px;
 	font-style: italic;
@@ -1918,8 +1930,12 @@ input[type=checkbox].tgl {
 		margin-top: 20px;
 	}
 
+	.addons_page_dtable .addon_inner_section .row {
+		display: block !important;
+	}
+
 	.admin-footer-row .column {
-		width: calc(100% / 2);
+		width: calc(100%);
 	}
 	
 	.rtl .zorem-layout__logo-panel {
@@ -1997,12 +2013,19 @@ input[type=checkbox].tgl {
 	.single_plugin {
 		width: 100% !important;
 		max-width: 100% !important;
+		margin-right: 0 !important;
+		display: block !important;
 	}
+
 }
 
 @media only screen and (max-width: 529px) {
 	.wplp_pickup_duration {
 		width: 100px;
+	}
+
+	.addons_page_dtable .addon_inner_section .row {
+		display: block !important;
 	}
 
 	.admin-footer-row .column {
