@@ -192,7 +192,7 @@ class WC_Local_Pickup_Customizer {
 
 	public function get_preview_func() {
 		$preview = isset($_GET['preview']) ? sanitize_text_field($_GET['preview']) : 'ready_pickup';
-		echo $this->get_preview_email($preview);
+		echo wp_kses_post($this->get_preview_email($preview));
 		die();
 	}
 
