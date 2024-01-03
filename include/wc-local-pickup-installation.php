@@ -19,6 +19,7 @@ class WC_Local_Pickup_Install {
 	 * @var object Class Instance
 	 */
 	private static $instance;
+	public $table;
 	
 	/**
 	* Function callback for add not existing key in database.

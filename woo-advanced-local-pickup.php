@@ -5,11 +5,11 @@
 * Description: The Advanced Local Pickup (ALP) helps you handle local pickup orders more conveniently by extending the WooCommerce Local Pickup shipping method.
 * Author: zorem
 * Author URI: https://www.zorem.com/
-* Version: 1.5.5
+* Version: 1.6.1
 * Text Domain: advanced-local-pickup-for-woocommerce
 * Domain Path: /lang/
 * WC requires at least: 4.0
-* WC tested up to: 7.9.0
+* WC tested up to: 8.4.0
 */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -23,7 +23,12 @@ class Woocommerce_Local_Pickup {
 	 *
 	 * @var string
 	 */
-	public $version = '1.5.5';
+	public $version = '1.6.1';
+	public $admin;
+	public $install;
+	public $table;
+	public $plugin_path;
+	public $customizer;
 	
 	/**
 	 * Constructor
@@ -144,7 +149,7 @@ class Woocommerce_Local_Pickup {
 	private function init() {
 		
 		//callback on activate plugin
-		register_activation_hook( __FILE__, array( $this, 'table_create' ) );
+		//register_activation_hook( __FILE__, array( $this, 'table_create' ) );
 		
 		// Load plugin textdomain
 		add_action('plugins_loaded', array($this, 'load_textdomain'));
@@ -650,3 +655,21 @@ add_action( 'before_woocommerce_init', function() {
 		\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true );
 	}
 } );
+
+if ( ! function_exists( 'zorem_tracking' ) ) {
+	function zorem_tracking() {
+		require_once dirname(__FILE__) . '/zorem-tracking/zorem-tracking.php';
+		$plugin_name = 'Advanced Local Pickup for WooCommerce';
+		$plugin_slug = 'advanced-local-pickup-for-woocommerce';
+		$user_id = '1';
+		$setting_page_type = 'submenu';
+		$setting_page_location =  "A submenu under other plugin's top level menu";
+		$parent_menu_type = 'A custom top-level admin menu (admin.php)';
+		$menu_slug = 'local_pickup';
+		$plugin_id = '14';
+		$zorem_tracking = WC_Trackers::get_instance( $plugin_name, $plugin_slug, $user_id, $setting_page_type, $setting_page_location, $parent_menu_type, $menu_slug, $plugin_id );
+		return $zorem_tracking;
+	}
+	
+	'zorem_tracking'();
+}

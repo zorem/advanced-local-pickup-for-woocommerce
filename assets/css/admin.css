@@ -541,7 +541,7 @@ section.wclp_tab_section {
 
 .wclp_admin_content .form-table tr.html2_title_row th,
 .wclp_admin_content .form-table tr.html2_title_row td {
-	padding: 10px 0px 10px;
+	padding: 0 0 10px;
 }
 
 .wclp_tab_inner_container .form-table td.bulk-data-table {
@@ -558,7 +558,7 @@ section.wclp_tab_section {
 
 .wclp_outer_form_table table.form-table.order-status-table tr td:first-child {
 	width: 37px;
-    padding: 10px 0 10px !important;
+	padding-left: 0!important;
 }
 
 .wclp_tab_section a {
@@ -581,7 +581,16 @@ section.wclp_tab_section {
 }
 
 .wclp_outer_form_table table.form-table.order-status-table tr td {
-	padding: 10px 0 10px 15px !important;
+	padding: 15px 0 15px 15px !important;
+}
+
+.wclp_outer_form_table table.form-table.order-status-table tr:first-child td {
+    padding-top: 0 !important;
+	border-bottom: 1px solid #f5f5f5;
+}
+
+.wclp_outer_form_table table.form-table.order-status-table tr:last-child td {
+    padding-bottom: 0 !important;
 }
 
 .wclp_outer_form_table table.form-table.order-status-table tr td .send_email_label,
@@ -626,29 +635,12 @@ section.wclp_tab_section {
 	vertical-align: baseline;
 }
 
-.wclp_tab_inner_container #wclp_location_tab_form .form-table th {
-	width: 30%;
-	padding: 10px 0;
-}
-
-.location-setting .panel.price-adjust .form-table tr:first-child td fieldset:first-child {
-	width: 30%;
-}
-
 .location-setting .panel.price-adjust .form-table:first-child td {
 	padding: 10px 20px;
 }
 
 .location-setting .panel.price-adjust .form-table:first-child td {
 	padding: 10px 20px;
-}
-
-.location-setting .panel.price-adjust .form-table:first-child tr:first-child td {
-	padding-top: 0;
-}
-
-.location-setting .panel.price-adjust .form-table:last-child tr:last-child td {
-	padding-bottom: 0;
 }
 
 .wclp_tab_inner_container #wclp_location_tab_form table.form-table tr {
@@ -659,18 +651,13 @@ section.wclp_tab_section {
 	margin: 0 5px;
 }
 
-#wclp_location_tab_form .address-special table.form-table tr,
-#wclp_location_tab_form .address table.form-table tr {
-	border-bottom: 0;
-}
-
-#wclp_location_tab_form .address-special table.form-table tr td,
-#wclp_location_tab_form .address table.form-table tr td {
-	padding: 5px 0;
+.wclp_tab_inner_container #wclp_location_tab_form table.form-table tr:last-child td {
+    padding: 0;
 }
 
 .wclp_tab_inner_container #wclp_location_tab_form table.form-table tr:last-child {
 	border: none;
+	margin: 0;
 }
 
 .wclp_tab_inner_container #wclp_location_tab_form .form-table td.button-column {
@@ -693,13 +680,14 @@ section.wclp_tab_section {
 }
 
 .wclp_tab_inner_container #wclp_setting_tab_form .form-table td .wplp_multiple {
-	padding: 5px 0;
-	margin: 0;
+	padding: 0 0 15px 0;
+    margin: 0 0 15px;
+    border-bottom: 1px solid #f5f5f5;
 }
 
 #wclp_setting_tab_form .html-layout-2 tr.message_textarea td,
 #wclp_setting_tab_form .html-layout-2 tr.additional_textarea td {
-	padding: 5px 0px 15px;
+	padding: 5px 0 0;
 }
 
 .woocommerce table.form-table.html-layout-2 tr.html2_title_row.message_textarea th,
@@ -899,6 +887,22 @@ section.wclp_tab_section {
 	margin-bottom: 10px;
 }
 
+.wclp_tab_section #wclp_location_tab_form .panel tr th, .wclp_tab_section #wclp_location_tab_form .panel tr td, .wclp_tab_section #wclp_location_tab_form .panel tr td fieldset:first-child {
+    display: block;
+}
+
+.wclp_tab_inner_container #wclp_location_tab_form table.form-table tr {
+    border-bottom: 1px solid #f5f5f5;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.wclp_tab_section #wclp_location_tab_form .panel tr th, .wclp_tab_section #wclp_location_tab_form .panel tr td {
+    padding: 0;
+    margin: 0;
+    padding-bottom: 15px;
+}
+
 .wclp_tab_section .wclp_tab_inner_container table.form-table input.regular-input {
 	border: 1px solid #e0e0e0;
 	height: 35px;
@@ -1037,10 +1041,9 @@ a.menu_aosm_link:focus {
 	font-size: 20px;
 }
 
-.location-setting .panel.business-hours .hours-block .time-format {
-	width: 30%;
-	line-height: 35px;
-	float: left;
+.location-setting .panel.business-hours .hours-block .time-format, .location-setting .panel.business-hours .hours-block .work-hours {
+	padding-bottom: 15px;
+    display: block;
 }
 
 .wp-core-ui .btn_green {
@@ -1262,21 +1265,8 @@ a.menu_aosm_link:focus {
 	padding: 0 0 0 10px;
 }
 
-.location-setting .panel.business-hours .hours-block .work-hours {
-	padding-bottom: 20px;
-	display: block;
-}
-
-.location-setting .panel tr:last-child th,
-.location-setting .panel.business-hours tr:last-child td,
-.location-setting .panel.appointments tr:last-child td,
-.location-setting .panel tr:last-child td {
-	padding-bottom: 0 !important;
-}
-
 .location-setting .panel tr:first-child th,
 .location-setting .panel.business-hours tr:first-child td,
-.location-setting .panel.appointments tr:first-child td,
 .location-setting .panel tr:first-child td {
 	padding-top: 0 !important;
 }
@@ -1537,23 +1527,10 @@ p.alp-apply-multiple {
 	border-bottom: 1px solid #e0e0e0;
 }
 
-.location-setting .panel tr:last-child th,
-.location-setting .panel.business-hours tr:last-child td,
-.location-setting .panel.appointments tr:last-child td,
-.location-setting .panel tr:last-child td {
-	padding-bottom: 0 !important;
-}
-
 .location-setting .panel tr:first-child th,
 .location-setting .panel.business-hours tr:first-child td,
-.location-setting .panel.appointments tr:first-child td,
 .location-setting .panel tr:first-child td {
 	padding-top: 0 !important;
-}
-
-.location-setting .panel.price-adjust .form-table tr:first-child td fieldset {
-	display: inline-block;
-	padding-right: 5px;
 }
 
 .heading-subtitle {
@@ -1795,10 +1772,6 @@ input[type=checkbox].tgl {
 		width: 183px;
 	}
 
-	.location-setting .panel.price-adjust .form-table tr:first-child td fieldset:first-child {
-		width: 210px;
-		padding-right: 10px;
-	}
 }
 
 @media only screen and (max-width: 1189px) and (min-width: 769px) {

@@ -1,9 +1,9 @@
 ﻿=== Advanced Local Pickup for WooCommerce ===
-Contributors: zorem,kuldipzorem
+Contributors: zorem,kuldipzorem,gaurav1092
 Donate link: 
 Tags: woocommerce, local pickup, in store pickup, shipping, shipping options
 Requires at least: 5.0
-Tested up to: 6.3
+Tested up to: 6.4
 Requires PHP: 7.0
 Stable tag: 4.0.1
 License: GPLv2 
@@ -41,7 +41,7 @@ The plugin lets you change your WooCommerce orders status to “Ready for Pickup
 * Force Local Pickup
 * Custom email notification templates
 
-[Get the  Advanced Local Pickup PRO](https://www.zorem.com/product/advanced-local-pickup-for-woocommerce/)
+[Get the  Advanced Local Pickup PRO](https://www.zorem.com/product/advanced-local-pickup-pro/)
 
 == Translations == 
 
@@ -70,6 +70,19 @@ You can get more information, detailed tutorials on the [ALP documentation](http
 
 
 == Changelog ==
+
+= 1.6.1 =
+* Fix - the HTML is no support in additional content in processing email
+* Dev - Tested with WooCommerce 8.4.0
+
+= 1.6.0 =
+* Improved - Improve the settings design
+* Dev - Tested with Wordpress 6.4
+* Dev - Tested with WooCommerce 8.2.1
+* Dev - Compatibility with PHP 8.2
+* Fix - PHP message: PHP Deprecated warning
+* Fix - the database error on plugin activation
+* Fix - the vulnerability issue of security
 
 = 1.5.5 =
 * Improved - Improve the settings design
