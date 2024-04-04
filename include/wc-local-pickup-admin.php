@@ -137,7 +137,7 @@ class WC_Local_Pickup_Admin {
 								<ul class="woocommerce-list woocommerce-quick-links__list">
 									<li class="woocommerce-list__item has-action">
 										<?php
-										$support_link = class_exists( 'Advanced_local_pickup_PRO' ) ? 'https://www.zorem.com/?support=1' : 'https://wordpress.org/support/plugin/advanced-local-pickup-for-woocommerce/#new-topic-0' ;
+										$support_link = class_exists( 'Advanced_local_pickup_PRO' ) ? 'https://www.zorem.com/my-account/contact-support/' : 'https://wordpress.org/support/plugin/advanced-local-pickup-for-woocommerce/#new-topic-0' ;
 										?>
 										<a href="<?php echo esc_url( $support_link ); ?>" class="woocommerce-list__item-inner" target="_blank" >
 											<div class="woocommerce-list__item-before">
@@ -154,7 +154,7 @@ class WC_Local_Pickup_Admin {
 										</a>
 									</li>            
 									<li class="woocommerce-list__item has-action">
-										<a href="https://www.zorem.com/docs/advanced-local-pickup-for-woocommerce/?utm_source=wp-admin&utm_medium=CBRDOCU&utm_campaign=add-ons" class="woocommerce-list__item-inner" target="_blank">
+										<a href="https://www.zorem.com/docs/advanced-local-pickup-for-woocommerce/?utm_source=wp-admin&utm_medium=ALPDOCU&utm_campaign=add-ons" class="woocommerce-list__item-inner" target="_blank">
 											<div class="woocommerce-list__item-before">
 												<img src="<?php echo esc_url(wc_local_pickup()->plugin_dir_url(__FILE__)) . 'assets/images/documentation-icon.svg'; ?>">
 											</div>
@@ -170,7 +170,7 @@ class WC_Local_Pickup_Admin {
 									</li>
 									<?php if ( !class_exists( 'Advanced_local_pickup_PRO' ) ) { ?>
 										<li class="woocommerce-list__item has-action">
-											<a href="https://www.zorem.com/product/advanced-local-pickup-for-woocommerce/?utm_source=wp-admin&utm_medium=CBR&utm_campaign=add-ons" class="woocommerce-list__item-inner" target="_blank">
+											<a href="https://www.zorem.com/product/advanced-local-pickup-for-woocommerce/?utm_source=wp-admin&utm_medium=ALP&utm_campaign=add-ons" class="woocommerce-list__item-inner" target="_blank">
 												<div class="woocommerce-list__item-before">
 													<img src="<?php echo esc_url(wc_local_pickup()->plugin_dir_url(__FILE__)) . 'assets/images/upgrade.svg'; ?>">
 												</div>

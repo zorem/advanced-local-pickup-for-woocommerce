@@ -5,11 +5,11 @@
 * Description: The Advanced Local Pickup (ALP) helps you handle local pickup orders more conveniently by extending the WooCommerce Local Pickup shipping method.
 * Author: zorem
 * Author URI: https://www.zorem.com/
-* Version: 1.6.1
+* Version: 1.6.4
 * Text Domain: advanced-local-pickup-for-woocommerce
 * Domain Path: /lang/
 * WC requires at least: 4.0
-* WC tested up to: 8.4.0
+* WC tested up to: 8.7.0
 */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -23,7 +23,7 @@ class Woocommerce_Local_Pickup {
 	 *
 	 * @var string
 	 */
-	public $version = '1.6.1';
+	public $version = '1.6.4';
 	public $admin;
 	public $install;
 	public $table;
@@ -150,6 +150,9 @@ class Woocommerce_Local_Pickup {
 		
 		//callback on activate plugin
 		//register_activation_hook( __FILE__, array( $this, 'table_create' ) );
+
+		//callback on update plugin
+		add_action( 'upgrader_process_complete', array( $this, 'alp_plugin_update_hook' ), 10, 2 );
 		
 		// Load plugin textdomain
 		add_action('plugins_loaded', array($this, 'load_textdomain'));
@@ -162,12 +165,6 @@ class Woocommerce_Local_Pickup {
 		
 		//callback for add action link for plugin page	
 		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this , 'my_plugin_action_links' ));
-
-		add_action( 'admin_notices', array( $this, 'admin_notice_after_update' ) );		
-		add_action('admin_init', array( $this, 'wplp_plugin_notice_ignore' ) );
-		
-		add_action( 'admin_notices', array( $this, 'admin_notice_pro_update' ) );		
-		add_action('admin_init', array( $this, 'wplp_pro_notice_ignore' ) );
 		
 		add_action( 'wp_ajax_reassign_order_status', array( $this, 'reassign_order_status' ) );
 		
@@ -208,6 +205,22 @@ class Woocommerce_Local_Pickup {
 
 	}
 
+	/*
+	* Display admin notice on plugin update
+	*/
+	public function alp_plugin_update_hook( $upgrader_object, $options ) {		
+		// Check if the update is for a specific plugin
+		if ( isset( $options['action'] ) && $options['action'] === 'update' && isset( $options['type'] ) && $options['type'] === 'plugin' ) {
+			// Check if the updated plugin is your plugin
+			$plugin_slug = 'advanced-local-pickup-for-woocommerce/woo-advanced-local-pickup.php';
+			if ( in_array( $plugin_slug, $options['plugins'] ) ) {
+				// Delete option
+				delete_option('wplp_review_notice_ignore');
+				// Delete transient
+				delete_transient('alp_settings_admin_notice_ignore');
+			}
+		}	
+	}
 	
 	/*
 	* Include file on plugin load
@@ -275,116 +288,6 @@ class Woocommerce_Local_Pickup {
 		}
 		
 		return $links;
-	}
-	
-	/*
-	* Display admin notice on plugin install or update
-	*/
-	public function admin_notice_after_update() { 		
-		
-		if ( get_option('wplp_review_notice_ignore') ) {
-			return;
-		}
-		
-		$dismissable_url = esc_url(  add_query_arg( 'wplp-review-ignore-notice', 'true' ) );
-		
-		?>
-		<style>		
-		.wp-core-ui .notice.wplp-dismissable-notice {
-			position: relative;
-			padding-right: 38px;
-		}
-		.wp-core-ui .notice.wplp-dismissable-notice a.notice-dismiss {
-			padding: 9px;
-			text-decoration: none;
-		} 
-		.wp-core-ui .button-primary.btn_review_notice {
-			background: transparent;
-			color: #f1a451;
-			border-color: #f1a451;
-			text-transform: uppercase;
-			padding: 0 11px;
-			font-size: 12px;
-			height: 30px;
-			line-height: 28px;
-			margin: 5px 0 15px;
-		}
-		</style>	
-		<div class="notice updated notice-success wplp-dismissable-notice">
-			<a href="<?php echo esc_url($dismissable_url); ?>" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></a>
-			<p>Hey, I noticed you are using the Advanced Local Pickup Plugin - that’s awesome!</br>Could you please do me a BIG favor and give it a 5-star rating on WordPress to help us spread the word and boost our motivation?</p>
-			<p>Eran Shor</br>Founder of zorem</p>
-			<a class="button-primary btn_review_notice" target="blank" href="https://wordpress.org/support/plugin/advanced-local-pickup-for-woocommerce/reviews/#new-post">Ok, you deserve it</a>
-			<a class="button-primary btn_review_notice" href="<?php echo esc_url($dismissable_url); ?>">Nope, maybe later</a>
-			<a class="button-primary btn_review_notice" href="<?php echo esc_url($dismissable_url); ?>">I already did</a>
-		</div>
-	<?php 		
-	}	
-
-
-	/*
-	* Hide admin notice on dismiss of ignore-notice
-	*/
-	public function wplp_plugin_notice_ignore() {
-		if (isset($_GET['wplp-review-ignore-notice'])) {
-			update_option( 'wplp_review_notice_ignore', 'true' );
-		}
-	}
-	
-	/*
-	* Display admin notice on plugin install or update
-	*/
-	public function admin_notice_pro_update() { 		
-				
-		$date_now = gmdate('Y-m-d'); // this format is string comparable
-		
-		if ( get_option('wplp_pro_notice_ignore_mar31') || $date_now > '2022-04-31' ) {
-			return;
-		}
-		
-		$dismissable_url = esc_url(  add_query_arg( 'wplp-pro-ignore-notice', 'true' ) );
-		
-		?>
-		<style>		
-		.wp-core-ui .notice.wplp-dismissable-notice {
-			position: relative;
-			padding-right: 38px;
-		}
-		.wp-core-ui .notice.wplp-dismissable-notice a.notice-dismiss {
-			padding: 9px;
-			text-decoration: none;
-		} 
-		.wp-core-ui .button-primary.btn_pro_notice {
-			background: transparent;
-			color: #395da4;
-			border-color: #395da4;
-			text-transform: uppercase;
-			padding: 0 11px;
-			font-size: 12px;
-			height: 30px;
-			line-height: 28px;
-			margin: 5px 0 15px;
-		}
-		</style>	
-		<div class="notice updated notice-success wplp-dismissable-notice">
-			<a href="<?php echo esc_url($dismissable_url); ?>" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></a>
-			<h2>Upgrade to Advanced Local Pickup Pro!</h2>
-			<p>Automate your local pickup workflow, set up multiple pickup locations, allow customers to select pickup appointments, custom emails templates, store pickup fulfillment dashboard, and more… </p>
-			<p>Limited time offer - Use code <strong>ALPPRO20</strong> to get 20% off on your first year license.</p>  
-			<a class="button-primary btn_pro_notice" target="blank" href="https://www.zorem.com/product/advanced-local-pickup-pro/">Upgrade Now</a>
-			<a class="button-primary btn_pro_notice" href="<?php echo esc_url($dismissable_url); ?>">Dismiss</a>
-		</div>
-	<?php 		
-	}	
-
-
-	/*
-	* Hide admin notice on dismiss of ignore-notice
-	*/
-	public function wplp_pro_notice_ignore() {
-		if (isset($_GET['wplp-pro-ignore-notice'])) {
-			update_option( 'wplp_pro_notice_ignore_mar31', 'true' );
-		}
 	}
 	
 	/*

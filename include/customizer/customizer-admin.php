@@ -176,6 +176,12 @@ class WC_Local_Pickup_Customizer {
 	 * Settings API 
 	*/
 	public function return_json_sucess_settings_route_api( $request ) {
+
+		if ( !current_user_can( 'manage_options' ) ) {
+			echo json_encode( array('permission' => 'false') );
+			die();
+		}
+
 		$preview = !empty($request->get_param('preview')) ? $request->get_param('preview') : 'ready_pickup';
 		return wp_send_json_success($this->customize_setting_options_func( $preview ));
 
@@ -191,6 +197,10 @@ class WC_Local_Pickup_Customizer {
 
 
 	public function get_preview_func() {
+		if ( !current_user_can( 'manage_options' ) ) {
+			echo json_encode( array('permission' => 'false') );
+			die();
+		}
 		$preview = isset($_GET['preview']) ? sanitize_text_field($_GET['preview']) : 'ready_pickup';
 		echo wp_kses_post($this->get_preview_email($preview));
 		die();
@@ -216,6 +226,11 @@ class WC_Local_Pickup_Customizer {
 	* update a customizer settings
 	*/
 	public function update_store_settings( $request ) {
+
+		if ( !current_user_can( 'manage_options' ) ) {
+			echo json_encode( array('permission' => 'false') );
+			die();
+		}
 
 		$preview = !empty($request->get_param('preview')) ? $request->get_param('preview') : '';
 
@@ -268,6 +283,11 @@ class WC_Local_Pickup_Customizer {
 	*/
 	public function send_test_email_func( $request ) {
 		
+		if ( !current_user_can( 'manage_options' ) ) {
+			echo json_encode( array('permission' => 'false') );
+			die();
+		}
+
 		$data = $request->get_params() ? $request->get_params() : array();
 
 		$preview = !empty( $data['preview'] ) ? sanitize_text_field($data['preview']) : '';

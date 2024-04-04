@@ -3,7 +3,7 @@ Contributors: zorem,kuldipzorem,gaurav1092
 Donate link: 
 Tags: woocommerce, local pickup, in store pickup, shipping, shipping options
 Requires at least: 5.0
-Tested up to: 6.4
+Tested up to: 6.5
 Requires PHP: 7.0
 Stable tag: 4.0.1
 License: GPLv2 
@@ -70,6 +70,20 @@ You can get more information, detailed tutorials on the [ALP documentation](http
 
 
 == Changelog ==
+
+= 1.6.4 =
+* Enhancement - Added UTM link for all the external links to zorem.com
+* Dev - Tested with WordPress 6.5
+* Dev - Tested with WooCommerce 8.7.0
+
+= 1.6.3 =
+* Fix - the vulnerability issue of security
+* Fix - the vulnerability issue of nonce in admin notice
+* Dev - Tested with WooCommerce 8.5.2
+
+= 1.6.2 =
+* Fix - the vulnerability issue of security
+* Dev - Tested with WooCommerce 8.5.1
 
 = 1.6.1 =
 * Fix - the HTML is no support in additional content in processing email
