@@ -3,7 +3,7 @@ $pro_plugins = array(
 	5 => array(
 		'title' => 'Advanced Shipment Tracking',
 		'description' => 'AST PRO provides powerful features to easily add tracking info to WooCommerce orders, automate the fulfillment workflows and keep your customers happy and informed.',
-		'url' => 'https://www.zorem.com/product/woocommerce-advanced-shipment-tracking/?utm_source=wp-admin&utm_medium=CEV&utm_campaign=add-ons',
+		'url' => 'https://www.zorem.com/product/woocommerce-advanced-shipment-tracking/?utm_source=wp-admin&utm_medium=AST&utm_campaign=add-ons',
 		'image' => 'ast-icon.png',
 		'height' => '45px',
 		'file' => 'ast-pro/ast-pro.php'
@@ -43,7 +43,7 @@ $pro_plugins = array(
 	4 => array(
 		'title' => 'Customer Email Verification',
 		'description' => 'The Customer Email Verification helps you to reduce registration spam and fake orders by requiring customers to verify their email address when they register an account or before they can place an order on your store.',
-		'url' => 'https://woocommerce.com/products/customer-email-verification/',
+		'url' => 'https://woocommerce.com/products/customer-email-verification/?utm_source=wp-admin&utm_medium=CEV&utm_campaign=add-ons',
 		'image' => 'cev-icon.png',
 		'height' => '45px',
 		'file' => 'customer-email-verification-pro/customer-email-verification-pro.php'

@@ -1,4 +1,9 @@
-<?php $dismissable_url = esc_url(  add_query_arg( 'alp-pro-settings-ignore-notice', 'true' ) ); ?>
+<?php
+	// Add nonce to the dismissable URL
+	$nonce = wp_create_nonce('alp_pro_dismiss_notice');
+	$dismissable_url = esc_url(add_query_arg(['alp-pro-settings-ignore-notice' => 'true', 'nonce' => $nonce]));
+?>
+
 <div class="admin-message-panel">
 	<div class="admin-message-row is-dismissible">
 		<h1 class="admin_message_header"><?php esc_html_e('Upgrade to ALP PRO!', 'advanced-local-pickup-for-woocommerce'); ?></h1>
