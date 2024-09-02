@@ -103,7 +103,7 @@ class WC_ALP_Admin_Notices_Under_WC_Admin {
 		</style>	
 		<div class="notice updated notice-success wplp-dismissable-notice">
 			<a href="<?php echo esc_url($dismissable_url); ?>" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></a>
-			<p>Hey, I noticed you are using the Advanced Local Pickup Plugin - that’s awesome!</br>Could you please do me a BIG favor and give it a 5-star rating on WordPress to help us spread the word and boost our motivation?</p>
+			<p>Hey, I noticed you are using the Zorem Local Pickup Plugin - that’s awesome!</br>Could you please do me a BIG favor and give it a 5-star rating on WordPress to help us spread the word and boost our motivation?</p>
 			<p>Eran Shor</br>Founder of zorem</p>
 			<a class="button-primary btn_review_notice" target="blank" href="https://wordpress.org/support/plugin/advanced-local-pickup-for-woocommerce/reviews/#new-post">Ok, you deserve it</a>
 			<a class="button-primary btn_review_notice" href="<?php echo esc_url($dismissable_url); ?>">Nope, maybe later</a>

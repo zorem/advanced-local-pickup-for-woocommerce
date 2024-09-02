@@ -56,8 +56,8 @@ $pro_plugins = array(
 			<div class="addon_inner_section">
 				<div class="row">
 					<div class="col alp-features-list wclp-btn">
-						<h1 class="plugin_title"><?php echo wp_kses_post('Advanced Local Pickup PRO'); ?></h1>
-						<a href="https://www.zorem.com/product/advanced-local-pickup-for-woocommerce/?utm_source=wp-admin&utm_medium=ALPPRO&utm_campaign=add-ons" class="install-now button-primary pro-btn" target="blank">Starting From $10.75 / month </a>
+						<h1 class="plugin_title"><?php echo wp_kses_post('Zorem Local Pickup Pro'); ?></h1>
+						<a href="https://www.zorem.com/product/zorem-local-pickup-pro/?utm_source=wp-admin&utm_medium=ALPPRO&utm_campaign=add-ons" class="install-now button-primary pro-btn" target="blank">Starting From $10.75 / month </a>
 						<ul>
 							<li>Display pickup instructions during checkout</li>
 							<li>Notify Your Customers When Their Order is Available For Pickup</li>

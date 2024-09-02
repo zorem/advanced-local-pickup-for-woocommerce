@@ -204,7 +204,7 @@ if (!empty($w_day)) {
 		>
 		<?php if ('yes' != $hide_table_header) { ?>
 			<div class="wclp_location_box_heading">
-				<?php esc_html_e($header_business_text, 'advanced-local-pickup-for-woocommerce'); ?>
+				<?php esc_html_e($header_business_text, 'zorem-local-pickup'); ?>
 			</div>
 		<?php } ?>
 		<div class="wclp_location_box_content">
@@ -216,7 +216,7 @@ if (!empty($w_day)) {
 						?>
 						<p class="wclp_work_hours_p">
 							<?php 
-							echo esc_html(ucfirst(key($data)), 'advanced-local-pickup-for-woocommerce') . ' <span>: ' . esc_html(reset($data)['wclp_store_hour']) . ' - ' . esc_html(reset($data)['wclp_store_hour_end']);
+							echo esc_html(ucfirst(key($data)), 'zorem-local-pickup') . ' <span>: ' . esc_html(reset($data)['wclp_store_hour']) . ' - ' . esc_html(reset($data)['wclp_store_hour_end']);
 							do_action('wclp_get_more_work_hours_contents', $data);
 							echo '</span>';
 							?>
@@ -232,7 +232,7 @@ if (!empty($w_day)) {
 						?>
 						<p class="wclp_work_hours_p">
 							<?php 
-							echo esc_html(ucfirst($array_key_first), 'advanced-local-pickup-for-woocommerce') . '<span> - </span>' . esc_html(ucfirst($array_key_last), 'advanced-local-pickup-for-woocommerce') . ' <span>: ' . esc_html(reset($data)['wclp_store_hour']) . ' - ' . esc_html(reset($data)['wclp_store_hour_end']);
+							echo esc_html(ucfirst($array_key_first), 'zorem-local-pickup') . '<span> - </span>' . esc_html(ucfirst($array_key_last), 'zorem-local-pickup') . ' <span>: ' . esc_html(reset($data)['wclp_store_hour']) . ' - ' . esc_html(reset($data)['wclp_store_hour_end']);
 							do_action('wclp_get_more_work_hours_contents', $data);
 							echo '</span>';
 							?>
@@ -248,7 +248,7 @@ if (!empty($w_day)) {
 						?>
 						<p class="wclp_work_hours_p">
 							<?php 
-							echo esc_html(ucfirst($array_key_first), 'advanced-local-pickup-for-woocommerce') . esc_html(' To ', 'advanced-local-pickup-for-woocommerce') . esc_html(ucfirst($array_key_last), 'advanced-local-pickup-for-woocommerce') . ' <span>: ' . esc_html(reset($data)['wclp_store_hour']) . ' - ' . esc_html(reset($data)['wclp_store_hour_end']); 
+							echo esc_html(ucfirst($array_key_first), 'zorem-local-pickup') . esc_html(' To ', 'zorem-local-pickup') . esc_html(ucfirst($array_key_last), 'zorem-local-pickup') . ' <span>: ' . esc_html(reset($data)['wclp_store_hour']) . ' - ' . esc_html(reset($data)['wclp_store_hour_end']); 
 							do_action('wclp_get_more_work_hours_contents', $data);
 							echo '</span>';
 							?>
