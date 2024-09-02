@@ -7,10 +7,10 @@ $location = wc_local_pickup()->admin->get_data_byid($location_id);
 	<div class="location-setting">
 		<form method="post" id="wclp_location_tab_form">
 			<div class="accordion heading address-special">
-				<label><?php esc_html_e( 'Name & Special Instructions', 'advanced-local-pickup-for-woocommerce' ); ?>
+				<label><?php esc_html_e( 'Name & Special Instructions', 'zorem-local-pickup' ); ?>
 				<span class="wclp-btn">
 					<div class="spinner workflow_spinner" style="float:none"></div>
-					<button name="save" class="wclp-save button-primary woocommerce-save-button btn_location_submit" type="submit" value="Save changes"><?php esc_html_e( 'Save & close', 'advanced-local-pickup-for-woocommerce' ); ?></button>
+					<button name="save" class="wclp-save button-primary woocommerce-save-button btn_location_submit" type="submit" value="Save changes"><?php esc_html_e( 'Save & close', 'zorem-local-pickup' ); ?></button>
 					<span class="alp_error_msg"></span>								
 					<?php wp_nonce_field( 'wclp_location_edit_form_action', 'wclp_location_edit_form_nonce_field' ); ?>
 					<input type="hidden" name="action" value="wclp_location_edit_form_update">
@@ -23,17 +23,17 @@ $location = wc_local_pickup()->admin->get_data_byid($location_id);
 					<tbody>
 						<input type="hidden" id="location_id" name="id" value="<?php echo esc_html($location_id); ?>">
 						<tr valign="top">
-							<th><label for=""><?php esc_html_e( 'Location Name', 'advanced-local-pickup-for-woocommerce' ); ?><span class="woocommerce-help-tip tipTip" title="<?php esc_html_e( 'The location name for your business location.', 'advanced-local-pickup-for-woocommerce' ); ?>"></span></label></th>
+							<th><label for=""><?php esc_html_e( 'Location Name', 'zorem-local-pickup' ); ?><span class="woocommerce-help-tip tipTip" title="<?php esc_html_e( 'The location name for your business location.', 'zorem-local-pickup' ); ?>"></span></label></th>
 							<td class="forminp">                                            
 								<fieldset>
 									<input class="input-text regular-input " type="text" name="wclp_store_name" id="wclp_store_name" style="" value="<?php echo ( isset( $location->store_name ) ) ? esc_html(stripslashes($location->store_name)) : ''; ?>" placeholder="">
-									<span class="alp_error_msg" style="display:none;"><?php esc_html_e( 'you must add location name and save to proceed', 'advanced-local-pickup-for-woocommerce' ); ?></span>
+									<span class="alp_error_msg" style="display:none;"><?php esc_html_e( 'you must add location name and save to proceed', 'zorem-local-pickup' ); ?></span>
 								</fieldset>
 							</td>
 						</tr>
 						<tr valign="top" class="">
 							<th class="text-top">
-								<label for=""><?php esc_html_e( 'Special Instruction', 'advanced-local-pickup-for-woocommerce' ); ?><span class="woocommerce-help-tip tipTip" title="<?php esc_html_e( 'The special instruction for your store.', 'advanced-local-pickup-for-woocommerce' ); ?>" ></span></label>
+								<label for=""><?php esc_html_e( 'Special Instruction', 'zorem-local-pickup' ); ?><span class="woocommerce-help-tip tipTip" title="<?php esc_html_e( 'The special instruction for your store.', 'zorem-local-pickup' ); ?>" ></span></label>
 							</th>
 							<td class="forminp">
 								<fieldset>
@@ -45,10 +45,10 @@ $location = wc_local_pickup()->admin->get_data_byid($location_id);
 				</table>
 			</div>
 			<div class="accordion heading address">
-				<label><?php esc_html_e( 'Address', 'advanced-local-pickup-for-woocommerce' ); ?>
+				<label><?php esc_html_e( 'Address', 'zorem-local-pickup' ); ?>
 				<span class="wclp-btn">
 					<div class="spinner workflow_spinner" style="float:none"></div>
-					<button name="save" class="wclp-save button-primary woocommerce-save-button btn_location_submit" type="submit" value="Save changes"><?php esc_html_e( 'Save & close', 'advanced-local-pickup-for-woocommerce' ); ?></button>
+					<button name="save" class="wclp-save button-primary woocommerce-save-button btn_location_submit" type="submit" value="Save changes"><?php esc_html_e( 'Save & close', 'zorem-local-pickup' ); ?></button>
 					<span class="alp_error_msg"></span>								
 					<input type="hidden" name="action" value="wclp_location_edit_form_update">
 				</span>
@@ -111,7 +111,7 @@ $location = wc_local_pickup()->admin->get_data_byid($location_id);
 						</tr>
 						<tr valign="top" class="">
 							<th>
-								<label for=""><?php esc_html_e( 'Address line 2', 'woocommerce' ); ?><span class="woocommerce-help-tip tipTip" title="<?php esc_html_e( 'An additional, optional address line for your business location.', 'advanced-local-pickup-for-woocommerce' ); ?>"></span></label>
+								<label for=""><?php esc_html_e( 'Address line 2', 'woocommerce' ); ?><span class="woocommerce-help-tip tipTip" title="<?php esc_html_e( 'An additional, optional address line for your business location.', 'zorem-local-pickup' ); ?>"></span></label>
 							</th>
 							<td class="forminp">                                                
 								<fieldset>
@@ -168,7 +168,7 @@ $location = wc_local_pickup()->admin->get_data_byid($location_id);
 						</tr>
 						<tr valign="top" class="">								
 							<th>
-								<label for=""><?php esc_html_e( 'Phone Number', 'woocommerce' ); ?><span class="woocommerce-help-tip tipTip" title="<?php esc_html_e( 'The phone number for your business information.', 'advanced-local-pickup-for-woocommerce' ); ?>"></span></label>
+								<label for=""><?php esc_html_e( 'Phone Number', 'woocommerce' ); ?><span class="woocommerce-help-tip tipTip" title="<?php esc_html_e( 'The phone number for your business information.', 'zorem-local-pickup' ); ?>"></span></label>
 							</th>
 							<td class="forminp">                                                
 								<fieldset>
@@ -180,10 +180,10 @@ $location = wc_local_pickup()->admin->get_data_byid($location_id);
 				</table>
 			</div>
 			<div class="accordion heading business-hours">
-				<label><?php esc_html_e( 'Business Hours', 'advanced-local-pickup-for-woocommerce' ); ?>
+				<label><?php esc_html_e( 'Business Hours', 'zorem-local-pickup' ); ?>
 				<span class="wclp-btn">
 					<div class="spinner workflow_spinner" style="float:none"></div>
-					<button name="save" class="wclp-save button-primary woocommerce-save-button btn_location_submit" type="submit" value="Save changes"><?php esc_html_e( 'Save & close', 'advanced-local-pickup-for-woocommerce' ); ?></button>
+					<button name="save" class="wclp-save button-primary woocommerce-save-button btn_location_submit" type="submit" value="Save changes"><?php esc_html_e( 'Save & close', 'zorem-local-pickup' ); ?></button>
 					<span class="alp_error_msg"></span>								
 					<?php //wp_nonce_field( 'wclp_location_edit_form_action', 'wclp_location_edit_form_nonce_field' ); ?>
 					<input type="hidden" name="action" value="wclp_location_edit_form_update">
@@ -278,7 +278,7 @@ $location = wc_local_pickup()->admin->get_data_byid($location_id);
 								$array_key_first = substr(key($data), 0, 3);
 								end($data);
 								$array_key_last = substr(key($data), 0, 3);
-								echo esc_html(ucfirst($array_key_first), 'default') . esc_html(' to', 'advanced-local-pickup-for-woocommerce') . esc_html(ucfirst($array_key_last), 'default') . '<span>: ' . esc_html(reset($data)['wclp_store_hour']) . '-' . esc_html(reset($data)['wclp_store_hour_end']) . '</span> ';
+								echo esc_html(ucfirst($array_key_first), 'default') . esc_html(' to', 'zorem-local-pickup') . esc_html(ucfirst($array_key_last), 'default') . '<span>: ' . esc_html(reset($data)['wclp_store_hour']) . '-' . esc_html(reset($data)['wclp_store_hour_end']) . '</span> ';
 							} 
 						}	
 					}
@@ -292,13 +292,13 @@ $location = wc_local_pickup()->admin->get_data_byid($location_id);
 						<tr valign="top" class="">								
 							<td style="padding-top:5px;">
 								<div class="hours-block time-format">
-									<label class="time-format" for=""><?php esc_html_e( 'Display Time Format', 'advanced-local-pickup-for-woocommerce' ); ?><span class="woocommerce-help-tip tipTip" title="<?php esc_html_e( 'Select time format which you want to display in business hours for customers.', 'advanced-local-pickup-for-woocommerce' ); ?>"></span></label>
+									<label class="time-format" for=""><?php esc_html_e( 'Display Time Format', 'zorem-local-pickup' ); ?><span class="woocommerce-help-tip tipTip" title="<?php esc_html_e( 'Select time format which you want to display in business hours for customers.', 'zorem-local-pickup' ); ?>"></span></label>
 								</div>
 								<div>
 									<fieldset>
 										<select class="select select2" id="wclp_default_time_format" name="wclp_default_time_format">
-											<option value="24" <?php echo ( isset( $location->store_time_format ) && '24' == $location->store_time_format ) ? 'selected' : ''; ?>><?php esc_html_e( '24 hour', 'advanced-local-pickup-for-woocommerce' ); ?></option>
-											<option value="12" <?php echo ( isset( $location->store_time_format ) && '12' == $location->store_time_format ) ? 'selected' : ''; ?>><?php esc_html_e( '12 hour', 'advanced-local-pickup-for-woocommerce' ); ?></option>
+											<option value="24" <?php echo ( isset( $location->store_time_format ) && '24' == $location->store_time_format ) ? 'selected' : ''; ?>><?php esc_html_e( '24 hour', 'zorem-local-pickup' ); ?></option>
+											<option value="12" <?php echo ( isset( $location->store_time_format ) && '12' == $location->store_time_format ) ? 'selected' : ''; ?>><?php esc_html_e( '12 hour', 'zorem-local-pickup' ); ?></option>
 										</select>
 									</fieldset>
 								<div>
@@ -307,7 +307,7 @@ $location = wc_local_pickup()->admin->get_data_byid($location_id);
 						<tr valign="top" class="">								
 							<td>
 								<div class="hours-block work-hours">
-									<label class="work-hours" for=""><?php esc_html_e( 'Work Hours', 'advanced-local-pickup-for-woocommerce' ); ?><span class="woocommerce-help-tip tipTip" title="<?php esc_html_e( 'the select for working days of your store.', 'advanced-local-pickup-for-woocommerce' ); ?>"></span></label>
+									<label class="work-hours" for=""><?php esc_html_e( 'Work Hours', 'zorem-local-pickup' ); ?><span class="woocommerce-help-tip tipTip" title="<?php esc_html_e( 'the select for working days of your store.', 'zorem-local-pickup' ); ?>"></span></label>
 								</div>
 								<div class="pickup_hours_div" style="">
 								<?php
@@ -352,7 +352,7 @@ $location = wc_local_pickup()->admin->get_data_byid($location_id);
 									<div class="wplp_pickup_duration" style="">
 										<fieldset style=""><label class="" for="<?php echo esc_html($key); ?>" style="">
 											<input type="checkbox" id="<?php echo esc_html($key); ?>" name="wclp_store_days[<?php echo esc_html($key); ?>][checked]" class="pickup_days_checkbox" <?php echo esc_html($checked); ?> value="1"/>
-											<span class="pickup_days_lable" style="width: auto;"><?php esc_html_e($val, 'advanced-local-pickup-for-woocommerce'); ?></span>	
+											<span class="pickup_days_lable" style="width: auto;"><?php esc_html_e($val, 'zorem-local-pickup'); ?></span>	
 										</label></fieldset>
 										<fieldset class="wclp_pickup_time_fieldset" style="">
 											
@@ -393,8 +393,8 @@ $location = wc_local_pickup()->admin->get_data_byid($location_id);
 													<span class="dashicons dashicons-no-alt popup_close_icon"></span>
 													<div class="alp-hours-popup">
 														<div id="header-text">
-															<span style=""><?php esc_html_e( 'From', 'advanced-local-pickup-for-woocommerce' ); ?></span>
-															<span><?php esc_html_e( ' To', 'advanced-local-pickup-for-woocommerce' ); ?></span>
+															<span style=""><?php esc_html_e( 'From', 'zorem-local-pickup' ); ?></span>
+															<span><?php esc_html_e( ' To', 'zorem-local-pickup' ); ?></span>
 														</div>
 														<span class="morning-time"><select class="select <?php echo esc_html($key); ?> wclp_pickup_time_select start" name="wclp_store_days[<?php echo esc_html($key); ?>][wclp_store_hour]"> <option value="" ><?php esc_html_e( 'Select', 'woocommerce' ); ?></option>
 															<?php 
@@ -433,7 +433,7 @@ $location = wc_local_pickup()->admin->get_data_byid($location_id);
 														<?php echo ( !class_exists('Advanced_local_pickup_PRO') || ( isset( $multi_checkbox_data[$key]['wclp_store_hour_end2'] ) && '' != $multi_checkbox_data[$key]['wclp_store_hour_end2'] ) ) ? 'style="display:none"' : ''; ?>>+ Add Interval</p>
 													</div>
 													<?php do_action('wclp_apply_mltiple_popup_hook', $days, $key); ?>
-													<button type="button" class="wclp-apply button-primary" value="<?php echo esc_html($key); ?>"><?php esc_html_e('Apply & close', 'advanced-local-pickup-for-woocommerce'); ?></button>
+													<button type="button" class="wclp-apply button-primary" value="<?php echo esc_html($key); ?>"><?php esc_html_e('Apply & close', 'zorem-local-pickup'); ?></button>
 													<?php do_action('wclp_apply_mltiple_on_days_hook'); ?>
 												</div>
 												<div class="popupclose"></div>
@@ -452,56 +452,56 @@ $location = wc_local_pickup()->admin->get_data_byid($location_id);
 
 			<div class="accordion heading premium">
 				<label>
-					<?php esc_html_e( 'Pickup Appointments', 'advanced-local-pickup-for-woocommerce' ); ?>
-					<span class="premium-label"><?php esc_html_e( 'Premium', 'advanced-local-pickup-for-woocommerce' ); ?></span>
+					<?php esc_html_e( 'Pickup Appointments', 'zorem-local-pickup' ); ?>
+					<span class="premium-label"><?php esc_html_e( 'Premium', 'zorem-local-pickup' ); ?></span>
 					<span class="dashicons dashicons-arrow-right-alt2"></span>
 				</label>
 			</div>
 
 			<div class="accordion heading premium">
 				<label>
-					<?php esc_html_e( 'Products', 'advanced-local-pickup-for-woocommerce' ); ?>
-					<span class="premium-label"><?php esc_html_e( 'Premium', 'advanced-local-pickup-for-woocommerce' ); ?></span>
+					<?php esc_html_e( 'Products', 'zorem-local-pickup' ); ?>
+					<span class="premium-label"><?php esc_html_e( 'Premium', 'zorem-local-pickup' ); ?></span>
 					<span class="dashicons dashicons-arrow-right-alt2"></span>
 				</label>
 			</div>
 
 			<div class="accordion heading premium">
 				<label>
-					<?php esc_html_e( 'Shipping Method', 'advanced-local-pickup-for-woocommerce' ); ?>
-					<span class="premium-label"><?php esc_html_e( 'Premium', 'advanced-local-pickup-for-woocommerce' ); ?></span>
+					<?php esc_html_e( 'Shipping Method', 'zorem-local-pickup' ); ?>
+					<span class="premium-label"><?php esc_html_e( 'Premium', 'zorem-local-pickup' ); ?></span>
 					<span class="dashicons dashicons-arrow-right-alt2"></span>
 				</label>
 			</div>
 
 			<div class="accordion heading premium">
 				<label>
-					<?php esc_html_e( 'Payment Method', 'advanced-local-pickup-for-woocommerce' ); ?>
-					<span class="premium-label"><?php esc_html_e( 'Premium', 'advanced-local-pickup-for-woocommerce' ); ?></span>
+					<?php esc_html_e( 'Payment Method', 'zorem-local-pickup' ); ?>
+					<span class="premium-label"><?php esc_html_e( 'Premium', 'zorem-local-pickup' ); ?></span>
 					<span class="dashicons dashicons-arrow-right-alt2"></span>
 				</label>
 			</div>
 
 			<div class="accordion heading premium">
 				<label>
-					<?php esc_html_e( 'Price Adjustments', 'advanced-local-pickup-for-woocommerce' ); ?>
-					<span class="premium-label"><?php esc_html_e( 'Premium', 'advanced-local-pickup-for-woocommerce' ); ?></span>
+					<?php esc_html_e( 'Price Adjustments', 'zorem-local-pickup' ); ?>
+					<span class="premium-label"><?php esc_html_e( 'Premium', 'zorem-local-pickup' ); ?></span>
 					<span class="dashicons dashicons-arrow-right-alt2"></span>
 				</label>
 			</div>
 
 			<div class="accordion heading premium">
 				<label>
-					<?php esc_html_e( 'Notifications', 'advanced-local-pickup-for-woocommerce' ); ?>
-					<span class="premium-label"><?php esc_html_e( 'Premium', 'advanced-local-pickup-for-woocommerce' ); ?></span>
+					<?php esc_html_e( 'Notifications', 'zorem-local-pickup' ); ?>
+					<span class="premium-label"><?php esc_html_e( 'Premium', 'zorem-local-pickup' ); ?></span>
 					<span class="dashicons dashicons-arrow-right-alt2"></span>
 				</label>
 			</div>
 
 			<div class="accordion heading premium">
 				<label>
-					<?php esc_html_e( 'Automations', 'advanced-local-pickup-for-woocommerce' ); ?>
-					<span class="premium-label"><?php esc_html_e( 'Premium', 'advanced-local-pickup-for-woocommerce' ); ?></span>
+					<?php esc_html_e( 'Automations', 'zorem-local-pickup' ); ?>
+					<span class="premium-label"><?php esc_html_e( 'Premium', 'zorem-local-pickup' ); ?></span>
 					<span class="dashicons dashicons-arrow-right-alt2"></span>
 				</label>
 			</div>

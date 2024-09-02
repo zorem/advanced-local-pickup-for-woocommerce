@@ -30,8 +30,8 @@ if ( ! class_exists( 'WC_Email_Customer_Ready_Pickup_Order', false ) ) :
 			
 			$this->id             = 'customer_ready_pickup_order';
 			$this->customer_email = true;
-			$this->title          = esc_html( 'Ready for Pickup order', 'advanced-local-pickup-for-woocommerce' );
-			$this->description    = esc_html( 'Ready for Pickup Order emails are sent to customers.', 'advanced-local-pickup-for-woocommerce' );
+			$this->title          = esc_html( 'Ready for Pickup order', 'zorem-local-pickup' );
+			$this->description    = esc_html( 'Ready for Pickup Order emails are sent to customers.', 'zorem-local-pickup' );
 			$this->template_html  = 'emails/ready-pickup-order.php';
 			$this->template_plain = 'emails/plain/ready-pickup-order.php';
 			$this->placeholders   = array(
@@ -90,7 +90,7 @@ if ( ! class_exists( 'WC_Email_Customer_Ready_Pickup_Order', false ) ) :
 		 * @return string
 		 */
 		public function get_default_subject() {
-			return esc_html( 'Your {site_title} order is now Ready for pickup', 'advanced-local-pickup-for-woocommerce' );
+			return esc_html( 'Your {site_title} order is now Ready for pickup', 'zorem-local-pickup' );
 		}
 
 		/**
@@ -100,7 +100,7 @@ if ( ! class_exists( 'WC_Email_Customer_Ready_Pickup_Order', false ) ) :
 		 * @return string
 		 */
 		public function get_default_heading() {
-			return esc_html( 'Your Order is Ready for pickup', 'advanced-local-pickup-for-woocommerce' );
+			return esc_html( 'Your Order is Ready for pickup', 'zorem-local-pickup' );
 		}
 
 		/**
@@ -185,7 +185,7 @@ if ( ! class_exists( 'WC_Email_Customer_Ready_Pickup_Order', false ) ) :
 		 * @return string
 		 */
 		public function get_default_additional_content() {
-			return esc_html( "Hi there. we thought you'd like to know that your recent order from {site_title} has been ready for pickup.", 'advanced-local-pickup-for-woocommerce' );
+			return esc_html( "Hi there. we thought you'd like to know that your recent order from {site_title} has been ready for pickup.", 'zorem-local-pickup' );
 		}
 	}
 

@@ -29,8 +29,8 @@ if ( ! class_exists( 'WC_Email_Customer_Pickup_Order', false ) ) :
 		public function __construct() {
 			$this->id             = 'customer_pickup_order';
 			$this->customer_email = true;
-			$this->title          = esc_html( 'Picked up order', 'advanced-local-pickup-for-woocommerce' );
-			$this->description    = esc_html( 'Picked up Order emails are sent to customers when their orders are marked picked up.', 'advanced-local-pickup-for-woocommerce' );
+			$this->title          = esc_html( 'Picked up order', 'zorem-local-pickup' );
+			$this->description    = esc_html( 'Picked up Order emails are sent to customers when their orders are marked picked up.', 'zorem-local-pickup' );
 			$this->template_html  = 'emails/pickup-order.php';
 			$this->template_plain = 'emails/plain/pickup-order.php';
 			$this->placeholders   = array(
@@ -88,7 +88,7 @@ if ( ! class_exists( 'WC_Email_Customer_Pickup_Order', false ) ) :
 		 * @return string
 		 */
 		public function get_default_subject() {
-			return wp_kses_post( 'Your order from {site_title} was picked up', 'advanced-local-pickup-for-woocommerce' );
+			return wp_kses_post( 'Your order from {site_title} was picked up', 'zorem-local-pickup' );
 		}
 
 		/**
@@ -98,7 +98,7 @@ if ( ! class_exists( 'WC_Email_Customer_Pickup_Order', false ) ) :
 		 * @return string
 		 */
 		public function get_default_heading() {
-			return wp_kses_post( "You've Got it!", 'advanced-local-pickup-for-woocommerce' );
+			return wp_kses_post( "You've Got it!", 'zorem-local-pickup' );
 		}
 
 		/**
@@ -182,7 +182,7 @@ if ( ! class_exists( 'WC_Email_Customer_Pickup_Order', false ) ) :
 		 * @return string
 		 */
 		public function get_default_additional_content() {
-			return esc_html( 'Hi {customer_first_name}. Thank you for picking up your {site_title} order #{order_number}. We hope you enjoyed your shopping experience.', 'advanced-local-pickup-for-woocommerce' );
+			return esc_html( 'Hi {customer_first_name}. Thank you for picking up your {site_title} order #{order_number}. We hope you enjoyed your shopping experience.', 'zorem-local-pickup' );
 		}
 	}
 

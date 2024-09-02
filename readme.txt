@@ -3,11 +3,13 @@ Contributors: zorem,kuldipzorem,gaurav1092
 Donate link: 
 Tags: woocommerce, local pickup, in store pickup, shipping, shipping options
 Requires at least: 5.0
-Tested up to: 6.5
+Tested up to: 6.6
 Requires PHP: 7.0
-Stable tag: 4.0.1
+Stable tag: 1.6.6
 License: GPLv2 
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
+
+The Advanced Local Pickup plugin enhances WooCommerce by streamlining in-store pickups, offering a dedicated workflow for local pickup fulfillment.
 
 == Description ==
 
@@ -70,6 +72,15 @@ You can get more information, detailed tutorials on the [ALP documentation](http
 
 
 == Changelog ==
+
+= 1.6.6 =
+* Dev - Tested with WordPress 6.6
+* Dev - Tested with WooCommerce 9.2.3
+* Improved - Renamed the plugin from "Advanced Local Pickup for WooCommerce" to "Zorem Local Pickup"
+
+= 1.6.5 =
+* Fix - Resolved an "Uncaught TypeError: in_array() Argument #2 ($haystack) must be of type array" issue.
+* Dev - Tested with WooCommerce 9.0.2
 
 = 1.6.4 =
 * Enhancement - Added UTM link for all the external links to zorem.com

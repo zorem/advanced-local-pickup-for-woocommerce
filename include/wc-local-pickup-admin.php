@@ -98,7 +98,7 @@ class WC_Local_Pickup_Admin {
 	*/
 	public function register_woocommerce_menu() {
 		
-		if ( class_exists( 'Advanced_local_pickup_PRO' ) ) {
+		if ( class_exists( 'Zorem_Local_Pickup_Pro' ) ) {
 			$menu_label = 'Local Pickup <strong style="color:#009933;">Pro</strong>';	
 		} else {
 			$menu_label = 'Local Pickup';	
@@ -108,7 +108,7 @@ class WC_Local_Pickup_Admin {
 	}
 	
 	/*
-	* Callback for Advanced Local Pickup page
+	* Callback for Zorem Local Pickup page
 	*/
 	public function woocommerce_local_pickup_page_callback() {		
 		$tab = isset( $_GET['tab'] ) ? sanitize_text_field($_GET['tab']) : '';
@@ -137,7 +137,7 @@ class WC_Local_Pickup_Admin {
 								<ul class="woocommerce-list woocommerce-quick-links__list">
 									<li class="woocommerce-list__item has-action">
 										<?php
-										$support_link = class_exists( 'Advanced_local_pickup_PRO' ) ? 'https://www.zorem.com/my-account/contact-support/' : 'https://wordpress.org/support/plugin/advanced-local-pickup-for-woocommerce/#new-topic-0' ;
+										$support_link = class_exists( 'Zorem_Local_Pickup_Pro' ) ? 'https://www.zorem.com/my-account/contact-support/' : 'https://wordpress.org/support/plugin/advanced-local-pickup-for-woocommerce/#new-topic-0' ;
 										?>
 										<a href="<?php echo esc_url( $support_link ); ?>" class="woocommerce-list__item-inner" target="_blank" >
 											<div class="woocommerce-list__item-before">
@@ -154,7 +154,7 @@ class WC_Local_Pickup_Admin {
 										</a>
 									</li>            
 									<li class="woocommerce-list__item has-action">
-										<a href="https://www.zorem.com/docs/advanced-local-pickup-for-woocommerce/?utm_source=wp-admin&utm_medium=ALPDOCU&utm_campaign=add-ons" class="woocommerce-list__item-inner" target="_blank">
+										<a href="https://docs.zorem.com/docs/zorem-local-pickup/?utm_source=wp-admin&utm_medium=ALPDOCU&utm_campaign=add-ons" class="woocommerce-list__item-inner" target="_blank">
 											<div class="woocommerce-list__item-before">
 												<img src="<?php echo esc_url(wc_local_pickup()->plugin_dir_url(__FILE__)) . 'assets/images/documentation-icon.svg'; ?>">
 											</div>
@@ -168,9 +168,9 @@ class WC_Local_Pickup_Admin {
 											</div>
 										</a>
 									</li>
-									<?php if ( !class_exists( 'Advanced_local_pickup_PRO' ) ) { ?>
+									<?php if ( !class_exists( 'Zorem_Local_Pickup_Pro' ) ) { ?>
 										<li class="woocommerce-list__item has-action">
-											<a href="https://www.zorem.com/product/advanced-local-pickup-for-woocommerce/?utm_source=wp-admin&utm_medium=ALP&utm_campaign=add-ons" class="woocommerce-list__item-inner" target="_blank">
+											<a href="https://www.zorem.com/product/zorem-local-pickup-pro/?utm_source=wp-admin&utm_medium=ALP&utm_campaign=add-ons" class="woocommerce-list__item-inner" target="_blank">
 												<div class="woocommerce-list__item-before">
 													<img src="<?php echo esc_url(wc_local_pickup()->plugin_dir_url(__FILE__)) . 'assets/images/upgrade.svg'; ?>">
 												</div>
@@ -192,8 +192,8 @@ class WC_Local_Pickup_Admin {
 				</div>	
 			<?php } else { ?>
 				<h1 class="tab_section_heading">
-					<a href="<?php echo esc_url(admin_url() . 'admin.php?page=local_pickup'); ?>" class="link decoration"><?php esc_html_e( 'Pickup Locations', 'advanced-local-pickup-for-woocommerce' ); ?></a> > 
-					<?php esc_html_e( 'Edit Pickup Location', 'advanced-local-pickup-for-woocommerce' ); ?>
+					<a href="<?php echo esc_url(admin_url() . 'admin.php?page=local_pickup'); ?>" class="link decoration"><?php esc_html_e( 'Pickup Locations', 'zorem-local-pickup' ); ?></a> > 
+					<?php esc_html_e( 'Edit Pickup Location', 'zorem-local-pickup' ); ?>
 				</h1>
 			<?php } ?>
 		</div>
@@ -208,12 +208,12 @@ class WC_Local_Pickup_Admin {
 				?>
 				<input id="tab1" type="radio" name="tabs" class="wclp_tab_input" data-label="<?php esc_html_e('Settings', 'woocommerce'); ?>" data-tab="settings" checked>
 				<a for="tab1" href="admin.php?page=local_pickup&tab=settings" class="wclp_tab_label first_label <?php echo ( 'settings' === $tab ) ? 'nav-tab-active' : ''; ?>" <?php echo esc_html($style); ?>><?php esc_html_e('Settings', 'woocommerce'); ?></a>
-				<input id="tab3" type="radio" name="tabs" class="wclp_tab_input" data-label="<?php esc_html_e('Pickup Location', 'advanced-local-pickup-for-woocommerce'); ?>" data-tab="locations" <?php echo ( 'locations' === $tab ) ? 'checked' : ''; ?>>
-				<a for="tab3" href="admin.php?page=local_pickup&tab=locations<?php echo ( !class_exists( 'Advanced_local_pickup_PRO' ) ) ? '&section=edit&id=' . esc_html($location_id) : ''; ?>" class="wclp_tab_label <?php echo ( 'locations' === $tab ) ? 'nav-tab-active' : ''; ?>" <?php echo esc_html($style); ?>><?php esc_html_e('Pickup Location', 'advanced-local-pickup-for-woocommerce'); ?></a>
-				<input id="tab5" type="radio" name="tabs" class="wclp_tab_input" data-label="<?php esc_html_e('Customize', 'advanced-local-pickup-for-woocommerce'); ?>" data-tab="customize" <?php echo ( 'customize' === $tab ) ? 'checked' : ''; ?>>
-				<a for="tab5" href="<?php echo esc_url(admin_url('admin.php?page=alp_customizer&preview=ready_pickup')); ?>" class="wclp_tab_label <?php echo ( 'customize' === $tab ) ? 'nav-tab-active' : ''; ?>" <?php echo esc_html($style); ?>><?php esc_html_e('Customize', 'advanced-local-pickup-for-woocommerce'); ?></a>
-				<input id="tab4" type="radio" name="tabs" class="wclp_tab_input" data-label="<?php esc_html_e('Go Pro', 'advanced-local-pickup-for-woocommerce'); ?>" data-tab="go-pro" <?php echo ( 'go-pro' === $tab ) ? 'checked' : ''; ?>>
-				<a for="tab4" href="admin.php?page=local_pickup&tab=go-pro" class="wclp_tab_label <?php echo ( 'go-pro' === $tab ) ? 'nav-tab-active' : ''; ?>" <?php echo esc_html($style); ?>><?php esc_html_e('Go Pro', 'advanced-local-pickup-for-woocommerce'); ?></a>
+				<input id="tab3" type="radio" name="tabs" class="wclp_tab_input" data-label="<?php esc_html_e('Pickup Location', 'zorem-local-pickup'); ?>" data-tab="locations" <?php echo ( 'locations' === $tab ) ? 'checked' : ''; ?>>
+				<a for="tab3" href="admin.php?page=local_pickup&tab=locations<?php echo ( !class_exists( 'Zorem_Local_Pickup_Pro' ) ) ? '&section=edit&id=' . esc_html($location_id) : ''; ?>" class="wclp_tab_label <?php echo ( 'locations' === $tab ) ? 'nav-tab-active' : ''; ?>" <?php echo esc_html($style); ?>><?php esc_html_e('Pickup Location', 'zorem-local-pickup'); ?></a>
+				<input id="tab5" type="radio" name="tabs" class="wclp_tab_input" data-label="<?php esc_html_e('Customize', 'zorem-local-pickup'); ?>" data-tab="customize" <?php echo ( 'customize' === $tab ) ? 'checked' : ''; ?>>
+				<a for="tab5" href="<?php echo esc_url(admin_url('admin.php?page=alp_customizer&preview=ready_pickup')); ?>" class="wclp_tab_label <?php echo ( 'customize' === $tab ) ? 'nav-tab-active' : ''; ?>" <?php echo esc_html($style); ?>><?php esc_html_e('Customize', 'zorem-local-pickup'); ?></a>
+				<input id="tab4" type="radio" name="tabs" class="wclp_tab_input" data-label="<?php esc_html_e('Go Pro', 'zorem-local-pickup'); ?>" data-tab="go-pro" <?php echo ( 'go-pro' === $tab ) ? 'checked' : ''; ?>>
+				<a for="tab4" href="admin.php?page=local_pickup&tab=go-pro" class="wclp_tab_label <?php echo ( 'go-pro' === $tab ) ? 'nav-tab-active' : ''; ?>" <?php echo esc_html($style); ?>><?php esc_html_e('Go Pro', 'zorem-local-pickup'); ?></a>
 				<div class="menu_devider" <?php echo esc_html($style); ?>></div>
 				<?php require_once( 'views/wclp_setting_tab.php' ); ?>
 				<?php require_once( 'views/wclp_locations_tab.php' ); ?>
@@ -352,7 +352,7 @@ class WC_Local_Pickup_Admin {
 			$data = $this->get_data();
 			
 			if ('0' == $id) {
-				if ( !class_exists( 'Advanced_local_pickup_PRO' ) && count($data) > 1 ) {
+				if ( !class_exists( 'Zorem_Local_Pickup_Pro' ) && count($data) > 1 ) {
 					$array = array(
 						'success' => 'fail',
 						'msg' => 'you have not pro plguin',
@@ -419,11 +419,11 @@ class WC_Local_Pickup_Admin {
 			$result = $wpdb->update( $this->table, $data, $where );	
 			
 			//WPML string registed
-			do_action( 'wpml_register_single_string', 'advanced-local-pickup-pro', $wclp_store_name, $wclp_store_name );
-			do_action( 'wpml_register_single_string', 'advanced-local-pickup-pro', $wclp_store_instruction, $wclp_store_instruction );
-			do_action( 'wpml_register_single_string', 'advanced-local-pickup-pro', $wclp_store_address, $wclp_store_address );
-			do_action( 'wpml_register_single_string', 'advanced-local-pickup-pro', $wclp_store_address_2, $wclp_store_address_2 );
-			do_action( 'wpml_register_single_string', 'advanced-local-pickup-pro', $wclp_store_city, $wclp_store_city );
+			do_action( 'wpml_register_single_string', 'zorem-local-pickup-pro', $wclp_store_name, $wclp_store_name );
+			do_action( 'wpml_register_single_string', 'zorem-local-pickup-pro', $wclp_store_instruction, $wclp_store_instruction );
+			do_action( 'wpml_register_single_string', 'zorem-local-pickup-pro', $wclp_store_address, $wclp_store_address );
+			do_action( 'wpml_register_single_string', 'zorem-local-pickup-pro', $wclp_store_address_2, $wclp_store_address_2 );
+			do_action( 'wpml_register_single_string', 'zorem-local-pickup-pro', $wclp_store_city, $wclp_store_city );
 			
 			echo json_encode( $array );
 			die();
@@ -471,7 +471,7 @@ class WC_Local_Pickup_Admin {
 		$ready_for_pickup = get_option( 'wclp_status_ready_pickup', 0);
 		if (true == $ready_for_pickup) {
 			register_post_status( 'wc-ready-pickup', array(
-				'label'                     => esc_html__( 'Ready for Pickup', 'advanced-local-pickup-for-woocommerce' ),
+				'label'                     => esc_html__( 'Ready for Pickup', 'zorem-local-pickup' ),
 				'public'                    => true,
 				'exclude_from_search'       => false,
 				'show_in_admin_all_list'    => true,
@@ -484,7 +484,7 @@ class WC_Local_Pickup_Admin {
 		$picked = get_option( 'wclp_status_picked_up', 0);
 		if (true == $picked) {
 			register_post_status( 'wc-pickup', array(
-				'label'                     => esc_html__( 'Picked up', 'advanced-local-pickup-for-woocommerce' ),
+				'label'                     => esc_html__( 'Picked up', 'zorem-local-pickup' ),
 				'public'                    => true,
 				'exclude_from_search'       => false,
 				'show_in_admin_all_list'    => true,
@@ -509,14 +509,14 @@ class WC_Local_Pickup_Admin {
 			$ready_for_pickup = get_option( 'wclp_status_ready_pickup', 0);
 			if (true == $ready_for_pickup) {
 				if ( 'wc-processing' === $key ) {
-					$new_order_statuses['wc-ready-pickup'] = esc_html__( 'Ready for Pickup', 'advanced-local-pickup-for-woocommerce' );
+					$new_order_statuses['wc-ready-pickup'] = esc_html__( 'Ready for Pickup', 'zorem-local-pickup' );
 				}
 			}
 			
 			$picked = get_option( 'wclp_status_picked_up', 0);
 			if (true == $picked) {
 				if ( 'wc-processing' === $key ) {
-					$new_order_statuses['wc-pickup'] = esc_html__( 'Picked up', 'advanced-local-pickup-for-woocommerce' );
+					$new_order_statuses['wc-pickup'] = esc_html__( 'Picked up', 'zorem-local-pickup' );
 				}
 			}
 		}
@@ -528,11 +528,11 @@ class WC_Local_Pickup_Admin {
 	public function add_bulk_actions_change_order_status( $bulk_actions ) {
 		$ready_for_pickup = get_option( 'wclp_status_ready_pickup', 0);
 		if (true == $ready_for_pickup) {
-			$bulk_actions['mark_ready-pickup'] = esc_html__( 'Change status to ready for pickup', 'advanced-local-pickup-for-woocommerce' );
+			$bulk_actions['mark_ready-pickup'] = esc_html__( 'Change status to ready for pickup', 'zorem-local-pickup' );
 		}
 		$picked = get_option( 'wclp_status_picked_up', 0);
 		if (true == $picked) {
-			$bulk_actions['mark_pickup'] = esc_html__( 'Change status to picked up', 'advanced-local-pickup-for-woocommerce' );
+			$bulk_actions['mark_pickup'] = esc_html__( 'Change status to picked up', 'zorem-local-pickup' );
 		}
 		return $bulk_actions;		
 	}
@@ -583,13 +583,13 @@ class WC_Local_Pickup_Admin {
 				
 		$store_days = isset($location->store_days) ? unserialize($location->store_days) : array();
 		$all_days = array(
-			'sunday' => esc_html__( 'Sunday', 'advanced-local-pickup-for-woocommerce' ),
-			'monday' => esc_html__( 'Monday', 'advanced-local-pickup-for-woocommerce'),
-			'tuesday' => esc_html__( 'Tuesday', 'advanced-local-pickup-for-woocommerce' ),
-			'wednesday' => esc_html__( 'Wednesday', 'advanced-local-pickup-for-woocommerce' ),
-			'thursday' => esc_html__( 'Thursday', 'advanced-local-pickup-for-woocommerce' ),
-			'friday' => esc_html__( 'Friday', 'advanced-local-pickup-for-woocommerce' ),
-			'saturday' => esc_html__( 'Saturday', 'advanced-local-pickup-for-woocommerce' ),
+			'sunday' => esc_html__( 'Sunday', 'zorem-local-pickup' ),
+			'monday' => esc_html__( 'Monday', 'zorem-local-pickup'),
+			'tuesday' => esc_html__( 'Tuesday', 'zorem-local-pickup' ),
+			'wednesday' => esc_html__( 'Wednesday', 'zorem-local-pickup' ),
+			'thursday' => esc_html__( 'Thursday', 'zorem-local-pickup' ),
+			'friday' => esc_html__( 'Friday', 'zorem-local-pickup' ),
+			'saturday' => esc_html__( 'Saturday', 'zorem-local-pickup' ),
 		);
 		$w_day = array_slice($all_days, get_option('start_of_week'));
 		foreach ($all_days as $key=>$val) {
@@ -678,13 +678,13 @@ class WC_Local_Pickup_Admin {
 				
 		$store_days = isset($location->store_days) ? unserialize($location->store_days) : array();
 		$all_days = array(
-			'sunday' => esc_html__( 'Sunday', 'advanced-local-pickup-for-woocommerce' ),
-			'monday' => esc_html__( 'Monday', 'advanced-local-pickup-for-woocommerce'),
-			'tuesday' => esc_html__( 'Tuesday', 'advanced-local-pickup-for-woocommerce' ),
-			'wednesday' => esc_html__( 'Wednesday', 'advanced-local-pickup-for-woocommerce' ),
-			'thursday' => esc_html__( 'Thursday', 'advanced-local-pickup-for-woocommerce' ),
-			'friday' => esc_html__( 'Friday', 'advanced-local-pickup-for-woocommerce' ),
-			'saturday' => esc_html__( 'Saturday', 'advanced-local-pickup-for-woocommerce' ),
+			'sunday' => esc_html__( 'Sunday', 'zorem-local-pickup' ),
+			'monday' => esc_html__( 'Monday', 'zorem-local-pickup'),
+			'tuesday' => esc_html__( 'Tuesday', 'zorem-local-pickup' ),
+			'wednesday' => esc_html__( 'Wednesday', 'zorem-local-pickup' ),
+			'thursday' => esc_html__( 'Thursday', 'zorem-local-pickup' ),
+			'friday' => esc_html__( 'Friday', 'zorem-local-pickup' ),
+			'saturday' => esc_html__( 'Saturday', 'zorem-local-pickup' ),
 		);
 		$w_day = array_slice($all_days, get_option('start_of_week'));
 		foreach ($all_days as $key=>$val) {
@@ -760,13 +760,13 @@ class WC_Local_Pickup_Admin {
 				
 		$store_days = isset($location->store_days) ? unserialize($location->store_days) : array();
 		$all_days = array(
-			'sunday' => esc_html__( 'Sunday', 'advanced-local-pickup-for-woocommerce' ),
-			'monday' => esc_html__( 'Monday', 'advanced-local-pickup-for-woocommerce'),
-			'tuesday' => esc_html__( 'Tuesday', 'advanced-local-pickup-for-woocommerce' ),
-			'wednesday' => esc_html__( 'Wednesday', 'advanced-local-pickup-for-woocommerce' ),
-			'thursday' => esc_html__( 'Thursday', 'advanced-local-pickup-for-woocommerce' ),
-			'friday' => esc_html__( 'Friday', 'advanced-local-pickup-for-woocommerce' ),
-			'saturday' => esc_html__( 'Saturday', 'advanced-local-pickup-for-woocommerce' ),
+			'sunday' => esc_html__( 'Sunday', 'zorem-local-pickup' ),
+			'monday' => esc_html__( 'Monday', 'zorem-local-pickup'),
+			'tuesday' => esc_html__( 'Tuesday', 'zorem-local-pickup' ),
+			'wednesday' => esc_html__( 'Wednesday', 'zorem-local-pickup' ),
+			'thursday' => esc_html__( 'Thursday', 'zorem-local-pickup' ),
+			'friday' => esc_html__( 'Friday', 'zorem-local-pickup' ),
+			'saturday' => esc_html__( 'Saturday', 'zorem-local-pickup' ),
 		);
 		$w_day = array_slice($all_days, get_option('start_of_week'));
 		foreach ($all_days as $key=>$val) {
@@ -817,7 +817,7 @@ class WC_Local_Pickup_Admin {
 	
 	public function add_addional_content_on_processing_email( $order, $sent_to_admin, $plain_text, $email ) {
 
-		if ( 'customer_processing_order' != $email->id ) {
+		if ( is_object($email) && isset($email->id) && 'customer_processing_order' != $email->id ) {
 			return;
 		}
 
@@ -836,7 +836,7 @@ class WC_Local_Pickup_Admin {
 		
 		$settings = $this->wclp_general_setting_fields_func();		
 		$addional_content = get_option('wclp_processing_additional_content', $settings['wclp_processing_additional_content']['default']);
-		echo '<p>' . wp_kses_post(stripslashes($addional_content), 'advanced-local-pickup-for-woocommerce') . '</p>';
+		echo '<p>' . wp_kses_post(stripslashes($addional_content), 'zorem-local-pickup') . '</p>';
 	}
 	
 	/**
@@ -909,13 +909,13 @@ class WC_Local_Pickup_Admin {
 		$wclp_store_time_format = '24';
 		
 		$all_days = array(
-			'sunday' => esc_html__( 'Sunday', 'advanced-local-pickup-for-woocommerce' ),
-			'monday' => esc_html__( 'Monday', 'advanced-local-pickup-for-woocommerce'),
-			'tuesday' => esc_html__( 'Tuesday', 'advanced-local-pickup-for-woocommerce' ),
-			'wednesday' => esc_html__( 'Wednesday', 'advanced-local-pickup-for-woocommerce' ),
-			'thursday' => esc_html__( 'Thursday', 'advanced-local-pickup-for-woocommerce' ),
-			'friday' => esc_html__( 'Friday', 'advanced-local-pickup-for-woocommerce' ),
-			'saturday' => esc_html__( 'Saturday', 'advanced-local-pickup-for-woocommerce' ),
+			'sunday' => esc_html__( 'Sunday', 'zorem-local-pickup' ),
+			'monday' => esc_html__( 'Monday', 'zorem-local-pickup'),
+			'tuesday' => esc_html__( 'Tuesday', 'zorem-local-pickup' ),
+			'wednesday' => esc_html__( 'Wednesday', 'zorem-local-pickup' ),
+			'thursday' => esc_html__( 'Thursday', 'zorem-local-pickup' ),
+			'friday' => esc_html__( 'Friday', 'zorem-local-pickup' ),
+			'saturday' => esc_html__( 'Saturday', 'zorem-local-pickup' ),
 		);
 		$days = array_slice($all_days, get_option('start_of_week'));
 		foreach ($all_days as $key=>$val) {
@@ -949,7 +949,7 @@ class WC_Local_Pickup_Admin {
 			<div class="wplp_pickup_duration" style="">
 				<fieldset style=""><label class="" for="<?php echo esc_html($key); ?>" style="">
 					<input type="checkbox" id="<?php echo esc_html($key); ?>" name="wclp_store_days[<?php echo esc_html($key); ?>][checked]" class="pickup_days_checkbox"  <?php echo esc_html($checked); ?> value="1"/>
-					<span class="pickup_days_lable" style="width: auto;"><?php esc_html_e($val, 'advanced-local-pickup-for-woocommerce'); ?></span>	
+					<span class="pickup_days_lable" style="width: auto;"><?php esc_html_e($val, 'zorem-local-pickup'); ?></span>	
 				</label></fieldset>
 				<fieldset class="wclp_pickup_time_fieldset" style="">
 					<span class="hours <?php echo esc_html($class); ?>" style="">
@@ -1028,10 +1028,10 @@ class WC_Local_Pickup_Admin {
 								<span class="dashicons dashicons-trash" ></span>
 								</span>
 								<?php do_action('wclp_multi_hours_hook', $key, $wclp_store_time_format, $location, $send_time_array); ?>
-								<p class="add-interval" <?php echo ( !class_exists('Advanced_local_pickup_PRO') || ( isset($multi_checkbox_data[$key]['wclp_store_hour_end2']) && '' != $multi_checkbox_data[$key]['wclp_store_hour_end2'] ) ) ? 'style="display:none"' : ''; ?>>+ Add Interval</p>
+								<p class="add-interval" <?php echo ( !class_exists('Zorem_Local_Pickup_Pro') || ( isset($multi_checkbox_data[$key]['wclp_store_hour_end2']) && '' != $multi_checkbox_data[$key]['wclp_store_hour_end2'] ) ) ? 'style="display:none"' : ''; ?>>+ Add Interval</p>
 							</div>
 							<?php do_action('wclp_apply_mltiple_popup_hook', $days, $key); ?>
-							<button type="button" class="wclp-apply button-primary" value="<?php echo esc_html($key); ?>"><?php esc_html_e('Apply & close', 'advanced-local-pickup-for-woocommerce'); ?></button>
+							<button type="button" class="wclp-apply button-primary" value="<?php echo esc_html($key); ?>"><?php esc_html_e('Apply & close', 'zorem-local-pickup'); ?></button>
 							<?php do_action('wclp_apply_mltiple_on_days_hook'); ?>
 						</div>
 						<div class="popupclose"></div>
@@ -1101,9 +1101,9 @@ class WC_Local_Pickup_Admin {
 	
 	public function wclp_general_setting_fields_func() {		
 		$show_pickup_instraction_option = array( 
-			'display_in_processing_email' => esc_html__( 'Processing order email', 'advanced-local-pickup-for-woocommerce' ),
-			'display_in_order_received_page' => esc_html__( 'Order received page', 'advanced-local-pickup-for-woocommerce' ),
-			'display_in_order_details_page' => esc_html__( 'My Account (orders history)', 'advanced-local-pickup-for-woocommerce' ),			
+			'display_in_processing_email' => esc_html__( 'Processing order email', 'zorem-local-pickup' ),
+			'display_in_order_received_page' => esc_html__( 'Order received page', 'zorem-local-pickup' ),
+			'display_in_order_details_page' => esc_html__( 'My Account (orders history)', 'zorem-local-pickup' ),			
 		);
 		$settings = array(						
 			'wclp_show_pickup_instruction' => array(
@@ -1117,12 +1117,12 @@ class WC_Local_Pickup_Admin {
 				'desc_tip' => '',
 			),
 			'wclp_processing_additional_content' => array(
-				'title'    => esc_html__( 'Additional content on processing email in case of local pickup orders', 'advanced-local-pickup-for-woocommerce' ),
-				'tooltip'  => esc_html__( 'Additional content on processing email in case of local pickup orders', 'advanced-local-pickup-for-woocommerce' ),
+				'title'    => esc_html__( 'Additional content on processing email in case of local pickup orders', 'zorem-local-pickup' ),
+				'tooltip'  => esc_html__( 'Additional content on processing email in case of local pickup orders', 'zorem-local-pickup' ),
 				'id'       => 'wclp_processing_additional_content',
 				'css'      => 'min-width:50px;',
-				'default'  => esc_html__( 'You will receive an email when your order is ready for pickup.', 'advanced-local-pickup-for-woocommerce' ),
-				'placeholder' => esc_html__( 'Additional content on processing email in case of local pickup orders', 'advanced-local-pickup-for-woocommerce' ),
+				'default'  => esc_html__( 'You will receive an email when your order is ready for pickup.', 'zorem-local-pickup' ),
+				'placeholder' => esc_html__( 'Additional content on processing email in case of local pickup orders', 'zorem-local-pickup' ),
 				'show'	   => true,
 				'type'     => 'textarea',
 				'class'	   => 'additional_textarea',
@@ -1340,7 +1340,7 @@ class WC_Local_Pickup_Admin {
 				// Set the action button
 				$actions['ready_for_pickup'] = array(
 					'url'       => wp_nonce_url( admin_url( 'admin-ajax.php?action=woocommerce_mark_order_status&status=ready-pickup&order_id=' . $order_id ), 'woocommerce-mark-order-status' ),
-					'name'      => esc_html__( 'Mark order as ready for pickup', 'advanced-local-pickup-for-woocommerce' ),
+					'name'      => esc_html__( 'Mark order as ready for pickup', 'zorem-local-pickup' ),
 					'action'    => 'ready_for_pickup_icon', // keep "view" class for a clean button CSS
 				);
 				unset($actions['complete']);
@@ -1354,7 +1354,7 @@ class WC_Local_Pickup_Admin {
 				// Set the action button
 				$actions['pickup'] = array(
 					'url'       => wp_nonce_url( admin_url( 'admin-ajax.php?action=woocommerce_mark_order_status&status=pickup&order_id=' . $order_id ), 'woocommerce-mark-order-status' ),
-					'name'      => esc_html__( 'Mark order as picked up', 'advanced-local-pickup-for-woocommerce' ),
+					'name'      => esc_html__( 'Mark order as picked up', 'zorem-local-pickup' ),
 					'action'    => 'picked_up_icon', // keep "view" class for a clean button CSS
 				);
 			}
@@ -1460,13 +1460,13 @@ class WC_Local_Pickup_Admin {
 		$location = $this->get_data_byid($location_id);
 		$store_days = isset($location->store_days) ? unserialize($location->store_days) : array();
 		$all_days = array(
-			'sunday' => esc_html__( 'Sunday', 'advanced-local-pickup-for-woocommerce' ),
-			'monday' => esc_html__( 'Monday', 'advanced-local-pickup-for-woocommerce'),
-			'tuesday' => esc_html__( 'Tuesday', 'advanced-local-pickup-for-woocommerce' ),
-			'wednesday' => esc_html__( 'Wednesday', 'advanced-local-pickup-for-woocommerce' ),
-			'thursday' => esc_html__( 'Thursday', 'advanced-local-pickup-for-woocommerce' ),
-			'friday' => esc_html__( 'Friday', 'advanced-local-pickup-for-woocommerce' ),
-			'saturday' => esc_html__( 'Saturday', 'advanced-local-pickup-for-woocommerce' ),
+			'sunday' => esc_html__( 'Sunday', 'zorem-local-pickup' ),
+			'monday' => esc_html__( 'Monday', 'zorem-local-pickup'),
+			'tuesday' => esc_html__( 'Tuesday', 'zorem-local-pickup' ),
+			'wednesday' => esc_html__( 'Wednesday', 'zorem-local-pickup' ),
+			'thursday' => esc_html__( 'Thursday', 'zorem-local-pickup' ),
+			'friday' => esc_html__( 'Friday', 'zorem-local-pickup' ),
+			'saturday' => esc_html__( 'Saturday', 'zorem-local-pickup' ),
 		);
 		$w_day = array_slice($all_days, get_option('start_of_week'));
 		foreach ($all_days as $key=>$val) {
@@ -1527,7 +1527,7 @@ class WC_Local_Pickup_Admin {
 									
 				if ( isset(reset($data)['wclp_store_hour']) && '' != reset($data)['wclp_store_hour'] && isset(reset($data)['wclp_store_hour_end']) && '' != reset($data)['wclp_store_hour_end'] ) {
 					reset($data);
-					$pickup_hour .= esc_html(ucfirst(key($data)), 'advanced-local-pickup-for-woocommerce') . ' : ' . esc_html(reset($data)['wclp_store_hour']) . ' - ' . esc_html(reset($data)['wclp_store_hour_end']);
+					$pickup_hour .= esc_html(ucfirst(key($data)), 'zorem-local-pickup') . ' : ' . esc_html(reset($data)['wclp_store_hour']) . ' - ' . esc_html(reset($data)['wclp_store_hour_end']);
 				}
 			}
 			if (2 == count($data)) {
@@ -1537,8 +1537,8 @@ class WC_Local_Pickup_Admin {
 					$array_key_first = key($data);
 					end($data);
 					$array_key_last = key($data);
-					$pickup_hour .= esc_html(ucfirst($array_key_first), 'advanced-local-pickup-for-woocommerce') . ' - ' ; 
-					$pickup_hour .= esc_html(ucfirst($array_key_last) . ' ', 'advanced-local-pickup-for-woocommerce') . ' : ' . esc_html(reset($data)['wclp_store_hour']) . ' - ' . esc_html(reset($data)['wclp_store_hour_end']);
+					$pickup_hour .= esc_html(ucfirst($array_key_first), 'zorem-local-pickup') . ' - ' ; 
+					$pickup_hour .= esc_html(ucfirst($array_key_last) . ' ', 'zorem-local-pickup') . ' : ' . esc_html(reset($data)['wclp_store_hour']) . ' - ' . esc_html(reset($data)['wclp_store_hour_end']);
 				}
 			
 			}
@@ -1548,7 +1548,7 @@ class WC_Local_Pickup_Admin {
 					$array_key_first = key($data);
 					end($data);
 					$array_key_last = key($data);
-					$pickup_hour .= esc_html(ucfirst($array_key_first), 'advanced-local-pickup-for-woocommerce') . ' ' . esc_html(' To', 'advanced-local-pickup-for-woocommerce') . ' ' . esc_html(ucfirst($array_key_last), 'advanced-local-pickup-for-woocommerce') . ' : ' . esc_html(reset($data)['wclp_store_hour']) . ' - ' . esc_html(reset($data)['wclp_store_hour_end']); 
+					$pickup_hour .= esc_html(ucfirst($array_key_first), 'zorem-local-pickup') . ' ' . esc_html(' To', 'zorem-local-pickup') . ' ' . esc_html(ucfirst($array_key_last), 'zorem-local-pickup') . ' : ' . esc_html(reset($data)['wclp_store_hour']) . ' - ' . esc_html(reset($data)['wclp_store_hour_end']); 
 						
 				}		
 			

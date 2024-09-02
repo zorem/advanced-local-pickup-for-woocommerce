@@ -1,15 +1,16 @@
 <?php
 /*
-* Plugin Name: Advanced Local Pickup for WooCommerce
+* Plugin Name: Zorem Local Pickup
 * Plugin URI:  https://www.zorem.com/shop
-* Description: The Advanced Local Pickup (ALP) helps you handle local pickup orders more conveniently by extending the WooCommerce Local Pickup shipping method.
+* Short Description: Extend WooCommerce with Zorem Local Pickup to streamline your in-store pickup.
+* Description: Enhance your WooCommerce store's local pickup service with Zorem Local Pickup. This powerful tool expands on the standard Local Pickup shipping method, offering a streamlined and efficient way to manage in-store pickups. Simplify your process and improve customer satisfaction with Zorem Local Pickup.
 * Author: zorem
 * Author URI: https://www.zorem.com/
-* Version: 1.6.4
-* Text Domain: advanced-local-pickup-for-woocommerce
+* Version: 1.6.6
+* Text Domain: zorem-local-pickup
 * Domain Path: /lang/
 * WC requires at least: 4.0
-* WC tested up to: 8.7.0
+* WC tested up to: 9.2.3
 */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -19,11 +20,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Woocommerce_Local_Pickup {
 	
 	/**
-	 * Local Pickup for WooCommerce
+	 * Zorem Local Pickup
 	 *
 	 * @var string
 	 */
-	public $version = '1.6.4';
+	public $version = '1.6.6';
 	public $admin;
 	public $install;
 	public $table;
@@ -118,7 +119,7 @@ class Woocommerce_Local_Pickup {
 	public function notice_activate_wc() {
 		?>
 		<div class="error">
-			<p><?php printf( esc_html( 'Please install and activate %sWooCommerce%s for WC local pickup to work!', 'advanced-local-pickup-for-woocommerce' ), '<a href="' . esc_url(admin_url( 'plugin-install.php?tab=search&s=WooCommerce&plugin-search-input=Search+Plugins' )) . '">', '</a>' ); ?></p>
+			<p><?php printf( esc_html( 'Please install and activate %sWooCommerce%s for zorem local pickup to work!', 'zorem-local-pickup' ), '<a href="' . esc_url(admin_url( 'plugin-install.php?tab=search&s=WooCommerce&plugin-search-input=Search+Plugins' )) . '">', '</a>' ); ?></p>
 		</div>
 		<?php
 	}
@@ -213,7 +214,7 @@ class Woocommerce_Local_Pickup {
 		if ( isset( $options['action'] ) && $options['action'] === 'update' && isset( $options['type'] ) && $options['type'] === 'plugin' ) {
 			// Check if the updated plugin is your plugin
 			$plugin_slug = 'advanced-local-pickup-for-woocommerce/woo-advanced-local-pickup.php';
-			if ( in_array( $plugin_slug, $options['plugins'] ) ) {
+			if ( is_array($options['plugins']) && in_array( $plugin_slug, $options['plugins'] ) ) {
 				// Delete option
 				delete_option('wplp_review_notice_ignore');
 				// Delete transient
@@ -233,7 +234,7 @@ class Woocommerce_Local_Pickup {
 	* load text domain
 	*/
 	public function load_textdomain() {
-		load_plugin_textdomain( 'advanced-local-pickup-for-woocommerce', false, plugin_dir_path( plugin_basename(__FILE__) ) . 'lang/' );
+		load_plugin_textdomain( 'zorem-local-pickup', false, plugin_dir_path( plugin_basename(__FILE__) ) . 'lang/' );
 	}
 	
 	/**
@@ -276,14 +277,14 @@ class Woocommerce_Local_Pickup {
 		$links = array_merge( array(
 			'<a href="' . esc_url( admin_url( '/admin.php?page=local_pickup' ) ) . '">' . esc_html( 'Settings', 'woocommerce' ) . '</a>'
 		), array(
-			'<a href="' . esc_url( 'https://www.zorem.com/docs/advanced-local-pickup-for-woocommerce/?utm_source=wp-admin&utm_medium=ALP&utm_campaign=docs' ) . '" target="_blank">' . esc_html( 'Docs', 'woocommerce' ) . '</a>'
+			'<a href="' . esc_url( 'https://www.zorem.com/docs/zorem-local-pickup/?utm_source=wp-admin&utm_medium=ALP&utm_campaign=docs' ) . '" target="_blank">' . esc_html( 'Docs', 'woocommerce' ) . '</a>'
 		), array(
 			'<a href="' . esc_url( 'https://wordpress.org/support/plugin/advanced-local-pickup-for-woocommerce/reviews/#new-post' ) . '" target="_blank">' . esc_html( 'Review', 'woocommerce' ) . '</a>'
 		), $links );
 		
-		if (!class_exists('Advanced_local_pickup_PRO')) {
+		if (!class_exists('Zorem_Local_Pickup_Pro')) {
 			$links = array_merge( $links, array(
-				'<a target="_blank" style="color: #45b450; font-weight: bold;" href="' . esc_url( 'https://www.zorem.com/product/advanced-local-pickup-pro/?utm_source=wp-admin&utm_medium=ALPPRO&utm_campaign=add-ons') . '">' . __( 'Go Pro', 'woocommerce' ) . '</a>'
+				'<a target="_blank" style="color: #45b450; font-weight: bold;" href="' . esc_url( 'https://www.zorem.com/product/zorem-local-pickup-pro/?utm_source=wp-admin&utm_medium=ALPPRO&utm_campaign=add-ons') . '">' . __( 'Go Pro', 'woocommerce' ) . '</a>'
 			) );
 		}
 		
@@ -405,7 +406,7 @@ class Woocommerce_Local_Pickup {
 		if ($ready_pickup_count > 0 || $pickup_count > 0) { 
 			?>
 			<script>
-				jQuery(document).on("click","[data-slug='advanced-local-pickup-for-woocommerce'] .deactivate a",function(e) {			
+				jQuery(document).on("click","[data-slug='zorem-local-pickup'] .deactivate a",function(e) {			
 					e.preventDefault();
 					jQuery('.alp_uninstall_popup').show();
 					var theHREF = jQuery(this).attr("href");
@@ -441,11 +442,11 @@ class Woocommerce_Local_Pickup {
 			</script>
 			<div id="" class="alp_popupwrapper alp_uninstall_popup" style="display:none;">
 				<div class="alp_popuprow" style="text-align: left;max-width: 380px;">
-					<h3 class="alp_popup_title">Advanced Local Pickup for WooCommerce</h3>
+					<h3 class="alp_popup_title">Zorem Local Pickup</h3>
 					<form method="post" id="wplp_order_reassign_form">					
 					<?php if ( $ready_pickup_count > 0 ) { ?>
 						
-						<p><?php echo sprintf(esc_html('We detected %s orders that use the Ready for pickup order status, You can reassign these orders to a different status', 'advanced-local-pickup-for-woocommerce'), esc_html($ready_pickup_count)); ?></p>
+						<p><?php echo sprintf(esc_html('We detected %s orders that use the Ready for pickup order status, You can reassign these orders to a different status', 'zorem-local-pickup'), esc_html($ready_pickup_count)); ?></p>
 						
 						<select id="reassign_ready_pickup_order" name="reassign_ready_pickup_order" class="reassign_select">
 							<option value=""><?php esc_html_e('Select', 'woocommerce'); ?></option>
@@ -457,7 +458,7 @@ class Woocommerce_Local_Pickup {
 					<?php } ?>
 					<?php if ( $pickup_count > 0 ) { ?>
 						
-						<p><?php echo sprintf(esc_html('We detected %s orders that use the Picked up order status, You can reassign these orders to a different status', 'advanced-local-pickup-for-woocommerce'), esc_html($pickup_count)); ?></p>					
+						<p><?php echo sprintf(esc_html('We detected %s orders that use the Picked up order status, You can reassign these orders to a different status', 'zorem-local-pickup'), esc_html($pickup_count)); ?></p>					
 						
 						<select id="reassign_pickedup_order" name="reassign_pickedup_order" class="reassign_select">
 							<option value=""><?php esc_html_e('Select', 'woocommerce'); ?></option>
@@ -562,8 +563,8 @@ add_action( 'before_woocommerce_init', function() {
 if ( ! function_exists( 'zorem_tracking' ) ) {
 	function zorem_tracking() {
 		require_once dirname(__FILE__) . '/zorem-tracking/zorem-tracking.php';
-		$plugin_name = 'Advanced Local Pickup for WooCommerce';
-		$plugin_slug = 'advanced-local-pickup-for-woocommerce';
+		$plugin_name = 'Zorem Local Pickup';
+		$plugin_slug = 'zorem-local-pickup';
 		$user_id = '1';
 		$setting_page_type = 'submenu';
 		$setting_page_location =  "A submenu under other plugin's top level menu";
