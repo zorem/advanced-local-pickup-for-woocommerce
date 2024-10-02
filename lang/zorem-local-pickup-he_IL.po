@@ -1,0 +1,506 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Zorem Local Pickup\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-09-06 10:21+0000\n"
+"PO-Revision-Date: 2024-09-06 10:22+0000\n"
+"Last-Translator: \n"
+"Language-Team: Hebrew\n"
+"Language: he_IL\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.6.11; wp-6.6.2-RC1\n"
+"X-Domain: zorem-local-pickup"
+
+#: include/views/wclp-edit-location-form.php:397
+msgid " To"
+msgstr " אֶל"
+
+#: templates/emails/pickup-instruction.php:185
+#: templates/myaccount/pickup-instruction.php:185
+#: templates/emails/plain/pickup-instruction.php:185
+msgid " To "
+msgstr " אֶל "
+
+#: include/views/wclp-edit-location-form.php:301
+msgid "12 hour"
+msgstr "12 שעות"
+
+#: include/views/wclp-edit-location-form.php:300
+msgid "24 hour"
+msgstr "24 שעות"
+
+#: include/customizer/customizer-admin.php:498
+msgid "add comma-seperated emails, defaults to placeholder {customer_email}"
+msgstr ""
+"הוסף הודעות אימייל מופרדות בפסיקים, ברירת המחדל למציין מיקום {customer_email}"
+
+#: include/customizer/customizer-admin.php:496
+msgid "add comma-seperated emails, defaults to placeholder {customer_email} "
+msgstr ""
+"הוסף הודעות אימייל מופרדות בפסיקים, ברירת המחדל למציין מיקום {customer_email}"
+" "
+
+#: include/wc-local-pickup-admin.php:1120
+#: include/wc-local-pickup-admin.php:1121
+#: include/wc-local-pickup-admin.php:1125
+msgid "Additional content on processing email in case of local pickup orders"
+msgstr "תוכן נוסף על עיבוד דואר אלקטרוני במקרה של הזמנות איסוף מקומיות"
+
+#: include/views/wclp-edit-location-form.php:48
+msgid "Address"
+msgstr "כְּתוֹבֶת"
+
+#: include/views/admin_footer_panel.php:12
+msgid "Allow local pickup and other shipping methods on the same order"
+msgstr "אפשר איסוף מקומי ושיטות משלוח אחרות באותה הזמנה"
+
+#: include/views/wclp-edit-location-form.php:114
+msgid "An additional, optional address line for your business location."
+msgstr "שורת כתובת נוספת ואופציונלית עבור מיקום העסק שלך."
+
+#: include/wc-local-pickup-admin.php:1034
+#: include/views/wclp-edit-location-form.php:436
+msgid "Apply & close"
+msgstr "החל וסגור"
+
+#: include/views/admin_footer_panel.php:13
+msgid "Apply a discount or a fee for local pickup orders"
+msgstr "החל הנחה או עמלה עבור הזמנות איסוף מקומיות"
+
+#: include/views/wclp-edit-location-form.php:503
+msgid "Automations"
+msgstr "אוטומציות"
+
+#: include/customizer/customizer-admin.php:547
+msgid "Available Placeholders:"
+msgstr "מצייני מיקום זמינים:"
+
+#: include/customizer/customizer-admin.php:358
+msgid "Background Color"
+msgstr "צבע רקע"
+
+#: include/customizer/customizer-admin.php:367
+msgid "Border Color"
+msgstr "צבע גבול"
+
+#: include/views/wclp-edit-location-form.php:183
+msgid "Business Hours"
+msgstr "שעות פעילות"
+
+#: include/views/wclp_setting_tab.php:147
+msgid "Cart & Checkout Options"
+msgstr "אפשרויות עגלה וקופה"
+
+#: include/wc-local-pickup-admin.php:535
+msgid "Change status to picked up"
+msgstr "שנה סטטוס לאסוף"
+
+#: include/wc-local-pickup-admin.php:531
+msgid "Change status to ready for pickup"
+msgstr "שנה את הסטטוס למוכן לאיסוף"
+
+#: include/wc-local-pickup-admin.php:213 include/wc-local-pickup-admin.php:214
+#: include/views/wclp_setting_tab.php:78 include/views/wclp_setting_tab.php:129
+msgid "Customize"
+msgstr "התאמה אישית"
+
+#: include/views/wclp_setting_tab.php:56 include/views/wclp_setting_tab.php:107
+msgid "Dark Font"
+msgstr "גופן כהה"
+
+#: include/views/admin_message_panel.php:13
+msgid "Dismiss for 30 days"
+msgstr "פטר ל-30 יום"
+
+#: include/views/wclp_setting_tab.php:7
+msgid "Display options"
+msgstr "אפשרויות תצוגה"
+
+#: include/views/admin_footer_panel.php:5
+msgid "Display pickup instructions during checkout"
+msgstr "הצג הוראות איסוף במהלך התשלום"
+
+#: include/views/wclp-edit-location-form.php:295
+msgid "Display Time Format"
+msgstr "הצגת פורמט זמן"
+
+#: include/wc-local-pickup-admin.php:196
+msgid "Edit Pickup Location"
+msgstr "ערוך את מיקום האיסוף"
+
+#: include/customizer/customizer-admin.php:330
+msgid "Email Content"
+msgstr "תוכן בדוא\"ל"
+
+#: include/customizer/customizer-admin.php:534
+msgid "Email content"
+msgstr "תוכן באימייל"
+
+#: include/customizer/customizer-admin.php:334
+msgid "Email Design"
+msgstr "עיצוב אימייל"
+
+#: include/customizer/customizer-admin.php:521
+msgid "Email heading"
+msgstr "כותרת אימייל"
+
+#: include/customizer/customizer-admin.php:508
+msgid "Email Subject"
+msgstr "נושא דוא\"ל"
+
+#: include/customizer/customizer-admin.php:459
+msgid "Email type"
+msgstr "סוג דוא\"ל"
+
+#: include/customizer/customizer-admin.php:483
+msgid "Enable email"
+msgstr "אפשר אימייל"
+
+#. Description of the plugin
+msgid ""
+"Enhance your WooCommerce store's local pickup service with Zorem Local "
+"Pickup. This powerful tool expands on the standard Local Pickup shipping "
+"method, offering a streamlined and efficient way to manage in-store pickups. "
+"Simplify your process and improve customer satisfaction with Zorem Local "
+"Pickup."
+msgstr ""
+"שפר את שירות האיסוף המקומי של חנות WooCommerce שלך עם Zorem Local Pickup. "
+"כלי רב עוצמה זה מרחיב את שיטת המשלוח הסטנדרטית של איסוף מקומי, ומציע דרך "
+"יעילה ויעילה לניהול איסוף בחנות. פשט את התהליך שלך ושפר את שביעות רצון "
+"הלקוחות עם Zorem Local Pickup."
+
+#: include/views/admin_footer_panel.php:11
+msgid "Force local pickup"
+msgstr "כפה איסוף מקומי"
+
+#: include/wc-local-pickup-admin.php:591 include/wc-local-pickup-admin.php:686
+#: include/wc-local-pickup-admin.php:768 include/wc-local-pickup-admin.php:917
+#: include/wc-local-pickup-admin.php:1468
+msgid "Friday"
+msgstr "יוֹם שִׁישִׁי"
+
+#: include/views/wclp-edit-location-form.php:396
+msgid "From"
+msgstr "מִן"
+
+#: include/wc-local-pickup-admin.php:215 include/wc-local-pickup-admin.php:216
+msgid "Go Pro"
+msgstr "Go Pro"
+
+#. %s: Customer first name
+#: templates/emails/plain/ready-pickup-order.php:25
+#: templates/emails/plain/pickup-order.php:25
+#, php-format
+msgid "Hi %s,"
+msgstr "היי %s,"
+
+#: include/customizer/customizer-admin.php:432
+msgid "Hide Office Hours Header"
+msgstr "הסתר את כותרת שעות המשרד"
+
+#: include/customizer/customizer-admin.php:413
+msgid "Hide Pickup Address Header"
+msgstr "הסתר את כותרת כתובת האיסוף"
+
+#: include/customizer/customizer-admin.php:394
+msgid "Hide Widget Header"
+msgstr "הסתר את כותרת הווידג'ט"
+
+#. Author URI of the plugin
+msgid "https://www.zorem.com/"
+msgstr "https://www.zorem.com/"
+
+#. URI of the plugin
+msgid "https://www.zorem.com/shop"
+msgstr "https://www.zorem.com/shop"
+
+#: include/views/wclp_setting_tab.php:55 include/views/wclp_setting_tab.php:106
+msgid "Light Font"
+msgstr "גופן בהיר"
+
+#: include/views/admin_footer_panel.php:9
+msgid "Local pickup appointments"
+msgstr "פגישות איסוף מקומיות"
+
+#: include/views/wclp_setting_tab.php:139
+msgid "Local Pickup Dashboard"
+msgstr "לוח מחוונים לאיסוף מקומי"
+
+#: include/views/wclp_setting_tab.php:26
+msgid "Local pickup workflow"
+msgstr "זרימת עבודה של איסוף מקומי"
+
+#: include/views/wclp-edit-location-form.php:26
+msgid "Location Name"
+msgstr "שם מיקום"
+
+#: include/wc-local-pickup-admin.php:1357
+msgid "Mark order as picked up"
+msgstr "סמן את ההזמנה כאספה"
+
+#: include/wc-local-pickup-admin.php:1343
+msgid "Mark order as ready for pickup"
+msgstr "סמן את ההזמנה כמוכנה לאיסוף"
+
+#: include/wc-local-pickup-admin.php:587 include/wc-local-pickup-admin.php:682
+#: include/wc-local-pickup-admin.php:764 include/wc-local-pickup-admin.php:913
+#: include/wc-local-pickup-admin.php:1464
+msgid "Monday"
+msgstr "יוֹם שֵׁנִי"
+
+#: include/views/admin_footer_panel.php:8
+msgid "Multiple pickup locations"
+msgstr "מקומות איסוף מרובים"
+
+#: include/wc-local-pickup-admin.php:1106
+msgid "My Account (orders history)"
+msgstr "החשבון שלי (היסטוריית הזמנות)"
+
+#: include/views/wclp-edit-location-form.php:10
+msgid "Name & Special Instructions"
+msgstr "שם והוראות מיוחדות"
+
+#: include/views/wclp-edit-location-form.php:495
+msgid "Notifications"
+msgstr "התראות"
+
+#: include/views/admin_footer_panel.php:6
+msgid "Notify your customers when their order is available for pickup"
+msgstr "הודע ללקוחות שלך כאשר ההזמנה שלהם זמינה לאיסוף"
+
+#: include/customizer/customizer-admin.php:441
+msgid "Office Hours Header Text"
+msgstr "טקסט כותרת של שעות משרד"
+
+#: include/wc-local-pickup-admin.php:1105
+msgid "Order received page"
+msgstr "דף ההזמנה התקבל"
+
+#: include/customizer/customizer-admin.php:376
+msgid "Padding"
+msgstr "ריפוד"
+
+#: include/views/wclp-edit-location-form.php:479
+msgid "Payment Method"
+msgstr "שיטת תשלום"
+
+#: include/customizer/customizer-admin.php:404
+#: include/customizer/customizer-admin.php:405
+msgid "Pick up information"
+msgstr "קח מידע"
+
+#: include/customizer/customizer-admin.php:455
+msgid "Picked Up"
+msgstr "הרים"
+
+#: include/wc-local-pickup-admin.php:487 include/wc-local-pickup-admin.php:519
+#: include/views/wclp_setting_tab.php:99
+msgid "Picked up"
+msgstr "הרים"
+
+#: include/customizer/customizer-admin.php:423
+#: include/customizer/customizer-admin.php:424
+msgid "Pickup Address"
+msgstr "כתובת לאיסוף"
+
+#: include/customizer/customizer-admin.php:422
+msgid "Pickup Address Header Text"
+msgstr "טקסט כותרת של כתובת איסוף"
+
+#: include/views/wclp-edit-location-form.php:455
+msgid "Pickup Appointments"
+msgstr "פגישות איסוף"
+
+#: include/customizer/customizer-admin.php:442
+#: include/customizer/customizer-admin.php:443
+msgid "Pickup Hours"
+msgstr "שעות איסוף"
+
+#: include/wc-local-pickup-admin.php:211 include/wc-local-pickup-admin.php:212
+msgid "Pickup Location"
+msgstr "מיקום איסוף"
+
+#: include/customizer/customizer-admin.php:350
+msgid "Pickup Location info"
+msgstr "מידע על מיקום האיסוף"
+
+#: include/wc-local-pickup-admin.php:195
+msgid "Pickup Locations"
+msgstr "מיקומי איסוף"
+
+#: include/views/wclp_setting_tab.php:140
+#: include/views/wclp_setting_tab.php:148
+#: include/views/wclp_setting_tab.php:156
+#: include/views/wclp-edit-location-form.php:456
+#: include/views/wclp-edit-location-form.php:464
+#: include/views/wclp-edit-location-form.php:472
+#: include/views/wclp-edit-location-form.php:480
+#: include/views/wclp-edit-location-form.php:488
+#: include/views/wclp-edit-location-form.php:496
+#: include/views/wclp-edit-location-form.php:504
+msgid "Premium"
+msgstr "פּרֶמיָה"
+
+#: include/views/wclp-edit-location-form.php:487
+msgid "Price Adjustments"
+msgstr "התאמות מחיר"
+
+#: include/wc-local-pickup-admin.php:1104
+msgid "Processing order email"
+msgstr "עיבוד מייל הזמנה"
+
+#: include/views/wclp-edit-location-form.php:463
+msgid "Products"
+msgstr "מוצרים"
+
+#: include/views/wclp_setting_tab.php:155
+msgid "Products Catalog Options"
+msgstr "אפשרויות קטלוג מוצרים"
+
+#: include/wc-local-pickup-admin.php:474 include/wc-local-pickup-admin.php:512
+#: include/customizer/customizer-admin.php:454
+msgid "Ready for Pickup"
+msgstr "מוכן לאיסוף"
+
+#: include/views/wclp_setting_tab.php:48
+msgid "Ready for pickup"
+msgstr "מוכן לאיסוף"
+
+#: include/customizer/customizer-admin.php:495
+msgid "Recipients"
+msgstr "נמענים"
+
+#: include/wc-local-pickup-admin.php:592 include/wc-local-pickup-admin.php:687
+#: include/wc-local-pickup-admin.php:769 include/wc-local-pickup-admin.php:918
+#: include/wc-local-pickup-admin.php:1469
+msgid "Saturday"
+msgstr "שַׁבָּת"
+
+#: include/views/wclp_setting_tab.php:10 include/views/wclp_setting_tab.php:29
+#: include/views/wclp-edit-location-form.php:13
+#: include/views/wclp-edit-location-form.php:51
+#: include/views/wclp-edit-location-form.php:186
+msgid "Save & close"
+msgstr "שמור וסגור"
+
+#: include/views/wclp-edit-location-form.php:295
+msgid ""
+"Select time format which you want to display in business hours for customers."
+msgstr "בחר פורמט זמן שברצונך להציג בשעות הפעילות ללקוחות."
+
+#: include/views/wclp_setting_tab.php:76 include/views/wclp_setting_tab.php:127
+msgid "Send Email"
+msgstr "שלח אימייל"
+
+#: include/views/wclp-edit-location-form.php:471
+msgid "Shipping Method"
+msgstr "שיטת משלוח"
+
+#: include/views/admin_footer_panel.php:10
+msgid "Show local pickup availability messages"
+msgstr "הצג הודעות זמינות לאיסוף מקומי"
+
+#: include/views/wclp-edit-location-form.php:36
+msgid "Special Instruction"
+msgstr "הדרכה מיוחדת"
+
+#: include/views/admin_footer_panel.php:7
+msgid "Split the work hours"
+msgstr "פיצלו את שעות העבודה"
+
+#: include/wc-local-pickup-admin.php:586 include/wc-local-pickup-admin.php:681
+#: include/wc-local-pickup-admin.php:763 include/wc-local-pickup-admin.php:912
+#: include/wc-local-pickup-admin.php:1463
+msgid "Sunday"
+msgstr "יוֹם רִאשׁוֹן"
+
+#: include/views/wclp-edit-location-form.php:26
+msgid "The location name for your business location."
+msgstr "שם המיקום של מיקום העסק שלך."
+
+#: include/views/wclp-edit-location-form.php:171
+msgid "The phone number for your business information."
+msgstr "מספר הטלפון של פרטי העסק שלך."
+
+#: include/views/wclp-edit-location-form.php:310
+msgid "the select for working days of your store."
+msgstr "הבחירה לימי העבודה של החנות שלך."
+
+#: include/views/wclp-edit-location-form.php:36
+msgid "The special instruction for your store."
+msgstr "ההדרכה המיוחדת לחנות שלך."
+
+#: include/customizer/customizer-admin.php:615
+msgid ""
+"This email type can not be previewed please try a different order or email "
+"type."
+msgstr ""
+"לא ניתן לצפות בתצוגה מקדימה של סוג דוא\"ל זה, אנא נסה סדר או סוג אחר של "
+"דוא\"ל."
+
+#: include/wc-local-pickup-admin.php:590 include/wc-local-pickup-admin.php:685
+#: include/wc-local-pickup-admin.php:767 include/wc-local-pickup-admin.php:916
+#: include/wc-local-pickup-admin.php:1467
+msgid "Thursday"
+msgstr "יוֹם חֲמִישִׁי"
+
+#: include/wc-local-pickup-admin.php:588 include/wc-local-pickup-admin.php:683
+#: include/wc-local-pickup-admin.php:765 include/wc-local-pickup-admin.php:914
+#: include/wc-local-pickup-admin.php:1465
+msgid "Tuesday"
+msgstr "יוֹם שְׁלִישִׁי"
+
+#: include/views/admin_message_panel.php:12
+msgid "UPGRADE NOW"
+msgstr "שדרג עכשיו"
+
+#: include/views/admin_footer_panel.php:3
+#: include/views/admin_message_panel.php:9
+msgid "Upgrade to ALP PRO!"
+msgstr "שדרג ל-ALP PRO!"
+
+#: include/views/admin_footer_panel.php:15
+msgid "Upgrade to PRO"
+msgstr "שדרג ל-PRO"
+
+#: include/wc-local-pickup-admin.php:589 include/wc-local-pickup-admin.php:684
+#: include/wc-local-pickup-admin.php:766 include/wc-local-pickup-admin.php:915
+#: include/wc-local-pickup-admin.php:1466
+msgid "Wednesday"
+msgstr "יוֹם רְבִיעִי"
+
+#: include/customizer/customizer-admin.php:345
+msgid "Widget Header"
+msgstr "כותרת יישומון"
+
+#: include/customizer/customizer-admin.php:403
+msgid "Widget Header Text"
+msgstr "טקסט כותרת יישומון"
+
+#: include/customizer/customizer-admin.php:340
+msgid "Widget Style"
+msgstr "סגנון יישומון"
+
+#: include/views/wclp-edit-location-form.php:310
+msgid "Work Hours"
+msgstr "שעות עבודה"
+
+#: include/views/wclp-edit-location-form.php:30
+msgid "you must add location name and save to proceed"
+msgstr "עליך להוסיף שם מיקום ולשמור כדי להמשיך"
+
+#: include/wc-local-pickup-admin.php:1124
+msgid "You will receive an email when your order is ready for pickup."
+msgstr "תקבל אימייל כשההזמנה שלך תהיה מוכנה לאיסוף."
+
+#. Author of the plugin
+msgid "zorem"
+msgstr "זורם"
+
+#. Name of the plugin
+msgid "Zorem Local Pickup"
+msgstr "איסוף מקומי של זורם"

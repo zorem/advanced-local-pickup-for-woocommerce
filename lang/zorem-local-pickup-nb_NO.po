@@ -1,0 +1,507 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Zorem Local Pickup\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-09-06 10:21+0000\n"
+"PO-Revision-Date: 2024-09-06 10:25+0000\n"
+"Last-Translator: \n"
+"Language-Team: Norwegian (Bokmål)\n"
+"Language: nb_NO\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.6.11; wp-6.6.2-RC1\n"
+"X-Domain: zorem-local-pickup"
+
+#: include/views/wclp-edit-location-form.php:397
+msgid " To"
+msgstr " Til"
+
+#: templates/emails/pickup-instruction.php:185
+#: templates/myaccount/pickup-instruction.php:185
+#: templates/emails/plain/pickup-instruction.php:185
+msgid " To "
+msgstr " Til "
+
+#: include/views/wclp-edit-location-form.php:301
+msgid "12 hour"
+msgstr "12 timer"
+
+#: include/views/wclp-edit-location-form.php:300
+msgid "24 hour"
+msgstr "24 timer"
+
+#: include/customizer/customizer-admin.php:498
+msgid "add comma-seperated emails, defaults to placeholder {customer_email}"
+msgstr ""
+"legg til kommadelte e-poster, standard til plassholder {customer_email}"
+
+#: include/customizer/customizer-admin.php:496
+msgid "add comma-seperated emails, defaults to placeholder {customer_email} "
+msgstr ""
+"legg til kommadelte e-poster, standard til plassholder {customer_email} "
+
+#: include/wc-local-pickup-admin.php:1120
+#: include/wc-local-pickup-admin.php:1121
+#: include/wc-local-pickup-admin.php:1125
+msgid "Additional content on processing email in case of local pickup orders"
+msgstr ""
+"Ytterligere innhold på behandling av e-post i tilfelle lokale henteordrer"
+
+#: include/views/wclp-edit-location-form.php:48
+msgid "Address"
+msgstr "Adresse"
+
+#: include/views/admin_footer_panel.php:12
+msgid "Allow local pickup and other shipping methods on the same order"
+msgstr "Tillat lokal henting og andre forsendelsesmetoder på samme bestilling"
+
+#: include/views/wclp-edit-location-form.php:114
+msgid "An additional, optional address line for your business location."
+msgstr "En ekstra, valgfri adresselinje for bedriftsbeliggenheten din."
+
+#: include/wc-local-pickup-admin.php:1034
+#: include/views/wclp-edit-location-form.php:436
+msgid "Apply & close"
+msgstr "Påfør og lukk"
+
+#: include/views/admin_footer_panel.php:13
+msgid "Apply a discount or a fee for local pickup orders"
+msgstr "Bruk en rabatt eller et gebyr for lokale henteordrer"
+
+#: include/views/wclp-edit-location-form.php:503
+msgid "Automations"
+msgstr "Automatiseringer"
+
+#: include/customizer/customizer-admin.php:547
+msgid "Available Placeholders:"
+msgstr "Tilgjengelige plassholdere:"
+
+#: include/customizer/customizer-admin.php:358
+msgid "Background Color"
+msgstr "Bakgrunnsfarge"
+
+#: include/customizer/customizer-admin.php:367
+msgid "Border Color"
+msgstr "Kantfarge"
+
+#: include/views/wclp-edit-location-form.php:183
+msgid "Business Hours"
+msgstr "Arbeidstider"
+
+#: include/views/wclp_setting_tab.php:147
+msgid "Cart & Checkout Options"
+msgstr "Handlevogn og betalingsalternativer"
+
+#: include/wc-local-pickup-admin.php:535
+msgid "Change status to picked up"
+msgstr "Endre status til hentet"
+
+#: include/wc-local-pickup-admin.php:531
+msgid "Change status to ready for pickup"
+msgstr "Endre status til klar for henting"
+
+#: include/wc-local-pickup-admin.php:213 include/wc-local-pickup-admin.php:214
+#: include/views/wclp_setting_tab.php:78 include/views/wclp_setting_tab.php:129
+msgid "Customize"
+msgstr "Tilpass"
+
+#: include/views/wclp_setting_tab.php:56 include/views/wclp_setting_tab.php:107
+msgid "Dark Font"
+msgstr "Mørk skrift"
+
+#: include/views/admin_message_panel.php:13
+msgid "Dismiss for 30 days"
+msgstr "Oppsigelse i 30 dager"
+
+#: include/views/wclp_setting_tab.php:7
+msgid "Display options"
+msgstr "Visningsalternativer"
+
+#: include/views/admin_footer_panel.php:5
+msgid "Display pickup instructions during checkout"
+msgstr "Vis hentingsinstruksjoner under kassen"
+
+#: include/views/wclp-edit-location-form.php:295
+msgid "Display Time Format"
+msgstr "Vis tidsformat"
+
+#: include/wc-local-pickup-admin.php:196
+msgid "Edit Pickup Location"
+msgstr "Rediger hentested"
+
+#: include/customizer/customizer-admin.php:330
+msgid "Email Content"
+msgstr "E-postinnhold"
+
+#: include/customizer/customizer-admin.php:534
+msgid "Email content"
+msgstr "E-postinnhold"
+
+#: include/customizer/customizer-admin.php:334
+msgid "Email Design"
+msgstr "E-postdesign"
+
+#: include/customizer/customizer-admin.php:521
+msgid "Email heading"
+msgstr "E-postoverskrift"
+
+#: include/customizer/customizer-admin.php:508
+msgid "Email Subject"
+msgstr "E-postemne"
+
+#: include/customizer/customizer-admin.php:459
+msgid "Email type"
+msgstr "E-posttype"
+
+#: include/customizer/customizer-admin.php:483
+msgid "Enable email"
+msgstr "Aktiver e-post"
+
+#. Description of the plugin
+msgid ""
+"Enhance your WooCommerce store's local pickup service with Zorem Local "
+"Pickup. This powerful tool expands on the standard Local Pickup shipping "
+"method, offering a streamlined and efficient way to manage in-store pickups. "
+"Simplify your process and improve customer satisfaction with Zorem Local "
+"Pickup."
+msgstr ""
+"Forbedre WooCommerce-butikkens lokale hentetjeneste med Zorem Local Pickup. "
+"Dette kraftige verktøyet utvider den standard leveringsmetoden for lokal "
+"henting, og tilbyr en strømlinjeformet og effektiv måte å administrere "
+"henting i butikk. Forenkle prosessen din og forbedre kundetilfredsheten med "
+"Zorem Local Pickup."
+
+#: include/views/admin_footer_panel.php:11
+msgid "Force local pickup"
+msgstr "Tving lokal henting"
+
+#: include/wc-local-pickup-admin.php:591 include/wc-local-pickup-admin.php:686
+#: include/wc-local-pickup-admin.php:768 include/wc-local-pickup-admin.php:917
+#: include/wc-local-pickup-admin.php:1468
+msgid "Friday"
+msgstr "fredag"
+
+#: include/views/wclp-edit-location-form.php:396
+msgid "From"
+msgstr "Fra"
+
+#: include/wc-local-pickup-admin.php:215 include/wc-local-pickup-admin.php:216
+msgid "Go Pro"
+msgstr "Gå Pro"
+
+#. %s: Customer first name
+#: templates/emails/plain/ready-pickup-order.php:25
+#: templates/emails/plain/pickup-order.php:25
+#, php-format
+msgid "Hi %s,"
+msgstr "Hei %s,"
+
+#: include/customizer/customizer-admin.php:432
+msgid "Hide Office Hours Header"
+msgstr "Skjul overskriften for kontortimer"
+
+#: include/customizer/customizer-admin.php:413
+msgid "Hide Pickup Address Header"
+msgstr "Skjul overskriften på henteadressen"
+
+#: include/customizer/customizer-admin.php:394
+msgid "Hide Widget Header"
+msgstr "Skjul widgethode"
+
+#. Author URI of the plugin
+msgid "https://www.zorem.com/"
+msgstr "https://www.zorem.com/"
+
+#. URI of the plugin
+msgid "https://www.zorem.com/shop"
+msgstr "https://www.zorem.com/shop"
+
+#: include/views/wclp_setting_tab.php:55 include/views/wclp_setting_tab.php:106
+msgid "Light Font"
+msgstr "Lett skrift"
+
+#: include/views/admin_footer_panel.php:9
+msgid "Local pickup appointments"
+msgstr "Lokale hentingsavtaler"
+
+#: include/views/wclp_setting_tab.php:139
+msgid "Local Pickup Dashboard"
+msgstr "Dashboard for lokal henting"
+
+#: include/views/wclp_setting_tab.php:26
+msgid "Local pickup workflow"
+msgstr "Arbeidsflyt for lokal henting"
+
+#: include/views/wclp-edit-location-form.php:26
+msgid "Location Name"
+msgstr "Stedsnavn"
+
+#: include/wc-local-pickup-admin.php:1357
+msgid "Mark order as picked up"
+msgstr "Merk bestillingen som hentet"
+
+#: include/wc-local-pickup-admin.php:1343
+msgid "Mark order as ready for pickup"
+msgstr "Merk bestillingen som klar for henting"
+
+#: include/wc-local-pickup-admin.php:587 include/wc-local-pickup-admin.php:682
+#: include/wc-local-pickup-admin.php:764 include/wc-local-pickup-admin.php:913
+#: include/wc-local-pickup-admin.php:1464
+msgid "Monday"
+msgstr "mandag"
+
+#: include/views/admin_footer_panel.php:8
+msgid "Multiple pickup locations"
+msgstr "Flere hentesteder"
+
+#: include/wc-local-pickup-admin.php:1106
+msgid "My Account (orders history)"
+msgstr "Min konto (bestillingshistorikk)"
+
+#: include/views/wclp-edit-location-form.php:10
+msgid "Name & Special Instructions"
+msgstr "Navn og spesielle instruksjoner"
+
+#: include/views/wclp-edit-location-form.php:495
+msgid "Notifications"
+msgstr "Varsler"
+
+#: include/views/admin_footer_panel.php:6
+msgid "Notify your customers when their order is available for pickup"
+msgstr "Varsle kundene dine når bestillingen deres er tilgjengelig for henting"
+
+#: include/customizer/customizer-admin.php:441
+msgid "Office Hours Header Text"
+msgstr "Overskriftstekst for kontortid"
+
+#: include/wc-local-pickup-admin.php:1105
+msgid "Order received page"
+msgstr "Bestilling mottatt side"
+
+#: include/customizer/customizer-admin.php:376
+msgid "Padding"
+msgstr "Polstring"
+
+#: include/views/wclp-edit-location-form.php:479
+msgid "Payment Method"
+msgstr "Betalingsmåte"
+
+#: include/customizer/customizer-admin.php:404
+#: include/customizer/customizer-admin.php:405
+msgid "Pick up information"
+msgstr "Hent informasjon"
+
+#: include/customizer/customizer-admin.php:455
+msgid "Picked Up"
+msgstr "Hentet opp"
+
+#: include/wc-local-pickup-admin.php:487 include/wc-local-pickup-admin.php:519
+#: include/views/wclp_setting_tab.php:99
+msgid "Picked up"
+msgstr "Plukket opp"
+
+#: include/customizer/customizer-admin.php:423
+#: include/customizer/customizer-admin.php:424
+msgid "Pickup Address"
+msgstr "Henteadresse"
+
+#: include/customizer/customizer-admin.php:422
+msgid "Pickup Address Header Text"
+msgstr "Overskriftstekst for henteadresse"
+
+#: include/views/wclp-edit-location-form.php:455
+msgid "Pickup Appointments"
+msgstr "Hentingsavtaler"
+
+#: include/customizer/customizer-admin.php:442
+#: include/customizer/customizer-admin.php:443
+msgid "Pickup Hours"
+msgstr "Hentingstider"
+
+#: include/wc-local-pickup-admin.php:211 include/wc-local-pickup-admin.php:212
+msgid "Pickup Location"
+msgstr "Hentested"
+
+#: include/customizer/customizer-admin.php:350
+msgid "Pickup Location info"
+msgstr "Informasjon om hentested"
+
+#: include/wc-local-pickup-admin.php:195
+msgid "Pickup Locations"
+msgstr "Hentesteder"
+
+#: include/views/wclp_setting_tab.php:140
+#: include/views/wclp_setting_tab.php:148
+#: include/views/wclp_setting_tab.php:156
+#: include/views/wclp-edit-location-form.php:456
+#: include/views/wclp-edit-location-form.php:464
+#: include/views/wclp-edit-location-form.php:472
+#: include/views/wclp-edit-location-form.php:480
+#: include/views/wclp-edit-location-form.php:488
+#: include/views/wclp-edit-location-form.php:496
+#: include/views/wclp-edit-location-form.php:504
+msgid "Premium"
+msgstr "Premium"
+
+#: include/views/wclp-edit-location-form.php:487
+msgid "Price Adjustments"
+msgstr "Prisjusteringer"
+
+#: include/wc-local-pickup-admin.php:1104
+msgid "Processing order email"
+msgstr "Behandler bestillings-e-post"
+
+#: include/views/wclp-edit-location-form.php:463
+msgid "Products"
+msgstr "Produkter"
+
+#: include/views/wclp_setting_tab.php:155
+msgid "Products Catalog Options"
+msgstr "Alternativer for produktkatalog"
+
+#: include/wc-local-pickup-admin.php:474 include/wc-local-pickup-admin.php:512
+#: include/customizer/customizer-admin.php:454
+msgid "Ready for Pickup"
+msgstr "Klar for henting"
+
+#: include/views/wclp_setting_tab.php:48
+msgid "Ready for pickup"
+msgstr "Klar for henting"
+
+#: include/customizer/customizer-admin.php:495
+msgid "Recipients"
+msgstr "Mottakere"
+
+#: include/wc-local-pickup-admin.php:592 include/wc-local-pickup-admin.php:687
+#: include/wc-local-pickup-admin.php:769 include/wc-local-pickup-admin.php:918
+#: include/wc-local-pickup-admin.php:1469
+msgid "Saturday"
+msgstr "lørdag"
+
+#: include/views/wclp_setting_tab.php:10 include/views/wclp_setting_tab.php:29
+#: include/views/wclp-edit-location-form.php:13
+#: include/views/wclp-edit-location-form.php:51
+#: include/views/wclp-edit-location-form.php:186
+msgid "Save & close"
+msgstr "Lagre og lukk"
+
+#: include/views/wclp-edit-location-form.php:295
+msgid ""
+"Select time format which you want to display in business hours for customers."
+msgstr "Velg tidsformat som du vil vise i åpningstider for kunder."
+
+#: include/views/wclp_setting_tab.php:76 include/views/wclp_setting_tab.php:127
+msgid "Send Email"
+msgstr "Send e-post"
+
+#: include/views/wclp-edit-location-form.php:471
+msgid "Shipping Method"
+msgstr "Fraktmetode"
+
+#: include/views/admin_footer_panel.php:10
+msgid "Show local pickup availability messages"
+msgstr "Vis meldinger om lokal henting tilgjengelighet"
+
+#: include/views/wclp-edit-location-form.php:36
+msgid "Special Instruction"
+msgstr "Spesiell instruksjon"
+
+#: include/views/admin_footer_panel.php:7
+msgid "Split the work hours"
+msgstr "Del opp arbeidstiden"
+
+#: include/wc-local-pickup-admin.php:586 include/wc-local-pickup-admin.php:681
+#: include/wc-local-pickup-admin.php:763 include/wc-local-pickup-admin.php:912
+#: include/wc-local-pickup-admin.php:1463
+msgid "Sunday"
+msgstr "søndag"
+
+#: include/views/wclp-edit-location-form.php:26
+msgid "The location name for your business location."
+msgstr "Stedsnavnet for bedriftsbeliggenheten din."
+
+#: include/views/wclp-edit-location-form.php:171
+msgid "The phone number for your business information."
+msgstr "Telefonnummeret for bedriftsinformasjonen din."
+
+#: include/views/wclp-edit-location-form.php:310
+msgid "the select for working days of your store."
+msgstr "valget for arbeidsdager i butikken din."
+
+#: include/views/wclp-edit-location-form.php:36
+msgid "The special instruction for your store."
+msgstr "Den spesielle instruksjonen for butikken din."
+
+#: include/customizer/customizer-admin.php:615
+msgid ""
+"This email type can not be previewed please try a different order or email "
+"type."
+msgstr ""
+"Denne e-posttypen kan ikke forhåndsvises, prøv en annen bestilling eller e-"
+"posttype."
+
+#: include/wc-local-pickup-admin.php:590 include/wc-local-pickup-admin.php:685
+#: include/wc-local-pickup-admin.php:767 include/wc-local-pickup-admin.php:916
+#: include/wc-local-pickup-admin.php:1467
+msgid "Thursday"
+msgstr "torsdag"
+
+#: include/wc-local-pickup-admin.php:588 include/wc-local-pickup-admin.php:683
+#: include/wc-local-pickup-admin.php:765 include/wc-local-pickup-admin.php:914
+#: include/wc-local-pickup-admin.php:1465
+msgid "Tuesday"
+msgstr "tirsdag"
+
+#: include/views/admin_message_panel.php:12
+msgid "UPGRADE NOW"
+msgstr "OPPGRADER NÅ"
+
+#: include/views/admin_footer_panel.php:3
+#: include/views/admin_message_panel.php:9
+msgid "Upgrade to ALP PRO!"
+msgstr "Oppgrader til ALP PRO!"
+
+#: include/views/admin_footer_panel.php:15
+msgid "Upgrade to PRO"
+msgstr "Oppgrader til PRO"
+
+#: include/wc-local-pickup-admin.php:589 include/wc-local-pickup-admin.php:684
+#: include/wc-local-pickup-admin.php:766 include/wc-local-pickup-admin.php:915
+#: include/wc-local-pickup-admin.php:1466
+msgid "Wednesday"
+msgstr "onsdag"
+
+#: include/customizer/customizer-admin.php:345
+msgid "Widget Header"
+msgstr "Widget-overskrift"
+
+#: include/customizer/customizer-admin.php:403
+msgid "Widget Header Text"
+msgstr "Widget-hodetekst"
+
+#: include/customizer/customizer-admin.php:340
+msgid "Widget Style"
+msgstr "Widget-stil"
+
+#: include/views/wclp-edit-location-form.php:310
+msgid "Work Hours"
+msgstr "Arbeidstider"
+
+#: include/views/wclp-edit-location-form.php:30
+msgid "you must add location name and save to proceed"
+msgstr "du må legge til stedsnavn og lagre for å fortsette"
+
+#: include/wc-local-pickup-admin.php:1124
+msgid "You will receive an email when your order is ready for pickup."
+msgstr "Du vil motta en e-post når bestillingen din er klar for henting."
+
+#. Author of the plugin
+msgid "zorem"
+msgstr "zorem"
+
+#. Name of the plugin
+msgid "Zorem Local Pickup"
+msgstr "Zorem lokal henting"

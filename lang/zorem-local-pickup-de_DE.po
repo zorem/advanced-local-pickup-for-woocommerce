@@ -1,0 +1,517 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Zorem Local Pickup\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-09-06 10:21+0000\n"
+"PO-Revision-Date: 2024-09-06 10:22+0000\n"
+"Last-Translator: \n"
+"Language-Team: German\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.6.11; wp-6.6.2-RC1\n"
+"X-Domain: zorem-local-pickup"
+
+#: include/views/wclp-edit-location-form.php:397
+msgid " To"
+msgstr " Zu"
+
+#: templates/emails/pickup-instruction.php:185
+#: templates/myaccount/pickup-instruction.php:185
+#: templates/emails/plain/pickup-instruction.php:185
+msgid " To "
+msgstr " Zu "
+
+#: include/views/wclp-edit-location-form.php:301
+msgid "12 hour"
+msgstr "12 Stunden"
+
+#: include/views/wclp-edit-location-form.php:300
+msgid "24 hour"
+msgstr "24 Stunden"
+
+#: include/customizer/customizer-admin.php:498
+msgid "add comma-seperated emails, defaults to placeholder {customer_email}"
+msgstr ""
+"Komma-getrennte E-Mails hinzufügen, standardmäßig ist der Platzhalter "
+"{customer_email}"
+
+#: include/customizer/customizer-admin.php:496
+msgid "add comma-seperated emails, defaults to placeholder {customer_email} "
+msgstr ""
+"Komma-getrennte E-Mails hinzufügen, standardmäßig ist der Platzhalter "
+"{customer_email}"
+
+#: include/wc-local-pickup-admin.php:1120
+#: include/wc-local-pickup-admin.php:1121
+#: include/wc-local-pickup-admin.php:1125
+msgid "Additional content on processing email in case of local pickup orders"
+msgstr ""
+"Zusätzliche Informationen zur Bearbeitung von E-Mails bei Bestellungen zur "
+"Selbstabholung"
+
+#: include/views/wclp-edit-location-form.php:48
+msgid "Address"
+msgstr "Adresse"
+
+#: include/views/admin_footer_panel.php:12
+msgid "Allow local pickup and other shipping methods on the same order"
+msgstr ""
+"Lokale Abholung und andere Versandmethoden für dieselbe Bestellung zulassen"
+
+#: include/views/wclp-edit-location-form.php:114
+msgid "An additional, optional address line for your business location."
+msgstr "Eine zusätzliche, optionale Adresszeile für Ihren Geschäftsstandort."
+
+#: include/wc-local-pickup-admin.php:1034
+#: include/views/wclp-edit-location-form.php:436
+msgid "Apply & close"
+msgstr "Bewerben & schließen"
+
+#: include/views/admin_footer_panel.php:13
+msgid "Apply a discount or a fee for local pickup orders"
+msgstr "Einen Rabatt oder eine Gebühr für lokale Selbstabholungen anwenden"
+
+#: include/views/wclp-edit-location-form.php:503
+msgid "Automations"
+msgstr "Automatisierungen"
+
+#: include/customizer/customizer-admin.php:547
+msgid "Available Placeholders:"
+msgstr "Verfügbare Platzhalter:"
+
+#: include/customizer/customizer-admin.php:358
+msgid "Background Color"
+msgstr "Hintergrundfarbe"
+
+#: include/customizer/customizer-admin.php:367
+msgid "Border Color"
+msgstr "Rahmenfarbe"
+
+#: include/views/wclp-edit-location-form.php:183
+msgid "Business Hours"
+msgstr "Geschäftszeiten"
+
+#: include/views/wclp_setting_tab.php:147
+msgid "Cart & Checkout Options"
+msgstr "Warenkorb & Checkout-Optionen"
+
+#: include/wc-local-pickup-admin.php:535
+msgid "Change status to picked up"
+msgstr "Status auf „Abgeholt“ ändern"
+
+#: include/wc-local-pickup-admin.php:531
+msgid "Change status to ready for pickup"
+msgstr "Status auf „Bereit zur Abholung“ ändern"
+
+#: include/wc-local-pickup-admin.php:213 include/wc-local-pickup-admin.php:214
+#: include/views/wclp_setting_tab.php:78 include/views/wclp_setting_tab.php:129
+msgid "Customize"
+msgstr "Anpassen"
+
+#: include/views/wclp_setting_tab.php:56 include/views/wclp_setting_tab.php:107
+msgid "Dark Font"
+msgstr "Dunkle Schriftart"
+
+#: include/views/admin_message_panel.php:13
+msgid "Dismiss for 30 days"
+msgstr "Für 30 Tage entlassen"
+
+#: include/views/wclp_setting_tab.php:7
+msgid "Display options"
+msgstr "Anzeigeoptionen"
+
+#: include/views/admin_footer_panel.php:5
+msgid "Display pickup instructions during checkout"
+msgstr "Abholanweisungen während des Bezahlvorgangs anzeigen"
+
+#: include/views/wclp-edit-location-form.php:295
+msgid "Display Time Format"
+msgstr "Anzeigezeitformat"
+
+#: include/wc-local-pickup-admin.php:196
+msgid "Edit Pickup Location"
+msgstr "Abholort bearbeiten"
+
+#: include/customizer/customizer-admin.php:330
+msgid "Email Content"
+msgstr "E-Mail-Inhalt"
+
+#: include/customizer/customizer-admin.php:534
+msgid "Email content"
+msgstr "E-Mail-Inhalt"
+
+#: include/customizer/customizer-admin.php:334
+msgid "Email Design"
+msgstr "E-Mail-Design"
+
+#: include/customizer/customizer-admin.php:521
+msgid "Email heading"
+msgstr "E-Mail-Überschrift"
+
+#: include/customizer/customizer-admin.php:508
+msgid "Email Subject"
+msgstr "E-Mail-Betreff"
+
+#: include/customizer/customizer-admin.php:459
+msgid "Email type"
+msgstr "E-Mail-Typ"
+
+#: include/customizer/customizer-admin.php:483
+msgid "Enable email"
+msgstr "E-Mail aktivieren"
+
+#. Description of the plugin
+msgid ""
+"Enhance your WooCommerce store's local pickup service with Zorem Local "
+"Pickup. This powerful tool expands on the standard Local Pickup shipping "
+"method, offering a streamlined and efficient way to manage in-store pickups. "
+"Simplify your process and improve customer satisfaction with Zorem Local "
+"Pickup."
+msgstr ""
+"Verbessern Sie den lokalen Abholservice Ihres WooCommerce-Shops mit Zorem "
+"Local Pickup. Dieses leistungsstarke Tool erweitert die standardmäßige "
+"Versandmethode Local Pickup und bietet eine optimierte und effiziente "
+"Möglichkeit zur Verwaltung von Abholungen im Geschäft. Vereinfachen Sie "
+"Ihren Prozess und verbessern Sie die Kundenzufriedenheit mit Zorem Local "
+"Pickup."
+
+#: include/views/admin_footer_panel.php:11
+msgid "Force local pickup"
+msgstr "Lokale Abholung erzwingen"
+
+#: include/wc-local-pickup-admin.php:591 include/wc-local-pickup-admin.php:686
+#: include/wc-local-pickup-admin.php:768 include/wc-local-pickup-admin.php:917
+#: include/wc-local-pickup-admin.php:1468
+msgid "Friday"
+msgstr "Freitag"
+
+#: include/views/wclp-edit-location-form.php:396
+msgid "From"
+msgstr "Aus"
+
+#: include/wc-local-pickup-admin.php:215 include/wc-local-pickup-admin.php:216
+msgid "Go Pro"
+msgstr "Werde Profi"
+
+#. %s: Customer first name
+#: templates/emails/plain/ready-pickup-order.php:25
+#: templates/emails/plain/pickup-order.php:25
+#, php-format
+msgid "Hi %s,"
+msgstr "Sein,"
+
+#: include/customizer/customizer-admin.php:432
+msgid "Hide Office Hours Header"
+msgstr "Header „Sprechzeiten“ ausblenden"
+
+#: include/customizer/customizer-admin.php:413
+msgid "Hide Pickup Address Header"
+msgstr "Kopfzeile der Abholadresse ausblenden"
+
+#: include/customizer/customizer-admin.php:394
+msgid "Hide Widget Header"
+msgstr "Widget-Header ausblenden"
+
+#. Author URI of the plugin
+msgid "https://www.zorem.com/"
+msgstr "https://www.zorem.com/"
+
+#. URI of the plugin
+msgid "https://www.zorem.com/shop"
+msgstr "https://www.zorem.com/shop"
+
+#: include/views/wclp_setting_tab.php:55 include/views/wclp_setting_tab.php:106
+msgid "Light Font"
+msgstr "Helle Schriftart"
+
+#: include/views/admin_footer_panel.php:9
+msgid "Local pickup appointments"
+msgstr "Lokale Abholtermine"
+
+#: include/views/wclp_setting_tab.php:139
+msgid "Local Pickup Dashboard"
+msgstr "Dashboard für lokale Abholung"
+
+#: include/views/wclp_setting_tab.php:26
+msgid "Local pickup workflow"
+msgstr "Workflow für die lokale Abholung"
+
+#: include/views/wclp-edit-location-form.php:26
+msgid "Location Name"
+msgstr "Standortname"
+
+#: include/wc-local-pickup-admin.php:1357
+msgid "Mark order as picked up"
+msgstr "Bestellung als abgeholt markieren"
+
+#: include/wc-local-pickup-admin.php:1343
+msgid "Mark order as ready for pickup"
+msgstr "Bestellung als zur Abholung bereit markieren"
+
+#: include/wc-local-pickup-admin.php:587 include/wc-local-pickup-admin.php:682
+#: include/wc-local-pickup-admin.php:764 include/wc-local-pickup-admin.php:913
+#: include/wc-local-pickup-admin.php:1464
+msgid "Monday"
+msgstr "Montag"
+
+#: include/views/admin_footer_panel.php:8
+msgid "Multiple pickup locations"
+msgstr "Mehrere Abholorte"
+
+#: include/wc-local-pickup-admin.php:1106
+msgid "My Account (orders history)"
+msgstr "Mein Konto (Bestellverlauf)"
+
+#: include/views/wclp-edit-location-form.php:10
+msgid "Name & Special Instructions"
+msgstr "Name und besondere Anweisungen"
+
+#: include/views/wclp-edit-location-form.php:495
+msgid "Notifications"
+msgstr "Benachrichtigungen"
+
+#: include/views/admin_footer_panel.php:6
+msgid "Notify your customers when their order is available for pickup"
+msgstr ""
+"Benachrichtigen Sie Ihre Kunden, wenn ihre Bestellung zur Abholung bereit "
+"steht"
+
+#: include/customizer/customizer-admin.php:441
+msgid "Office Hours Header Text"
+msgstr "Kopftext für Sprechzeiten"
+
+#: include/wc-local-pickup-admin.php:1105
+msgid "Order received page"
+msgstr "Seite „Bestellung erhalten“"
+
+#: include/customizer/customizer-admin.php:376
+msgid "Padding"
+msgstr "Polsterung"
+
+#: include/views/wclp-edit-location-form.php:479
+msgid "Payment Method"
+msgstr "Zahlungsmethode"
+
+#: include/customizer/customizer-admin.php:404
+#: include/customizer/customizer-admin.php:405
+msgid "Pick up information"
+msgstr "Informationen abholen"
+
+#: include/customizer/customizer-admin.php:455
+msgid "Picked Up"
+msgstr "Abgeholt"
+
+#: include/wc-local-pickup-admin.php:487 include/wc-local-pickup-admin.php:519
+#: include/views/wclp_setting_tab.php:99
+msgid "Picked up"
+msgstr "Abgeholt"
+
+#: include/customizer/customizer-admin.php:423
+#: include/customizer/customizer-admin.php:424
+msgid "Pickup Address"
+msgstr "Abholadresse"
+
+#: include/customizer/customizer-admin.php:422
+msgid "Pickup Address Header Text"
+msgstr "Kopftext der Abholadresse"
+
+#: include/views/wclp-edit-location-form.php:455
+msgid "Pickup Appointments"
+msgstr "Abholtermine"
+
+#: include/customizer/customizer-admin.php:442
+#: include/customizer/customizer-admin.php:443
+msgid "Pickup Hours"
+msgstr "Abholzeiten"
+
+#: include/wc-local-pickup-admin.php:211 include/wc-local-pickup-admin.php:212
+msgid "Pickup Location"
+msgstr "Abholort"
+
+#: include/customizer/customizer-admin.php:350
+msgid "Pickup Location info"
+msgstr "Informationen zum Abholort"
+
+#: include/wc-local-pickup-admin.php:195
+msgid "Pickup Locations"
+msgstr "Abholorte"
+
+#: include/views/wclp_setting_tab.php:140
+#: include/views/wclp_setting_tab.php:148
+#: include/views/wclp_setting_tab.php:156
+#: include/views/wclp-edit-location-form.php:456
+#: include/views/wclp-edit-location-form.php:464
+#: include/views/wclp-edit-location-form.php:472
+#: include/views/wclp-edit-location-form.php:480
+#: include/views/wclp-edit-location-form.php:488
+#: include/views/wclp-edit-location-form.php:496
+#: include/views/wclp-edit-location-form.php:504
+msgid "Premium"
+msgstr "Prämie"
+
+#: include/views/wclp-edit-location-form.php:487
+msgid "Price Adjustments"
+msgstr "Preisanpassungen"
+
+#: include/wc-local-pickup-admin.php:1104
+msgid "Processing order email"
+msgstr "E-Mail zur Auftragsbearbeitung"
+
+#: include/views/wclp-edit-location-form.php:463
+msgid "Products"
+msgstr "Produkte"
+
+#: include/views/wclp_setting_tab.php:155
+msgid "Products Catalog Options"
+msgstr "Produktkatalogoptionen"
+
+#: include/wc-local-pickup-admin.php:474 include/wc-local-pickup-admin.php:512
+#: include/customizer/customizer-admin.php:454
+msgid "Ready for Pickup"
+msgstr "Bereit zur Abholung"
+
+#: include/views/wclp_setting_tab.php:48
+msgid "Ready for pickup"
+msgstr "Bereit zur Abholung"
+
+#: include/customizer/customizer-admin.php:495
+msgid "Recipients"
+msgstr "Empfänger"
+
+#: include/wc-local-pickup-admin.php:592 include/wc-local-pickup-admin.php:687
+#: include/wc-local-pickup-admin.php:769 include/wc-local-pickup-admin.php:918
+#: include/wc-local-pickup-admin.php:1469
+msgid "Saturday"
+msgstr "Samstag"
+
+#: include/views/wclp_setting_tab.php:10 include/views/wclp_setting_tab.php:29
+#: include/views/wclp-edit-location-form.php:13
+#: include/views/wclp-edit-location-form.php:51
+#: include/views/wclp-edit-location-form.php:186
+msgid "Save & close"
+msgstr "Speichern & schließen"
+
+#: include/views/wclp-edit-location-form.php:295
+msgid ""
+"Select time format which you want to display in business hours for customers."
+msgstr ""
+"Wählen Sie das Zeitformat aus, das Sie während der Geschäftszeiten für "
+"Kunden anzeigen möchten."
+
+#: include/views/wclp_setting_tab.php:76 include/views/wclp_setting_tab.php:127
+msgid "Send Email"
+msgstr "E-Mail senden"
+
+#: include/views/wclp-edit-location-form.php:471
+msgid "Shipping Method"
+msgstr "Versandart"
+
+#: include/views/admin_footer_panel.php:10
+msgid "Show local pickup availability messages"
+msgstr "Nachrichten zur Verfügbarkeit lokaler Abholung anzeigen"
+
+#: include/views/wclp-edit-location-form.php:36
+msgid "Special Instruction"
+msgstr "Besondere Anweisung"
+
+#: include/views/admin_footer_panel.php:7
+msgid "Split the work hours"
+msgstr "Teilen Sie die Arbeitszeit auf"
+
+#: include/wc-local-pickup-admin.php:586 include/wc-local-pickup-admin.php:681
+#: include/wc-local-pickup-admin.php:763 include/wc-local-pickup-admin.php:912
+#: include/wc-local-pickup-admin.php:1463
+msgid "Sunday"
+msgstr "Sonntag"
+
+#: include/views/wclp-edit-location-form.php:26
+msgid "The location name for your business location."
+msgstr "Der Standortname für Ihren Geschäftsstandort."
+
+#: include/views/wclp-edit-location-form.php:171
+msgid "The phone number for your business information."
+msgstr "Die Telefonnummer für Ihre Geschäftsinformationen."
+
+#: include/views/wclp-edit-location-form.php:310
+msgid "the select for working days of your store."
+msgstr "die Auswahl für die Arbeitstage Ihres Geschäfts."
+
+#: include/views/wclp-edit-location-form.php:36
+msgid "The special instruction for your store."
+msgstr "Die spezielle Anleitung für Ihr Geschäft."
+
+#: include/customizer/customizer-admin.php:615
+msgid ""
+"This email type can not be previewed please try a different order or email "
+"type."
+msgstr ""
+"Für diesen E-Mail-Typ kann keine Vorschau angezeigt werden. Bitte versuchen "
+"Sie es mit einer anderen Bestellung oder einem anderen E-Mail-Typ."
+
+#: include/wc-local-pickup-admin.php:590 include/wc-local-pickup-admin.php:685
+#: include/wc-local-pickup-admin.php:767 include/wc-local-pickup-admin.php:916
+#: include/wc-local-pickup-admin.php:1467
+msgid "Thursday"
+msgstr "Donnerstag"
+
+#: include/wc-local-pickup-admin.php:588 include/wc-local-pickup-admin.php:683
+#: include/wc-local-pickup-admin.php:765 include/wc-local-pickup-admin.php:914
+#: include/wc-local-pickup-admin.php:1465
+msgid "Tuesday"
+msgstr "Dienstag"
+
+#: include/views/admin_message_panel.php:12
+msgid "UPGRADE NOW"
+msgstr "JETZT UPGRADEN"
+
+#: include/views/admin_footer_panel.php:3
+#: include/views/admin_message_panel.php:9
+msgid "Upgrade to ALP PRO!"
+msgstr "Upgrade auf ALP PRO!"
+
+#: include/views/admin_footer_panel.php:15
+msgid "Upgrade to PRO"
+msgstr "Upgrade auf PRO"
+
+#: include/wc-local-pickup-admin.php:589 include/wc-local-pickup-admin.php:684
+#: include/wc-local-pickup-admin.php:766 include/wc-local-pickup-admin.php:915
+#: include/wc-local-pickup-admin.php:1466
+msgid "Wednesday"
+msgstr "Mittwoch"
+
+#: include/customizer/customizer-admin.php:345
+msgid "Widget Header"
+msgstr "Widget-Header"
+
+#: include/customizer/customizer-admin.php:403
+msgid "Widget Header Text"
+msgstr "Widget-Header-Text"
+
+#: include/customizer/customizer-admin.php:340
+msgid "Widget Style"
+msgstr "Widget-Stil"
+
+#: include/views/wclp-edit-location-form.php:310
+msgid "Work Hours"
+msgstr "Arbeitszeit"
+
+#: include/views/wclp-edit-location-form.php:30
+msgid "you must add location name and save to proceed"
+msgstr "Sie müssen den Standortnamen hinzufügen und speichern, um fortzufahren"
+
+#: include/wc-local-pickup-admin.php:1124
+msgid "You will receive an email when your order is ready for pickup."
+msgstr ""
+"Sie erhalten eine E-Mail, wenn Ihre Bestellung zur Abholung bereit ist."
+
+#. Author of the plugin
+msgid "zorem"
+msgstr "zorem"
+
+#. Name of the plugin
+msgid "Zorem Local Pickup"
+msgstr "Lokale Abholung durch Zorem"
