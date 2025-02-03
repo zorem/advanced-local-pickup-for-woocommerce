@@ -3,9 +3,9 @@ Contributors: zorem,kuldipzorem,gaurav1092,eranzorem,gehorsam
 Donate link: 
 Tags: woocommerce, local pickup, in store pickup, shipping, shipping options
 Requires at least: 5.0
-Tested up to: 6.6
+Tested up to: 6.7.1
 Requires PHP: 7.0
-Stable tag: 1.6.7
+Stable tag: 1.7.0
 License: GPLv2 
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -58,7 +58,7 @@ The Advanced Local Pickup for WooCommerce plugin is localized/ translatable by d
 
 == Compatibility ==
 
-Check out [ALP’s list of plugins compatibility](https://docs.zorem.com/docs/advanced-local-pickup-free/compatibility/)
+Check out [ALP’s list of plugins compatibility](https://docs.zorem.com/docs/zorem-local-pickup/compatibility/)
 
 == Documentation ==
 
@@ -72,6 +72,19 @@ You can get more information, detailed tutorials on the [ALP documentation](http
 
 
 == Changelog ==
+
+= 1.7.0 =
+* Dev - WP tested upto 6.7.1
+* Dev - WC Compatibility added upto 9.6.0
+* Fixed - the design issue in the Local Pickup Workflow Settings
+
+= 1.6.9 =
+* Dev - WP tested upto 6.7
+* Dev - WC Compatibility added upto 9.4.2
+* Enhancement - Added a black friday admin message
+
+= 1.6.8 =
+* Enhancement - Added a admin message for return plugin
 
 = 1.6.7 =
 * Fix - the translations issue with Loco translation plugin
