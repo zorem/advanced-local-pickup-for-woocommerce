@@ -36,19 +36,19 @@
 					<table class="form-table order-status-table">
 						<tbody>
 							<tr valign="top" class="ready_pickup_row <?php echo ( !get_option('wclp_status_ready_pickup') ) ? 'disable_row' : ''; ?>">
-								<td class="forminp">
+								<td class="">
 									<span class="tgl-btn-parent" style="">
 										<input type="hidden" name="wclp_status_ready_pickup" value="0">
 										<input type="checkbox" id="wclp_status_ready_pickup" name="wclp_status_ready_pickup" class="tgl tgl-flat-alp" <?php echo ( get_option('wclp_status_ready_pickup') ) ? 'checked' : ''; ?> value="1"/>
 										<label class="tgl-btn" for="wclp_status_ready_pickup"></label>
 									</span>
 								</td>
-								<td class="forminp status-label-column" style="width: 130px;">
+								<td class=" status-label-column" style="width: 130px;">
 									<span class="order-label wc-ready-pickup" style="background:<?php echo esc_html(get_option('wclp_ready_pickup_status_label_color', '#8bc34a')); ?>;color:<?php echo esc_html(get_option('wclp_ready_pickup_status_label_font_color', '#fff')); ?>">
 										<?php esc_html_e( 'Ready for pickup', 'zorem-local-pickup' ); ?>
 									</span>
 								</td>
-								<td class="forminp">
+								<td class="">
 									<fieldset>
 										<input class="input-text regular-input " type="text" name="wclp_ready_pickup_status_label_color" id="wclp_ready_pickup_status_label_color" style="" value="<?php echo esc_html(get_option('wclp_ready_pickup_status_label_color', '#8bc34a' )); ?>" placeholder="">
 										<select class="select" id="wclp_ready_pickup_status_label_font_color" name="wclp_ready_pickup_status_label_font_color">	
@@ -57,7 +57,7 @@
 										</select>
 									</fieldset>
 								</td>								
-								<td class="forminp" style="text-align: right;">							
+								<td class="" style="text-align: right;">							
 									<?php
 									$wclp_enable_ready_pickup_email = get_option('woocommerce_customer_ready_pickup_order_settings');
 									if (isset($wclp_enable_ready_pickup_email) && !empty($wclp_enable_ready_pickup_email)) {
@@ -86,7 +86,7 @@
 							} 
 							?>
 							">
-								<td class="forminp">
+								<td class="">
 									<span class="tgl-btn-parent" style="">
 										<input type="hidden" name="wclp_status_picked_up" value="0">
 										<input type="checkbox" id="wclp_status_picked_up" name="wclp_status_picked_up" class="tgl tgl-flat-alp" 
@@ -94,12 +94,12 @@
 										<label class="tgl-btn" for="wclp_status_picked_up"></label>
 									</span>
 								</td>
-								<td class="forminp status-label-column" style="width: 130px;">
+								<td class=" status-label-column" style="width: 130px;">
 									<span class="order-label wc-pickup" style="background:<?php echo esc_html(get_option('wclp_pickup_status_label_color', '#2196f3')); ?>;color:<?php echo esc_html(get_option('wclp_pickup_status_label_font_color', '#fff')); ?>">
 										<?php esc_html_e( 'Picked up', 'zorem-local-pickup' ); ?>
 									</span>
 								</td>
-								<td class="forminp">
+								<td class="">
 									<fieldset>
 										<input class="input-text regular-input " type="text" name="wclp_pickup_status_label_color" id="wclp_pickup_status_label_color" style="" value="<?php echo esc_html(get_option('wclp_pickup_status_label_color', '#2196f3')); ?>" placeholder="">
 										<select class="select" id="wclp_pickup_status_label_font_color" name="wclp_pickup_status_label_font_color">	
@@ -108,7 +108,7 @@
 										</select>
 									</fieldset>
 								</td>								
-								<td class="forminp" style="text-align: right;">							
+								<td class="" style="text-align: right;">							
 									<?php
 									$wclp_enable_pickup_email = get_option('woocommerce_customer_pickup_order_settings');
 									if (isset($wclp_enable_pickup_email) && !empty($wclp_enable_pickup_email)) {
