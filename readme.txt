@@ -5,7 +5,7 @@ Tags: woocommerce, local pickup, in store pickup, shipping, shipping options
 Requires at least: 5.0
 Tested up to: 6.7.2
 Requires PHP: 7.0
-Stable tag: 1.7.1
+Stable tag: 1.7.2
 License: GPLv2 
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -72,6 +72,9 @@ You can get more information, detailed tutorials on the [ALP documentation](http
 
 
 == Changelog ==
+
+= 1.7.2 =
+* Enhancement - Added a review request admin notice
 
 = 1.7.1 =
 * Dev - WP tested upto 6.7.2
