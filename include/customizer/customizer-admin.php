@@ -67,7 +67,7 @@ class WC_Local_Pickup_Customizer {
 
 		add_action('rest_api_init', array( $this, 'route_api_functions' ) );
 						
-		add_action('admin_enqueue_scripts', array( $this, 'customizer_enqueue_scripts' ) );
+		add_action('admin_enqueue_scripts', array( $this, 'customizer_enqueue_scripts' ), 20 );
 
 		add_action('admin_footer', array( $this, 'admin_footer_enqueue_scripts' ) );
 
@@ -127,7 +127,7 @@ class WC_Local_Pickup_Customizer {
 			wp_enqueue_media();
 
 			
-			wp_enqueue_script( self::$screen_id, plugin_dir_url(__FILE__) . 'dist/main.js', ['jquery', 'wp-util', 'wp-color-picker'], time(), true);
+			wp_enqueue_script( self::$screen_id, plugin_dir_url(__FILE__) . 'dist/main.js', ['jquery', 'wp-util', 'wp-color-picker'], wc_local_pickup()->version, true);
 			wp_localize_script( self::$screen_id, self::$screen_id, array(
 				'main_title'	=> self::$screen_title,
 				'admin_email' => get_option('admin_email'),
@@ -141,7 +141,7 @@ class WC_Local_Pickup_Customizer {
 				'rest_base'	=> esc_url_raw( rest_url() ),
 			));
 
-			wp_enqueue_style( self::$screen_id . '-custom', plugin_dir_url(__FILE__) . 'assets/custom.css', array(), time() );
+			wp_enqueue_style( self::$screen_id . '-custom', plugin_dir_url(__FILE__) . 'assets/custom.css', array(), wc_local_pickup()->version );
 		}
 		
 	}

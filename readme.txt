@@ -1,68 +1,64 @@
-﻿=== Advanced Local Pickup for WooCommerce ===
+﻿=== Zorem Local Pickup ===
 Contributors: zorem,kuldipzorem,gaurav1092,eranzorem
 Donate link: 
 Tags: woocommerce, local pickup, in store pickup, shipping, shipping options
 Requires at least: 5.0
-Tested up to: 6.7.2
+Tested up to: 6.8.1
 Requires PHP: 7.0
-Stable tag: 1.7.2
+Stable tag: 1.7.4
 License: GPLv2 
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-The Advanced Local Pickup plugin enhances WooCommerce by streamlining in-store pickups, offering a dedicated workflow for local pickup fulfillment.
-
 == Description ==
 
-The Advanced Local Pickup plugin helps you handle the in-store pickup more conveniently by extending the WooCommerce Local Pickup shipping method and creating a local pickup fulfillment workflow.
+The Zorem Local Pickup plugin makes handling in-store and curbside pickup easier by extending WooCommerce's default Local Pickup shipping method. It creates a streamlined pickup fulfillment workflow, with clear order statuses, automated email notifications, and detailed pickup instructions for your customers.
 
-The plugin lets you change your WooCommerce orders status to “Ready for Pickup” and adds the pickup instructions to the email sent to your customers. When your customers come to pick up their order, you can change the order status to “Picked up” and optionally send email notification to the customer letting them know that the order has been picked up.
+When an order is ready, you can mark it as "Ready for Pickup", and the customer receives an email with pickup instructions and location details. Once the customer collects the order, you can change the status to "Picked Up", optionally sending another confirmation email.
 
 == Key Features ==
 
-* Custom order status Ready for Pickup - notify your customers by email when their order is ready for pickup
-* Custom Order Status Picked Up
-* Custom Order Status email notifications 
-* Customize the order status emails (subject, heading and content)
-* Pickup Location setup - name, address, work hours and special instructions
-* Customize the pickup display on the order status emails
-* Add pickup instruction to the Processing order email
-* Add pickup instruction to the order received page
+🟢 Custom Order Status: Ready for Pickup – Notify customers when their order is ready.
+✅ Custom Order Status: Picked Up – Update orders when picked up.
+✉️ Email Notifications for Custom Statuses – Automatically send emails for each custom status.
+📝 Customize Order Status Emails – Modify subject lines, headings, and content.
+📍 Pickup Location Setup – Add name, address, hours, and special instructions.
+🖼️ Customize Pickup Info in Emails – Control how and where pickup instructions appear.
+🧾 Display Pickup Instructions on Thank You Page – Add instructions to the order received page.
+📬 Show Pickup Details in Processing Email – Keep customers informed early in the process.
 
 == PRO Features ==
 
-* Multiple Pickup Locations
-* Pickup Appointments
-* Limit Pickup Location by products & Categories
-* Pickup Location notifications
-* Pickup Location discounts
-* Split the Work hours
-* Allow Mixed Local Pickup and Shipping orders
-* Pickup Appointments
-* Pickup per item from multiple locations
-* Local Pickup availability message
-* Force Local Pickup
-* Custom email notification templates
+🗺️ Multiple Pickup Locations – Add and manage multiple pickup points.
+🕒 Pickup Appointments – Let customers schedule pickup times.
+🛍️ Restrict Pickup Locations by Products or Categories – Assign specific products to certain locations.
+🔔 Location-Specific Notifications – Send notifications from each pickup location.
+💸 Offer Pickup Discounts – Provide incentives for choosing local pickup.
+🗓️ Split Work Hours by Day – Define operating hours for each day.
+🚚 Support for Mixed Pickup + Shipping Orders – Allow both pickup and delivery in one order.
+📦 Pickup by Item – Support per-item pickups from different locations.
+📢 Display Availability Messages – Let users know when pickup is available.
+🚫 Force Local Pickup – Make pickup mandatory when needed.
+🧩 Custom Email Templates – Style and customize pickup-related email content.
 
-[Get the  Advanced Local Pickup PRO](https://www.zorem.com/product/advanced-local-pickup-pro/)
+[Get Zorem Local Pickup PRO](https://www.zorem.com/product/advanced-local-pickup-pro/)
 
-== Translations == 
+== Translations ==
 
-The Advanced Local Pickup for WooCommerce plugin is localized/ translatable by default, we added translation to the following languages: 
-
-* English - default, always included
-* German
-* Spanish (Spain)
-* French (France)
-* Hebrew
-* Italian
+The Zorem Local Pickup plugin includes translations for:
+English (default)
+German
+Spanish (Spain)
+French (France)
+Hebrew
+Italian
 
 == Compatibility ==
 
-Check out [ALP’s list of plugins compatibility](https://docs.zorem.com/docs/zorem-local-pickup/compatibility/)
+Check out [ALP’s compatibility list](https://docs.zorem.com/docs/zorem-local-pickup/compatibility/) with shipping, email, and multivendor plugins.
 
 == Documentation ==
 
-You can get more information, detailed tutorials on the [ALP documentation](https://docs.zorem.com/docs/advanced-local-pickup-free/).
+Learn how to set up and customize the plugin with tutorials and code snippets in the [ALP Documentation](https://docs.zorem.com/docs/advanced-local-pickup-free/).
 
 == Installation ==
 
@@ -72,6 +68,16 @@ You can get more information, detailed tutorials on the [ALP documentation](http
 
 
 == Changelog ==
+
+= 1.7.4 =
+* Dev – Tested compatibility with WooCommerce 9.8.5.
+* Dev – Tested compatibility with WordPress 6.8.1
+* Improved - Updated the promotional notice.
+
+= 1.7.3 =
+* Dev – Tested compatibility with WooCommerce 9.8.1.
+* Dev – Tested compatibility with WordPress 6.8.
+* Fix – Resolved the TypeError: Cannot read properties of undefined (reading 'analytics').
 
 = 1.7.2 =
 * Enhancement - Added a review request admin notice
