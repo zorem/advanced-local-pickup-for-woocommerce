@@ -27,6 +27,7 @@ class WC_Local_Pickup_Admin {
 	*/
 	private static $instance;
 	public $table;
+	public $data;
 	
 	/**
 	 * Initialize the main plugin function
