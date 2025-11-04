@@ -40,7 +40,7 @@ jQuery( document ).on( "click", "body", function() {
 	jQuery('#activity-panel-tab-help').removeClass( 'is-active' );
 	jQuery( '.woocommerce-layout__activity-panel-wrapper' ).removeClass( 'is-open is-switching' );
 });
-/*header script end*/
+/*header script end*/ 
 
 jQuery(document).ready(function(){
 	

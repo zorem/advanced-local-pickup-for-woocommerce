@@ -1,37 +1,21 @@
 <?php
-$pro_plugins = array(
+$pro_plugins = array(	
 	5 => array(
 		'title' => 'Advanced Shipment Tracking',
-		'description' => 'AST PRO provides powerful features to easily add tracking info to WooCommerce orders, automate the fulfillment workflows and keep your customers happy and informed.',
+		'description' => 'AST PRO provides powerful features to easily add tracking info to WooCommerce orders, automate the fulfillment workflows and keep your customers happy and informed. AST allows you to easily add tracking and fulfill your orders straight from the Orders page, while editing orders, and allows customers to view the tracking i from the View Order page.',
 		'url' => 'https://www.zorem.com/product/woocommerce-advanced-shipment-tracking/?utm_source=wp-admin&utm_medium=AST&utm_campaign=add-ons',
-		'image' => 'ast-icon.png',
+		'image' => 'ast-45.png',
 		'height' => '45px',
 		'file' => 'ast-pro/ast-pro.php'
-	),
+	),	
 	0 => array(
 		'title' => 'TrackShip for WooCommerce',
-		'description' => 'Auto-Track all your shipments and provide a superior Post-Purchase Experience to your Customers',
+		'description' => 'Take control of your post-shipping workflows, reduce time spent on customer service and provide a superior post-purchase experience to your customers.Beyond automatic shipment tracking, TrackShip brings a branded tracking experience into your store, integrates into your workflow, and takes care of all the touch points with your customers after shipping.',
 		'url' => 'https://wordpress.org/plugins/trackship-for-woocommerce/?utm_source=wp-admin&utm_medium=ts4wc&utm_campaign=add-ons',
-		'image' => 'trackship-logo.png',
+		'image' => 'ts-45.png',
 		'height' => '45px',
 		'file' => 'trackship-for-woocommerce/trackship-for-woocommerce.php'
 	),
-	1 => array(
-		'title' => 'SMS for WooCommerce',
-		'description' => 'Keep your customers informed by sending them automated SMS text messages with order & delivery updates. You can send SMS notifications to customers when the order status is updated or when the shipment is out for delivery and more…',
-		'url' => 'https://www.zorem.com/product/sms-for-woocommerce/?utm_source=wp-admin&utm_medium=SMSWOO&utm_campaign=add-ons',
-		'image' => 'smswoo-icon.png',
-		'height' => '45px',
-		'file' => 'sms-for-woocommerce/sms-for-woocommerce.php'
-	),
-	2 => array(
-		'title' => 'Sales Report Email',
-		'description' => 'The Sales Report Email Pro will help know how well your store is performing and how your products are selling by sending you a daily, weekly, or monthly sales report by email, directly from your WooCommerce store.',
-		'url' => 'https://www.zorem.com/product/sales-report-email-pro/?utm_source=wp-admin&utm_medium=SRE&utm_campaign=add-ons',
-		'image' => 'sre-icon.png',
-		'height' => '45px',
-		'file' => 'sales-report-email-pro-addon/sales-report-email-pro-addon.php'
-	),		
 	3 => array(
 		'title' => 'Country Based Restrictions',
 		'description' => 'The country-based restrictions plugin by zorem works by the WooCommerce Geolocation or the shipping country added by the customer and allows you to restrict products on your store to sell or not to sell to specific countries.',
@@ -44,10 +28,26 @@ $pro_plugins = array(
 		'title' => 'Customer Email Verification',
 		'description' => 'The Customer Email Verification helps you to reduce registration spam and fake orders by requiring customers to verify their email address when they register an account or before they can place an order on your store.',
 		'url' => 'https://woocommerce.com/products/customer-email-verification/?utm_source=wp-admin&utm_medium=CEV&utm_campaign=add-ons',
-		'image' => 'cev-icon.png',
+		'image' => 'cev-45.png',
 		'height' => '45px',
 		'file' => 'customer-email-verification-pro/customer-email-verification-pro.php'
-	),	
+	),
+	2 => array(
+		'title' => 'Sales Report Email',
+		'description' => 'The Sales Report Email Pro will help know how well your store is performing and how your products are selling by sending you a daily, weekly, or monthly sales report by email, directly from your WooCommerce store.',
+		'url' => 'https://www.zorem.com/product/sales-report-email-pro/?utm_source=wp-admin&utm_medium=SRE&utm_campaign=add-ons',
+		'image' => 'sre-45.png',
+		'height' => '45px',
+		'file' => 'sales-report-email-pro/sales-report-email-pro.php'
+	),
+	1 => array(
+		'title' => 'SMS for WooCommerce',
+		'description' => 'Keep your customers informed by sending them automated SMS text messages with order & delivery updates. You can send SMS notifications to customers when the order status is updated or when the shipment is out for delivery and more…',
+		'url' => 'https://www.zorem.com/product/sms-for-woocommerce/?utm_source=wp-admin&utm_medium=SMSWOO&utm_campaign=add-ons',
+		'image' => 'sms-45.png',
+		'height' => '45px',
+		'file' => 'sms-for-woocommerce/sms-for-woocommerce.php'
+	),
 );
 ?>
 <section id="wclp_content4" class="wclp_tab_section">
@@ -90,7 +90,7 @@ $pro_plugins = array(
 									<?php if ( is_plugin_active( $Plugin['file'] ) ) { ?>
 										<button type="button" class="button button-disabled" disabled="disabled">Installed</button>
 									<?php } else { ?>
-										<a href="<?php echo esc_url($Plugin['url']); ?>" class="button install-now button-primary" target="blank">more info</a>
+										<a href="<?php echo esc_url($Plugin['url']); ?>" class="button install-now button-primary" target="blank">BUY NOW</a>
 									<?php } ?>								
 								</div>
 							</div>	

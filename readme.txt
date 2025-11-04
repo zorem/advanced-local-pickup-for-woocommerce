@@ -3,11 +3,13 @@ Contributors: zorem,kuldipzorem,gaurav1092,eranzorem
 Donate link: 
 Tags: woocommerce, local pickup, in store pickup, shipping, shipping options
 Requires at least: 5.0
-Tested up to: 6.8.1
+Tested up to: 6.8.2
 Requires PHP: 7.0
-Stable tag: 1.7.4
+Stable tag: 1.7.6
 License: GPLv2 
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
+
+Zorem Local Pickup plugin enhances WooCommerce by streamlining in-store pickups, offering a dedicated workflow for local pickup fulfillment.
 
 == Description ==
 
@@ -68,6 +70,16 @@ Learn how to set up and customize the plugin with tutorials and code snippets in
 
 
 == Changelog ==
+
+= 1.7.6 =
+* Improved - Updated the promotional notice.
+* Dev - WC Compatibility added upto 10.1.2
+
+= 1.7.5 =
+* Dev – Tested compatibility with WooCommerce 10.0.4.
+* Dev – Tested compatibility with WordPress 6.8.2.
+* Improved - Updated the promotional notice.
+* Improved - Improve the settings design.
 
 = 1.7.4 =
 * Dev – Tested compatibility with WooCommerce 9.8.5.

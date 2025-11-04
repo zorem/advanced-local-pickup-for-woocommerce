@@ -6,11 +6,11 @@
 * Description: Enhance your WooCommerce store's local pickup service with Zorem Local Pickup. This powerful tool expands on the standard Local Pickup shipping method, offering a streamlined and efficient way to manage in-store pickups. Simplify your process and improve customer satisfaction with Zorem Local Pickup.
 * Author: zorem
 * Author URI: https://www.zorem.com/
-* Version: 1.7.4
+* Version: 1.7.6
 * Text Domain: zorem-local-pickup
 * Domain Path: /lang/
 * WC requires at least: 4.0
-* WC tested up to: 9.8.5
+* WC tested up to: 10.1.2
 * Requires Plugins: woocommerce
 */
 
@@ -25,7 +25,7 @@ class Woocommerce_Local_Pickup {
 	 *
 	 * @var string
 	 */
-	public $version = '1.7.4';
+	public $version = '1.7.6';
 	public $admin;
 	public $install;
 	public $table;
@@ -316,15 +316,13 @@ class Woocommerce_Local_Pickup {
 		wp_register_style( 'woocommerce_admin_styles', WC()->plugin_url() . '/assets/css/admin.css', array(), WC_VERSION );
 		wp_enqueue_style( 'woocommerce_admin_styles' );
 	
-		wp_register_script( 'jquery-tiptip', WC()->plugin_url() . '/assets/js/jquery-tiptip/jquery.tipTip.min.js', array( 'jquery' ), WC_VERSION, true );
-		wp_register_script( 'jquery-blockui', WC()->plugin_url() . '/assets/js/jquery-blockui/jquery.blockUI' . $suffix . '.js', array( 'jquery' ), '2.70', true );
-		wp_enqueue_script( 'jquery-tiptip' );
-		wp_enqueue_script( 'jquery-blockui' );
+		wp_register_script( 'wc-jquery-blockui', WC()->plugin_url() . '/assets/js/jquery-blockui/jquery.blockUI' . $suffix . '.js', array( 'jquery' ), '2.70', true );
+		wp_enqueue_script( 'wc-jquery-blockui' );
 		
 		wp_enqueue_style('select2-wclp', plugins_url('assets/css/select2.min.css', __FILE__ ), array(), $this->version);
 		wp_enqueue_script('select2-wclp', plugins_url('assets/js/select2.min.js', __FILE__), array(), $this->version);
 		
-		wp_enqueue_script( 'alp-admin-js', plugin_dir_url(__FILE__) . 'assets/js/admin.js', array(), $this->version );
+		wp_enqueue_script( 'alp-admin-js', plugin_dir_url(__FILE__) . 'assets/js/admin.js', array('wc-jquery-tiptip'), $this->version );
 		wp_enqueue_style( 'alp-admin-css', plugin_dir_url(__FILE__) . 'assets/css/admin.css', array(), $this->version );
 		
 		wp_localize_script( 'alp-admin-js', 'alp_object', 
@@ -392,8 +390,8 @@ class Woocommerce_Local_Pickup {
 		
 		$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';	
 		wp_enqueue_style( 'alp-admin-js', plugin_dir_url(__FILE__) . 'assets/css/admin.css', array(), $this->version );
-		wp_register_script( 'jquery-blockui', WC()->plugin_url() . '/assets/js/jquery-blockui/jquery.blockUI' . $suffix . '.js', array( 'jquery' ), '2.70', true );
-		wp_enqueue_script( 'jquery-blockui' );
+		wp_register_script( 'wc-jquery-blockui', WC()->plugin_url() . '/assets/js/jquery-blockui/jquery.blockUI' . $suffix . '.js', array( 'jquery' ), '2.70', true );
+		wp_enqueue_script( 'wc-jquery-blockui' );
 		
 		$ready_pickup_count = wc_orders_count( 'ready-pickup' );
 		$pickup_count = wc_orders_count( 'pickup' );
