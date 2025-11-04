@@ -116,90 +116,81 @@ class WC_Local_Pickup_Admin {
 		$section = isset( $_GET['section'] ) ? sanitize_text_field($_GET['section']) : '';
 		$data = $this->get_data();
 		$location_id = get_option('location_defualt', min($data)->id);
+		if ( 'locations' == $tab ) {
+			$breadcumps_page_heading = esc_html__( 'Pickup Locations', 'zorem-local-pickup' );
+		} else if ( 'go-pro' == $tab ) {
+			$breadcumps_page_heading = esc_html__( 'Go Pro', 'zorem-local-pickup' );
+		} else {
+			$breadcumps_page_heading = esc_html__( 'Settings', 'zorem-local-pickup' );
+		}
 		?>
 		<div class="zorem-layout__header">
 			<?php if ( 'edit' !== $section && 'add' !== $section ) { ?>
-				<img class="zorem-layout__header-logo" src="<?php echo esc_url(wc_local_pickup()->plugin_dir_url(__FILE__)) . 'assets/images/alp-logo.png'; ?>">
-				<div class="woocommerce-layout__activity-panel">
-					<div class="woocommerce-layout__activity-panel-tabs">
-						<button type="button" id="activity-panel-tab-help" class="components-button woocommerce-layout__activity-panel-tab">
-						<span class="dashicons dashicons-editor-help"></span>
-							Help 
-						</button>
-					</div>
-					<div class="woocommerce-layout__activity-panel-wrapper">
-						<div class="woocommerce-layout__activity-panel-content" id="activity-panel-true">
-							<div class="woocommerce-layout__activity-panel-header">
-								<div class="woocommerce-layout__inbox-title">
-									<p class="css-activity-panel-Text">Documentation</p>            
-								</div>								
-							</div>
-							<div>
-								<ul class="woocommerce-list woocommerce-quick-links__list">
-									<li class="woocommerce-list__item has-action">
-										<?php
-										$support_link = class_exists( 'Zorem_Local_Pickup_Pro' ) ? 'https://www.zorem.com/my-account/contact-support/' : 'https://wordpress.org/support/plugin/advanced-local-pickup-for-woocommerce/#new-topic-0' ;
-										?>
-										<a href="<?php echo esc_url( $support_link ); ?>" class="woocommerce-list__item-inner" target="_blank" >
-											<div class="woocommerce-list__item-before">
-												<img src="<?php echo esc_url(wc_local_pickup()->plugin_dir_url(__FILE__)) . 'assets/images/get-support-icon.svg'; ?>">	
-											</div>
-											<div class="woocommerce-list__item-text">
-												<span class="woocommerce-list__item-title">
-													<div class="woocommerce-list-Text">Get Support</div>
-												</span>
-											</div>
-											<div class="woocommerce-list__item-after">
-												<span class="dashicons dashicons-arrow-right-alt2"></span>
-											</div>
-										</a>
-									</li>            
-									<li class="woocommerce-list__item has-action">
-										<a href="https://docs.zorem.com/docs/zorem-local-pickup/?utm_source=wp-admin&utm_medium=ALPDOCU&utm_campaign=add-ons" class="woocommerce-list__item-inner" target="_blank">
-											<div class="woocommerce-list__item-before">
-												<img src="<?php echo esc_url(wc_local_pickup()->plugin_dir_url(__FILE__)) . 'assets/images/documentation-icon.svg'; ?>">
-											</div>
-											<div class="woocommerce-list__item-text">
-												<span class="woocommerce-list__item-title">
-													<div class="woocommerce-list-Text">Documentation</div>
-												</span>
-											</div>
-											<div class="woocommerce-list__item-after">
-												<span class="dashicons dashicons-arrow-right-alt2"></span>
-											</div>
-										</a>
-									</li>
-									<?php if ( !class_exists( 'Zorem_Local_Pickup_Pro' ) ) { ?>
-										<li class="woocommerce-list__item has-action">
-											<a href="https://www.zorem.com/product/zorem-local-pickup-pro/?utm_source=wp-admin&utm_medium=ALP&utm_campaign=add-ons" class="woocommerce-list__item-inner" target="_blank">
-												<div class="woocommerce-list__item-before">
-													<img src="<?php echo esc_url(wc_local_pickup()->plugin_dir_url(__FILE__)) . 'assets/images/upgrade.svg'; ?>">
-												</div>
-												<div class="woocommerce-list__item-text">
-													<span class="woocommerce-list__item-title">
-														<div class="woocommerce-list-Text">Upgrade To Pro</div>
-													</span>
-												</div>
-												<div class="woocommerce-list__item-after">
-													<span class="dashicons dashicons-arrow-right-alt2"></span>
-												</div>
-											</a>
-										</li>
-									<?php } ?>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>	
+				<h1 class="page_heading">
+					<a href="javascript:void(0)"><?php esc_html_e( 'Zorem Local Pickup', 'zorem-local-pickup' ); ?></a> <span class="dashicons dashicons-arrow-right-alt2"></span> <span class="breadcums_page_heading"><?php esc_html_e( $breadcumps_page_heading, 'zorem-local-pickup' ); ?></span>
+				</h1>	
 			<?php } else { ?>
 				<h1 class="tab_section_heading">
 					<a href="<?php echo esc_url(admin_url() . 'admin.php?page=local_pickup'); ?>" class="link decoration"><?php esc_html_e( 'Pickup Locations', 'zorem-local-pickup' ); ?></a> > 
 					<?php esc_html_e( 'Edit Pickup Location', 'zorem-local-pickup' ); ?>
 				</h1>
 			<?php } ?>
+			<img class="zorem-layout__header-logo" src="<?php echo esc_url(wc_local_pickup()->plugin_dir_url() . 'assets/images/zorem-logo.png'); ?>">
 		</div>
 		<div class="woocommerce wclp_admin_layout">
 			<?php do_action( 'alp_settings_admin_notice' ); ?>
+			<?php if ( 'edit' !== $section && 'add' !== $section ) { ?>
+			<div class="woocommerce-layout__activity-panel">
+				<div class="woocommerce-layout__activity-panel-tabs">
+					<button type="button" id="activity-panel-tab-help" class="components-button woocommerce-layout__activity-panel-tab">
+						<span class="dashicons dashicons-menu-alt"></span> 
+					</button>
+					<div class="woocommerce-layout__activity-panel-wrapper">
+						<ul class="woocommerce-list woocommerce-quick-links__list">
+							<li class="woocommerce-list__item has-action">
+								<?php
+								$support_link = 'https://wordpress.org/support/plugin/advanced-local-pickup-for-woocommerce/#new-topic-0' ;
+								?>
+								<a href="<?php echo esc_url( $support_link ); ?>" class="woocommerce-list__item-inner" target="_blank" >
+									<div class="woocommerce-list__item-before">
+										<img src="<?php echo esc_url(wc_local_pickup()->plugin_dir_url(__FILE__) . 'assets/images/support.png'); ?>">	
+									</div>
+									<div class="woocommerce-list__item-text">
+										<span class="woocommerce-list__item-title">
+											<div class="woocommerce-list-Text"><?php esc_html_e('Get Support', 'zorem-local-pickup'); ?></div>
+										</span>
+									</div>
+								</a>
+							</li>            
+							<li class="woocommerce-list__item has-action">
+								<a href="https://docs.zorem.com/docs/zorem-local-pickup/?utm_source=wp-admin&utm_medium=ALP&utm_campaign=DOCS" class="woocommerce-list__item-inner" target="_blank">
+									<div class="woocommerce-list__item-before">
+										<img src="<?php echo esc_url(wc_local_pickup()->plugin_dir_url(__FILE__) . 'assets/images/document.png'); ?>">
+									</div>
+									<div class="woocommerce-list__item-text">
+										<span class="woocommerce-list__item-title">
+											<div class="woocommerce-list-Text"><?php esc_html_e('Documentation', 'zorem-local-pickup'); ?></div>
+										</span>
+									</div>
+								</a>
+							</li>
+							<li class="woocommerce-list__item has-action">
+								<a href="https://www.zorem.com/product/zorem-local-pickup-pro/?utm_source=wp-admin&utm_medium=ALP&utm_campaign=add-ons" class="woocommerce-list__item-inner" target="_blank">
+									<div class="woocommerce-list__item-before">
+										<img src="<?php echo esc_url(wc_local_pickup()->plugin_dir_url(__FILE__)) . 'assets/images/upgrade.png'; ?>">
+									</div>
+									<div class="woocommerce-list__item-text">
+										<span class="woocommerce-list__item-title">
+											<div class="woocommerce-list-Text"><?php esc_html_e('Upgrade To Pro', 'zorem-local-pickup'); ?></div>
+										</span>
+									</div>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<?php } ?>
 			<div class="wclp_admin_content">
 				<?php 
 				$style = '';
