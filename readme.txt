@@ -3,9 +3,9 @@ Contributors: zorem,kuldipzorem,gaurav1092,eranzorem
 Donate link: 
 Tags: woocommerce, local pickup, in store pickup, shipping, shipping options
 Requires at least: 5.0
-Tested up to: 6.8.3
+Tested up to: 6.9
 Requires PHP: 7.0
-Stable tag: 1.7.7
+Stable tag: 1.7.8
 License: GPLv2 
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -70,6 +70,9 @@ Learn how to set up and customize the plugin with tutorials and code snippets in
 
 
 == Changelog ==
+
+= 1.7.8 =
+* Dev – Tested with WooCommerce 10.4.2 and WordPress 6.9
 
 = 1.7.7 =
 * Dev – Tested compatibility with WooCommerce 10.3.5.
