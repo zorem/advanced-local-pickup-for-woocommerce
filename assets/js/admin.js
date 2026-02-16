@@ -77,45 +77,45 @@ jQuery(document).ready(function(){
 	
 });
 
-jQuery(document).on("click", ".accordion", function(){
+jQuery(document).on("click", ".accordion", function () {
 	"use strict";
-	
-	
+
+	var $this = jQuery(this);
+	var $panel = $this.next('.panel');
 	var location_name = jQuery('#wclp_store_name').val();
-	if(location_name === ''){
+
+	if (location_name === '') {
 		jQuery('#wclp_store_name').next(".alp_error_msg").show();
-		jQuery('#wclp_store_name').css('border-color','red');
-		jQuery('#wclp_store_name').css('display','block');
+		jQuery('#wclp_store_name').css('border-color', 'red');
+		return;
 	}
-	if(location_name !== ''){
-		if (jQuery(this).next('.panel').hasClass('active')) {
-			//
-			jQuery(".accordion").removeClass('active');
-			jQuery(".accordion").next('.panel').removeClass('active').slideUp("slow");
-		} else {
-			jQuery('#wclp_store_name').next(".alp_error_msg").hide();
-			jQuery('#wclp_store_name').css('border-color','');
-			jQuery(".accordion").css('border-color','');
-			jQuery(".accordion").removeClass('active');
-			jQuery(".accordion").next('.panel').removeClass('active').slideUp("slow");
-			jQuery(".accordion").css('cursor', '');
-			jQuery(".accordion").find('span.wclp-btn').hide();
-			jQuery(".accordion").find('span.dashicons').addClass('dashicons-arrow-right-alt2');
-			jQuery(".accordion").find('label').css('color','');
-			jQuery(this).addClass('active');
-			jQuery(this).css('cursor', 'default');
-			jQuery(this).find('span.wclp-btn').show();
-			jQuery(this).find('span.dashicons').removeClass('dashicons-arrow-right-alt2');
-			jQuery(this).find('label').css('color','#212121');
-			jQuery(this).next('.panel').addClass('active').slideDown( 'slow', function() {
-				var visible = jQuery(this).isInViewport();
-				if ( !visible ) {
-					jQuery('html, body').animate({
-						scrollTop: jQuery(this).prev().offset().top - 35
-					}, 1000);	
-				}			
-			} );
-		}
+
+	// If clicking already active accordion
+	if ($this.hasClass('active')) {
+		$this.removeClass('active');
+		$panel.removeClass('active').slideUp("slow");
+
+		// Hide only its button
+		$this.find('span.wclp-btn').hide();
+		$this.find('span.dashicons').addClass('dashicons-arrow-right-alt2');
+		$this.find('label').css('color', '');
+	} else {
+		jQuery(".accordion").removeClass('active');
+		jQuery(".accordion").next('.panel').removeClass('active').slideUp("slow");
+
+		// Hide all buttons
+		jQuery(".accordion").find('span.wclp-btn').hide();
+		jQuery(".accordion").find('span.dashicons').addClass('dashicons-arrow-right-alt2');
+		jQuery(".accordion").find('label').css('color', '');
+
+		// Activate current accordion
+		$this.addClass('active');
+		$panel.addClass('active').slideDown("slow");
+
+		// Show button only for active
+		$this.find('span.wclp-btn').show();
+		$this.find('span.dashicons').removeClass('dashicons-arrow-right-alt2');
+		$this.find('label').css('color', '#212121');
 	}
 });
 
@@ -649,4 +649,22 @@ jQuery(document).on("click", ".alp-hours-popup .dashicons-trash", function(){
 	jQuery(this).parent().find("select").select2();
 });
 
+/* ALP PRO Sidebar - Show only on Settings tab */
+jQuery(document).ready(function(){
+	"use strict";
+	var activeTab = jQuery('.wclp_tab_input:checked').data('tab');
+	if (!activeTab || activeTab === 'settings') {
+		jQuery('.alp-pro-sidebar').addClass('alp-sidebar-visible');
+	}
+});
+
+jQuery(document).on("click", ".wclp_tab_input", function(){
+	"use strict";
+	var tab = jQuery(this).data('tab');
+	if (tab === 'settings') {
+		jQuery('.alp-pro-sidebar').addClass('alp-sidebar-visible');
+	} else {
+		jQuery('.alp-pro-sidebar').removeClass('alp-sidebar-visible');
+	}
+});
  

@@ -453,7 +453,7 @@ $location = wc_local_pickup()->admin->get_data_byid($location_id);
 			<div class="accordion heading premium">
 				<label>
 					<?php esc_html_e( 'Pickup Appointments', 'zorem-local-pickup' ); ?>
-					<span class="premium-label"><?php esc_html_e( 'Premium', 'zorem-local-pickup' ); ?></span>
+					<span class="alp-pro-badge"><?php esc_html_e( 'PRO', 'zorem-local-pickup' ); ?></span>
 					<span class="dashicons dashicons-arrow-right-alt2"></span>
 				</label>
 			</div>
@@ -461,7 +461,7 @@ $location = wc_local_pickup()->admin->get_data_byid($location_id);
 			<div class="accordion heading premium">
 				<label>
 					<?php esc_html_e( 'Products', 'zorem-local-pickup' ); ?>
-					<span class="premium-label"><?php esc_html_e( 'Premium', 'zorem-local-pickup' ); ?></span>
+					<span class="alp-pro-badge"><?php esc_html_e( 'PRO', 'zorem-local-pickup' ); ?></span>
 					<span class="dashicons dashicons-arrow-right-alt2"></span>
 				</label>
 			</div>
@@ -469,7 +469,7 @@ $location = wc_local_pickup()->admin->get_data_byid($location_id);
 			<div class="accordion heading premium">
 				<label>
 					<?php esc_html_e( 'Shipping Method', 'zorem-local-pickup' ); ?>
-					<span class="premium-label"><?php esc_html_e( 'Premium', 'zorem-local-pickup' ); ?></span>
+					<span class="alp-pro-badge"><?php esc_html_e( 'PRO', 'zorem-local-pickup' ); ?></span>
 					<span class="dashicons dashicons-arrow-right-alt2"></span>
 				</label>
 			</div>
@@ -477,7 +477,7 @@ $location = wc_local_pickup()->admin->get_data_byid($location_id);
 			<div class="accordion heading premium">
 				<label>
 					<?php esc_html_e( 'Payment Method', 'zorem-local-pickup' ); ?>
-					<span class="premium-label"><?php esc_html_e( 'Premium', 'zorem-local-pickup' ); ?></span>
+					<span class="alp-pro-badge"><?php esc_html_e( 'PRO', 'zorem-local-pickup' ); ?></span>
 					<span class="dashicons dashicons-arrow-right-alt2"></span>
 				</label>
 			</div>
@@ -485,7 +485,7 @@ $location = wc_local_pickup()->admin->get_data_byid($location_id);
 			<div class="accordion heading premium">
 				<label>
 					<?php esc_html_e( 'Price Adjustments', 'zorem-local-pickup' ); ?>
-					<span class="premium-label"><?php esc_html_e( 'Premium', 'zorem-local-pickup' ); ?></span>
+					<span class="alp-pro-badge"><?php esc_html_e( 'PRO', 'zorem-local-pickup' ); ?></span>
 					<span class="dashicons dashicons-arrow-right-alt2"></span>
 				</label>
 			</div>
@@ -493,7 +493,7 @@ $location = wc_local_pickup()->admin->get_data_byid($location_id);
 			<div class="accordion heading premium">
 				<label>
 					<?php esc_html_e( 'Notifications', 'zorem-local-pickup' ); ?>
-					<span class="premium-label"><?php esc_html_e( 'Premium', 'zorem-local-pickup' ); ?></span>
+					<span class="alp-pro-badge"><?php esc_html_e( 'PRO', 'zorem-local-pickup' ); ?></span>
 					<span class="dashicons dashicons-arrow-right-alt2"></span>
 				</label>
 			</div>
@@ -501,7 +501,7 @@ $location = wc_local_pickup()->admin->get_data_byid($location_id);
 			<div class="accordion heading premium">
 				<label>
 					<?php esc_html_e( 'Automations', 'zorem-local-pickup' ); ?>
-					<span class="premium-label"><?php esc_html_e( 'Premium', 'zorem-local-pickup' ); ?></span>
+					<span class="alp-pro-badge"><?php esc_html_e( 'PRO', 'zorem-local-pickup' ); ?></span>
 					<span class="dashicons dashicons-arrow-right-alt2"></span>
 				</label>
 			</div>
