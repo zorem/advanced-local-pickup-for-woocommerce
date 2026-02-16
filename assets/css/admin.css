@@ -1,160 +1,161 @@
 /*header style*/
 .zorem-layout__header * {
-    box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 .zorem-layout__header .page_heading {
-    font-size: 14px;
-    color: #3c4758;
-    padding: 0 20px;
-    margin: auto 0;
-    font-weight: 400;
+	font-size: 14px;
+	color: #3c4758;
+	padding: 0 20px;
+	margin: auto 0;
+	font-weight: 400;
+	width: 100%;
 }
 
 .zorem-layout__header .page_heading .dashicons {
-    font-size: 14px;
-    vertical-align: middle;
-    line-height: 20px;
+	font-size: 14px;
+	vertical-align: middle;
+	line-height: 20px;
 }
 
 .zorem-layout__header .page_heading a {
-    text-decoration: none;
-    color: #3b64d3;
+	text-decoration: none;
+	color: #3b64d3;
 }
 
 .zorem-layout__header .zorem-layout__header-logo {
-    margin: 0 12px;
-    width: 100px;
+	margin: 0 12px;
+	width: 100px;
 }
 
 .zorem-layout__header {
-    background: #fff;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    box-sizing: border-box;
-    padding: 0;
-    width: 100%;
-    height: 60px;
-    z-index: 1001;
-    align-items: center;
-    position: relative;
+	background: #fff;
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row;
+	box-sizing: border-box;
+	padding: 0;
+	width: 100%;
+	height: 60px;
+	z-index: 1001;
+	align-items: center;
+	position: relative;
 }
 
 .woocommerce-layout__activity-panel {
-    float: inline-end;
-    position: relative;
+	float: inline-end;
+	position: relative;
 }
 
 #activity-panel-tab-help {
-    background-color: transparent;
-    padding: 10px 18px;
-    cursor: pointer;
-    border: none;
+	background-color: transparent;
+	padding: 10px 18px;
+	cursor: pointer;
+	border: none;
 }
 
 .woocommerce-layout__activity-panel-tabs {
-    display: flex;
-    justify-content: flex-end;
-    height: 44px;
+	display: flex;
+	justify-content: flex-end;
+	height: 44px;
 }
 
 .woocommerce-layout__activity-panel-tabs .dashicons {
-    width: 20px;
-    height: 20px;
-    font-size: 20px;
-    cursor: pointer;
+	width: 20px;
+	height: 20px;
+	font-size: 20px;
+	cursor: pointer;
 }
 
 .woocommerce-layout__activity-panel-wrapper {
-    position: absolute;
-    top: 0;
-    right: 45px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    display: none;
-    flex-direction: column;
-    min-width: 200px;
-    padding: 10px 0;
-    z-index: 1000;
+	position: absolute;
+	top: 0;
+	right: 45px;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+	display: none;
+	flex-direction: column;
+	min-width: 200px;
+	padding: 10px 0;
+	z-index: 1000;
 }
 
 .woocommerce-layout__activity-panel-tabs:hover .woocommerce-layout__activity-panel-wrapper {
-    display: block;
+	display: block;
 }
 
 .woocommerce-layout__activity-panel-wrapper:before {
-    content: '';
-    width: 0.75rem;
-    height: 0.75rem;
-    position: absolute;
-    z-index: -1;
-    top: 16px;
-    right: -8px;
-    background-color: #fff;
-    transform: rotate(135deg);
-    border: 1px solid #e0e0e0;
-    border-width: 1px 0 0 1px;
+	content: '';
+	width: 0.75rem;
+	height: 0.75rem;
+	position: absolute;
+	z-index: -1;
+	top: 10px;
+	right: -7px;
+	background-color: #fff;
+	transform: rotate(135deg);
+	border: 1px solid #e0e0e0;
+	border-width: 1px 0 0 1px;
 }
 
 .woocommerce-list {
-    margin: 0;
-    padding: 0;
+	margin: 0;
+	padding: 0;
 }
 
 .woocommerce-list__item:not(:first-child) {
-    margin: 0;
+	margin: 0;
 }
 
 .woocommerce-list__item.has-action {
-    cursor: pointer;
-    margin: 0;
+	cursor: pointer;
+	margin: 0;
 }
 
 .woocommerce-list__item>.woocommerce-list__item-inner {
-    display: flex;
-    align-items: center;
-    padding: 10px 20px;
-    text-decoration: none;
-    color: #333;
-    font-size: 14px;
-    transition: background-color 0.2s ease;
+	display: flex;
+	align-items: center;
+	padding: 10px 20px;
+	text-decoration: none;
+	color: #333;
+	font-size: 14px;
+	transition: background-color 0.2s ease;
 }
 
 .woocommerce-list__item .woocommerce-list__item-before {
-    margin-right: 15px;
-    display: flex;
-    align-items: center;
+	margin-right: 15px;
+	display: flex;
+	align-items: center;
 }
 
 .woocommerce-list__item .woocommerce-list__item-title {
-    color: #3b64d3;
+	color: #3b64d3;
 }
 
 .woocommerce-list-Text {
-    box-sizing: border-box;
-    margin: 0px;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-        Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 20px;
+	box-sizing: border-box;
+	margin: 0px;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+		Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 20px;
 }
 
 .woocommerce-list__item .woocommerce-list__item-after {
-    margin-left: 16px;
-    display: flex;
-    align-items: center;
-    margin-left: auto;
+	margin-left: 16px;
+	display: flex;
+	align-items: center;
+	margin-left: auto;
 }
 
 @media (min-width: 783px) {
 
-    .woocommerce-layout__activity-panel-header {
-        padding: 16px 24px;
-    }
+	.woocommerce-layout__activity-panel-header {
+		padding: 16px 24px;
+	}
 }
 
 /*header style end*/
@@ -163,20 +164,20 @@
 
 .admin-footer-panel {
 	/*box-shadow: 0 0px 5px 0px #bdbdbd; */
-    margin: 20px 0;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 3px;
-    border: 1px solid #e0e0e0;
+	margin: 20px 0;
+	padding: 20px;
+	background-color: #fff;
+	border-radius: 3px;
+	border: 1px solid #e0e0e0;
 }
 
 .admin_message_header,
 .admin_footer_header {
 	font-size: 22px;
-    line-height: 30px;
-    margin: 0;
-    font-weight: 700;
-    color: #212121;
+	line-height: 30px;
+	margin: 0;
+	font-weight: 700;
+	color: #212121;
 }
 
 .admin_footer_header {
@@ -189,11 +190,12 @@
 
 .admin-message-panel .admin-message-row {
 	margin: 20px;
-    display: block;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 5px 0 #e0e0e0;
-    position: relative;
+	display: block;
+	padding: 20px;
+	background-color: #fff;
+	position: relative;
+	border: 1px solid #e0e0e0;
+	border-radius: 8px;
 }
 
 .admin-footer-row .row::after {
@@ -204,15 +206,15 @@
 
 .admin-footer-row .row {
 	display: flex;
-    flex-wrap: wrap;
+	flex-wrap: wrap;
 }
 
 .admin-footer-row .column {
 	width: calc(100% / 2);
-    display: inline-flex;
-    font-size: 15px;
-    margin-bottom: 0;
-    line-height: 40px;
+	display: inline-flex;
+	font-size: 15px;
+	margin-bottom: 0;
+	line-height: 40px;
 }
 
 .admin-footer-row .column::before {
@@ -235,13 +237,13 @@
 	font-size: 14px;
 	font-weight: 600;
 	min-width: 140px;
-    line-height: 33px;
-    text-align: center;
+	line-height: 33px;
+	text-align: center;
 	margin-right: 10px;
 }
 
 div.updated.wplp-dismissable-notice {
-    border-left-color: #3b64d3;
+	border-left-color: #3b64d3;
 }
 
 .admin-footer-row .button-primary.btn_pro_notice {
@@ -253,10 +255,10 @@ div.updated.wplp-dismissable-notice {
 	border-color: #3b64d3;
 	margin-right: 10px;
 	font-size: 14px;
-    font-weight: 600;
-    min-width: 140px;
-    line-height: 33px;
-    text-align: center;
+	font-weight: 600;
+	min-width: 140px;
+	line-height: 33px;
+	text-align: center;
 }
 
 .button-primary.btn_pro_notice:hover,
@@ -297,9 +299,9 @@ input.inner_tab_input {
 input.wclp_tab_input:checked+a,
 input.inner_tab_input:checked+label {
 	color: #3b64d3;
-    border-bottom: 3px solid #3b64d3;
-    margin-bottom: -3px;
-    font-weight: 600;
+	border-bottom: 3px solid #3b64d3;
+	margin-bottom: -3px;
+	font-weight: 600;
 }
 
 .rtl a.wclp_tab_label.first_label {
@@ -363,10 +365,11 @@ label.inner_tab_label {
 
 .tab_section_heading {
 	font-size: 14px;
-    color: #3c4758;
-    padding: 0 20px;
-    margin: auto 0;
-    font-weight: 400;
+	color: #3c4758;
+	padding: 0 20px;
+	margin: auto 0;
+	font-weight: 400;
+	width: 100%;
 }
 
 .tab_main_heading.clear_heading {
@@ -384,7 +387,11 @@ label.inner_tab_label {
 #tab1:checked~#wclp_content1,
 #tab2:checked~#wclp_content2,
 #tab3:checked~#wclp_content3,
-#tab4:checked~#wclp_content4 {
+#tab4:checked~#wclp_content4,
+#tab1:checked ~ .alp-admin-main-wrapper #wclp_content1,
+#tab2:checked ~ .alp-admin-main-wrapper #wclp_content2,
+#tab3:checked ~ .alp-admin-main-wrapper #wclp_content3,
+#tab4:checked ~ .alp-admin-main-wrapper #wclp_content4 {
 	display: block;
 }
 
@@ -506,12 +513,12 @@ section.wclp_tab_section {
 }
 
 .wclp_outer_form_table table.form-table.order-status-table tr:first-child td {
-    padding-top: 0 !important;
+	padding-top: 0 !important;
 	border-bottom: 1px solid #f5f5f5;
 }
 
 .wclp_outer_form_table table.form-table.order-status-table tr:last-child td {
-    padding-bottom: 0 !important;
+	padding-bottom: 0 !important;
 }
 
 .wclp_outer_form_table table.form-table.order-status-table tr td .send_email_label,
@@ -574,7 +581,7 @@ section.wclp_tab_section {
 }
 
 .wclp_tab_inner_container #wclp_location_tab_form table.form-table tr:last-child td {
-    padding: 0;
+	padding: 0;
 }
 
 .wclp_tab_inner_container #wclp_location_tab_form table.form-table tr:last-child {
@@ -603,8 +610,8 @@ section.wclp_tab_section {
 
 .wclp_tab_inner_container #wclp_setting_tab_form .form-table td .wplp_multiple {
 	padding: 0 0 15px 0;
-    margin: 0 0 15px;
-    border-bottom: 1px solid #f5f5f5;
+	margin: 0 0 15px;
+	border-bottom: 1px solid #f5f5f5;
 }
 
 #wclp_setting_tab_form .html-layout-2 tr.message_textarea td,
@@ -764,16 +771,16 @@ section.wclp_tab_section {
 
 .status-label-column .order-label {
 	display: inline-flex;
-    line-height: 2.2em;
-    color: #777;
-    background: #e5e5e5;
-    border-radius: 4px;
-    border-bottom: 1px solid rgba(0, 0, 0, .05);
-    margin: -0.25em 0;
-    cursor: inherit !important;
-    white-space: nowrap;
-    max-width: 100%;
-    padding: 0 1em;
+	line-height: 2.2em;
+	color: #777;
+	background: #e5e5e5;
+	border-radius: 4px;
+	border-bottom: 1px solid rgba(0, 0, 0, .05);
+	margin: -0.25em 0;
+	cursor: inherit !important;
+	white-space: nowrap;
+	max-width: 100%;
+	padding: 0 1em;
 }
 
 .woocommerce.wclp_admin_layout table.form-table .regular-input {
@@ -810,19 +817,19 @@ section.wclp_tab_section {
 }
 
 .wclp_tab_section #wclp_location_tab_form .panel tr th, .wclp_tab_section #wclp_location_tab_form .panel tr td, .wclp_tab_section #wclp_location_tab_form .panel tr td fieldset:first-child {
-    display: block;
+	display: block;
 }
 
 .wclp_tab_inner_container #wclp_location_tab_form table.form-table tr {
-    border-bottom: 1px solid #f5f5f5;
-    margin-bottom: 15px;
-    display: block;
+	border-bottom: 1px solid #f5f5f5;
+	margin-bottom: 15px;
+	display: block;
 }
 
 .wclp_tab_section #wclp_location_tab_form .panel tr th, .wclp_tab_section #wclp_location_tab_form .panel tr td {
-    padding: 0;
-    margin: 0;
-    padding-bottom: 15px;
+	padding: 0;
+	margin: 0;
+	padding-bottom: 15px;
 }
 
 .wclp_tab_section .wclp_tab_inner_container table.form-table input.regular-input {
@@ -965,7 +972,7 @@ a.menu_aosm_link:focus {
 
 .location-setting .panel.business-hours .hours-block .time-format, .location-setting .panel.business-hours .hours-block .work-hours {
 	padding-bottom: 15px;
-    display: block;
+	display: block;
 }
 
 .wp-core-ui .btn_green {
@@ -1075,18 +1082,18 @@ a.menu_aosm_link:focus {
 .wclp_tab_section .accordion,
 .wclp_tab_section .panel {
 	padding: 15px;
-	background: #fff;
+	background: #fafafa;
 	border: 1px solid #e0e0e0;
-	border-radius: 3px;
+	border-radius: 8px;
 }
 
 .wclp_tab_section .panel.active {
-	border-radius: 0 0 3px 3px;
+	border-radius: 0 0 8px 8px;
 }
 
 .wclp_tab_section .accordion.active {
 	border-bottom-color: #e0e0e0;
-	border-radius: 3px 3px 0 0;
+	border-radius: 8px 8px 0 0;
 }
 
 .accordion.heading.address-special {
@@ -1160,10 +1167,12 @@ a.menu_aosm_link:focus {
 
 .wclp_tab_section .panel {
 	border-top: 0;
+	border-radius: 0 0 8px 8px;
 }
 
 .wclp_tab_section .panel table.form-table {
 	margin: 0;
+	table-layout: auto;
 }
 
 .panel.options.products .select2-container .select2-search--inline .select2-search__field {
@@ -1272,14 +1281,14 @@ p.alp-apply-multiple {
 
 .woocommerce.wclp_admin_layout table.form-table .wclp_pickup_time_fieldset span.hours {
 	padding: 5px;
-    font-size: 14px;
-    display: inline-table;
-    text-align: center;
-    margin-bottom: 10px;
-    color: #2196f3;
-    border: 0;
-    margin: 0;
-    width: 100%;
+	font-size: 14px;
+	display: inline-table;
+	text-align: center;
+	margin-bottom: 10px;
+	color: #2196f3;
+	border: 0;
+	margin: 0;
+	width: 100%;
 }
 
 .wplp_pickup_duration {
@@ -1328,7 +1337,7 @@ p.alp-apply-multiple {
 }
 
 .alp-features-list {
-    min-width: 450px;
+	min-width: 450px;
 }
 
 .alp-features-list ul li {
@@ -1358,11 +1367,11 @@ p.alp-apply-multiple {
 }
 
 .wclp-btn .button-primary.pro-btn::after {
-    content: "\f345";
-    font-family: 'dashicons';
-    font-size: 20px;
-    vertical-align: middle;
-    font-weight: 100;
+	content: "\f345";
+	font-family: 'dashicons';
+	font-size: 20px;
+	vertical-align: middle;
+	font-weight: 100;
 }
 
 .plugins_section.free_plugin_section .plugin_description h3 {
@@ -1390,7 +1399,7 @@ p.alp-apply-multiple {
 
 .plugins_section.free_plugin_section .single_plugin .free_plugin_inner {
 	border: 1px solid #e0e0e0;
-	border-radius: 3px;
+	border-radius: 8px;
 	background: #fff;
 }
 
@@ -1499,9 +1508,25 @@ p.alp-apply-multiple {
 	margin: 10px;
 }
 
+.alp-pro-badge {
+	display: inline-block;
+	line-height: 1.4;
+	vertical-align: middle;
+	margin-left: 8px;
+	background: #3b64d3;
+	color: #FFFFFF;
+	font-size: 11px;
+	font-weight: 600;
+	padding: 2px 12px;
+	border-radius: 4px;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	font-style: normal;
+}
+
 .accordion.heading.premium {
 	pointer-events: none;
-	line-height: 38px;
+	line-height: 38px !important;
 }
 
 /* Toggle CSS */
@@ -1977,4 +2002,194 @@ input[type=checkbox].tgl {
 		float: left;
 		width: 100%;
 	}
+}
+/* =============================================
+   ALP Sidebar Layout
+   ============================================= */
+.alp-admin-main-wrapper{display:flex;align-items:flex-start}
+.alp-admin-main-wrapper .alp-sections-wrapper{flex:1;min-width:0}
+.alp-pro-sidebar{width:400px;min-width:400px;position:sticky;padding-top:10px;padding-left:20px;display:none}
+.alp-pro-sidebar.alp-sidebar-visible{display:block}
+.alp-pro-sidebar__upgrade{background:#fff;border:1px solid #e0e0e0;border-radius:8px;padding:24px 20px;text-align:center;margin-bottom:16px}
+.alp-pro-sidebar__icon{margin-bottom:12px}
+.alp-pro-sidebar__icon img{width:40px;height:40px}
+.alp-pro-sidebar__title{margin:0 0 13px;line-height:1.4;font-size:22px;color:#005b9a;font-weight:700}
+.alp-pro-sidebar__desc{font-size:16px;color:#3c4758;margin:0 0 16px;line-height:1.5}
+.alp-pro-sidebar__features{list-style:none;margin:0 0 20px;padding:0;text-align:left}
+.alp-pro-sidebar__features li{position:relative;padding:4px 0 4px 0;font-size:13px;color:#333;line-height:1.5;display:flex;align-items:center;gap:6px}
+.alp-pro-sidebar__features li .alp-check{color:#3b64d3;font-weight:700;font-size:14px;flex-shrink:0}
+.alp-pro-sidebar__btn{display:block;background:#3b64d3;color:#fff!important;text-decoration:none!important;font-size:14px;padding:18px;border-radius:3px;text-align:center;transition:background .2s ease;letter-spacing:.3px;}
+.alp-pro-sidebar__btn:hover{background:#2d4fa8;color:#fff!important}
+
+@media only screen and (max-width:1200px){
+.alp-pro-sidebar{width:280px;min-width:280px}
+}
+@media only screen and (max-width:960px){
+.alp-admin-main-wrapper{flex-direction:column}
+.alp-pro-sidebar{width:100%;min-width:100%;position:static;padding-top:0;padding-left:0}
+}
+
+/* =============================================
+   ALP Go Pro V2 Styles
+   ============================================= */
+.alp-go-pro-v2 .gopro-hero{text-align:center;padding:50px 20px 40px}
+.alp-go-pro-v2 .gopro-hero h1{font-size:34px;font-weight:700;color:#1a1a2e;margin:0 0 12px;line-height:1.25}
+.alp-go-pro-v2 .gopro-hero p{font-size:15px;color:#555;max-width:560px;margin:0 auto;line-height:1.6}
+.alp-go-pro-v2 .gopro-hero p strong{color:#333}
+.alp-go-pro-v2 .gopro-hero p a{color:#2563eb;text-decoration:none;font-weight:600}
+.alp-go-pro-v2 .gopro-comparison{margin:0 auto 30px;background:#fff;border:1px solid #e5e7eb;border-radius:8px;overflow:hidden}
+.alp-go-pro-v2 .gopro-comp-header{display:grid;grid-template-columns:1fr 180px 180px;align-items:center;background:#f9fafb;border-bottom:1px solid #e5e7eb}
+.alp-go-pro-v2 .gopro-comp-header-label{padding:16px 24px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:15px;color:#1a1a2e}
+.alp-go-pro-v2 .gopro-comp-header-col{text-align:center;padding:16px 12px}
+.alp-go-pro-v2 .gopro-comp-header-col .comp-header-badge{display:inline-block;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:2px 8px;border-radius:4px;margin-bottom:4px}
+.alp-go-pro-v2 .gopro-comp-header-col .comp-header-badge.badge-current{background:transparent;color:#9ca3af}
+.alp-go-pro-v2 .gopro-comp-header-col .comp-header-badge.badge-recommended{background:#16a34a;color:#fff}
+.alp-go-pro-v2 .gopro-comp-header-col .comp-header-title{display:block;font-size:15px;font-weight:700;color:#1a1a2e}
+.alp-go-pro-v2 .gopro-comp-header-col.is-pro{background:#f8fdf9}
+.alp-go-pro-v2 .gopro-comp-row{display:grid;grid-template-columns:1fr 180px 180px;border-bottom:1px solid #f0f1f3;align-items:center}
+.alp-go-pro-v2 .gopro-comp-row:last-child{border-bottom:0}
+.alp-go-pro-v2 .gopro-comp-feature{padding:18px 24px}
+.alp-go-pro-v2 .gopro-comp-feature strong{display:block;font-size:14px;font-weight:700;color:#1a1a2e;margin-bottom:2px}
+.alp-go-pro-v2 .gopro-comp-feature span{font-size:12px;color:#9ca3af;line-height:1.4}
+.alp-go-pro-v2 .gopro-comp-cell{text-align:center;padding:18px 12px;display:flex;flex-direction:column;align-items:center;gap:4px}
+.alp-go-pro-v2 .gopro-comp-cell .comp-icon{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.alp-go-pro-v2 .gopro-comp-cell .comp-icon svg{width:20px;height:20px}
+.alp-go-pro-v2 .gopro-comp-cell .comp-icon.icon-x{background:#4b5563}
+.alp-go-pro-v2 .gopro-comp-cell .comp-icon.icon-check{background:#dcfce7}
+.alp-go-pro-v2 .gopro-comp-cell .comp-status{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.03em;color:#9ca3af}
+.alp-go-pro-v2 .gopro-comp-cell.is-pro{background:#f8fdf9}
+.alp-go-pro-v2 .gopro-comp-cell.is-pro .comp-status{color:#16a34a;font-size:12px}
+.alp-go-pro-v2 .gopro-cta{text-align:center;padding:0 20px 10px}
+.alp-go-pro-v2 .gopro-cta-btn{display:inline-block;background:#3b64d3;color:#fff!important;font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:14px 40px;border-radius:3px;text-decoration:none;transition:background .2s;border:none;cursor:pointer;line-height: 30px;}
+.alp-go-pro-v2 .gopro-cta-btn:hover{background:#2c4fb8;color:#fff!important}
+.alp-go-pro-v2 .gopro-cta-sub{margin-top:14px;font-size:13px;color:#9ca3af}
+.alp-go-pro-v2 .gopro-addons{border-radius:8px;padding:20px 0}
+.alp-go-pro-v2 .gopro-addons-header{margin-bottom:0}
+.alp-go-pro-v2 .gopro-addons-header h2{font-size:22px;font-weight:700;color:#1a1a2e;margin:0 0 4px;line-height:1.3}
+.alp-go-pro-v2 .gopro-addons-header p{font-size:14px;color:#9ca3af;margin:0}
+
+/* Addon Learn More button - centered bordered style */
+.alp-addon-learn-more-btn{display:block!important;text-align:center!important;border:1px solid #e5e7eb!important;color:#2563eb!important;background:transparent!important;border-radius:8px!important;padding:6px 20px!important;font-size:14px!important;font-weight:600!important;text-decoration:none!important;transition:all .2s!important;margin-top:10px!important;line-height:24px!important}
+.alp-addon-learn-more-btn:hover{border-color: #2563eb!important;background:#eff6ff!important;color: #2563eb!important;}
+
+@media only screen and (max-width:768px){
+.alp-go-pro-v2 .gopro-comp-header,.alp-go-pro-v2 .gopro-comp-row{grid-template-columns:1fr 120px 120px}
+}
+
+/* PRO Feature Row & Lock Styles */
+.alp-pro-lock{display:inline-block;vertical-align:middle;margin-left:4px;color:#999;font-size:14px}
+.alp-pro-lock .dashicons{font-size:16px;width:16px;height:16px;line-height:16px;color:#999}
+.alp-pro-row-actions{display:inline-flex;align-items:center;gap:4px}
+.alp-pro-feature-row{position:relative;cursor:not-allowed!important}
+.alp-pro-feature-row::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;z-index:10;cursor:not-allowed}
+.alp-pro-feature-row input,.alp-pro-feature-row select,.alp-pro-feature-row textarea,.alp-pro-feature-row button{pointer-events:none!important}
+.pro_feature{opacity:.35}
+.alp-pro-locked-fields{border-top:1px dashed #e0e0e0;margin-top:10px}
+.alp-pro-locked-fields tr{border-bottom:1px solid #f0f0f1}
+.alp-pro-locked-fields tr:last-child{border-bottom:none}
+.alp-pro-locked-fields tr td[colspan="2"]{display:flex!important;align-items:center;justify-content:space-between}
+.alp-pro-locked-fields .alp-pro-row-actions{margin-left:auto;flex-shrink:0}
+
+/* Processing LP row - PRO badge right aligned */
+.order-status-table .alp-pro-feature-row .alp-pro-row-actions{white-space:nowrap}
+
+/* PRO Tags Input (multi-select style) */
+.alp-pro-tags-input{display:inline-flex;flex-wrap:wrap;gap:6px;padding:6px 10px;border:1px solid #ddd;border-radius:4px;background:#fff;min-width:200px;max-width:400px}
+.alp-pro-tag{display:inline-flex;align-items:center;gap:4px;background:#f0f0f1;border:1px solid #ddd;border-radius:3px;padding:2px 8px;font-size:13px;color:#333}
+
+/* Processing LP row fix - ensure inline layout matches other status rows */
+.processing_lp_row.alp-pro-feature-row td fieldset{display:flex;align-items:center;gap:8px}
+.processing_lp_row.alp-pro-feature-row td .input-text.regular-input{width:auto;min-width:80px}
+.processing_lp_row.alp-pro-feature-row .alp-pro-row-actions{float:none;display:inline-flex}
+.order-status-table .processing_lp_row td:last-child{text-align:right!important;width:auto}
+.wp-core-ui .btn_alp2 {
+	background: #3b64d3;
+	text-shadow: none;
+	border-color: #3b64d3;
+	box-shadow: none;
+	font-size: 14px;
+	line-height: 35px;
+	padding: 0 10px;
+	border-radius: 3px;
+}
+.wp-core-ui .btn_alp2:hover {
+	background: #3b64d3;
+	border-color: rgba(0, 0, 0, 0.05);
+	color: #fff;
+	text-shadow: none;
+	box-shadow: inset 0 0 0 100px rgba(0, 0, 0, 0.2);
+}
+.premium .dashicons.dashicons-arrow-right-alt2:before {
+	color: #9e9e9e !important;
+}
+.pro_section .alp-pro-badge {
+	padding: 4px 15px;
+}
+.wclp_admin_content .alp_go_pro_tab {
+	font-weight: 700 !important;
+	color: #3b64d3 !important;
+}
+.alp_sidebar_help {
+	background: #FFFFFF;
+	border: 1px solid #E5E7EB;
+	border-radius: 8px;
+	padding: 20px;
+	display: flex;
+	gap: 14px;
+	align-items: flex-start;
+	margin: 20px 0 0 0;
+}
+.alp_sidebar_help .alp-help-icon {
+	width: 32px;
+	height: 32px;
+	background: #F3F4F6;
+	border-radius: 8px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 16px;
+	font-weight: bold;
+	color: #9ca3af;
+	flex-shrink: 0;
+}
+.alp_sidebar_help .alp-help-text {
+	text-align: left;
+	flex: 1;
+}
+.alp_sidebar_help h3 {
+	font-size: 14px;
+	font-weight: 600;
+	color: #111827;
+	margin: 0 0 6px 0;
+}
+.alp_sidebar_help p {
+	font-size: 12px;
+	color: #6B7280;
+	line-height: 1.5;
+	margin: 0 0 12px 0;
+}
+.alp_sidebar_help .alp-help-link {
+	color: #3b64d3;
+	text-decoration: none;
+	font-size: 13px;
+	font-weight: 500;
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+}
+.alp-go-pro-v2 .alp-addon-learn-more-btn.is-active {
+	color: #16a34a !important;
+	border-color: #bbf7d0 !important;
+	background: #f0fdf4 !important;
+	cursor: default;
+}
+.alp-go-pro-v2 .gopro-addon-card-icon {
+	border-radius: 8px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	border: 1px solid #e5e7eb;
+	width: 60px;
+	height: 60px;
 }

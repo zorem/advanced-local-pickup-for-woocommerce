@@ -135,6 +135,7 @@ class WC_Local_Pickup_Admin {
 					<?php esc_html_e( 'Edit Pickup Location', 'zorem-local-pickup' ); ?>
 				</h1>
 			<?php } ?>
+			<a href="https://www.zorem.com/product/zorem-local-pickup-pro/?utm_source=wp-admin&utm_medium=ALPPRO&utm_campaign=sidebar" target="_blank"><span class="button-primary btn_alp2">UPGRADE TO PRO</span></a>
 			<img class="zorem-layout__header-logo" src="<?php echo esc_url(wc_local_pickup()->plugin_dir_url() . 'assets/images/zorem-logo.png'); ?>">
 		</div>
 		<div class="woocommerce wclp_admin_layout">
@@ -205,12 +206,47 @@ class WC_Local_Pickup_Admin {
 				<input id="tab5" type="radio" name="tabs" class="wclp_tab_input" data-label="<?php esc_html_e('Customize', 'zorem-local-pickup'); ?>" data-tab="customize" <?php echo ( 'customize' === $tab ) ? 'checked' : ''; ?>>
 				<a for="tab5" href="<?php echo esc_url(admin_url('admin.php?page=alp_customizer&preview=ready_pickup')); ?>" class="wclp_tab_label <?php echo ( 'customize' === $tab ) ? 'nav-tab-active' : ''; ?>" <?php echo esc_html($style); ?>><?php esc_html_e('Customize', 'zorem-local-pickup'); ?></a>
 				<input id="tab4" type="radio" name="tabs" class="wclp_tab_input" data-label="<?php esc_html_e('Go Pro', 'zorem-local-pickup'); ?>" data-tab="go-pro" <?php echo ( 'go-pro' === $tab ) ? 'checked' : ''; ?>>
-				<a for="tab4" href="admin.php?page=local_pickup&tab=go-pro" class="wclp_tab_label <?php echo ( 'go-pro' === $tab ) ? 'nav-tab-active' : ''; ?>" <?php echo esc_html($style); ?>><?php esc_html_e('Go Pro', 'zorem-local-pickup'); ?></a>
+				<a for="tab4" href="admin.php?page=local_pickup&tab=go-pro" class="wclp_tab_label alp_go_pro_tab <?php echo ( 'go-pro' === $tab ) ? 'nav-tab-active' : ''; ?>" <?php echo esc_html($style); ?>><?php esc_html_e('Go Pro ✨', 'zorem-local-pickup'); ?></a>
 				<div class="menu_devider" <?php echo esc_html($style); ?>></div>
-				<?php require_once( 'views/wclp_setting_tab.php' ); ?>
-				<?php require_once( 'views/wclp_locations_tab.php' ); ?>
-				<?php require_once( 'views/wclp_addon_tab.php' ); ?>
-				<?php 'go-pro' !== $tab ? do_action( 'alp_settings_admin_footer' ) : ''; ?>
+				<div class="alp-admin-main-wrapper">
+					<div class="alp-sections-wrapper">
+						<?php require_once( 'views/wclp_setting_tab.php' ); ?>
+						<?php require_once( 'views/wclp_locations_tab.php' ); ?>
+						<?php require_once( 'views/wclp_addon_tab.php' ); ?>
+					</div>
+					<?php if ( ! class_exists( 'Zorem_Local_Pickup_Pro' ) ) : ?>
+					<div class="alp-pro-sidebar">
+						<div class="alp-pro-sidebar__upgrade">
+							<div class="alp-pro-sidebar__icon">
+								<img src="<?php echo esc_url(wc_local_pickup()->plugin_dir_url() . 'assets/images/alp-45.png'); ?>" alt="ALP PRO" />
+							</div>
+							<h3 class="alp-pro-sidebar__title"><?php esc_html_e( 'Unlock Advanced Local Pickup Features with ALP PRO', 'zorem-local-pickup' ); ?></h3>
+							<p class="alp-pro-sidebar__desc"><?php esc_html_e( 'Upgrade to ALP PRO to extend your local pickup beyond the basics.', 'zorem-local-pickup' ); ?></p>
+							<ul class="alp-pro-sidebar__features">
+								<li><span class="alp-check">✓</span><?php esc_html_e( 'Multiple pickup locations', 'zorem-local-pickup' ); ?></li>
+								<li><span class="alp-check">✓</span><?php esc_html_e( 'Local pickup appointments', 'zorem-local-pickup' ); ?></li>
+								<li><span class="alp-check">✓</span><?php esc_html_e( 'Fulfillment dashboard', 'zorem-local-pickup' ); ?></li>
+								<li><span class="alp-check">✓</span><?php esc_html_e( 'Cart & checkout customization', 'zorem-local-pickup' ); ?></li>
+								<li><span class="alp-check">✓</span><?php esc_html_e( 'Pickup discounts & fees', 'zorem-local-pickup' ); ?></li>
+								<li><span class="alp-check">✓</span><?php esc_html_e( 'Mixed orders support', 'zorem-local-pickup' ); ?></li>
+							</ul>
+							<a href="https://www.zorem.com/product/zorem-local-pickup-pro/?utm_source=wp-admin&utm_medium=ALPPRO&utm_campaign=sidebar" class="alp-pro-sidebar__btn" target="_blank"><?php esc_html_e( 'Upgrade to ALP PRO', 'zorem-local-pickup' ); ?> &rarr;</a>
+						</div>
+
+						<div class="alp_sidebar_help">
+							<div class="alp-help-icon">?</div>
+							<div class="alp-help-text">
+								<h3>Need help?</h3>
+								<p>Check our documentation or contact our support team if you have any questions.</p>
+								<a href="https://docs.zorem.com/docs/zorem-local-pickup/" class="alp-help-link" target="_blank">
+									View Documentation →
+								</a>
+							</div>
+						</div>
+
+					</div>
+					<?php endif; ?>
+				</div>
 			</div>
 		</div>
 		<?php

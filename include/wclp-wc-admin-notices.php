@@ -38,44 +38,39 @@ class WC_ALP_Admin_Notices_Under_WC_Admin {
 	*/
 	public function init() {						
 		add_action( 'alp_settings_admin_notice', array( $this, 'alp_settings_admin_notice' ) );
-		add_action( 'alp_settings_admin_footer', array( $this, 'alp_settings_admin_footer' ) );
 
-		add_action('admin_notices', array( $this, 'alp_pro178' ) );
-		add_action( 'admin_init', array( $this, 'alp_notice_dismiss178' ) );
+		add_action('admin_notices', array( $this, 'alp_pro179' ) );
+		add_action( 'admin_init', array( $this, 'alp_notice_dismiss179' ) );
 	}
 
 	public function alp_settings_admin_notice() {
 		include 'views/admin_message_panel.php';
 	}
 
-	public function alp_settings_admin_footer() {
-		include 'views/admin_footer_panel.php';
-	}
-
 	/*
 	* Dismiss admin notice for alp
 	*/
-	public function alp_notice_dismiss178() {
+	public function alp_notice_dismiss179() {
 		if ( isset( $_GET['notice-dismiss-alp'] ) ) {
 			
 			if (isset($_GET['nonce'])) {
 				$nonce = sanitize_text_field($_GET['nonce']);
 				if (wp_verify_nonce($nonce, 'alp_notice_close')) {
-					update_option('alp_notice_dismiss178', 'true');
+					update_option('alp_notice_dismiss179', 'true');
 				}
 			}
 			
 		}
 	}
 
-	public function alp_pro178() {
+	public function alp_pro179() {
 		
 		// Exclude notice from a specific page (replace 'alp_plugin_page' with your actual page slug)
 		if (isset($_GET['page']) && $_GET['page'] === 'local_pickup') {
 			return;
 		}
 
-		if ( get_option('alp_notice_dismiss178') ) {
+		if ( get_option('alp_notice_dismiss179') ) {
 			return;
 		}	
 
