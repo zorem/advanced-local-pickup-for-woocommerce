@@ -39,8 +39,8 @@ class WC_ALP_Admin_Notices_Under_WC_Admin {
 	public function init() {						
 		add_action( 'alp_settings_admin_notice', array( $this, 'alp_settings_admin_notice' ) );
 
-		add_action('admin_notices', array( $this, 'alp_pro179' ) );
-		add_action( 'admin_init', array( $this, 'alp_notice_dismiss179' ) );
+		add_action('admin_notices', array( $this, 'alp_pro180' ) );
+		add_action( 'admin_init', array( $this, 'alp_notice_dismiss180' ) );
 	}
 
 	public function alp_settings_admin_notice() {
@@ -50,27 +50,27 @@ class WC_ALP_Admin_Notices_Under_WC_Admin {
 	/*
 	* Dismiss admin notice for alp
 	*/
-	public function alp_notice_dismiss179() {
+	public function alp_notice_dismiss180() {
 		if ( isset( $_GET['notice-dismiss-alp'] ) ) {
 			
 			if (isset($_GET['nonce'])) {
 				$nonce = sanitize_text_field($_GET['nonce']);
 				if (wp_verify_nonce($nonce, 'alp_notice_close')) {
-					update_option('alp_notice_dismiss179', 'true');
+					update_option('alp_notice_dismiss180', 'true');
 				}
 			}
 			
 		}
 	}
 
-	public function alp_pro179() {
+	public function alp_pro180() {
 		
 		// Exclude notice from a specific page (replace 'alp_plugin_page' with your actual page slug)
 		if (isset($_GET['page']) && $_GET['page'] === 'local_pickup') {
 			return;
 		}
 
-		if ( get_option('alp_notice_dismiss179') ) {
+		if ( get_option('alp_notice_dismiss180') ) {
 			return;
 		}	
 
