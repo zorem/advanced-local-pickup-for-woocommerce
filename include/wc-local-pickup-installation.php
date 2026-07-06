@@ -3,13 +3,15 @@
  * ALP
  *
  * Class WC_Local_Pickup_admin
- * 
+ *
  * @version       1.0.0
  */
 
 if ( !defined( 'ABSPATH' ) ) {
 	exit;
 } // Exit if accessed directly
+
+// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.DirectDatabaseQuery.SchemaChange,WordPress.DB.PreparedSQLPlaceholders.UnquotedComplexPlaceholder,WordPress.DB.PreparedSQLPlaceholders.ReplacementsWrongNumber -- Plugin installation/migration file. All queries are one-time schema-migration operations on the plugin's own table using %1s/%2s identifier placeholders (table name is $wpdb->prefix-derived and safe). Caching is not applicable to schema changes.
 
 class WC_Local_Pickup_Install { 
 

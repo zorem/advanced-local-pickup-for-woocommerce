@@ -3,6 +3,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// phpcs:disable WordPress.Security.NonceVerification.Recommended -- Read-only preview endpoints read GET vars after capability check; write endpoints (REST) permission-check + sanitize inputs individually.
+// phpcs:disable WordPress.Security.ValidatedSanitizedInput.MissingUnslash -- Read-only display endpoints; values are output through esc_* or wp_kses_post before being echoed.
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound,WordPress.NamingConventions.PrefixAllGlobals.DynamicHooknameFound -- Customizer email/preview hooks use `self::$screen_id` (`alp_customizer_...`) which acts as the plugin prefix at runtime.
+
 class WC_Local_Pickup_Customizer {
 	
 	private static $screen_id = 'alp_customizer';
@@ -87,7 +91,8 @@ class WC_Local_Pickup_Customizer {
 	 * WC sub menu 
 	*/
 	public function register_woocommerce_menu() {
-		add_menu_page( __( self::$screen_title, 'zorem-local-pickup' ), __( self::$screen_title, 'zorem-local-pickup' ), 'manage_options', self::$screen_id, array( $this, 'react_settingsPage' ) );
+		$page_title = __( 'ALP Customizer', 'advanced-local-pickup-for-woocommerce' );
+		add_menu_page( $page_title, $page_title, 'manage_options', self::$screen_id, array( $this, 'react_settingsPage' ) );
 	}
 
 	/*
@@ -119,7 +124,7 @@ class WC_Local_Pickup_Customizer {
 	public function customizer_enqueue_scripts() {
 		
 		
-		$page = isset( $_GET['page'] ) ? sanitize_text_field($_GET['page']) : '' ;
+		$page = isset( $_GET['page'] ) ? sanitize_text_field( wp_unslash( $_GET['page'] ) ) : '' ;
 		
 		// Add condition for css & js include for admin page  
 		if ( self::$screen_id == $page ) {
@@ -201,7 +206,7 @@ class WC_Local_Pickup_Customizer {
 			echo json_encode( array('permission' => 'false') );
 			die();
 		}
-		$preview = isset($_GET['preview']) ? sanitize_text_field($_GET['preview']) : 'ready_pickup';
+		$preview = isset($_GET['preview']) ? sanitize_text_field( wp_unslash( $_GET['preview'] ) ) : 'ready_pickup';
 		echo wp_kses_post($this->get_preview_email($preview));
 		die();
 	}
@@ -327,27 +332,27 @@ class WC_Local_Pickup_Customizer {
 			
 			//panels
 			'email_content'	=> array(
-				'title'	=> esc_html__( 'Email Content', 'zorem-local-pickup' ),
+				'title'	=> esc_html__( 'Email Content', 'advanced-local-pickup-for-woocommerce' ),
 				'type'	=> 'panel',
 			),
 			'email_design'	=> array(
-				'title'	=> esc_html__( 'Email Design', 'zorem-local-pickup' ),
+				'title'	=> esc_html__( 'Email Design', 'advanced-local-pickup-for-woocommerce' ),
 				'type'	=> 'panel',
 			),
 			
 			//sub-panels
 			'widget_style' => array(
-				'title'       => esc_html__( 'Widget Style', 'zorem-local-pickup' ),
+				'title'       => esc_html__( 'Widget Style', 'advanced-local-pickup-for-woocommerce' ),
 				'type'     => 'sub-panel',
 				'parent'	=> 'email_design',
 			),
 			'widget_header' => array(
-				'title'       => esc_html__( 'Widget Header', 'zorem-local-pickup' ),
+				'title'       => esc_html__( 'Widget Header', 'advanced-local-pickup-for-woocommerce' ),
 				'type'     => 'sub-panel',
 				'parent'	=> 'email_design',
 			),
 			'pickup_location_info' => array(
-				'title'       => esc_html__( 'Pickup Location info', 'zorem-local-pickup' ),
+				'title'       => esc_html__( 'Pickup Location info', 'advanced-local-pickup-for-woocommerce' ),
 				'type'     => 'sub-panel',
 				'parent'	=> 'email_design',
 			),
@@ -355,7 +360,7 @@ class WC_Local_Pickup_Customizer {
 			//settings
 			'background_color' => array(
 				'parent'=> 'widget_style',
-				'title'    => esc_html__( 'Background Color', 'zorem-local-pickup' ),
+				'title'    => esc_html__( 'Background Color', 'advanced-local-pickup-for-woocommerce' ),
 				'type'     => 'color',
 				'default'  => !empty($pickup_instruction['background_color']) ? $pickup_instruction['background_color'] : '#f5f5f5',
 				'show'     => true,
@@ -364,7 +369,7 @@ class WC_Local_Pickup_Customizer {
 			),
 			'border_color' => array(
 				'parent'=> 'widget_style',
-				'title'    => esc_html__( 'Border Color', 'zorem-local-pickup' ),
+				'title'    => esc_html__( 'Border Color', 'advanced-local-pickup-for-woocommerce' ),
 				'type'     => 'color',
 				'default'  => !empty($pickup_instruction['border_color']) ? $pickup_instruction['border_color'] : '#e0e0e0',
 				'show'     => true,
@@ -373,7 +378,7 @@ class WC_Local_Pickup_Customizer {
 			),
 			'padding' => array(
 				'parent'=> 'widget_style',
-				'title'    => esc_html__( 'Padding', 'zorem-local-pickup' ),
+				'title'    => esc_html__( 'Padding', 'advanced-local-pickup-for-woocommerce' ),
 				'type'     => 'select',
 				'default'  => !empty($pickup_instruction['padding']) ? $pickup_instruction['padding'] : '15px',
 				'show'     => true,
@@ -391,7 +396,7 @@ class WC_Local_Pickup_Customizer {
 			),
 			'hide_widget_header' => array(
 				'parent'=> 'widget_header',
-				'title'    => esc_html__( 'Hide Widget Header', 'zorem-local-pickup' ),
+				'title'    => esc_html__( 'Hide Widget Header', 'advanced-local-pickup-for-woocommerce' ),
 				'default'  => isset($pickup_instruction['hide_widget_header']) ? $pickup_instruction['hide_widget_header'] : '0',
 				'type'     => 'checkbox',
 				'show'     => true,
@@ -400,9 +405,9 @@ class WC_Local_Pickup_Customizer {
 			),
 			'widget_header_text' => array(
 				'parent'=> 'widget_header',
-				'title'    => esc_html__( 'Widget Header Text', 'zorem-local-pickup' ),
-				'default'  => !empty($pickup_instruction['widget_header_text']) ? $pickup_instruction['widget_header_text'] : esc_html__( 'Pick up information', 'zorem-local-pickup' ),
-				'placeholder' => esc_html__( 'Pick up information', 'zorem-local-pickup' ),
+				'title'    => esc_html__( 'Widget Header Text', 'advanced-local-pickup-for-woocommerce' ),
+				'default'  => !empty($pickup_instruction['widget_header_text']) ? $pickup_instruction['widget_header_text'] : esc_html__( 'Pick up information', 'advanced-local-pickup-for-woocommerce' ),
+				'placeholder' => esc_html__( 'Pick up information', 'advanced-local-pickup-for-woocommerce' ),
 				'type'     => 'text',
 				'show'     => true,
 				'option_name' => 'pickup_instruction_customize_settings',
@@ -410,7 +415,7 @@ class WC_Local_Pickup_Customizer {
 			),
 			'hide_addres_header' => array(
 				'parent'=> 'pickup_location_info',
-				'title'    => esc_html__( 'Hide Pickup Address Header', 'zorem-local-pickup' ),
+				'title'    => esc_html__( 'Hide Pickup Address Header', 'advanced-local-pickup-for-woocommerce' ),
 				'default'  => isset($pickup_instruction['hide_addres_header']) ? $pickup_instruction['hide_addres_header'] : '0',
 				'type'     => 'checkbox',
 				'show'     => true,
@@ -419,9 +424,9 @@ class WC_Local_Pickup_Customizer {
 			),
 			'addres_header_text' => array(
 				'parent'=> 'pickup_location_info',
-				'title'    => esc_html__( 'Pickup Address Header Text', 'zorem-local-pickup' ),
-				'default'  => !empty($pickup_instruction['addres_header_text']) ? $pickup_instruction['addres_header_text'] : esc_html__( 'Pickup Address', 'zorem-local-pickup' ),
-				'placeholder' => esc_html__( 'Pickup Address', 'zorem-local-pickup' ),
+				'title'    => esc_html__( 'Pickup Address Header Text', 'advanced-local-pickup-for-woocommerce' ),
+				'default'  => !empty($pickup_instruction['addres_header_text']) ? $pickup_instruction['addres_header_text'] : esc_html__( 'Pickup Address', 'advanced-local-pickup-for-woocommerce' ),
+				'placeholder' => esc_html__( 'Pickup Address', 'advanced-local-pickup-for-woocommerce' ),
 				'type'     => 'text',
 				'show'     => true,
 				'option_name' => 'pickup_instruction_customize_settings',
@@ -429,7 +434,7 @@ class WC_Local_Pickup_Customizer {
 			),
 			'hide_hours_header' => array(
 				'parent'=> 'pickup_location_info',
-				'title'    => esc_html__( 'Hide Office Hours Header', 'zorem-local-pickup' ),
+				'title'    => esc_html__( 'Hide Office Hours Header', 'advanced-local-pickup-for-woocommerce' ),
 				'default'  => isset($pickup_instruction['hide_hours_header']) ? $pickup_instruction['hide_hours_header'] : '0',
 				'type'     => 'checkbox',
 				'show'     => true,
@@ -438,9 +443,9 @@ class WC_Local_Pickup_Customizer {
 			),
 			'header_hours_text' => array(
 				'parent'=> 'pickup_location_info',
-				'title'    => esc_html__( 'Office Hours Header Text', 'zorem-local-pickup' ),
-				'default'  => !empty($pickup_instruction['header_hours_text']) ? $pickup_instruction['header_hours_text'] : esc_html__( 'Pickup Hours', 'zorem-local-pickup' ),
-				'placeholder' => esc_html__( 'Pickup Hours', 'zorem-local-pickup' ),
+				'title'    => esc_html__( 'Office Hours Header Text', 'advanced-local-pickup-for-woocommerce' ),
+				'default'  => !empty($pickup_instruction['header_hours_text']) ? $pickup_instruction['header_hours_text'] : esc_html__( 'Pickup Hours', 'advanced-local-pickup-for-woocommerce' ),
+				'placeholder' => esc_html__( 'Pickup Hours', 'advanced-local-pickup-for-woocommerce' ),
 				'type'     => 'text',
 				'show'     => true,
 				'option_name' => 'pickup_instruction_customize_settings',
@@ -451,12 +456,12 @@ class WC_Local_Pickup_Customizer {
 		
 		//settings			
 		$email_types = array(
-			'ready_pickup'		=> esc_html__( 'Ready for Pickup', 'zorem-local-pickup' ),
-			'pickup'			=> esc_html__( 'Picked Up', 'zorem-local-pickup' ),
+			'ready_pickup'		=> esc_html__( 'Ready for Pickup', 'advanced-local-pickup-for-woocommerce' ),
+			'pickup'			=> esc_html__( 'Picked Up', 'advanced-local-pickup-for-woocommerce' ),
 		);
 		
 		$settings[ 'email_type' ] = array(
-			'title'    => esc_html__( 'Email type', 'zorem-local-pickup' ),
+			'title'    => esc_html__( 'Email type', 'advanced-local-pickup-for-woocommerce' ),
 			'type'     => 'select',
 			'default'  => $preview ? $preview : 'ready_pickup',
 			'options'  => $email_types,
@@ -480,7 +485,7 @@ class WC_Local_Pickup_Customizer {
 			
 			$settings[ $key . '_enabled' ] = array(
 				'parent'=> 'email_content',
-				'title'    => esc_html__( 'Enable email', 'zorem-local-pickup' ),
+				'title'    => esc_html__( 'Enable email', 'advanced-local-pickup-for-woocommerce' ),
 				'default'  => !empty($email_settings['enabled']) && 'no' == $email_settings['enabled'] ? 0 : 1,
 				'type'     => 'tgl-btn',
 				'show'     => true,
@@ -492,10 +497,10 @@ class WC_Local_Pickup_Customizer {
 			
 			$settings[ $key . '_recipient' ] = array(
 				'parent'=> 'email_content',
-				'title'    => esc_html__( 'Recipients', 'zorem-local-pickup' ),
-				'desc'  => esc_html__( 'add comma-seperated emails, defaults to placeholder {customer_email} ', 'zorem-local-pickup' ),
+				'title'    => esc_html__( 'Recipients', 'advanced-local-pickup-for-woocommerce' ),
+				'desc'  => esc_html__( 'add comma-seperated emails, defaults to placeholder {customer_email} ', 'advanced-local-pickup-for-woocommerce' ),
 				'default'  => !empty($email_settings['recipient']) ? $email_settings['recipient'] : '{customer_email}',
-				'placeholder' => esc_html__( 'add comma-seperated emails, defaults to placeholder {customer_email}', 'zorem-local-pickup' ),
+				'placeholder' => esc_html__( 'add comma-seperated emails, defaults to placeholder {customer_email}', 'advanced-local-pickup-for-woocommerce' ),
 				'type'     => 'text',
 				'show'     => true,
 				'option_name' => 'woocommerce_customer_' . $key . '_order_settings',
@@ -505,7 +510,7 @@ class WC_Local_Pickup_Customizer {
 			);
 			$settings[ $key . '_subject' ] = array(
 				'parent'=> 'email_content',
-				'title'    => esc_html__( 'Email Subject', 'zorem-local-pickup' ),
+				'title'    => esc_html__( 'Email Subject', 'advanced-local-pickup-for-woocommerce' ),
 				'default'  => !empty($email_settings['subject']) ? stripslashes($email_settings['subject']) : $defualt_array[$key . '_subject'],
 				'placeholder' => $defualt_array[$key . '_subject'],
 				'type'     => 'text',
@@ -518,7 +523,7 @@ class WC_Local_Pickup_Customizer {
 			
 			$settings[ $key . '_heading' ] = array(
 				'parent'=> 'email_content',
-				'title'    => esc_html__( 'Email heading', 'zorem-local-pickup' ),
+				'title'    => esc_html__( 'Email heading', 'advanced-local-pickup-for-woocommerce' ),
 				'default'  => !empty($email_settings['heading']) ? stripslashes($email_settings['heading']) : $defualt_array[$key . '_heading'],
 				'placeholder' => $defualt_array[$key . '_heading'],
 				'type'     => 'text',
@@ -531,7 +536,7 @@ class WC_Local_Pickup_Customizer {
 			
 			$settings[ $key . '_additional_content' ] = array(
 				'parent'=> 'email_content',
-				'title'    => esc_html__( 'Email content', 'zorem-local-pickup' ),
+				'title'    => esc_html__( 'Email content', 'advanced-local-pickup-for-woocommerce' ),
 				'default'  => !empty($email_settings['additional_content']) ? stripslashes($email_settings['additional_content']) : $defualt_array[$key . '_additional_content'],
 				'placeholder' => $defualt_array[$key . '_additional_content'],
 				'type'     => 'textarea',
@@ -544,7 +549,7 @@ class WC_Local_Pickup_Customizer {
 			
 			$settings[ $key . '_codeinfoblock' ] = array(
 				'parent'=> 'email_content',
-				'title'    => esc_html__( 'Available Placeholders:', 'zorem-local-pickup' ),
+				'title'    => esc_html__( 'Available Placeholders:', 'advanced-local-pickup-for-woocommerce' ),
 				'default'  => '<code>{customer_first_name}<br>{customer_last_name}<br>{site_title}<br>{order_number}</code>',
 				'type'     => 'codeinfo',
 				'show'     => true,
@@ -560,7 +565,7 @@ class WC_Local_Pickup_Customizer {
 		$wc_emails      = WC_Emails::instance();
 		$emails         = $wc_emails->get_emails();		
 
-		$email_template = isset( $_GET['preview'] ) ? sanitize_text_field($_GET['preview']) : get_option( 'orderStatus', 'ready_pickup' );
+		$email_template = isset( $_GET['preview'] ) ? sanitize_text_field( wp_unslash( $_GET['preview'] ) ) : get_option( 'orderStatus', 'ready_pickup' );
 		$preview_id = 'mockup';
 
 		$email_type = self::get_email_class_name( $email_template );
@@ -612,7 +617,7 @@ class WC_Local_Pickup_Customizer {
 				
 			} else {
 				if ( false == $email->object ) {
-					$content = '<div style="padding: 35px 40px; background-color: white;">' . __( 'This email type can not be previewed please try a different order or email type.', 'zorem-local-pickup' ) . '</div>';
+					$content = '<div style="padding: 35px 40px; background-color: white;">' . __( 'This email type can not be previewed please try a different order or email type.', 'advanced-local-pickup-for-woocommerce' ) . '</div>';
 				}
 			}
 		} else {

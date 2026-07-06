@@ -1,4 +1,5 @@
 <?php
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedClassFound -- Class extends WC_Email; WC email convention prefixes with WC_Email_ not the plugin slug.
 /**
  * Class WC_Email_Customer_Pickup_Order file.
  *
@@ -29,8 +30,8 @@ if ( ! class_exists( 'WC_Email_Customer_Pickup_Order', false ) ) :
 		public function __construct() {
 			$this->id             = 'customer_pickup_order';
 			$this->customer_email = true;
-			$this->title          = esc_html( 'Picked up order', 'zorem-local-pickup' );
-			$this->description    = esc_html( 'Picked up Order emails are sent to customers when their orders are marked picked up.', 'zorem-local-pickup' );
+			$this->title          = esc_html( 'Picked up order', 'advanced-local-pickup-for-woocommerce' );
+			$this->description    = esc_html( 'Picked up Order emails are sent to customers when their orders are marked picked up.', 'advanced-local-pickup-for-woocommerce' );
 			$this->template_html  = 'emails/pickup-order.php';
 			$this->template_plain = 'emails/plain/pickup-order.php';
 			$this->placeholders   = array(
@@ -88,7 +89,7 @@ if ( ! class_exists( 'WC_Email_Customer_Pickup_Order', false ) ) :
 		 * @return string
 		 */
 		public function get_default_subject() {
-			return wp_kses_post( 'Your order from {site_title} was picked up', 'zorem-local-pickup' );
+			return wp_kses_post( 'Your order from {site_title} was picked up', 'advanced-local-pickup-for-woocommerce' );
 		}
 
 		/**
@@ -98,7 +99,7 @@ if ( ! class_exists( 'WC_Email_Customer_Pickup_Order', false ) ) :
 		 * @return string
 		 */
 		public function get_default_heading() {
-			return wp_kses_post( "You've Got it!", 'zorem-local-pickup' );
+			return wp_kses_post( "You've Got it!", 'advanced-local-pickup-for-woocommerce' );
 		}
 
 		/**
@@ -109,7 +110,7 @@ if ( ! class_exists( 'WC_Email_Customer_Pickup_Order', false ) ) :
 		public function get_content_html() {
 			$template = $this->get_template( 'template_html' );			
 			$local_file    = $this->get_theme_template_file( $template );
-			if ( file_exists( $local_file ) && is_writable( $local_file )) {						
+			if ( file_exists( $local_file ) && wp_is_writable( $local_file )) {						
 				return wc_get_template_html(
 					$this->template_html,
 					array(
@@ -146,7 +147,7 @@ if ( ! class_exists( 'WC_Email_Customer_Pickup_Order', false ) ) :
 		public function get_content_plain() {
 			$template = $this->get_template( 'template_html' );			
 			$local_file    = $this->get_theme_template_file( $template );
-			if ( file_exists( $local_file ) && is_writable( $local_file )) {						
+			if ( file_exists( $local_file ) && wp_is_writable( $local_file )) {						
 				return wc_get_template_html(
 					$this->template_html,
 					array(
@@ -182,7 +183,7 @@ if ( ! class_exists( 'WC_Email_Customer_Pickup_Order', false ) ) :
 		 * @return string
 		 */
 		public function get_default_additional_content() {
-			return esc_html( 'Hi {customer_first_name}. Thank you for picking up your {site_title} order #{order_number}. We hope you enjoyed your shopping experience.', 'zorem-local-pickup' );
+			return esc_html( 'Hi {customer_first_name}. Thank you for picking up your {site_title} order #{order_number}. We hope you enjoyed your shopping experience.', 'advanced-local-pickup-for-woocommerce' );
 		}
 	}
 
