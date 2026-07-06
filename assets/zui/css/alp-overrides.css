@@ -1,0 +1,1755 @@
+/* ============================================================
+   ALP FREE — overrides on top of the ZUI library.
+   Modeled after ALP Pro's alp-overrides.css but trimmed to the
+   classes actually used by the free-tier views, plus the
+   `.alp-pro-*` namespace for PRO-locked patterns and the
+   `.alp-go-pro-v2` namespace for the Go Pro tab.
+
+   All rules are namespaced under `.zui-scope` so they only
+   apply inside the ALP settings shell (`#alp-settings-app`).
+   ============================================================ */
+
+/* ============================================================
+   Section header — title, sub, save button
+   ============================================================ */
+
+.zui-scope .zui-section-header__titlewrap {
+	display: inline-flex;
+	align-items: center;
+}
+/* ============================================================
+   Display Options — nested rows, inline numeric+select
+   ============================================================ */
+
+.zui-scope .zui-row__nested {
+	margin: 4px 20px 16px 38px;
+	padding: 8px 16px 4px;
+	background: rgba(15, 23, 42, 0.04);
+	border-left: 1px solid var(--zui-border);
+	border-radius: 8px;
+}
+.zui-scope textarea.zui-input {
+	height: auto;
+	min-height: 80px;
+	padding: 10px 14px;
+	line-height: 1.5;
+	resize: vertical;
+}
+.zui-scope .zui-row__nested .zui-row {
+	padding-block: 12px;
+}
+.zui-scope .zui-row__nested .zui-row + .zui-row {
+	border-top: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+.zui-scope .zui-row--inline-fields .zui-row__control {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	flex-wrap: wrap;
+}
+.zui-scope .zui-input--xs {
+	width: 64px;
+	padding: 8px 10px;
+	text-align: center;
+}
+.zui-scope .zui-select-wrap--sm .zui-select {
+	height: 36px;
+	min-height: 36px;
+	padding: 0 30px 0 12px;
+	font-size: 13px;
+	line-height: 1;
+}
+
+.zui-scope .zui-row__head .zui-row__desc {
+	margin: 4px 0 0;
+	color: var(--zui-text-muted);
+	font-size: 12.5px;
+	line-height: 1.5;
+}
+.zui-scope .zui-row__hint {
+	font-size: 13px;
+	color: var(--zui-text);
+}
+
+/* ============================================================
+   Workflow rows (Local Pickup Workflow card)
+   ============================================================ */
+
+.zui-scope .alp-workflow-row {
+	display: grid;
+	/* Explicit column widths so the locked Processing LP row aligns column
+	   for column with the editable rows. Color and Theme share the same
+	   115px width so the visible gap AFTER each one is identical. */
+	grid-template-columns: auto auto 1fr 115px 115px 130px 48px;
+	align-items: center;
+	gap: 25px;
+	padding: 18px 20px;
+	border-bottom: 1px solid var(--zui-border);
+}
+.zui-scope .alp-workflow-row:last-child {
+	border-bottom: 0;
+}
+.zui-scope .alp-workflow-row.is-disabled {
+	opacity: .55;
+}
+.zui-scope .alp-workflow-row__toggle {
+	margin: 0;
+}
+.zui-scope .alp-workflow-row__icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 44px;
+	height: 44px;
+	border-radius: 10px;
+	box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+.zui-scope .alp-workflow-row__icon .zui-icon {
+	width: 22px;
+	height: 22px;
+}
+.zui-scope .alp-workflow-row__id {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	min-width: 0;
+}
+.zui-scope .alp-workflow-row__name-row {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	min-width: 0;
+	flex-wrap: wrap;
+}
+.zui-scope .alp-workflow-row__name {
+	font-size: 14px;
+	font-weight: 700;
+	color: var(--zui-text-strong);
+	line-height: 1.3;
+}
+.zui-scope .alp-workflow-row__desc {
+	font-size: 12.5px;
+	color: var(--zui-text-muted);
+	line-height: 1.4;
+}
+/* PRO badge + lock chip sized down to sit inline next to the row name
+   without making the row taller than the editable rows. */
+.zui-scope .alp-workflow-row__pro .zui-pro-feature__lock {
+	width: 22px;
+	height: 22px;
+	border-radius: 6px;
+}
+.zui-scope .alp-workflow-row__pro .zui-pro-feature__lock .zui-icon {
+	width: 12px;
+	height: 12px;
+}
+.zui-scope .alp-workflow-row__cog-spacer {
+	display: block;
+	width: 100%;
+	height: 32px;
+}
+
+.zui-scope .alp-workflow-row__field {
+	display: grid;
+	grid-template-rows: 16px 32px;
+	row-gap: 4px;
+	align-items: center;
+	min-width: 0;
+	width: 100%;
+	box-sizing: border-box;
+}
+.zui-scope .alp-workflow-row__field-label {
+	font-size: 11px;
+	color: var(--zui-text-muted);
+	font-weight: 600;
+	letter-spacing: .02em;
+	line-height: 16px;
+	align-self: start;
+}
+.zui-scope .alp-workflow-row__field--email .send_email_label {
+	display: inline-flex !important;
+	align-items: center !important;
+	justify-content: flex-start !important;
+	gap: 8px !important;
+	font-size: 12.5px;
+	color: var(--zui-text);
+	line-height: 1;
+	height: 32px;
+	align-self: center;
+}
+.zui-scope .alp-workflow-row__field--email input[type="checkbox"] {
+	margin: 0 !important;
+}
+.zui-scope .alp-workflow-row__field--email .send_email_label .zui-checkbox__box {
+	margin: 0 !important;
+	vertical-align: middle !important;
+	flex: 0 0 18px;
+	align-self: center;
+}
+.zui-scope .alp-workflow-row__field--email .send_email_label > span:last-child {
+	line-height: 1;
+	display: inline-flex;
+	align-items: center;
+	align-self: center;
+	font-weight: 600;
+}
+
+.zui-scope .alp-workflow-row__cog {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 32px;
+	height: 32px;
+	border: 1px solid #e0e0e0;
+	border-radius: 10px;
+	background: transparent;
+	color: var(--zui-text-muted);
+	transition: background .15s ease, color .15s ease;
+}
+.zui-scope .alp-workflow-row__cog:hover {
+	background: var(--zui-bg);
+	color: var(--zui-text);
+}
+.zui-scope .alp-workflow-row__cog .zui-icon {
+	width: 16px;
+	height: 16px;
+}
+
+/* Color & Theme inputs scaled down to fit the 32px control row.
+   width: 100% lets each .zui-color-input fill its 130px field column so the
+   locked row's color chip and the editable rows' color chips render at the
+   same pixel width. */
+.zui-scope .alp-workflow-row .zui-color-input {
+	height: 32px;
+	width: 100%;
+	border-radius: var(--zui-radius-xl);
+	flex-wrap: nowrap;
+	white-space: nowrap;
+	box-sizing: border-box;
+}
+.zui-scope .alp-workflow-row .zui-color-input .zui-input {
+	height: 100%;
+	width: 100%;
+	font-size: 12px;
+	min-width: 0;
+	box-sizing: border-box;
+}
+/* Disabled color cell (locked Processing LP row) — keep the layout
+   matching the editable rows so the grid columns align. The OUTER chip
+   keeps its border/background; only the disabled text input loses its
+   focus chrome. */
+.zui-scope .alp-workflow-row.alp-pro-row-locked .zui-color-input .zui-input[disabled] {
+	cursor: not-allowed;
+	background: transparent;
+	border-color: transparent;
+}
+/* Match for the theme select — fill the 110px theme column track */
+.zui-scope .alp-workflow-row .zui-select-wrap,
+.zui-scope .alp-workflow-row .zui-select-wrap--sm {
+	width: 100%;
+}
+.zui-scope .alp-workflow-row .zui-select-wrap .zui-select,
+.zui-scope .alp-workflow-row .zui-select-wrap--sm .zui-select {
+	width: 100% !important;
+	box-sizing: border-box;
+}
+/* Trailing column (cog icon for editable rows; empty spacer for locked
+   rows now that the PRO indicator sits inline next to the row name). */
+.zui-scope .alp-workflow-row .alp-workflow-row__cog {
+	display: inline-flex;
+	justify-content: flex-end;
+	align-items: center;
+	width: 100%;
+	margin-left: 0 !important;
+}
+.zui-scope .alp-workflow-row .zui-color-dot {
+	width: 14px;
+	height: 14px;
+}
+.zui-scope .alp-workflow-row .zui-select-wrap .zui-select,
+.zui-scope .alp-workflow-row .zui-select-wrap--sm .zui-select {
+	height: 32px;
+	min-height: 32px;
+	font-size: 12px;
+	background-size: 14px;
+}
+
+/* ============================================================
+   Locations — empty state card
+   ============================================================ */
+
+.zui-scope .alp-locations-empty {
+	padding: 56px 24px;
+	text-align: center;
+	color: var(--zui-text-muted);
+}
+.zui-scope .alp-locations-empty__icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 56px;
+	height: 56px;
+	margin-bottom: 16px;
+	border-radius: 14px;
+	background: rgba(15, 23, 42, 0.05);
+	color: var(--zui-primary);
+}
+.zui-scope .alp-locations-empty__icon .zui-icon {
+	width: 28px;
+	height: 28px;
+}
+.zui-scope .alp-locations-empty__title {
+	margin: 0 0 8px;
+	font-size: 18px;
+	font-weight: 700;
+	color: var(--zui-text-strong);
+}
+.zui-scope .alp-locations-empty__desc {
+	max-width: 540px;
+	margin: 0 auto 20px;
+	font-size: 13px;
+	line-height: 1.55;
+	color: var(--zui-text-muted);
+}
+.zui-scope .alp-locations-empty__form {
+	display: inline-block;
+}
+
+/* Primary "+ Add Location" pill (used in the empty state). */
+.zui-scope .alp-btn-add-location {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 11px 18px;
+	background: var(--zui-primary);
+	color: #fff !important;
+	border: 0;
+	border-radius: var(--zui-radius-xl);
+	font-size: 13px;
+	font-weight: 700;
+	text-decoration: none;
+	box-shadow: var(--zui-shadow-sm);
+	cursor: pointer;
+	transition: background .15s ease;
+}
+.zui-scope .alp-btn-add-location:hover {
+	background: var(--zui-primary-hover);
+}
+.zui-scope .alp-btn-add-location .zui-icon {
+	width: 16px;
+	height: 16px;
+}
+
+/* ============================================================
+   Edit Pickup Location — page header + accordion cards
+   The .accordion / .panel sibling structure is kept verbatim so
+   the existing jQuery accordion handler keeps working.
+   ============================================================ */
+
+.zui-scope .alp-edit-layout {
+	gap: 12px;
+}
+.zui-scope .alp-edit-form {
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+}
+.zui-scope .alp-edit-form .alp-edit-header {
+	margin-bottom: 8px;
+}
+.zui-scope .alp-edit-form .accordion.heading.alp-edit-acc {
+	margin-top: 8px;
+}
+.zui-scope .alp-edit-form .alp-edit-header + .accordion.heading.alp-edit-acc {
+	margin-top: 0;
+}
+
+/* ----- Top header card ----- */
+.zui-scope .alp-edit-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+	padding: 22px 24px;
+	background: #fff;
+	border: 1px solid var(--zui-border);
+	border-radius: var(--zui-radius-2xl);
+	box-shadow: var(--zui-shadow-xs);
+}
+.zui-scope .alp-edit-header__main {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+}
+.zui-scope .alp-edit-header__icon {
+	flex: 0 0 auto;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 44px;
+	height: 44px;
+	border-radius: 12px;
+	background: var(--zui-primary);
+	color: #fff;
+}
+.zui-scope .alp-edit-header__icon .zui-icon {
+	width: 22px;
+	height: 22px;
+}
+.zui-scope .alp-edit-header__title {
+	margin: 0;
+	font-size: 18px;
+	font-weight: 700;
+	color: var(--zui-text-strong);
+}
+.zui-scope .alp-edit-header__sub {
+	margin: 2px 0 0;
+	font-size: 12.5px;
+	color: var(--zui-text-muted);
+	line-height: 1.45;
+}
+
+.zui-scope .alp-btn-link {
+	display: inline-flex;
+	align-items: center;
+	padding: 9px 14px;
+	background: transparent;
+	color: var(--zui-text-muted);
+	font-size: 13px;
+	font-weight: 600;
+	border: 0;
+	border-radius: var(--zui-radius-xl);
+	text-decoration: none;
+	cursor: pointer;
+}
+.zui-scope .alp-btn-link:hover {
+	color: var(--zui-text);
+	background: var(--zui-bg);
+}
+
+.zui-scope .alp-btn-save-close:hover {
+	background: var(--zui-primary-hover);
+}
+
+/* ----- Accordion + panel sibling pair styled as one card ----- */
+.zui-scope .accordion.heading.alp-edit-acc {
+	display: block;
+	position: relative;
+	padding: 18px 24px;
+	margin: 0;
+	background: #fff;
+	border: 1px solid var(--zui-border);
+	border-radius: var(--zui-radius-2xl);
+	cursor: pointer;
+	box-shadow: var(--zui-shadow-xs);
+	transition: border-color .15s ease, box-shadow .15s ease;
+}
+.zui-scope .accordion.heading.alp-edit-acc:hover {
+	border-color: rgba(15, 23, 42, 0.18);
+}
+.zui-scope .accordion.heading.alp-edit-acc.active {
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+	border-bottom-color: transparent;
+}
+.zui-scope .accordion.heading.alp-edit-acc > label {
+	display: block;
+	width: 100%;
+	margin: 0;
+	padding-right: 36px;
+	font-weight: 600;
+	color: var(--zui-text-strong);
+	cursor: pointer;
+	line-height: 1.35;
+}
+.zui-scope .accordion.heading.alp-edit-acc > label > br {
+	line-height: 0;
+}
+.zui-scope .alp-edit-acc__title {
+	display: inline-block;
+	font-size: 15px;
+	font-weight: 700;
+	color: var(--zui-text-strong);
+}
+.zui-scope .alp-edit-acc__chevron {
+	position: absolute;
+	right: 20px;
+	top: 50%;
+	transform: translateY(-50%);
+	color: #94a3b8;
+	font-size: 14px;
+	font-weight: normal;
+	width: 14px;
+	height: 14px;
+	line-height: 14px;
+	opacity: .85;
+	transition: transform .2s ease, color .15s ease;
+}
+.zui-scope .accordion.heading.alp-edit-acc.active .alp-edit-acc__chevron {
+	transform: translateY(-50%) rotate(180deg);
+	color: #64748b;
+	opacity: 1;
+}
+.zui-scope .accordion.heading.alp-edit-acc .heading-subtitle {
+	display: inline-block;
+	margin-top: 4px;
+	font-size: 12.5px !important;
+	font-weight: 500 !important;
+	color: var(--zui-text-muted) !important;
+	line-height: 1.45 !important;
+}
+
+/* Legacy admin.css line 1108 (`#wclp_setting_tab_form .accordion.heading
+   { line-height: 32px }`) + line 1526 (`.accordion.heading.premium
+   { line-height: 38px !important }`) inflate the accordion header height.
+   Reset the line-height for the ZUI redesigned accordion so the title +
+   subtitle don't render visually larger / spaced. */
+.zui-scope .accordion.heading.alp-edit-acc,
+.zui-scope #wclp_setting_tab_form .accordion.heading.alp-edit-acc,
+.zui-scope .accordion.heading.alp-edit-acc.alp-pro-locked-section {
+	line-height: 1.35 !important;
+}
+.zui-scope .accordion.heading.alp-edit-acc > label {
+	font-size: 15px !important;
+	line-height: 1.35 !important;
+}
+/* Kill the legacy 16px/22px label rule on the redesigned accordion */
+.zui-scope .accordion.heading.alp-edit-acc.premium > label,
+.zui-scope .accordion.heading.alp-edit-acc.alp-pro-locked-section > label {
+	font-size: 15px !important;
+	line-height: 1.35 !important;
+}
+
+/* Panel body — hidden by default (existing JS slideDown's it open). */
+.zui-scope .panel.options.alp-edit-panel {
+	display: none;
+	margin: 0;
+	padding: 4px 24px 22px;
+	background: #fff;
+	border-left: 1px solid var(--zui-border);
+	border-right: 1px solid var(--zui-border);
+	border-bottom: 1px solid var(--zui-border);
+	border-bottom-left-radius: var(--zui-radius-2xl);
+	border-bottom-right-radius: var(--zui-radius-2xl);
+	box-shadow: var(--zui-shadow-xs);
+}
+.zui-scope .panel.options.alp-edit-panel.active {
+	display: block;
+}
+.zui-scope .accordion.heading.alp-edit-acc.active + .panel.options.alp-edit-panel {
+	margin-top: -1px;
+	padding-top: 4px;
+}
+
+/* Hide any leftover per-accordion save button spans from the old design. */
+.zui-scope .accordion.heading.alp-edit-acc .wclp-btn,
+.zui-scope .accordion.heading.alp-edit-acc .spinner.workflow_spinner {
+	display: none !important;
+}
+
+/* ============================================================
+   PRO-locked PATTERNS — namespaced under .alp-pro-*
+   Modeled after CBR Free's `.cbr-pro-locked-card` rules with a
+   `.alp-pro-` prefix. Three flavors:
+     1. .alp-pro-row-locked   — a single row that's grayed-out
+        with a small "PRO" badge + lock icon on the right.
+     2. .alp-pro-locked-section — an entire accordion / settings
+        panel with a centered upgrade card overlay.
+     3. .alp-pro-locked-card  — the centered upgrade card itself.
+   ============================================================ */
+
+/* ---- Small PRO badge + lock icon (used inline on locked rows) ---- */
+.zui-scope .alp-pro-badge {
+	display: inline-block;
+	line-height: 1.4;
+	vertical-align: middle;
+	margin-left: 8px;
+	padding: 3px 10px;
+	background: #4f46e5;
+	color: #ffffff;
+	font-size: 10px;
+	font-weight: 700;
+	border-radius: 999px;
+	text-transform: uppercase;
+	letter-spacing: .04em;
+}
+.zui-scope .alp-pro-lock {
+	display: inline-flex;
+	align-items: center;
+	vertical-align: middle;
+	margin-left: 6px;
+	color: #94a3b8;
+}
+.zui-scope .alp-pro-lock .dashicons {
+	font-size: 16px !important;
+	width: 16px !important;
+	height: 16px !important;
+	line-height: 16px !important;
+	color: #94a3b8 !important;
+}
+/* The legacy admin.css ships `.accordion.heading .dashicons.dashicons-arrow-right-alt2:before { font-size: 30px }`
+   and admin.js adds the `dashicons-arrow-right-alt2` class to every dashicon
+   inside any closed accordion — including the .alp-pro-lock icon. Beat the
+   legacy `:before` font-size so the lock stays 16px when the section is closed. */
+.zui-scope .alp-pro-lock .dashicons.dashicons-arrow-right-alt2:before,
+.zui-scope .alp-pro-lock .dashicons:before {
+	font-size: 16px !important;
+	color: #94a3b8 !important;
+}
+/* Same fix for the accordion chevron itself — keep it at 14px even when the
+   legacy `dashicons-arrow-right-alt2` class is toggled on it. */
+.zui-scope .alp-edit-acc__chevron.dashicons.dashicons-arrow-right-alt2:before,
+.zui-scope .alp-edit-acc__chevron.dashicons.dashicons-arrow-down-alt2:before,
+.zui-scope .alp-edit-acc__chevron:before {
+	font-size: 14px !important;
+	color: #94a3b8 !important;
+	margin: 0 !important;
+}
+.zui-scope .alp-pro-row-actions {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	margin-left: 10px;
+}
+
+/* ---- Locked single row (Display Options PRO toggles, Workflow Processing LP) ---- */
+.zui-scope .alp-pro-row-locked {
+	position: relative;
+	background: rgba(15, 23, 42, 0.025);
+	cursor: not-allowed;
+}
+.zui-scope .alp-pro-row-locked .zui-row__label,
+.zui-scope .alp-pro-row-locked .zui-row__desc {
+	color: var(--zui-text-muted) !important;
+}
+.zui-scope .alp-pro-row-locked .zui-toggle,
+.zui-scope .alp-pro-row-locked .zui-input,
+.zui-scope .alp-pro-row-locked .zui-select,
+.zui-scope .alp-pro-row-locked input[type="text"],
+.zui-scope .alp-pro-row-locked input[type="number"],
+.zui-scope .alp-pro-row-locked input[type="color"],
+.zui-scope .alp-pro-row-locked select,
+.zui-scope .alp-pro-row-locked textarea {
+	pointer-events: none !important;
+	opacity: .65;
+}
+/* Workflow rows: keep the status name / icon / colour vibrant so the
+   locked row reads "this is what you get in PRO" rather than "disabled". */
+.zui-scope .alp-workflow-row.alp-pro-row-locked .alp-workflow-row__name {
+	color: var(--zui-text-strong) !important;
+}
+.zui-scope .alp-workflow-row.alp-pro-row-locked .alp-workflow-row__desc {
+	color: var(--zui-text-muted) !important;
+}
+.zui-scope .alp-workflow-row.alp-pro-row-locked .alp-workflow-row__icon {
+	opacity: 1;
+}
+
+/* ---- Centered upgrade card overlay (Dashboard / Cart / Catalog sections) ---- */
+.zui-scope .alp-pro-locked-section {
+	position: relative;
+}
+.zui-scope .zui-card.alp-pro-locked-section {
+	padding: 0;
+	overflow: hidden;
+}
+.zui-scope .alp-pro-locked-card {
+	padding: 56px 24px;
+	text-align: center;
+}
+.zui-scope .alp-pro-locked-card__lock {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 56px;
+	height: 56px;
+	margin-bottom: 18px;
+	border-radius: 14px;
+	background: rgba(79, 70, 229, 0.10);
+	color: #4f46e5;
+}
+.zui-scope .alp-pro-locked-card__lock .zui-icon {
+	width: 26px;
+	height: 26px;
+}
+.zui-scope .alp-pro-locked-card__title {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	margin: 0 0 12px;
+	font-size: 20px;
+	font-weight: 700;
+	color: var(--zui-text);
+}
+.zui-scope .alp-pro-locked-card__title .alp-pro-badge {
+	margin-left: 0;
+}
+.zui-scope .alp-pro-locked-card__desc {
+	max-width: 720px;
+	margin: 0 auto 20px;
+	color: var(--zui-text-muted);
+	font-size: 13px;
+	line-height: 1.6;
+}
+
+/* ---- "Upgrade to PRO" CTA button on every locked overlay ---- */
+.zui-scope .zui-btn-locked {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 11px 22px;
+	background: #4f46e5;
+	color: #ffffff !important;
+	border-radius: 8px;
+	font-weight: 600;
+	font-size: 13px;
+	text-decoration: none;
+	box-shadow: var(--zui-shadow-sm);
+	cursor: pointer;
+	border: 0;
+	transition: background .15s ease;
+}
+.zui-scope .zui-btn-locked:hover {
+	background: #4338ca;
+	color: #ffffff !important;
+}
+
+/* ---- Preview of PRO fields below the upgrade card ---- */
+.zui-scope .zui-card.alp-pro-preview {
+	position: relative;
+	margin-top: 16px;
+	overflow: hidden;
+	pointer-events: none;
+}
+.zui-scope .alp-pro-preview__content {
+	opacity: .85;
+	user-select: none;
+}
+.zui-scope .alp-pro-preview__content .zui-row__control,
+.zui-scope .alp-pro-preview__content .zui-input,
+.zui-scope .alp-pro-preview__content .zui-select,
+.zui-scope .alp-pro-preview__content .zui-toggle,
+.zui-scope .alp-pro-preview__content select,
+.zui-scope .alp-pro-preview__content textarea {
+	pointer-events: none !important;
+}
+.zui-scope .alp-pro-preview__overlay {
+	position: absolute;
+	top: 14px;
+	right: 14px;
+	z-index: 2;
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 6px 12px;
+	background: rgba(79, 70, 229, 0.10);
+	color: #4f46e5;
+	border: 1px solid rgba(79, 70, 229, 0.20);
+	border-radius: 999px;
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: .04em;
+	text-transform: uppercase;
+	pointer-events: none;
+}
+.zui-scope .alp-pro-preview__overlay-icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+.zui-scope .alp-pro-preview__overlay-icon .zui-icon {
+	width: 13px;
+	height: 13px;
+}
+
+/* ---- Locked PRO accordion inside the edit-location form ---- */
+.zui-scope .accordion.heading.alp-edit-acc.alp-pro-locked-section {
+	background: var(--zui-bg);
+}
+.zui-scope .accordion.heading.alp-edit-acc.alp-pro-locked-section .alp-edit-acc__title {
+	color: var(--zui-text-muted);
+}
+.zui-scope .accordion.heading.alp-edit-acc.alp-pro-locked-section .zui-pro-feature {
+	margin-left: 8px;
+	padding: 0;
+	vertical-align: middle;
+}
+.zui-scope .panel.options.alp-edit-panel.alp-pro-locked-section {
+	padding: 0;
+}
+.zui-scope .panel.options.alp-edit-panel.alp-pro-locked-section .zui-lock-section {
+	padding: 44px 24px;
+	border: 0;
+	box-shadow: none;
+	border-radius: 0;
+}
+
+/* ============================================================
+   Quick Help card art tweaks — match ALP Pro
+   ============================================================ */
+
+/* (Library handles the rest. Nothing custom needed for free.) */
+
+/* ============================================================
+   GO PRO TAB — `.alp-go-pro-v2` namespace
+   Copied from CBR Free's `.cbr-go-pro-v2` rules and rebranded
+   with the `.alp-go-pro-v2` prefix.
+   ============================================================ */
+
+.alp-go-pro-v2 .gopro-hero {
+	text-align: center;
+	padding: 50px 20px 40px;
+}
+.alp-go-pro-v2 .gopro-hero h1 {
+	font-size: 34px;
+	font-weight: 700;
+	color: #1a1a2e;
+	margin: 0 0 12px;
+	line-height: 1.25;
+}
+.alp-go-pro-v2 .gopro-hero p {
+	font-size: 15px;
+	color: #555;
+	max-width: 620px;
+	margin: 0 auto;
+	line-height: 1.6;
+}
+.alp-go-pro-v2 .gopro-hero p strong {
+	color: #333;
+}
+.alp-go-pro-v2 .gopro-hero p a {
+	color: #2563eb;
+	text-decoration: none;
+	font-weight: 600;
+}
+
+/* Comparison table */
+.alp-go-pro-v2 .gopro-comparison {
+	margin: 0 auto 30px;
+	background: #fff;
+	border: 1px solid #e5e7eb;
+	border-radius: 8px;
+	overflow: hidden;
+}
+.alp-go-pro-v2 .gopro-comp-header {
+	display: grid;
+	grid-template-columns: 1fr 180px 180px;
+	align-items: center;
+	background: #f9fafb;
+	border-bottom: 1px solid #e5e7eb;
+}
+.alp-go-pro-v2 .gopro-comp-header-label {
+	padding: 16px 24px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	font-size: 15px;
+	color: #1a1a2e;
+}
+.alp-go-pro-v2 .gopro-comp-header-col {
+	text-align: center;
+	padding: 16px 12px;
+}
+.alp-go-pro-v2 .gopro-comp-header-col .comp-header-badge {
+	display: inline-block;
+	font-size: 9px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	padding: 2px 8px;
+	border-radius: 4px;
+	margin-bottom: 4px;
+}
+.alp-go-pro-v2 .gopro-comp-header-col .comp-header-badge.badge-current {
+	background: transparent;
+	color: #9ca3af;
+}
+.alp-go-pro-v2 .gopro-comp-header-col .comp-header-badge.badge-recommended {
+	background: #16a34a;
+	color: #fff;
+}
+.alp-go-pro-v2 .gopro-comp-header-col .comp-header-title {
+	display: block;
+	font-size: 15px;
+	font-weight: 700;
+	color: #1a1a2e;
+}
+.alp-go-pro-v2 .gopro-comp-header-col.is-pro {
+	background: #f8fdf9;
+}
+
+.alp-go-pro-v2 .gopro-comp-row {
+	display: grid;
+	grid-template-columns: 1fr 180px 180px;
+	border-bottom: 1px solid #f0f1f3;
+	align-items: center;
+}
+.alp-go-pro-v2 .gopro-comp-row:last-child {
+	border-bottom: 0;
+}
+.alp-go-pro-v2 .gopro-comp-feature {
+	padding: 18px 24px;
+}
+.alp-go-pro-v2 .gopro-comp-feature strong {
+	display: block;
+	font-size: 14px;
+	font-weight: 700;
+	color: #1a1a2e;
+	margin-bottom: 2px;
+}
+.alp-go-pro-v2 .gopro-comp-feature span {
+	font-size: 12px;
+	color: #9ca3af;
+	line-height: 1.4;
+}
+.alp-go-pro-v2 .gopro-comp-cell {
+	text-align: center;
+	padding: 18px 12px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 4px;
+}
+.alp-go-pro-v2 .gopro-comp-cell .comp-icon {
+	width: 28px;
+	height: 28px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.alp-go-pro-v2 .gopro-comp-cell .comp-icon svg {
+	width: 20px;
+	height: 20px;
+}
+.alp-go-pro-v2 .gopro-comp-cell .comp-icon.icon-x {
+	background: #4b5563;
+}
+.alp-go-pro-v2 .gopro-comp-cell .comp-icon.icon-check {
+	background: #dcfce7;
+}
+.alp-go-pro-v2 .gopro-comp-cell .comp-status {
+	font-size: 11px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.03em;
+	color: #9ca3af;
+}
+.alp-go-pro-v2 .gopro-comp-cell.is-pro {
+	background: #f8fdf9;
+}
+.alp-go-pro-v2 .gopro-comp-cell.is-pro .comp-status {
+	color: #16a34a;
+	font-size: 12px;
+}
+
+/* CTA */
+.alp-go-pro-v2 .gopro-cta {
+	text-align: center;
+	padding: 0 20px 10px;
+}
+.alp-go-pro-v2 .gopro-cta-btn {
+	display: inline-block;
+	background: #4f46e5;
+	color: #fff !important;
+	font-size: 15px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	padding: 14px 40px;
+	border-radius: 8px;
+	text-decoration: none;
+	transition: background 0.2s;
+	border: none;
+	cursor: pointer;
+}
+.alp-go-pro-v2 .gopro-cta-btn:hover {
+	background: #4338ca;
+	color: #fff !important;
+}
+.alp-go-pro-v2 .gopro-cta-sub {
+	margin-top: 14px;
+	font-size: 13px;
+	color: #9ca3af;
+}
+
+@media (max-width: 680px) {
+	.alp-go-pro-v2 .gopro-hero h1 {
+		font-size: 26px;
+	}
+	.alp-go-pro-v2 .gopro-comp-header {
+		grid-template-columns: 1fr 100px 100px;
+	}
+	.alp-go-pro-v2 .gopro-comp-header-label {
+		padding: 12px;
+		font-size: 9px;
+	}
+	.alp-go-pro-v2 .gopro-comp-header-col .comp-header-title {
+		font-size: 12px;
+	}
+	.alp-go-pro-v2 .gopro-comp-row {
+		grid-template-columns: 1fr 100px 100px;
+	}
+	.alp-go-pro-v2 .gopro-comp-feature {
+		padding: 14px 12px;
+	}
+	.alp-go-pro-v2 .gopro-comp-feature strong {
+		font-size: 12px;
+	}
+	.alp-go-pro-v2 .gopro-comp-feature span {
+		font-size: 10px;
+	}
+	.alp-go-pro-v2 .gopro-comp-cell {
+		padding: 14px 6px;
+	}
+	.alp-go-pro-v2 .gopro-comp-cell .comp-status {
+		font-size: 9px;
+	}
+}
+
+/* ============================================================
+   Sidebar layout: keep labels on a single line (long titles like
+   "Products Catalog Options" used to wrap awkwardly), reserve room
+   for the trailing PRO badge.
+   ============================================================ */
+.zui-scope .zui-sidebar__item {
+	position: relative;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	min-width: 0;
+}
+.zui-scope .zui-sidebar__item .zui-sidebar__label {
+	flex: 1 1 auto;
+	min-width: 0;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.zui-scope .zui-sidebar__item.is-locked .zui-sidebar__label {
+	color: var(--zui-text-muted, #64748b);
+}
+.zui-scope .zui-sidebar__item.is-locked .zui-sidebar__icon {
+	color: var(--zui-text-muted, #64748b);
+	opacity: .8;
+}
+
+/* PRO tag — mirrors the library `.zui-pro-feature__badge` so all PRO
+   indicators read the same. Layout-specific (margin-left:auto) keeps the
+   pill pinned to the right of the sidebar row. */
+.zui-scope .zui-sidebar__pro-tag {
+	flex: 0 0 auto;
+	margin-left: auto;
+	display: inline-block;
+	padding: 2px 8px;
+	background: var(--zui-primary);
+	color: #fff;
+	border-radius: 4px;
+	font-size: 11px;
+	font-weight: 800;
+	letter-spacing: .05em;
+	line-height: 1.3;
+	font-family: inherit;
+}
+.zui-scope .zui-sidebar__item.is-locked.is-active {
+	background: color-mix(in srgb, var(--zui-primary) 8%, transparent);
+}
+
+/* ============================================================
+   Legacy reset: the old radio-toggle UI relied on
+   `section.wclp_tab_section { display: none }` from admin.css to
+   hide inactive tabs. Server-side tab routing now means there's only
+   ever one of these sections in the DOM at a time — force it
+   visible so the Pickup Location form (which still wraps in
+   .wclp_tab_section in some legacy paths) renders.
+   ============================================================ */
+section.wclp_tab_section,
+.wclp_tab_section,
+.wclp_tab_inner_container,
+.wclp_outer_form_table {
+	display: block !important;
+}
+
+/* ============================================================
+   Toast / snackbar (ZUI-style — single live toast, auto-dismiss)
+   ============================================================ */
+.alp-toast-stack {
+	position: fixed;
+	top: 56px;
+	right: 24px;
+	z-index: 100000;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	pointer-events: none;
+}
+.alp-toast {
+	display: inline-flex;
+	align-items: center;
+	gap: 12px;
+	min-width: 280px;
+	max-width: 380px;
+	padding: 12px 14px 12px 12px;
+	background: #fff;
+	border: 1px solid #e2e8f0;
+	border-radius: 12px;
+	box-shadow: 0 12px 28px rgba(15, 23, 42, .12), 0 2px 6px rgba(15, 23, 42, .06);
+	pointer-events: auto;
+	opacity: 0;
+	transform: translateY(-8px);
+	transition: opacity .18s ease, transform .18s ease;
+	position: relative;
+	overflow: hidden;
+	animation: alpToastIn .18s ease forwards;
+}
+@keyframes alpToastIn {
+	to { opacity: 1; transform: translateY(0); }
+}
+.alp-toast.is-leaving {
+	opacity: 0;
+	transform: translateY(-8px);
+}
+.alp-toast__icon {
+	flex: 0 0 auto;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 26px;
+	height: 26px;
+	border-radius: 999px;
+}
+.alp-toast__icon svg {
+	width: 16px;
+	height: 16px;
+}
+.alp-toast--success .alp-toast__icon {
+	background: #dcfce7;
+	color: #16a34a;
+}
+.alp-toast--error .alp-toast__icon {
+	background: #fee2e2;
+	color: #dc2626;
+}
+.alp-toast__msg {
+	flex: 1 1 auto;
+	font-size: 13.5px;
+	font-weight: 600;
+	color: #0f172a;
+	line-height: 1.35;
+}
+.alp-toast__close {
+	flex: 0 0 auto;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 24px;
+	height: 24px;
+	background: transparent;
+	border: 0;
+	border-radius: 6px;
+	color: #64748b;
+	cursor: pointer;
+	transition: background .15s ease, color .15s ease;
+}
+.alp-toast__close:hover {
+	background: #f1f5f9;
+	color: #0f172a;
+}
+.alp-toast__close svg {
+	width: 14px;
+	height: 14px;
+}
+.alp-toast__progress {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	height: 2px;
+	width: 100%;
+	background: currentColor;
+	transform-origin: left;
+	animation: alpToastProgress 3.2s linear forwards;
+}
+.alp-toast--success .alp-toast__progress { color: #16a34a; }
+.alp-toast--error   .alp-toast__progress { color: #dc2626; }
+@keyframes alpToastProgress {
+	from { transform: scaleX(1); }
+	to   { transform: scaleX(0); }
+}
+
+/* Hide the legacy `.snackbar-logs` stack — admin.js now appends to
+   `.alp-toast-stack` instead. */
+.snackbar-logs { display: none !important; }
+
+/* ============================================================
+   Legacy reset: kill the 20px horizontal margin on
+   .wclp_admin_content. The library's .zui-layout already applies
+   the canonical 25px padding around the settings shell, so the
+   extra margin was just nudging the whole panel inward.
+   ============================================================ */
+.zui-scope .wclp_admin_content,
+.wclp_admin_content {
+	margin: 0 !important;
+}
+
+/* ============================================================
+   Edit Pickup Location — accordion panel ZUI form patterns
+   Mirrors the Pro plugin styling so the free form uses the
+   same .zui-row, two-column grid, and day-card layout.
+   ============================================================ */
+
+/* Generic accordion-body row: divider, padding, label/control vertical stack */
+.zui-scope .alp-edit-panel .alp-edit-row {
+	padding: 18px 0 !important;
+	border-bottom: 1px solid var(--zui-divider) !important;
+	background: transparent !important;
+	min-height: 0 !important;
+}
+.zui-scope .alp-edit-panel .alp-edit-row:last-child {
+	border-bottom: 0 !important;
+}
+.zui-scope .alp-edit-panel .alp-edit-row .zui-row__label {
+	font-size: 13px;
+	font-weight: 600;
+	color: var(--zui-text-strong);
+}
+.zui-scope .alp-edit-panel .alp-edit-row .zui-row__desc {
+	margin: 4px 0 0;
+	color: var(--zui-text-muted);
+	font-size: 12.5px;
+	line-height: 1.5;
+}
+/* Required-field asterisk after label */
+.zui-scope .alp-required {
+	color: #ef4444;
+	margin-left: 2px;
+	font-weight: 700;
+}
+
+/* Two-column grid for Address (and similar) field rows */
+.zui-scope .alp-edit-fieldgrid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 0 28px;
+	padding-top: 8px;
+}
+.zui-scope .alp-edit-fieldgrid > .alp-edit-row {
+	border-bottom: 1px solid var(--zui-divider) !important;
+}
+@media (max-width: 920px) {
+	.zui-scope .alp-edit-fieldgrid {
+		grid-template-columns: 1fr;
+	}
+}
+/* In the two-column grid, the row stacks vertically (label above control) */
+.zui-scope .alp-edit-fieldgrid .alp-edit-row {
+	flex-direction: column;
+	align-items: stretch;
+}
+
+/* Country / State select2 integration — select2 hides the native <select>
+   and renders its own `.select2-container` sibling. We need:
+     1. Full-width container so it fills the .zui-row__control column.
+     2. Hide our .zui-select-chevron (select2 paints its own arrow).
+     3. Style the .select2-selection chrome to match the .zui-input shell. */
+.zui-scope .alp-edit-row .zui-select-wrap {
+	width: 100%;
+	position: relative;
+}
+.zui-scope .alp-edit-row .zui-select-wrap .wc-enhanced-select {
+	width: 100%;
+}
+/* When select2 is initialised on a Country/State select, hide our chevron
+   (select2 paints its own ".select2-selection__arrow"). */
+.zui-scope .alp-edit-row .zui-select-wrap:has(.select2-container) > .zui-select-chevron {
+	display: none !important;
+}
+.zui-scope .alp-edit-row .zui-select-wrap .select2-container {
+	width: 100% !important;
+	min-width: 100% !important;
+}
+.zui-scope .alp-edit-row .select2-container--default .select2-selection--single {
+	height: 42px !important;
+	min-height: 42px !important;
+	padding: 0 12px !important;
+	background: #fff !important;
+	border: 1px solid var(--zui-border) !important;
+	border-radius: var(--zui-radius-xl) !important;
+	box-shadow: none !important;
+	display: flex !important;
+	align-items: center !important;
+}
+.zui-scope .alp-edit-row .select2-container--default .select2-selection--single .select2-selection__rendered {
+	line-height: 1 !important;
+	padding: 0 !important;
+	color: var(--zui-text) !important;
+	font-size: 14px !important;
+}
+.zui-scope .alp-edit-row .select2-container--default .select2-selection--single .select2-selection__arrow {
+	height: 100% !important;
+	right: 12px !important;
+	top: 0 !important;
+}
+.zui-scope .alp-edit-row .select2-container--default.select2-container--focus .select2-selection--single,
+.zui-scope .alp-edit-row .select2-container--default.select2-container--open .select2-selection--single {
+	border-color: var(--zui-primary) !important;
+	box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12) !important;
+}
+
+/* ============================================================
+   Edit Pickup Location — Business Hours day-card grid
+   ============================================================ */
+
+.zui-scope .alp-workhours-grid.alp-workhours-grid--cards {
+	display: grid !important;
+	grid-template-columns: repeat(7, minmax(0, 1fr));
+	flex-direction: initial;
+	gap: 10px;
+	margin-top: 10px;
+	width: 100%;
+}
+@media (max-width: 1100px) {
+	.zui-scope .alp-workhours-grid.alp-workhours-grid--cards {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+}
+@media (max-width: 640px) {
+	.zui-scope .alp-workhours-grid.alp-workhours-grid--cards {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+/* Reset the legacy `.wplp_pickup_duration { display:inline-block; width:13.5%; height:110px }` from admin.css */
+.zui-scope .wplp_pickup_duration.alp-workhours-card {
+	vertical-align: initial !important;
+	display: flex !important;
+	width: auto !important;
+	min-width: 0 !important;
+	height: auto !important;
+}
+.zui-scope .alp-workhours-card {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	padding: 14px 14px 16px;
+	border: 1px solid var(--zui-border, #e2e8f0) !important;
+	border-radius: 12px;
+	background: #fff;
+	transition: border-color .15s ease, background .15s ease, box-shadow .15s ease;
+	box-sizing: border-box;
+	position: relative;
+}
+.zui-scope .alp-workhours-card.is-on {
+	border-color: var(--zui-border, #e2e8f0) !important;
+	background: #fff;
+}
+.zui-scope .alp-workhours-card:not(.is-on) {
+	background: #f8fafc;
+}
+
+.zui-scope .alp-workhours-card__head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+}
+.zui-scope .alp-workhours-card__day {
+	font-size: 13px;
+	font-weight: 700;
+	color: var(--zui-text-strong, #0f172a);
+	letter-spacing: .01em;
+}
+.zui-scope .alp-workhours-card:not(.is-on) .alp-workhours-card__day {
+	color: var(--zui-text-muted, #64748b);
+}
+.zui-scope .alp-workhours-card__toggle {
+	margin: 0;
+	flex: 0 0 auto;
+}
+
+.zui-scope .alp-workhours-card__hours {
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	gap: 6px;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	position: relative;
+}
+.zui-scope .alp-workhours-card__pill {
+	display: inline-flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	width: 100% !important;
+	margin: 0 !important;
+	padding: 7px 10px !important;
+	border: 1px solid var(--zui-border, #e2e8f0) !important;
+	border-radius: 8px !important;
+	background: #f8fafc !important;
+	color: var(--zui-text, #0f172a) !important;
+	font-size: 12px !important;
+	font-weight: 600 !important;
+	line-height: 1 !important;
+	cursor: pointer !important;
+	white-space: nowrap !important;
+	transition: border-color .15s ease, background .15s ease, color .15s ease !important;
+	box-sizing: border-box !important;
+}
+.zui-scope .alp-workhours-card.is-on .alp-workhours-card__pill {
+	color: var(--zui-text, #0f172a) !important;
+	border-color: var(--zui-border, #e2e8f0) !important;
+	background: #f1f5f9 !important;
+}
+.zui-scope .alp-workhours-card__pill:hover {
+	border-color: #cbd5e1 !important;
+	background: #f1f5f9 !important;
+}
+.zui-scope .alp-workhours-card__pill--empty {
+	border-style: dashed !important;
+	color: var(--zui-text-muted, #64748b) !important;
+	background: transparent !important;
+}
+.zui-scope .alp-workhours-card__pill--empty .dashicons {
+	font-size: 16px !important;
+	width: 16px !important;
+	height: 16px !important;
+	line-height: 1 !important;
+}
+
+/* Legacy `.wplp_pickup_duration fieldset` borders & padding — reset for the
+   new card layout (legacy admin.css line 1301–1320 ships heavy chrome). */
+.zui-scope .wplp_pickup_duration.alp-workhours-card fieldset {
+	border: 0 !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	background: transparent !important;
+	box-shadow: none !important;
+}
+
+/* Hide legacy day label injected by admin.css before the toggle */
+.zui-scope .alp-workhours-card .pickup_days_lable {
+	display: none !important;
+}
+
+/* ============================================================
+   Edit Pickup Location — Business Hours popup modal
+   Centered backdrop modal matching the Pro reference.
+   ============================================================ */
+.zui-scope .popupwrapper.alp-hours-popup {
+	position: fixed !important;
+	top: 0 !important;
+	left: 0 !important;
+	right: 0 !important;
+	bottom: 0 !important;
+	width: 100vw !important;
+	height: 100vh !important;
+	background: rgba(15, 23, 42, .55) !important;
+	-webkit-backdrop-filter: blur(4px);
+	backdrop-filter: blur(4px);
+	display: flex;
+	align-items: center !important;
+	justify-content: center !important;
+	padding: 24px !important;
+	border: 0 !important;
+	z-index: 99999 !important;
+	text-align: left !important;
+}
+.zui-scope .popupwrapper.alp-hours-popup::after { content: none !important; }
+.zui-scope .alp-hours-popup .popupclose { display: none !important; }
+.zui-scope .alp-hours-popup .popuprow.alp-hours-popup__card {
+	display: block !important;
+	width: 400px !important;
+	min-width: 400px !important;
+	max-width: 92vw !important;
+	max-height: 88vh !important;
+	overflow: visible !important;
+	background: #fff !important;
+	border: 1px solid var(--zui-border) !important;
+	border-radius: 16px !important;
+	box-shadow: 0 24px 64px rgba(15, 23, 42, .28) !important;
+	padding: 22px 24px 20px !important;
+	margin: 0 auto !important;
+	vertical-align: initial !important;
+	box-sizing: border-box !important;
+	text-align: left !important;
+	position: relative !important;
+	z-index: 1 !important;
+}
+@media (max-width: 520px) {
+	.zui-scope .alp-hours-popup .popuprow.alp-hours-popup__card {
+		width: 92vw !important;
+		min-width: 0 !important;
+	}
+}
+
+.zui-scope .alp-hours-popup__head {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 16px;
+	margin-bottom: 16px;
+}
+.zui-scope .alp-hours-popup__heading {
+	flex: 1;
+	min-width: 0;
+	text-align: center;
+}
+.zui-scope .alp-hours-popup__title {
+	margin: 0;
+	font-size: 17px;
+	font-weight: 700;
+	color: var(--zui-text-strong);
+}
+.zui-scope .alp-hours-popup__sub {
+	margin: 4px 0 0;
+	font-size: 12.5px;
+	color: var(--zui-text-muted);
+}
+.zui-scope .alp-hours-popup__close {
+	display: inline-flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	width: 28px !important;
+	height: 28px !important;
+	padding: 0 !important;
+	background: rgba(15, 23, 42, 0.04) !important;
+	border: 0 !important;
+	border-radius: 8px !important;
+	color: var(--zui-text-muted) !important;
+	cursor: pointer !important;
+	position: static !important;
+	font-size: 18px !important;
+}
+.zui-scope .alp-hours-popup__close::before {
+	font-size: 18px !important;
+}
+.zui-scope .alp-hours-popup__close:hover {
+	background: rgba(15, 23, 42, 0.08) !important;
+	color: var(--zui-text) !important;
+}
+
+.zui-scope .alp-hours-popup__col-labels {
+	display: grid;
+	grid-template-columns: 1fr auto 1fr auto;
+	gap: 10px;
+	margin-bottom: 8px;
+	font-size: 11px;
+	font-weight: 700;
+	color: var(--zui-text-muted);
+	text-transform: uppercase;
+	letter-spacing: .05em;
+}
+.zui-scope .alp-hours-popup__body {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+.zui-scope .alp-hours-popup__row {
+	display: grid !important;
+	grid-template-columns: 1fr auto 1fr auto !important;
+	gap: 10px !important;
+	align-items: center !important;
+	margin: 0 !important;
+}
+.zui-scope .alp-hours-popup__row.hide-select-box { display: none !important; }
+.zui-scope .alp-hours-popup__sep {
+	font-size: 12px;
+	color: var(--zui-text-muted);
+}
+.zui-scope .alp-hours-popup__field {
+	width: 100%;
+	position: relative;
+	display: block;
+}
+.zui-scope .alp-hours-popup__field .zui-select {
+	min-height: 38px !important;
+	height: 38px !important;
+	width: 100% !important;
+	padding: 0 32px 0 12px !important;
+	background: #fff !important;
+	border: 1px solid var(--zui-border) !important;
+	border-radius: 8px !important;
+	font-size: 13px !important;
+	color: var(--zui-text) !important;
+	appearance: none !important;
+	-webkit-appearance: none !important;
+	-moz-appearance: none !important;
+	background-image: none !important;
+}
+.zui-scope .alp-hours-popup__field .zui-select-chevron {
+	position: absolute;
+	right: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 14px;
+	height: 14px;
+	color: var(--zui-text-muted);
+	pointer-events: none;
+}
+.zui-scope .alp-hours-popup__field .zui-select-chevron .zui-icon {
+	width: 14px;
+	height: 14px;
+}
+.zui-scope .alp-hours-popup__field .zui-select:focus {
+	outline: none !important;
+	border-color: var(--zui-primary) !important;
+	box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12) !important;
+}
+.zui-scope .alp-hours-popup__trash {
+	cursor: pointer;
+	color: var(--zui-text-muted);
+	font-size: 18px !important;
+	width: 18px !important;
+	height: 18px !important;
+	transition: color .15s ease;
+}
+.zui-scope .alp-hours-popup__trash:hover { color: #ef4444; }
+
+.zui-scope .alp-hours-popup__actions {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	margin-top: 18px;
+}
+.zui-scope .alp-hours-popup__btn,
+.zui-scope .alp-hours-popup .wclp-apply {
+	display: inline-flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	width: 100% !important;
+	margin: 0 !important;
+	background: var(--zui-primary) !important;
+	color: #fff !important;
+	border: 0 !important;
+	border-radius: 10px !important;
+	font-size: 13px !important;
+	font-weight: 700 !important;
+	letter-spacing: .04em !important;
+	text-transform: uppercase !important;
+	cursor: pointer !important;
+	box-shadow: none !important;
+	transition: background .15s ease !important;
+}
+.zui-scope .alp-hours-popup__btn:hover,
+.zui-scope .alp-hours-popup .wclp-apply:hover {
+	background: var(--zui-primary-hover) !important;
+}
+
+/* Reset the legacy `.popuprow .wclp-apply` styling cascade so our button works */
+.zui-scope .alp-hours-popup .add-interval {
+	margin: 4px 0 0 !important;
+	font-size: 12.5px !important;
+	color: var(--zui-primary) !important;
+	cursor: pointer !important;
+	font-weight: 600 !important;
+}
+
+/* ============================================================
+   Reset legacy admin.css form-table styling that bleeds into the
+   new ZUI form rows (label widths, input chrome, etc.)
+   ============================================================ */
+.zui-scope .alp-edit-panel input[type="text"].zui-input,
+.zui-scope .alp-edit-panel input[type="number"].zui-input,
+.zui-scope .alp-edit-panel textarea.zui-input {
+	width: 100%;
+	max-width: 100%;
+}
+
+/* ============================================================
+   PRO upsell card placed at the bottom of the settings content
+   (free plugin only). Mirrors CBR Free's `.cbr-pro-sidebar__upgrade`
+   look but lives below the form, not inside the sidebar.
+   ============================================================ */
+.zui-scope .alp-pro-upgrade-card {
+	max-width: 360px;
+	margin: 24px 0 0;
+	padding: 22px 20px 18px;
+	background: linear-gradient(180deg, #eef2ff 0%, #ffffff 100%);
+	border: 1px solid #c7d2fe;
+	border-radius: 14px;
+	box-shadow: var(--zui-shadow-xs);
+	text-align: center;
+}
+.zui-scope .alp-pro-upgrade-card__icon {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 10px;
+}
+.zui-scope .alp-pro-upgrade-card__icon img {
+	width: 40px;
+	height: 40px;
+}
+.zui-scope .alp-pro-upgrade-card__title {
+	font-size: 14px;
+	font-weight: 700;
+	color: #4f46e5;
+	line-height: 1.4;
+	margin: 0 0 8px;
+}
+.zui-scope .alp-pro-upgrade-card__desc {
+	font-size: 12.5px;
+	color: var(--zui-text-muted);
+	line-height: 1.5;
+	margin: 0 0 12px;
+}
+.zui-scope .alp-pro-upgrade-card__features {
+	list-style: none;
+	padding: 0;
+	margin: 0 0 14px;
+	text-align: left;
+}
+.zui-scope .alp-pro-upgrade-card__features li {
+	display: flex;
+	gap: 8px;
+	font-size: 12px;
+	color: var(--zui-text);
+	margin-bottom: 6px;
+	line-height: 1.4;
+}
+.zui-scope .alp-pro-upgrade-card .alp-check {
+	color: #16a34a;
+	font-weight: 700;
+	flex-shrink: 0;
+}
+.zui-scope .alp-pro-upgrade-card__btn {
+	display: inline-block;
+	width: 100%;
+	padding: 10px 14px;
+	background: #4f46e5;
+	color: #fff !important;
+	font-weight: 600;
+	font-size: 13px;
+	border-radius: 8px;
+	text-decoration: none;
+	box-shadow: 0 1px 2px rgba(79, 70, 229, .25);
+	transition: background .15s ease;
+}
+.zui-scope .alp-pro-upgrade-card__btn:hover {
+	background: #4338ca;
+	color: #fff !important;
+}
+
+/* ============================================================
+   Save button — visibly disabled (greyed out) while saving so
+   the user can see the click was registered. The Saving... label
+   stays inside the button; only the colour / cursor / pointer
+   change to communicate the "in progress" state.
+   ============================================================ */
+.zui-scope .zui-savebtn.is-saving,
+.zui-scope .zui-savebtn[disabled],
+.zui-scope .zui-savebtn:disabled {
+	background: #94a3b8 !important;
+	color: #fff !important;
+	border-color: #94a3b8 !important;
+	cursor: not-allowed !important;
+	opacity: .8 !important;
+	pointer-events: none;
+	box-shadow: none !important;
+}
+.zui-scope .zui-savebtn.is-saving:hover,
+.zui-scope .zui-savebtn[disabled]:hover,
+.zui-scope .zui-savebtn:disabled:hover {
+	background: #94a3b8 !important;
+	color: #fff !important;
+}

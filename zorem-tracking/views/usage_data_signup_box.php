@@ -1,3 +1,4 @@
+<?php defined( 'ABSPATH' ) || exit; ?>
 <div class="zorem-layout popupwrapper" style="text-align: left !important;">
 	<div id="ast_usagedata_connect" class="ud-box-container">
 		<div class="ud-content">

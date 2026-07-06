@@ -732,10 +732,12 @@ section.wclp_tab_section {
 
 #wclp_ready_pickup_status_label_color,
 #wclp_pickup_status_label_color,
+#wclp_processing_lp_status_label_color,
 #wclp_select_primary_color,
 #wclp_select_border_color {
-	width: 80px;
+	width: 60px;
 	line-height: 20px;
+    font-weight: 600;
 }
 
 #wclp_ready_pickup_status_label_font_color,
@@ -745,6 +747,7 @@ section.wclp_tab_section {
 	min-width: 90px;
 	min-height: 30px;
 	line-height: 28px;
+	font-weight: 600;
 	margin: 0 5px;
 }
 
@@ -844,7 +847,6 @@ section.wclp_tab_section {
 .wclp_tab_section .wclp_tab_inner_container table.form-table textarea {
 	border-color: #e0e0e0;
 	font-size: 13px;
-	background-color: #fafafa;
 }
 
 .wclp_tab_section .wclp_tab_inner_container table.form-table select,
