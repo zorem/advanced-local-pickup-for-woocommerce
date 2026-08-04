@@ -84,7 +84,7 @@
 	grid-template-columns: auto auto 1fr 115px 115px 130px 48px;
 	align-items: center;
 	gap: 25px;
-	padding: 18px 20px;
+	padding: 24px 32px;
 	border-bottom: 1px solid var(--zui-border);
 }
 .zui-scope .alp-workflow-row:last-child {
@@ -197,6 +197,7 @@
 
 .zui-scope .alp-workflow-row__cog {
 	display: inline-flex;
+	margin-left: 30px;
 	align-items: center;
 	justify-content: center;
 	width: 32px;
@@ -256,13 +257,6 @@
 }
 /* Trailing column (cog icon for editable rows; empty spacer for locked
    rows now that the PRO indicator sits inline next to the row name). */
-.zui-scope .alp-workflow-row .alp-workflow-row__cog {
-	display: inline-flex;
-	justify-content: flex-end;
-	align-items: center;
-	width: 100%;
-	margin-left: 0 !important;
-}
 .zui-scope .alp-workflow-row .zui-color-dot {
 	width: 14px;
 	height: 14px;

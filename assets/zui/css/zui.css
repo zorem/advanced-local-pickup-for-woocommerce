@@ -58,9 +58,8 @@
 @import url("./components/lock-section.css");
 @import url("./components/pro-feature.css");
 
-/* ---- ALP-specific consumers (from deferred Phase 2) ---- */
-@import url("./components/color-input.css");
-@import url("./components/upsell.css");
+/* ---- Collapsibles ---- */
+@import url("./components/accordion.css");
 
 /* ---- Overlays ---- */
 @import url("./components/menu.css");
@@ -69,6 +68,7 @@
 @import url("./components/snackbar.css");
 @import url("./components/loader.css");
 @import url("./components/notice.css");
+@import url("./components/plugin-notice.css");
 
 /* ---- License page (cross-plugin shared template) ---- */
 @import url("./components/lic-page.css");
@@ -95,3 +95,7 @@
    @import url("./components/table.css");           // data tables
    @import url("./components/textarea.css");        // multi-line input
    ================================================================ */
+
+/* ---- ALP-specific consumers (from deferred Phase 2) ---- */
+@import url("./components/color-input.css");
+@import url("./components/upsell.css");
