@@ -64,7 +64,7 @@
 
 .zui-scope .zui-select-chevron {
 	position: absolute;
-	inset-inline-end: 18px;
+	inset-inline-end: 12px;
 	top: 50%;
 	transform: translateY(-50%);
 	color: var(--zui-text-muted);

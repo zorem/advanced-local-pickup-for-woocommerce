@@ -17,7 +17,7 @@
 	align-items: center;
 	gap: var(--zui-space-xs);
 	height: var(--zui-control-h);
-	padding: 9px;
+	padding: 0 var(--zui-space-xs);
 	background: var(--zui-surface);
 	border: 1px solid var(--zui-border);
 	border-radius: var(--zui-radius-md);

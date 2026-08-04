@@ -14,11 +14,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Per-slug emblem icons (lucide path data) come from the library's icon
-// registry — assets/zui/icons.php is included so we can call zui_get_icon()
+// registry — assets/zui/icons.php is included so we can call \Zorem\UI\get_icon()
 // inside the Powerful Add-ons grid below. Without this, every `'img'`-less
 // addon card would render an empty logo tile.
 $alp_zui_dir = wc_local_pickup()->get_plugin_path() . '/assets/zui';
-if ( ! function_exists( 'zui_get_icon' ) && file_exists( $alp_zui_dir . '/icons.php' ) ) {
+if ( ! function_exists( 'Zorem\UI\get_icon' ) && file_exists( $alp_zui_dir . '/icons.php' ) ) {
 	require_once $alp_zui_dir . '/icons.php';
 }
 
@@ -327,8 +327,8 @@ $alp_comp_features = array(
 										?>
 										<img src="<?php echo esc_url( $addon['img'] ); ?>" alt="<?php echo esc_attr( $addon['title'] ); ?>" loading="lazy">
 										<?php
-									} elseif ( function_exists( 'zui_get_icon' ) ) {
-										echo zui_get_icon( $addon['icon'] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- trusted static SVG.
+									} elseif ( function_exists( 'Zorem\UI\get_icon' ) ) {
+										echo \Zorem\UI\get_icon( $addon['icon'] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- trusted static SVG.
 									}
 									?>
 								</span>

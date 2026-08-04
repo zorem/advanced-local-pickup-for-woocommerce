@@ -5,7 +5,7 @@ Tags: woocommerce, local pickup, in store pickup, shipping, shipping options
 Requires at least: 5.5
 Tested up to: 7.0
 Requires PHP: 7.0
-Stable tag: 1.8.0.1
+Stable tag: 1.9.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -70,6 +70,13 @@ Learn how to set up and customize the plugin with tutorials and code snippets in
 
 
 == Changelog ==
+
+= 1.9.1 =
+* Dev – Tested with WooCommerce 10.9.4 and WordPress 7.0.2.
+
+= 1.9.0 =
+* Improved – Upgrade the Settings page design.
+* Dev – Tested with WooCommerce 10.9.3 and WordPress 7.0.
 
 = 1.8.0 =
 * Fix - Resolved PHP fatal error when no pickup locations exist in the database.
