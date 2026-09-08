@@ -6,13 +6,13 @@
 * Description: Enhance your WooCommerce store's local pickup service with Zorem Local Pickup. This powerful tool expands on the standard Local Pickup shipping method, offering a streamlined and efficient way to manage in-store pickups. Simplify your process and improve customer satisfaction with Zorem Local Pickup.
 * Author: zorem
 * Author URI: https://www.zorem.com/
-* Version: 1.9.1
+* Version: 1.9.2
 * License: GPLv2 or later
 * License URI: https://www.gnu.org/licenses/gpl-2.0.html
 * Text Domain: advanced-local-pickup-for-woocommerce
 * Domain Path: /lang/
 * WC requires at least: 4.0
-* WC tested up to: 10.9.4
+* WC tested up to: 11.1.0
 * Requires Plugins: woocommerce
 */
 
@@ -32,7 +32,7 @@ class Woocommerce_Local_Pickup {
 	 *
 	 * @var string
 	 */
-	public $version = '1.9.1';
+	public $version = '1.9.2';
 	public $admin;
 	public $install;
 	public $table;
