@@ -160,21 +160,84 @@ class WC_Local_Pickup_Customizer {
 		register_rest_route( self::$screen_id, 'settings', array(
 			'methods'  => 'GET',
 			'callback' => [$this, 'return_json_sucess_settings_route_api'],
-			'permission_callback' => '__return_true',
+			'permission_callback' => [$this, 'rest_permission_check'],
 		));
 
 		register_rest_route( self::$screen_id, 'store/update', array(
 			'methods'				=> 'POST',
 			'callback'				=> [$this, 'update_store_settings'],
-			'permission_callback'	=> '__return_true',
+			'permission_callback'	=> [$this, 'rest_permission_check'],
 		));
 
 		register_rest_route( self::$screen_id, 'send-test-email', array(
 			'methods'				=> 'POST',
 			'callback'				=> [$this, 'send_test_email_func'],
-			'permission_callback'	=> '__return_true',
+			'permission_callback'	=> [$this, 'rest_permission_check'],
 		));
 
+	}
+
+	/*
+	 * REST permission check for Customizer routes.
+	 * Restricts customizer settings and test-email endpoints to users
+	 * who can manage WooCommerce (shop managers / admins).
+	 *
+	 * The standard path is WP REST cookie auth (browser sends X-WP-Nonce
+	 * header alongside login cookies). As a safety net we also accept the
+	 * nonce when the JS layer accidentally passes it inside the request body
+	 * (e.g. {headers: {"x-wp-nonce": ...}} as the axios "data" argument).
+	*/
+	public function rest_permission_check( $request ) {
+
+		if ( is_user_logged_in() && current_user_can( 'manage_woocommerce' ) ) {
+			return true;
+		}
+
+		$nonce = $this->extract_rest_nonce( $request );
+		if ( $nonce && wp_verify_nonce( $nonce, 'wp_rest' ) ) {
+			$cookie_user_id = wp_validate_auth_cookie( '', 'logged_in' );
+			if ( $cookie_user_id ) {
+				wp_set_current_user( $cookie_user_id );
+				if ( current_user_can( 'manage_woocommerce' ) ) {
+					return true;
+				}
+			}
+		}
+
+		return new WP_Error(
+			'rest_forbidden',
+			esc_html__( 'You do not have permission to access this endpoint.', 'zorem-local-pickup' ),
+			array( 'status' => rest_authorization_required_code() )
+		);
+	}
+
+	/*
+	 * Pull the REST nonce out of a request, checking the header first and
+	 * then a couple of body fallbacks used by the customizer JS.
+	*/
+	private function extract_rest_nonce( $request ) {
+
+		$nonce = $request->get_header( 'X-WP-Nonce' );
+		if ( ! empty( $nonce ) ) {
+			return $nonce;
+		}
+
+		$nonce = $request->get_param( 'rest_nonce' );
+		if ( ! empty( $nonce ) ) {
+			return $nonce;
+		}
+
+		$headers_param = $request->get_param( 'headers' );
+		if ( is_array( $headers_param ) ) {
+			if ( isset( $headers_param['x-wp-nonce'] ) ) {
+				return $headers_param['x-wp-nonce'];
+			}
+			if ( isset( $headers_param['X-WP-Nonce'] ) ) {
+				return $headers_param['X-WP-Nonce'];
+			}
+		}
+
+		return '';
 	}
 
 	/*

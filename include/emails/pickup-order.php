@@ -108,35 +108,40 @@ if ( ! class_exists( 'WC_Email_Customer_Pickup_Order', false ) ) :
 		 * @return string
 		 */
 		public function get_content_html() {
-			$template = $this->get_template( 'template_html' );			
-			$local_file    = $this->get_theme_template_file( $template );
-			if ( file_exists( $local_file ) && wp_is_writable( $local_file )) {						
-				return wc_get_template_html(
-					$this->template_html,
-					array(
-						'order'         => $this->object,
-						'email_heading' => $this->get_heading(),
-						'additional_content' => $this->get_additional_content(),
-						'sent_to_admin' => false,
-						'plain_text'    => false,
-						'email'         => $this,
-					)
-				);
-			} else {	
-				return wc_get_template_html(
-					'emails/pickup-order.php',
-					array(
-						'order'              => $this->object,
-						'email_heading'      => $this->get_heading(),
-						'additional_content' => $this->get_additional_content(),
-						'sent_to_admin'      => false,
-						'plain_text'         => false,
-						'email'              => $this,
-					),
-					'woocommerce-local-pickup/', 
-					wc_local_pickup()->get_plugin_path() . '/templates/'
-				);
+			$template   = $this->get_template( 'template_html' );
+			$local_file = $this->get_theme_template_file( $template );
+
+			$args = array(
+				'order'              => $this->object,
+				'email_heading'      => $this->get_heading(),
+				'additional_content' => $this->get_additional_content(),
+				'sent_to_admin'      => false,
+				'plain_text'         => false,
+				'email'              => $this,
+			);
+
+			// If the active theme provides an override, use it — but never let a
+			// stale/incompatible override (e.g. copied from an older or Pro build
+			// that references a class which no longer exists) fatal the email or
+			// its customizer preview. Discard any partial output and fall back to
+			// the plugin's own bundled template.
+			if ( file_exists( $local_file ) && wp_is_writable( $local_file ) ) {
+				$ob_level = ob_get_level();
+				try {
+					return wc_get_template_html( $this->template_html, $args );
+				} catch ( \Throwable $e ) {
+					while ( ob_get_level() > $ob_level ) {
+						ob_end_clean();
+					}
+				}
 			}
+
+			return wc_get_template_html(
+				'emails/pickup-order.php',
+				$args,
+				'woocommerce-local-pickup/',
+				wc_local_pickup()->get_plugin_path() . '/templates/'
+			);
 		}
 
 		/**
@@ -145,35 +150,37 @@ if ( ! class_exists( 'WC_Email_Customer_Pickup_Order', false ) ) :
 		 * @return string
 		 */
 		public function get_content_plain() {
-			$template = $this->get_template( 'template_html' );			
-			$local_file    = $this->get_theme_template_file( $template );
-			if ( file_exists( $local_file ) && wp_is_writable( $local_file )) {						
-				return wc_get_template_html(
-					$this->template_html,
-					array(
-						'order'         => $this->object,
-						'email_heading' => $this->get_heading(),
-						'additional_content' => $this->get_additional_content(),
-						'sent_to_admin' => false,
-						'plain_text'    => false,
-						'email'         => $this,
-					)
-				);
-			} else {	
-				return wc_get_template_html(
-					'emails/pickup-order.php',
-					array(
-						'order'              => $this->object,
-						'email_heading'      => $this->get_heading(),
-						'additional_content' => $this->get_additional_content(),
-						'sent_to_admin'      => false,
-						'plain_text'         => false,
-						'email'              => $this,
-					),
-					'woocommerce-local-pickup/', 
-					wc_local_pickup()->get_plugin_path() . '/templates/'
-				);
+			$template   = $this->get_template( 'template_html' );
+			$local_file = $this->get_theme_template_file( $template );
+
+			$args = array(
+				'order'              => $this->object,
+				'email_heading'      => $this->get_heading(),
+				'additional_content' => $this->get_additional_content(),
+				'sent_to_admin'      => false,
+				'plain_text'         => false,
+				'email'              => $this,
+			);
+
+			// Same resilience as get_content_html(): a broken/stale theme override
+			// must not fatal — fall back to the plugin's bundled template.
+			if ( file_exists( $local_file ) && wp_is_writable( $local_file ) ) {
+				$ob_level = ob_get_level();
+				try {
+					return wc_get_template_html( $this->template_html, $args );
+				} catch ( \Throwable $e ) {
+					while ( ob_get_level() > $ob_level ) {
+						ob_end_clean();
+					}
+				}
 			}
+
+			return wc_get_template_html(
+				'emails/pickup-order.php',
+				$args,
+				'woocommerce-local-pickup/',
+				wc_local_pickup()->get_plugin_path() . '/templates/'
+			);
 		}
 
 		/**

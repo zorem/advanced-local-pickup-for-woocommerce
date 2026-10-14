@@ -1,20 +1,22 @@
-=== Zorem Local Pickup for WooCommerce ===
+=== Advanced Local Pickup for WooCommerce – Click & Collect, In-Store Pickup ===
 Contributors: zorem,gaurav1092,eranzorem,virendesai
-Tags: local pickup, click and collect, in-store pickup, woocommerce, shipping
+Tags: local pickup, click and collect, in-store pickup, ready for pickup, pickup notifications
 Requires at least: 5.5
-Tested up to: 7.1
-Stable tag: 1.9.2
+Tested up to: 7.1.3
+Stable tag: 1.9.4
 Requires PHP: 7.0
 WC requires at least: 5.0
-WC tested up to: 10.1.0
+WC tested up to: 11.2.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Add a complete local pickup workflow to WooCommerce. Custom order statuses, automated pickup notifications, and pickup instructions — free.
+Manage in-store pickups, notify customers & streamline every order from one place. Click & collect for WooCommerce with ready-for-pickup emails.
 
 == Description ==
 
-**Zorem Local Pickup** extends WooCommerce's default Local Pickup shipping method into a full click-and-collect fulfillment workflow — with dedicated order statuses, automated customer notifications, and customizable pickup instructions.
+**Manage in-store pickups, notify customers, and streamline every order — from one place.**
+
+**Advanced Local Pickup for WooCommerce (ALP)** extends WooCommerce's default Local Pickup shipping method into a full click-and-collect fulfillment workflow — with dedicated order statuses, automated customer notifications, and customizable pickup instructions.
 
 Out of the box, WooCommerce Local Pickup has no way to tell customers their order is ready for collection, no pickup-specific order status, and no mechanism to share pickup instructions. This plugin fixes all of that, giving you and your customers a clear, professional pickup experience from order placement to collection.
 
@@ -42,7 +44,7 @@ No complex setup. Works with your existing WooCommerce Local Pickup configuratio
 
 = Free vs PRO — What's the Difference? =
 
-The free version covers single-location pickup workflows. ALP PRO is built for stores with multiple locations, appointment scheduling, and advanced fulfillment needs.
+The free version covers single-location pickup workflows. ALP PRO is a complete BOPIS fulfillment system — multiple locations, curbside pickup, appointment scheduling, QR code handoff and a fulfillment dashboard.
 
 **ALP Free includes:**
 
@@ -56,25 +58,48 @@ The free version covers single-location pickup workflows. ALP PRO is built for s
 
 **ALP PRO adds:**
 
-* **Multiple pickup locations** — Add and manage unlimited pickup points, each with its own address, hours, instructions, and contact details.
-* **Pickup appointment scheduling** — Let customers choose a pickup date and time slot during checkout, with configurable availability per location.
-* **Split work hours by day** — Define different opening hours for each day of the week per location.
+* **Multiple pickup locations** — Add and manage unlimited pickup points, each with its own address, hours, instructions and contact details.
+* **Curbside pickup mode** — Enable curbside per location. Customers choose curbside at checkout and enter their vehicle make, colour and licence plate, then tap "I've Arrived" when they pull up — your staff are notified in real time.
+* **QR code pickup handoff** — Every pickup order generates a unique QR code in the customer's order confirmation. Staff scan it to confirm collection.
+* **Mobile admin scanner** — Scan pickup QR codes from any phone, with a full audit trail of timestamp, staff member and location.
+* **Fulfillment dashboard with Today's Pickup Board** — A dedicated "Today" tab showing every pickup scheduled for the current day.
+* **Pickup appointment scheduling** — Let customers reserve a date and time slot at checkout, with configurable slot lengths (15, 30 or 60 minutes) per location.
+* **Per-location business hours and holiday blackouts** — Different opening hours for each day of the week, plus closure dates, per location.
+* **Per-location inventory control** — Offer pickup only where the item is actually in stock.
+* **Map-based pickup location selector** — An interactive map with a pin for each location and Google's "Use My Location" support.
+* **Google Maps integration** — Sort pickup locations by distance from the customer's address.
 * **Restrict pickup locations by product or category** — Assign specific products or categories to specific pickup locations only.
-* **Mixed pickup + shipping orders** — Support orders where some items are shipped and others are picked up in the same transaction.
-* **Per-item pickup from different locations** — Allow different items in one order to be picked up from different locations.
-* **Location-specific email notifications** — Send Ready for Pickup emails from the specific location handling the order, with that location's details.
-* **Pickup discounts** — Offer a discount or fee per pickup location to incentivize in-store collection.
+* **Per-location pickup fees or discounts** — Charge or discount per location to steer demand between stores.
+* **Mixed pickup + shipping orders** — Some items collected in store and others shipped, in the same order.
+* **Per-item pickup location** — Different items in one order collected from different locations, each with its own appointment.
+* **Customers can change pickup after ordering** — Customers update their pickup location or appointment time through a secure link, without raising a support ticket.
 * **Force local pickup** — Make local pickup the only available shipping method for specific products or categories.
 * **Display pickup availability messages** — Show customers when pickup is available before they reach checkout.
-* **Google Maps integration** — Sort pickup locations by distance from the customer's address.
+* **Automated pickup notifications by email and SMS** — Status notifications fire automatically at every step of the pickup workflow.
+* **Location-specific email notifications** — Ready for Pickup emails sent from the location handling the order, with that location's details.
+* **WooCommerce Block Checkout support** — Full support for the WooCommerce Checkout Block.
 * **Custom email templates** — Advanced pickup email styling and layout customization.
 * **Priority support** — Faster, dedicated assistance from the Zorem team.
 
 👉 [Get ALP PRO](https://www.zorem.com/product/zorem-local-pickup-pro/)
 
+= Who Uses Advanced Local Pickup =
+
+Any WooCommerce store that lets customers collect their orders in person:
+
+* **Restaurants, cafés and bakeries** — run order-ahead and collection without handing margin to a third-party delivery app.
+* **Grocery stores, butchers and farm shops** — let customers reserve fresh stock online and collect the same day.
+* **Breweries, wineries and bottle shops** — age-restricted goods that have to be handed over in person.
+* **Florists and gift shops** — same-day collection for time-sensitive orders.
+* **Pharmacies and health stores** — product collection with a clear ready-for-pickup notification.
+* **Bike shops, hardware stores and garden centres** — bulky items customers would rather collect themselves.
+* **Clothing and footwear boutiques** — reserve online, try in store.
+* **Electronics and hobby retailers** — high-value items customers prefer not to risk in transit.
+* **BOPIS and ship-from-store retailers** — buy online, pick up in store, on top of your existing WooCommerce setup.
+
 = Compatible With =
 
-Zorem Local Pickup is tested and compatible with:
+Advanced Local Pickup is tested and compatible with:
 
 * **Email customizers** — Kadence WooMail, YayMail, WP HTML Mail
 * **SMS notifications** — SMS for WooCommerce
@@ -87,7 +112,7 @@ Zorem Local Pickup is tested and compatible with:
 
 = Translations =
 
-Zorem Local Pickup is fully translatable. Current translations include English, German, Spanish, French, Hebrew, and Italian.
+Advanced Local Pickup is fully translatable. Current translations include English, German, Spanish, French, Hebrew, and Italian.
 
 [Translate into your language →](https://translate.wordpress.org/projects/wp-plugins/advanced-local-pickup-for-woocommerce)
 
@@ -108,7 +133,7 @@ Explore the full catalog at [zorem.com →](https://www.zorem.com/)
 
 == Installation ==
 
-1. Go to **Plugins > Add New** in your WordPress admin and search for "Zorem Local Pickup".
+1. Go to **Plugins > Add New** in your WordPress admin and search for "Advanced Local Pickup".
 2. Click **Install Now**, then **Activate**.
 3. Go to **WooCommerce > Local Pickup** to configure your pickup location and notification settings.
 4. Set your store name, address, opening hours, and pickup instructions.
@@ -116,11 +141,19 @@ Explore the full catalog at [zorem.com →](https://www.zorem.com/)
 
 Alternatively, upload the `advanced-local-pickup-for-woocommerce` folder to `/wp-content/plugins/` and activate through the Plugins menu.
 
+== Screenshots ==
+
+1. The Ready for Pickup email your customer receives — pickup address, opening hours and order details, with the subject, heading and content all editable in the live preview customizer.
+2. In-store pickup instructions on the order received page, shown the moment a customer finishes checkout so they know exactly where and when to collect.
+3. A complete click & collect workflow — the Ready for Pickup and Picked Up order statuses, each with its own colour and its own automatic customer email.
+4. Set your pickup location once: store name, address and business hours appear automatically in every pickup notification and on the customer's order page.
+5. Choose where pickup details are displayed — My Account order history, the order received page, and the processing order email.
+
 == Frequently Asked Questions ==
 
 = How is this different from the built-in WooCommerce Local Pickup? =
 
-WooCommerce's built-in Local Pickup is a shipping method only — it has no order statuses for pickup, no way to notify customers when their order is ready for collection, and no mechanism to share pickup instructions. Zorem Local Pickup adds a complete fulfillment workflow on top: dedicated Ready for Pickup and Picked Up statuses, automated customer emails, and customizable pickup instructions — all for free.
+WooCommerce's built-in Local Pickup is a shipping method only — it has no order statuses for pickup, no way to notify customers when their order is ready for collection, and no mechanism to share pickup instructions. Advanced Local Pickup adds a complete fulfillment workflow on top: dedicated Ready for Pickup and Picked Up statuses, automated customer emails, and customizable pickup instructions — all for free.
 
 = How do customers know their order is ready to collect? =
 
@@ -150,9 +183,9 @@ Mixed pickup + shipping orders (where some items are collected in-store and othe
 
 Yes. Pickup instructions can be added to subscription renewal emails. The plugin is compatible with WooCommerce Subscriptions.
 
-= Is Zorem Local Pickup compatible with HPOS? =
+= Is Advanced Local Pickup compatible with HPOS? =
 
-Yes. Zorem Local Pickup is fully compatible with WooCommerce High-Performance Order Storage (custom order tables).
+Yes. Advanced Local Pickup is fully compatible with WooCommerce High-Performance Order Storage (custom order tables).
 
 = Does it work with WPML for multilingual stores? =
 
@@ -160,9 +193,39 @@ Yes. The pickup instructions text is translatable via WPML. All plugin strings a
 
 = Can I change multiple orders to Ready for Pickup at once? =
 
-Yes. Zorem Local Pickup adds bulk order actions to the WooCommerce orders list, so you can select multiple orders and change their status to Ready for Pickup or Picked Up in one action.
+Yes. Advanced Local Pickup adds bulk order actions to the WooCommerce orders list, so you can select multiple orders and change their status to Ready for Pickup or Picked Up in one action.
+
+= Does Advanced Local Pickup support curbside pickup? =
+
+Curbside pickup is available in [ALP PRO](https://www.zorem.com/product/zorem-local-pickup-pro/), where it can be enabled per location. Customers choose curbside at checkout and enter their vehicle make, colour and licence plate, then tap "I've Arrived" when they pull up, notifying your staff in real time. The free version covers in-store collection at a single pickup location, with the Ready for Pickup and Picked Up statuses and their automated customer emails.
+
+= Does this support BOPIS (buy online, pick up in store)? =
+
+Yes — BOPIS is exactly what this plugin adds to WooCommerce. Customers buy online and choose Local Pickup at checkout, you mark the order Ready for Pickup, and they are emailed your address, opening hours and pickup instructions automatically. The free version handles a single store; multi-store BOPIS is available in [ALP PRO](https://www.zorem.com/product/zorem-local-pickup-pro/).
+
+= Can staff scan a QR code to confirm a pickup? =
+
+QR code handoff is available in [ALP PRO](https://www.zorem.com/product/zorem-local-pickup-pro/). Each pickup order generates a unique QR code in the customer's order confirmation, and staff scan it from any phone to confirm collection — with a full audit trail of timestamp, staff member and location. In the free version you confirm collection by changing the order status to Picked Up, manually or in bulk.
+
+= Which order statuses does the plugin add? =
+
+Two: **Ready for Pickup** and **Picked Up**. Both appear in the WooCommerce order status dropdown, in bulk actions on the orders list, and in order status reports, and each has its own customizable customer email.
+
+= Can I show pickup instructions on the order received (Thank You) page? =
+
+Yes. Pickup instructions can be displayed on the order received page straight after checkout, and optionally in the Processing order email, so customers know where and when to collect before the order is even ready.
 
 == Changelog ==
+
+= 1.9.4 =
+* Improved – [Security] ALP Free: check customizer for unauthenticated REST routes (same as AST PRO).
+* Improved – Bump "Tested up to" WordPress version to 7.1 — Local Pickup Free.
+* Enhancement – Add an in-plugin upgrade surface matching the AST pattern.
+* Dev – Tested with WooCommerce 10.2.1 and WordPress 7.1.3.
+
+= 1.9.3 =
+* Improved – Renamed the plugin to Advanced Local Pickup for WooCommerce, matching the plugin slug and Advanced Local Pickup PRO. The plugin slug, settings and all existing data are unchanged.
+* Improved – Updated the plugin readme with expanded use cases, new FAQs and clearer Free vs PRO information.
 
 = 1.9.2 =
 * Dev – Tested with WooCommerce 10.1.0 and WordPress 7.1.

@@ -140,7 +140,7 @@ class WC_Local_Pickup_Admin {
 							</span>
 							<span class="zui-brand__name">ALP</span>
 							<span class="zui-brand__badge zui-brand__badge--free"><?php esc_html_e( 'FREE', 'advanced-local-pickup-for-woocommerce' ); ?></span>
-							<span class="zui-brand__tagline"><?php esc_html_e( 'Zorem Local Pickup', 'advanced-local-pickup-for-woocommerce' ); ?></span>
+							<span class="zui-brand__tagline"><?php esc_html_e( 'Advanced Local Pickup', 'advanced-local-pickup-for-woocommerce' ); ?></span>
 						</div>
 					</div>
 					<div class="zui-header-actions">

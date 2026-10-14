@@ -22,7 +22,7 @@ if ( ! function_exists( 'Zorem\UI\get_icon' ) && file_exists( $alp_zui_dir . '/i
 	require_once $alp_zui_dir . '/icons.php';
 }
 
-$alp_gopro_url = 'https://www.zorem.com/product/zorem-local-pickup-pro/?utm_source=wp-admin&utm_medium=ALPFREE&utm_campaign=GoPro';
+$alp_gopro_url = alp_pro_upgrade_url( 'go-pro-tab' );
 
 $alp_comp_features = array(
 	array(
