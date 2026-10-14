@@ -110,7 +110,7 @@ $alp_sidebar_icons = array(
 );
 
 // Upgrade URL (used by every locked section).
-$alp_upgrade_url = 'https://www.zorem.com/product/zorem-local-pickup-pro/?utm_source=wp-admin&utm_medium=ALPFREE&utm_campaign=settings-lock';
+$alp_upgrade_url = alp_pro_upgrade_url( 'settings-lock' );
 
 // Sections that have editable content (Save button rendered only on these).
 $alp_editable_sections = array( 'display-options', 'local-pickup-workflow' );
@@ -194,6 +194,18 @@ $alp_locked_copy = array(
 				<span class="zui-quickhelp__check">&#10003;</span>
 			</div>
 		</div>
+
+		<?php $alp_review_url = 'https://wordpress.org/support/plugin/advanced-local-pickup-for-woocommerce/reviews/#new-post'; ?>
+		<?php if ( $alp_review_url ) : ?>
+		<div class="zui-quickhelp alp-review-card">
+			<h4 class="zui-quickhelp__title"><?php esc_html_e( 'Enjoying Zorem Local Pickup?', 'advanced-local-pickup-for-woocommerce' ); ?></h4>
+			<div class="alp-review-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+			<p class="zui-quickhelp__text"><?php esc_html_e( 'If Advanced Local Pickup makes managing your store pickups easier, please leave us a quick review. It really helps!', 'advanced-local-pickup-for-woocommerce' ); ?></p>
+			<a class="zui-btn-primary alp-review-card__btn" href="<?php echo esc_url( $alp_review_url ); ?>" target="_blank" rel="noreferrer noopener">
+				<?php esc_html_e( 'Leave a review', 'advanced-local-pickup-for-woocommerce' ); ?>
+			</a>
+		</div>
+		<?php endif; ?>
 
 	</aside>
 
@@ -721,7 +733,7 @@ $alp_locked_copy = array(
 			esc_html__( 'WooCommerce Checkout Block (Gutenberg) support', 'advanced-local-pickup-for-woocommerce' ),
 			esc_html__( 'Priority support', 'advanced-local-pickup-for-woocommerce' ),
 		);
-		$alp_upsell_url = 'https://www.zorem.com/product/zorem-local-pickup-pro/?utm_source=wp-admin&utm_medium=ALPFREE&utm_campaign=UpsellPanel';
+		$alp_upsell_url = alp_pro_upgrade_url( 'settings-upsell' );
 		?>
 		<section class="zui-upsell" aria-labelledby="alp-upsell-title">
 

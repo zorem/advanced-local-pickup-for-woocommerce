@@ -61,7 +61,9 @@ if ( $country && ! empty( $location->store_name ) && isset( WC()->countries->cou
 }
 
 // PRO-locked sections to render below the editable ones.
-$alp_upgrade_url = 'https://www.zorem.com/product/zorem-local-pickup-pro/?utm_source=wp-admin&utm_medium=ALPFREE&utm_campaign=location-lock';
+// This is the strongest settings-page upgrade surface (AST's top converter is
+// the equivalent), so it uses the canonical utm_content=plugin-setting.
+$alp_upgrade_url = alp_pro_upgrade_url( 'plugin-setting' );
 
 $alp_pro_sections = array(
 	array(

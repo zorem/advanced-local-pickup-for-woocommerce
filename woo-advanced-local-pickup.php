@@ -1,18 +1,18 @@
 <?php
 /*
-* Plugin Name: Zorem Local Pickup
+* Plugin Name: Advanced Local Pickup for WooCommerce
 * Plugin URI:  https://www.zorem.com/shop
-* Short Description: Extend WooCommerce with Zorem Local Pickup to streamline your in-store pickup.
-* Description: Enhance your WooCommerce store's local pickup service with Zorem Local Pickup. This powerful tool expands on the standard Local Pickup shipping method, offering a streamlined and efficient way to manage in-store pickups. Simplify your process and improve customer satisfaction with Zorem Local Pickup.
+* Short Description: Extend WooCommerce with Advanced Local Pickup for WooCommerce to streamline your in-store pickup.
+* Description: Enhance your WooCommerce store's local pickup service with Advanced Local Pickup for WooCommerce. This powerful tool expands on the standard Local Pickup shipping method, offering a streamlined and efficient way to manage in-store pickups. Simplify your process and improve customer satisfaction with Advanced Local Pickup for WooCommerce.
 * Author: zorem
 * Author URI: https://www.zorem.com/
-* Version: 1.9.2
+* Version: 1.9.4
 * License: GPLv2 or later
 * License URI: https://www.gnu.org/licenses/gpl-2.0.html
 * Text Domain: advanced-local-pickup-for-woocommerce
 * Domain Path: /lang/
 * WC requires at least: 4.0
-* WC tested up to: 11.1.0
+* WC tested up to: 11.2.1
 * Requires Plugins: woocommerce
 */
 
@@ -32,7 +32,7 @@ class Woocommerce_Local_Pickup {
 	 *
 	 * @var string
 	 */
-	public $version = '1.9.2';
+	public $version = '1.9.4';
 	public $admin;
 	public $install;
 	public $table;
@@ -138,7 +138,10 @@ class Woocommerce_Local_Pickup {
 	 * @since 1.0.0
 	 *
 	 */	
-	public function includes() {		
+	public function includes() {
+		// In-plugin upgrade UTM helper (alp_utm_url / alp_pro_upgrade_url).
+		require_once $this->get_plugin_path() . '/include/wclp-helpers.php';
+
 		require_once $this->get_plugin_path() . '/include/wc-local-pickup-admin.php';
 		$this->admin = WC_Local_Pickup_admin::get_instance();	
 

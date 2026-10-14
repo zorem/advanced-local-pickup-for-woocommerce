@@ -69,7 +69,12 @@ $plugin_url = wc_local_pickup()->plugin_dir_url();
 				<p>
 				<?php 
 				echo wp_kses_post(
-					__( 'Stop limiting your store with basic pickup. Switch from a <strong>basic setup</strong> to a <a href="https://www.zorem.com/product/zorem-local-pickup-pro/?utm_source=wp-admin&utm_medium=ALPPRO&utm_campaign=go-pro" target="_blank">fully advanced pickup powerhouse</a>.', 'advanced-local-pickup-for-woocommerce' )
+					sprintf(
+						/* translators: %1$s: opening anchor tag, %2$s: closing anchor tag */
+						__( 'Stop limiting your store with basic pickup. Switch from a <strong>basic setup</strong> to a %1$sfully advanced pickup powerhouse%2$s.', 'advanced-local-pickup-for-woocommerce' ),
+						'<a href="' . esc_url( alp_pro_upgrade_url( 'addons-go-pro' ) ) . '" target="_blank">',
+						'</a>'
+					)
 				);
 				?>
 				</p>
@@ -129,7 +134,7 @@ $plugin_url = wc_local_pickup()->plugin_dir_url();
 
 			<!-- CTA -->
 			<div class="gopro-cta">
-				<a href="https://www.zorem.com/product/zorem-local-pickup-pro/?utm_source=wp-admin&utm_medium=ALPPRO&utm_campaign=go-pro" class="gopro-cta-btn" target="_blank"><?php esc_html_e( 'GET STARTED WITH PRO', 'advanced-local-pickup-for-woocommerce' ); ?></a>
+				<a href="<?php echo esc_url( alp_pro_upgrade_url( 'addons-go-pro' ) ); ?>" class="gopro-cta-btn" target="_blank"><?php esc_html_e( 'GET STARTED WITH PRO', 'advanced-local-pickup-for-woocommerce' ); ?></a>
 				<p class="gopro-cta-sub"><?php esc_html_e( 'Join store owners optimizing their local pickup workflow', 'advanced-local-pickup-for-woocommerce' ); ?></p>
 			</div>
 		</div>

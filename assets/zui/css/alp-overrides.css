@@ -1747,3 +1747,27 @@ section.wclp_tab_section,
 	background: #94a3b8 !important;
 	color: #fff !important;
 }
+
+/* ------------------------------------------------------------
+   Sidebar "Enjoying …?" review card — gold star row + full-width
+   button under Quick Help (mirrors Returns/CEV).
+   ------------------------------------------------------------ */
+.zui-scope .alp-review-card {
+	margin-block-start: 16px;
+}
+
+.zui-scope .alp-review-card__stars {
+	margin-block-start: 6px;
+	font-size: 16px;
+	letter-spacing: 2px;
+	line-height: 1;
+	color: #f59e0b;
+}
+
+.zui-scope .alp-review-card__btn {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	box-sizing: border-box;
+	text-decoration: none;
+}
